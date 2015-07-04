@@ -3,7 +3,9 @@ title: Working With Idris: Long Compile Times
 tags: idris,tricks
 ...
 
-Idris is my day to day language for programming.
+*Edits* As someone cannot proof-read, this post has been updated.
+
+[Idris](http://www.idris-lang.org) is my day to day language for programming.
 This article and subsequent will detail some tricks that may be of benefit when creating Idris Programs.
 
 The Idris compiler goes through many a stage during the compilation process.
@@ -16,16 +18,15 @@ Idris code is:
 + defunctionalised
 + turned into code
 
-These checks are not necessarily robust and code written in a poor style can lead to false negatives being reported, or the idris compiler becoming confused as to what is happening.
+These ~~checks are not necessarily robust~~ stages perform a series of checks on the code, or apply transformations, and when presented with code written in a *poor style* can lead to false negatives being reported, or the Idris compiler becoming confused as to what is happening. This can lead to Idris experiencing long compile times or failing to compile successfully.
 
-Here are some hand tips for working with Idris.
+Here are some hand tips for working with Idris that can help with these situations.
 
 ## Pattern Matching is your friend
 
-Some uses of case split and use of views can lead to long elaboration times, if you use these techniques to interrogate a value on the LHS.
-In these cases pattern matching is a better technique here.
-
-essentially, using case split and with/views when pattern matching on
+Case-spliting and views can lead to long elaboration times, especially when used to interrogate a value on the left-hand side.
+In these cases pattern matching is a better technique to use.
+Using case split and with/views when pattern matching on
 the LHS would have sufficed,
 
 ## Namespace disambiguation
@@ -59,7 +60,12 @@ Now the `unwords` function has type:
 
 When Idris desugars the list notation it cannot work out immediately from the immediate context what type of list it should use.
 The use of `unwords` is not enough for Idris to look at the function arguments and discern that it should be the `List` type.
-It would be nice if the Idris desugaring fairy could say: 'Hey Buddy, I see you are using some type of list, and that you are passing it as an argument to a function that expects the `List` type. I'll try desugar to that first.'
+It would be nice if the Idris desugaring fairy could say:
+
+>Hey Buddy, I see you are using some type of list, and that you are
+>passing it as an argument to a function that expects the `List
+>String` type. I'll try desugar to that first.
+
 Instead Idris elaborates on all the possible list types to work out which one to use.
 All these checks require effort and will always add to the compilation time.
 For minor examples, the overhead is minimal but if Idris has to disambiguate many many many many times then this will increase compilation time.
@@ -74,10 +80,12 @@ The above show example will now look like this.
     show (MkBar x) = with List unwords ["[MkBar", show x,"]"]
 ```
 
-This is something you should have to do, but we need to at the moment.
+This is something you should not have to do, but need to at the moment.
 
 Regardless, try to ensure that your code is not unnecessarily ambiguous.
 If you turn logging on past level one, then instances of bananna brackets `(||)` will indicate where Idris has to disambiguate things. This can help indicate if you need to disambiguate your code.
+
+## Disambiguation Flag.
 
 It also makes me wonder if Idris should take into account ambiguity of our code, like we take into account totality.
 That is, should there be a clarity directive i.e. `%clarity <level>` that allows for a tolerance to be specified over how ambiguous are code can be.

@@ -72,6 +72,18 @@ main = hakyll $ do
 
 --  ------------------------------------------------------------------ [ Index ]
 
+    match "*.md" $ do
+      route $ setExtension "html"
+      compile $ pandocCompiler
+        >>= loadAndApplyTemplate "templates/default.html" (postCtxWithTags tags)
+        >>= relativizeUrls
+
+    match "software.html" $ do
+        route idRoute
+        compile $ pandocCompiler
+            >>= loadAndApplyTemplate "templates/default.html" defaultContext
+
+
     match "index.html" $ do
         route idRoute
         compile $ do
