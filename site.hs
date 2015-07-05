@@ -9,6 +9,7 @@ import Control.Applicative
 import Control.Arrow
 import Control.Monad
 
+import Data.Default           (def)
 import Data.Maybe (fromJust)
 import Data.Monoid (mappend)
 
@@ -26,6 +27,9 @@ main = hakyll $ do
     match "css/*" $ do
         route   idRoute
         compile compressCssCompiler
+
+    match "*.bib" $ compile biblioCompiler
+    match "*.csl" $ compile cslCompiler
 
 --  ------------------------------------------------------------- [ Build Tags ]
     tags <- buildTags ("post") (fromCapture "tags/*.html")
@@ -48,7 +52,7 @@ main = hakyll $ do
 
     match "post/*.md" $ do
       route $ setExtension "html"
-      compile $ pandocCompiler
+      compile $ bibtexCompiler "style.csl" "biblio.bib"
         >>= loadAndApplyTemplate "templates/post.html" (postCtxWithTags tags)
         >>= loadAndApplyTemplate "templates/default.html" (postCtxWithTags tags)
         >>= relativizeUrls
@@ -72,16 +76,19 @@ main = hakyll $ do
 
 --  ------------------------------------------------------------------ [ Index ]
 
-    match "*.md" $ do
-      route $ setExtension "html"
-      compile $ pandocCompiler
-        >>= loadAndApplyTemplate "templates/default.html" (postCtxWithTags tags)
-        >>= relativizeUrls
+    match "publications.md" $ do
+      route   $ setExtension "html"
+      compile $ bibtexCompiler "fullcite.csl" "publications.bib"
+            >>= loadAndApplyTemplate "templates/default.html" defaultContext
+            >>= relativizeUrls
 
     match "software.html" $ do
         route idRoute
-        compile $ pandocCompiler
-            >>= loadAndApplyTemplate "templates/default.html" defaultContext
+        compile $ do
+            getResourceBody
+                >>= applyAsTemplate defaultContext
+                >>= loadAndApplyTemplate "templates/default.html" defaultContext
+                >>= relativizeUrls
 
 
     match "index.html" $ do
@@ -111,5 +118,12 @@ postCtx =
 postCtxWithTags :: Tags -> Context String
 postCtxWithTags tags = tagsField "tags" tags `mappend` postCtx
 
+
+bibtexCompiler :: String -> String -> Compiler (Item String)
+bibtexCompiler cslFileName bibFileName = do
+    csl <- load $ fromFilePath cslFileName
+    bib <- load $ fromFilePath bibFileName
+    liftM writePandoc
+        (getResourceBody >>= readPandocBiblio def csl bib)
 
 --  -------------------------------------------------------------------- [ EOF ]
