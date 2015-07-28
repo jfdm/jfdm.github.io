@@ -6,22 +6,25 @@
 
 REPO := git@github.com:jfdm/jfdm.github.io.git
 
+SITE := ./.stack-work/install/x86_64-linux/lts-2.16/7.8.4/bin/site
+
 .PHONY: build serve deploy clean
 
 site-init: site.hs
-	ghc --make -threaded site.hs
+	stack build
 
 build: site-init
-	./site build
+	${SITE} build
 
 clean:
-	./site clean
+	${SITE} clean
 
 serve:
-	./site server
+	${SITE} server
 
 watch:
-	./site watch
+	${SITE} watch
+
 
 deploy:
 	rm -rf _site/.git
