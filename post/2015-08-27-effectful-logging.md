@@ -152,7 +152,7 @@ The next stage is to construct a handler to instruct Idris how to deal with Logg
 instance Handler Logging IO where
   handle res (SetLvl newLvl) k = k () (MkLogRes newLvl)
 
-  handle rs (Log lvl msg) k = do
+  handle res (Log lvl msg) k = do
     case cmpLevel lvl (getLevel res)  of
       GT        => k () res
       otherwise =>  do
