@@ -1,5 +1,5 @@
 ---
-title: Working With Idris: Long Compile Times
+title: Working With Idris':' Long Compile Times
 tags: idris,tricks
 ...
 

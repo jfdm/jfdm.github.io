@@ -6,27 +6,25 @@
 
 REPO := git@github.com:jfdm/jfdm.github.io.git
 
-SITE := ./.stack-work/install/x86_64-linux/lts-2.16/7.8.4/bin/site
+SITE := stack exec site
 
 .PHONY: build serve deploy clean
 
-site-init: site.hs
+build:
 	stack build
-
-build: site-init
 	${SITE} build
 
 clean:
 	${SITE} clean
 
-serve:
+serve: build
 	${SITE} server
 
-watch:
+watch: build
 	${SITE} watch
 
 
-deploy:
+deploy: build
 	rm -rf _site/.git
 	(cd _site; git init && git add .)
 	(cd _site; git config user.email "")

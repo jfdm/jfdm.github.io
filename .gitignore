@@ -1,6 +1,7 @@
 .stack-work/*
 *~
-
+.DS_Store
+auto/
 _site
 _cache
 dist

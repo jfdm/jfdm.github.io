@@ -1,0 +1,13 @@
+BEGIN:VCARD
+PRODID:-//suda.co.uk//X2V 0.12 (BETA)//EN
+SOURCE:https://jfdm.github.io
+NAME:Jan de Muijnck-Hughes
+VERSION:3.0
+N;CHARSET=utf-8:de Muijnck-Hughes;Jan;;;
+ORG;CHARSET=utf-8:University of St Andrews
+FN;CHARSET=utf-8:Jan de Muijnck-Hughes
+ROLE;CHARSET=utf-8:phd student
+URL:https://jfdm.github.io
+EMAIL:jfdm@st-andrews.ac.uk
+ADR;CHARSET=utf-8:;North Haugh;Jack Cole Building;St Andrews;Fife;KY16 9SX;United Kingdom
+END:VCARD

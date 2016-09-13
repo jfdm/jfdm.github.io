@@ -82,14 +82,18 @@ main = hakyll $ do
             >>= loadAndApplyTemplate "templates/default.html" defaultContext
             >>= relativizeUrls
 
-    match "software.html" $ do
-        route idRoute
-        compile $ do
-            getResourceBody
-                >>= applyAsTemplate defaultContext
-                >>= loadAndApplyTemplate "templates/default.html" defaultContext
-                >>= relativizeUrls
+    match "software.md" $ do
+      route   $ setExtension "html"
+      compile $ bibtexCompiler "fullcite.csl" "software.bib"
+            >>= loadAndApplyTemplate "templates/default.html" defaultContext
+            >>= relativizeUrls
 
+    match "*.md" $ do
+      route   $ setExtension "html"
+      compile $ pandocCompiler
+            >>= applyAsTemplate defaultContext
+            >>= loadAndApplyTemplate "templates/default.html" defaultContext
+            >>= relativizeUrls
 
     match "index.html" $ do
         route idRoute

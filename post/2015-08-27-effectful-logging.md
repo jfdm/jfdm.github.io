@@ -1,5 +1,5 @@
 ---
-title: An Effectful Logger: Part One
+title: An Effectful Logger':' Part One
 tags: idris,effects,tips
 ...
 

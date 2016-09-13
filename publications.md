@@ -4,6 +4,7 @@ title: Publications
 
 ## Publications
 
++ @deMuijnckHughes2015wpp
 + @Duncan2014spe
 + @deMuijnckHughes2013ias
 + @deMuijnckHughes2012ttp
@@ -11,5 +12,8 @@ title: Publications
 
 ## Theses
 
++ @deMuijnckHughes2015phd
 + @deMuijnckHughes2011master
 + @deMuijnckHughes2008bachelour
+
+[Copies of my theses are available](https://jfdm.host.cs.st-andrews.ac.uk/theses/).
