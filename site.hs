@@ -38,7 +38,7 @@ main = hakyll $ do
       let title = "Posts tagged \"" ++ tag ++ "\""
       route idRoute
       compile $ do
-        posts <- recentFirst =<< loadAll "post/*"
+        posts <- recentFirst =<< loadAll pattern
         let ctx = constField "title" title
                       `mappend` listField "posts" postCtx (return posts)
                       `mappend` defaultContext
