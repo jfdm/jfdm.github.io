@@ -32,7 +32,7 @@ main = hakyll $ do
     match "*.csl" $ compile cslCompiler
 
 --  ------------------------------------------------------------- [ Build Tags ]
-    tags <- buildTags ("post") (fromCapture "tags/*.html")
+    tags <- buildTags ("post/*") (fromCapture "tags/*.html")
 
     tagsRules tags $ \tag pattern -> do
       let title = "Posts tagged \"" ++ tag ++ "\""
