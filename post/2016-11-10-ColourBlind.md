@@ -44,9 +44,34 @@ on another.
 That was annonying for both myself and the attendee.
 As a result I searched for a [colour blind friendly colour palette]( http://www.somersault1824.com/wp-content/uploads/2015/02/color-blindness-palette.png) and updated my slides and LaTeX style to be more colour blind friendly.
 
+The colours are defined as:
+
+<div class="cus">
+
+       Name            R     G     B
+----- ------------- ----- ----- ------
+   1   Black           0     0     0
+   2   BlueGreen       0    73    73
+   3   SeaGreen        0   146   146
+   4   Rose          255   109   182
+   5   Salmon Pink   255   182   119
+   6   Purple         73     0   146
+   7   Blue            0   109   219
+   8   Lylac         182   109   255
+   9   Sky Blue      109   182   255
+  10   Light Bluw    182   219   255
+  11   Burgundy      146     0     0
+  12   Brown         146    73     0
+  13   Clay          219   209     0
+  14   Lime Green     36   255    36
+  15   Pale Yellow   255   255   109
+----- ------------- ----- ----- ------
+
+</div>
+
 The resulting style file is [available online](https://github.com/jfdm/sta-latex/blob/master/colour-blind.sty). Together with macroes for use in prose and for semantic code highlighting as seen in Idris.
 
-*Note*: It turns out The colour palette used is one from a set of palettes [described online](http://mkweb.bcgsc.ca/colorblind/).
+**Note**: It turns out The colour palette used is one from a set of palettes [described online](http://mkweb.bcgsc.ca/colorblind/).
 In future I might update the style file with more of the palettes.
 
 

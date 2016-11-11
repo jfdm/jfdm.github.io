@@ -60,4 +60,18 @@ code {
   font-size: 80%;
 }
 
+
+.cus table {
+    border-collapse: collapse;
+    margin-left:auto;
+    margin-right:auto;
+    min-width:30%;
+}
+
+.cus th, td {
+    text-align: left;
+    padding: 8px;
+}
+
+.cus tr:nth-child(even){background-color: #f2f2f2}
 /* ------------------------------------------------------------------ [ EOF ] */
