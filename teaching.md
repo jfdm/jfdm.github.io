@@ -2,12 +2,28 @@
 title: Teaching
 ...
 
-Details of duties performed as a **teaching assitant** or **teaching
-fellow** for various ugrad and pgrad courses within the School of
-Computer Science. Module descriptions are available from the
-University's course catalogue.
+Details of duties performed during my tenure as an academic.
+Module descriptions are available from the respective University's course catalogues.
 
-## 2015-2016
+## University of Glasgow
+
+At Glasgow, I will be involved in light teaching duties, namely lecturing.
+
+### 2017-2018
+
+
+
+## University of St Andrews
+
+At St Andrews I performed teaching duties either as a **teaching assitant** or **teaching
+fellow**. I worked on various Undergraduate and Postgraduate courses.
+
+### 2016-2017
+
++ CS5032: Critical Systems Engineering
+    + Guest Lecturer
+
+### 2015-2016
 
 + CS4103 Distributed Systems
     + Lecturer
@@ -20,7 +36,7 @@ University's course catalogue.
 +  Sub-Hons Lab Demonstrator
     + Lab demonstrator for sub-honours courses: CS1002, CS1006, and CS2001.
 
-## 2014-2015
+### 2014-2015
 
 +  IS5104 Information Security Management
     + Guest Lecturer (Information Assurance)
@@ -31,7 +47,7 @@ University's course catalogue.
 +  CS1002 Computer Science
     + Tutor
 
-## 2013-2014
+### 2013-2014
 
 +  CS4203 Computer Security
     + Guest Lecturer
@@ -44,7 +60,7 @@ University's course catalogue.
 +  Sub-Hons Lab Demonstrator
     + Lab demonstrator for sub-honours courses: CS1002, CS1006, CS2001, CS1004, CS2002, and CS2003.
 
-## 2012-2013
+### 2012-2013
 
 +  IS5104 Information Security Management
     + Guest Lecturer (Information Assurance)
@@ -57,7 +73,7 @@ University's course catalogue.
 +  CS1004 Internet Computer Science
     + Tutor
 
-## 2011-2012
+### 2011-2012
 
 +  CS1002 Computer Science
     + Exercise class demonstrator

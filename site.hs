@@ -88,12 +88,27 @@ main = hakyll $ do
             >>= loadAndApplyTemplate "templates/default.html" defaultContext
             >>= relativizeUrls
 
-    match "*.md" $ do
+--    match "*.md" $ do
+--      route   $ setExtension "html"
+--      compile $ pandocCompiler
+--            >>= applyAsTemplate defaultContext
+--            >>= loadAndApplyTemplate "templates/default.html" defaultContext
+--            >>= relativizeUrls
+
+    match "contact.md" $ do
       route   $ setExtension "html"
       compile $ pandocCompiler
             >>= applyAsTemplate defaultContext
             >>= loadAndApplyTemplate "templates/default.html" defaultContext
             >>= relativizeUrls
+
+    match "teaching.md" $ do
+      route   $ setExtension "html"
+      compile $ pandocCompiler
+            >>= applyAsTemplate defaultContext
+            >>= loadAndApplyTemplate "templates/default.html" defaultContext
+            >>= relativizeUrls
+
 
     match "index.html" $ do
         route idRoute
@@ -101,7 +116,6 @@ main = hakyll $ do
             posts <- recentFirst =<< loadAll "post/*"
             let indexCtx =
                     listField "posts" postCtx (return posts) `mappend`
-                    constField "title" "Home"                `mappend`
                     defaultContext
 
             getResourceBody

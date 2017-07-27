@@ -25,7 +25,7 @@ body {
 body > .container {
   padding: 60px 15px 0;
   background: #FFFFFF repeat-y left top;
-  border-radius: 15px;
+//  border-radius: 15px;
 }
 
 #container h1 {
