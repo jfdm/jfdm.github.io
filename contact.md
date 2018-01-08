@@ -23,7 +23,7 @@ title: Contact
 Science,</span><br />
 <span class="extended-address">University of Glasgow</span>,<br />
 <span class="locality">Glasgow</span>,<span class=
-"region">Fife</span>,<br />
+"region">Glasgow</span>,<br />
 <span class="country-name">United Kingdom</span>,<br />
 <span class="postal-code">G12 8RZ</span>
 </td>
