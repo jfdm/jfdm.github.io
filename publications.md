@@ -16,4 +16,4 @@ title: Publications
 + @deMuijnckHughes2011master
 + @deMuijnckHughes2008bachelour
 
-[Copies of my theses are available](https://jfdm.host.cs.st-andrews.ac.uk/theses/).
+Copies of my theses are available on request.

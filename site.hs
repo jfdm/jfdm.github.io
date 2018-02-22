@@ -88,6 +88,12 @@ main = hakyll $ do
             >>= loadAndApplyTemplate "templates/default.html" defaultContext
             >>= relativizeUrls
 
+    match "talks.md" $ do
+      route   $ setExtension "html"
+      compile $ bibtexCompiler "fullcite.csl" "talks.bib"
+            >>= loadAndApplyTemplate "templates/default.html" defaultContext
+            >>= relativizeUrls
+
 --    match "*.md" $ do
 --      route   $ setExtension "html"
 --      compile $ pandocCompiler
