@@ -1,3 +1,4 @@
+
 @InProceedings{TPL2012,
   author =       {Jan de Muijnck-Hughes},
   title =        {Modern Cryptography \& Formal Methods},
@@ -202,4 +203,52 @@
                   concentrate my talk detailing the underlying
                   theories that facilitate the correct-by-construction
                   guarantees.}
+}
+
+@InProceedings{STACSFP_2018,
+  author =       {Jan de Muijnck-Hughes \and others},
+  title =        {A Type-System for describing System-on-a-Chip Architectures},
+  date =      {2018-04-05},
+  year = 2018,
+  booktitle = {StACS Functional Programming Group Seminar},
+  eventtitle ={StACS FP 17/18},
+  eventdate = {2018-04-05},
+  venue =     {University of St Andrews},
+  abstract =     {The protocols that describe the interactions between IP Cores on
+System-on-a-Chip (SoC) architectures are well-documented. These
+protocols described not only the structural properties of the physical
+interfaces but also the behaviour of the emanating signals. However,
+there is a disconnect between the design of SoC architectures, their
+formal description, and the verification of their implementation in
+known hardware description languages.
+\newline
+
+Within the Border Patrol project we are investigating how to capture
+and reason about the structural and behavioural properties of SoC
+architectures using state-of-the-art advances in programming language
+research. Namely, we are investigating using dependent types and
+session types to capture and reason about hardware communication.
+\newline
+
+In this talk I will discuss my work in designing a dependent type-
+system and corresponding language that captures and reasons about the
+topological structure of a System-on-a-Chip. This language provides
+correct-by-construction guarantees over:
+\newline
+
+1. the physical structure of an interaction protocol;
+1. the adherence of a component’s interface to a given protocol; and
+1. the validity of the specified connections made between components.
+\newline
+
+We provide these guarantees through the (ab)use of dependent types as
+presented in Idris; and abuse of indexed monads to reason about
+resource usage.
+\newline
+
+Given time I will give an account of how this language enables
+reasoning about SoC behaviour when considered in conjunction with
+Session Types.},
+url={https://blogs.cs.st-andrews.ac.uk/csblog/2018/03/30/a-type-system-for-describing-system-on-a-chip-architectures-jan-de-muijnck-hughes/}
+
 }

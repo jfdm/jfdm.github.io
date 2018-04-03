@@ -4,6 +4,7 @@ title: Talks
 
 # 2018
 
++ @STACSFP_2018
 + @MSP101_2018
 
 # 2017
