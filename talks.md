@@ -4,37 +4,37 @@ title: Talks
 
 # 2018
 
-+ @STACSFP_2018
-+ @MSP101_2018
++ @PLINTEREST2018
++ @STACSFP2018
++ @MSP1012018
 
 # 2017
 
-+ @HW_Seminar_2017
-+ @GPG_Seminar_2017
-+ @SPLS_Nov_2017
-+ @Imperial_2017
-+ @UoG_GPG_2017
-+ @StACS_FP_Group_2017
++ @HWSeminar2017
++ @GPGSeminar2017
++ @SPLSNov2017
++ @Imperial2017
++ @UoGGPG2017
++ @StACSFPGroup2017
 + @FPDag2017
 
 # 2016
 
 + @SPLSNov2016
-+ @StACS_FP_2016
++ @StACSFP2016
 
 # 2015
 
 + @PracticalTypes2015
-+ @StACS_FP_2015
++ @StACSFP2015
 
 # 2014
 
 + @CryptoForma2014
-+ @SICSA_CyberSec2014
-
++ @SICSACyberSec2014
 
 
 # 2012
 
-+ @STAC_SecColloq2012
++ @STACSecColloq2012
 + @TPL2012

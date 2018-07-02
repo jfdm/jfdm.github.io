@@ -10,17 +10,18 @@ SITE := stack exec site
 
 .PHONY: build serve deploy clean
 
-build:
+config:
 	stack build
+build:
 	${SITE} build
 
 clean:
 	${SITE} clean
 
-serve: build
+serve:
 	${SITE} server
 
-watch: build
+watch:
 	${SITE} watch
 
 

@@ -12,7 +12,9 @@ At Glasgow, I will be involved in light teaching duties, namely lecturing.
 ### 2018-2019
 
 + CS4025P: Individual Project
-   + Supervisor to two Level 4 Students.
+   + Supervisor two Level 4 Students.
++ CS4021: Functional Programming with Haskell
+    + Co-Lecturer, and tutor on course's corresponding MOOC.
 
 ### 2017-2018
 
@@ -20,8 +22,6 @@ At Glasgow, I will be involved in light teaching duties, namely lecturing.
     + Co-Lecturer, and tutor on course's corresponding MOOC.
 + CS4062: Cyber Security Fundamentals
     + Co-Lecturer
-+ CS5018P: Development Project
-   + Supervisor to Master Student.
 
 ## University of St Andrews
 

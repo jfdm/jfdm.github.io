@@ -52,7 +52,7 @@ main = hakyll $ do
 
     match "post/*.md" $ do
       route $ setExtension "html"
-      compile $ bibtexCompiler "style.csl" "biblio.bib"
+      compile $ pandocBiblioCompiler "style.csl" "biblio.bib"
         >>= loadAndApplyTemplate "templates/post.html" (postCtxWithTags tags)
         >>= loadAndApplyTemplate "templates/default.html" (postCtxWithTags tags)
         >>= relativizeUrls
@@ -78,28 +78,21 @@ main = hakyll $ do
 
     match "publications.md" $ do
       route   $ setExtension "html"
-      compile $ bibtexCompiler "fullcite.csl" "publications.bib"
+      compile $ pandocBiblioCompiler "./fullcite.csl" "./publications.bib"
             >>= loadAndApplyTemplate "templates/default.html" defaultContext
             >>= relativizeUrls
 
     match "software.md" $ do
       route   $ setExtension "html"
-      compile $ bibtexCompiler "fullcite.csl" "software.bib"
+      compile $ pandocBiblioCompiler "./fullcite.csl" "./software.bib"
             >>= loadAndApplyTemplate "templates/default.html" defaultContext
             >>= relativizeUrls
 
     match "talks.md" $ do
       route   $ setExtension "html"
-      compile $ bibtexCompiler "fullcite.csl" "talks.bib"
+      compile $ pandocBiblioCompiler "./fullcite.csl" "./talks.bib"
             >>= loadAndApplyTemplate "templates/default.html" defaultContext
             >>= relativizeUrls
-
---    match "*.md" $ do
---      route   $ setExtension "html"
---      compile $ pandocCompiler
---            >>= applyAsTemplate defaultContext
---            >>= loadAndApplyTemplate "templates/default.html" defaultContext
---            >>= relativizeUrls
 
     match "contact.md" $ do
       route   $ setExtension "html"
@@ -141,13 +134,5 @@ postCtx =
 
 postCtxWithTags :: Tags -> Context String
 postCtxWithTags tags = tagsField "tags" tags `mappend` postCtx
-
-
-bibtexCompiler :: String -> String -> Compiler (Item String)
-bibtexCompiler cslFileName bibFileName = do
-    csl <- load $ fromFilePath cslFileName
-    bib <- load $ fromFilePath bibFileName
-    liftM writePandoc
-        (getResourceBody >>= readPandocBiblio def csl bib)
 
 --  -------------------------------------------------------------------- [ EOF ]
