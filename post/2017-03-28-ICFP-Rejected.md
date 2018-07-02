@@ -6,7 +6,8 @@ tags: idris,tdvcs,paper,icfp,rejection
 
 I submitted a paper entitled *Type-Driven Development of Communicating Systems* to [ICFP '17](https://icfp17.sigplan.org/).
 
-I have decided to uploaded the abstract here so that my attempt is a least indexable by the great machine spirit in the web---Hallowed be thy API. Gvien time I will also upload a copy of the paper to ArXiV.
+I have decided to uploaded the abstract here so that my attempt is a least indexable by the great machine spirit in the web---Hallowed be thy API.
+Given time I will also upload a copy of the paper to ArXiV.
 
 The paper's abstract was:
 

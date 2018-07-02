@@ -6,7 +6,8 @@ tags: idris,tdvcs,border-patrol,paper,tyde,rejection
 
 I submitted a paper entitled *Fake it until they make it: Implementing Substructural Type-Systems for EDSLs using Dependent Types* to [Type-Driven Development '18](https://icfp18.sigplan.org/track/tyde-2018)
 
-I have decided to uploaded the abstract here so that my attempt is a least indexable by the great machine spirit in the web---Hallowed be thy API. Gvien time I will also upload a copy of the paper to ArXiV.
+I have decided to uploaded the abstract here so that my attempt is a least indexable by the great machine spirit in the web---Hallowed be thy API.
+Given time I will also upload a copy of the paper to ArXiV.
 
 The paper's abstract was:
 

@@ -1,6 +1,6 @@
 ---
 title: Dependent Types and Goal-Oriented DSMLs
-tags: idris,phd,paper,rejection
+tags: idris,phd,paper,gpce,rejection
 ...
 
 
