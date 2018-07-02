@@ -1,12 +1,12 @@
 ---
 title: Dependent Types and Goal-Oriented DSMLs
-tags: idris,phd,paper
+tags: idris,phd,paper,rejection
 ...
 
 
-I submitted a paper entitled [*Using Dependent Types to Build Domain Specific Goal-Oriented Modelling Languages*](http://jfdm.host.cs.st-andrews.ac.uk/drafts/2015-GPCE-Rejected.pdf) to GPCE '15.
+I submitted a paper entitled *Using Dependent Types to Build Domain Specific Goal-Oriented Modelling Languages* to GPCE '15.
 Sadly it was rejected.
-I have decided to uploaded it here, warts and all, so that it is a least indexable by the great machine spirit in the web---Hallowed be thy API.
+I mentioning it here, so that my attempt is a least indexable by the great machine spirit in the web---Hallowed be thy API.
 
 The abstract is:
 
@@ -25,5 +25,4 @@ The abstract is:
 > a direct correspondence to be made between the semantics and
 > structure of the host language and domain language.
 
-Constructive comments and suggestions are welcome.
 This paper introduces several techniques that I have developed as part of my PhD work in creating machine-checkable design patterns.

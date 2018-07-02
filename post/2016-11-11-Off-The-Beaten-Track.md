@@ -1,10 +1,10 @@
 ---
 title: Off The Beaten Track
-tags: idris,tdvcs,paper
+tags: idris,tdvcs,paper,rejection
 ...
 
 
-I submitted a talk entitled [*Type-Driven Development of Security Protocols*](http://jfdm.host.cs.st-andrews.ac.uk/draft/otb-tdd-sec-protocols.pdf) to [Off-The-Beaten-Track '17](http://popl17.sigplan.org/track/OBT-2017).
+I submitted a talk entitled *Type-Driven Development of Security Protocols* to [Off-The-Beaten-Track '17](http://popl17.sigplan.org/track/OBT-2017).
 
 I have decided to uploaded the abstract here, warts and all, and regardless of whether it is accepted or not.
 Mainly so that it is a least indexable by the great machine spirit in the web---Hallowed be thy API.
