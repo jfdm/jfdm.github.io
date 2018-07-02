@@ -76,21 +76,22 @@ main = hakyll $ do
 
 --  ------------------------------------------------------------------ [ Index ]
 
+    match "talks.md" $ do
+      route   $ setExtension "html"
+      compile $ pandocBiblioCompiler "fullcite.csl" "talks.bib"
+            >>= loadAndApplyTemplate "templates/default.html" defaultContext
+            >>= relativizeUrls
+
+
     match "publications.md" $ do
       route   $ setExtension "html"
-      compile $ pandocBiblioCompiler "./fullcite.csl" "./publications.bib"
+      compile $ pandocBiblioCompiler "fullcite.csl" "publications.bib"
             >>= loadAndApplyTemplate "templates/default.html" defaultContext
             >>= relativizeUrls
 
     match "software.md" $ do
       route   $ setExtension "html"
-      compile $ pandocBiblioCompiler "./fullcite.csl" "./software.bib"
-            >>= loadAndApplyTemplate "templates/default.html" defaultContext
-            >>= relativizeUrls
-
-    match "talks.md" $ do
-      route   $ setExtension "html"
-      compile $ pandocBiblioCompiler "./fullcite.csl" "./talks.bib"
+      compile $ pandocBiblioCompiler "fullcite.csl" "software.bib"
             >>= loadAndApplyTemplate "templates/default.html" defaultContext
             >>= relativizeUrls
 

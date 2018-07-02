@@ -2,13 +2,13 @@
 title: Talks
 ...
 
-# 2018
+## 2018
 
 + @PLINTEREST2018
 + @STACSFP2018
 + @MSP1012018
 
-# 2017
+## 2017
 
 + @HWSeminar2017
 + @GPGSeminar2017
@@ -18,23 +18,23 @@ title: Talks
 + @StACSFPGroup2017
 + @FPDag2017
 
-# 2016
+## 2016
 
 + @SPLSNov2016
 + @StACSFP2016
 
-# 2015
+## 2015
 
 + @PracticalTypes2015
 + @StACSFP2015
 
-# 2014
+## 2014
 
 + @CryptoForma2014
 + @SICSACyberSec2014
 
 
-# 2012
+## 2012
 
 + @STACSecColloq2012
 + @TPL2012
