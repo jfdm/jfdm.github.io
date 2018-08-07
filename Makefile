@@ -24,7 +24,7 @@ serve:
 watch:
 	${SITE} watch
 
-deploy: config
+deploy: config build
 	rm -rf _site/.git
 	(cd _site; git init && git add .)
 #	(cd _site; git config user.email "")

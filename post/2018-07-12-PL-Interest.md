@@ -5,7 +5,7 @@ tags: idris,soc,hardware,linear-types,dependent-types,border-patrol,tdd,pl-inter
 
 I am giving a talk about my work on the [Border
 Patrol Project](https://border-patrol.github.io) at the University of
-Edinburgh, [School of Informatics(https://www.ed.ac.uk/informatics), [PL-Interest](http://wcms.inf.ed.ac.uk/lfcs/research/groups-and-projects/pl/programming-languages-interest-group) Group.
+Edinburgh, [School of Informatics](https://www.ed.ac.uk/informatics), [PL-Interest](http://wcms.inf.ed.ac.uk/lfcs/research/groups-and-projects/pl/programming-languages-interest-group) Group.
 
 This extends upon my talk from March to the FP-Group at
 St Andrews with a more complete picture of the language and how it is
