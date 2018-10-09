@@ -4,11 +4,12 @@ html {
   position: relative;
   min-height: 100%;
 }
+
 body {
   /* Margin bottom by footer height */
   margin-bottom: 60px;
   padding-top: 10px;
-  background: #D7D7BD url(images/background.png) repeat;
+  background-color: #FAEBD7;
 }
 
 .footer {
@@ -23,8 +24,8 @@ body {
 /* ------------------------------------------------------------ [ Container ] */
 
 body > .container {
-  padding: 60px 15px 0;
-  background: #FFFFFF repeat-y left top;
+  padding: 30px 15px 0;
+  background: #FAEBD7 repeat-y left top;
 //  border-radius: 15px;
 }
 
@@ -43,6 +44,11 @@ body > .container {
 
 #container dt {
    color: #E37500;
+}
+
+blockquote {
+    font-size: 75%;
+    font-style: italic;
 }
 
 /* ----------------------------------------------------------------- [ Misc ] */

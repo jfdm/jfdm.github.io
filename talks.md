@@ -4,6 +4,7 @@ title: Talks
 
 ## 2018
 
++ @SPLS2018strath
 + @PLINTEREST2018
 + @STACSFP2018
 + @MSP1012018
