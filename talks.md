@@ -4,6 +4,7 @@ title: Talks
 
 ## 2018
 
++ @Systems2018dec
 + @SPLS2018strath
 + @PLINTEREST2018
 + @STACSFP2018
