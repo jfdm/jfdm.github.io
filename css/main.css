@@ -9,7 +9,7 @@ body {
   /* Margin bottom by footer height */
   margin-bottom: 60px;
   padding-top: 10px;
-  background-color: #FAEBD7;
+  background-color: #FFFFFF;
 }
 
 .footer {
@@ -21,11 +21,18 @@ body {
   background-color: #f5f5f5;
 }
 
+.bg-jfdm {
+  background-color: #000000 !important;
+}
+
+.fa-bars {
+  color: #fff;
+}
 /* ------------------------------------------------------------ [ Container ] */
 
 body > .container {
   padding: 30px 15px 0;
-  background: #FAEBD7 repeat-y left top;
+  background: #FFFFFF repeat-y left top;
 //  border-radius: 15px;
 }
 

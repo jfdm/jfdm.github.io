@@ -115,7 +115,7 @@ main = hakyll $ do
         compile $ do
             posts <- recentFirst =<< loadAll "post/*"
             let indexCtx =
-                    listField "posts" postCtx (return posts) `mappend`
+                    listField "posts" postCtx (return $ take 5 posts) `mappend`
                     defaultContext
 
             getResourceBody

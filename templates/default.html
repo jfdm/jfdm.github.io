@@ -3,13 +3,14 @@
   <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <title>$title$</title>
 
-    <link rel="stylesheet" href="/css/bootstrap.min.css" />
+    <!--    <link rel="stylesheet" href="/css/bootstrap.min.css" />-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
    <!-- Custom styles for this template -->
-    <link rel="stylesheet" href="/css/main.css"/>
+    <link rel="stylesheet" href="css/main.css"/>
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -18,41 +19,91 @@
     <![endif]-->
     </head>
     <body>
-
-      <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-          <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-              <span class="sr-only">Toggle navigation</span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
+      <header>
+      <nav class="navbar navbar-expand-md navbar-fixed-top navbar-dark bg-dark bg-jfdm">
+        <button class="navbar-toggler"
+                type="button"
+                data-toggle="collapse"
+                data-target="#navbarNavDropdown"
+                aria-controls="navbarNavDropdown"
+                aria-expanded="false"
+                aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
             <a class="navbar-brand" href="/index.html">Jan de Muijnck-Hughes</a>
-          </div>
-          <div class="collapse navbar-collapse navbar-collapse">
-            <ul class="nav navbar-nav pull-right">
-              <li> <a href="/publications.html">Publications</a></li>
-              <li> <a href="/software.html">Software</a></li>
-              <li> <a href="/teaching.html">Teaching</a></li>
-              <li> <a href="/talks.html">Talks</a></li>
-              <li> <a href="/contact.html">Contact</a></li>
-              <li> <a href="/posts.html">Archive</a></li>
-              <li><a href="http://github.com/jfdm/jfdm.github.io">Source</a></li>
-            </ul>
-          </div>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+              <ul class="navbar-nav justify-content-center">
+                <li class="nav-item"> <a class="nav-link" href="/publications.html">Publications</a></li>
+                <li class="nav-item"> <a class="nav-link" href="/software.html">Software</a></li>
+                <li class="nav-item"> <a class="nav-link" href="/teaching.html">Teaching</a></li>
+                <li class="nav-item"> <a class="nav-link" href="/talks.html">Talks</a></li>
+                <li class="nav-item"> <a class="nav-link" href="/contact.html">Contact</a></li>
+                <li class="nav-item"> <a class="nav-link" href="/posts.html">Archive</a></li>
+              </ul>
+            </div>
       </nav>
-      <div class="container">
-              <div class="content">
-        <h1>$title$</h1>
-        $body$
+      </header>
+      <div class="container-fluid">
+        <div class="row">
+          <!-- ====================================================
+               Sidebar
+               ====================================================
+            -->
+          <div class="col-md-3 bg-light sidebar">
+	    <div class="profile-sidebar">
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title">Jan de Muijnck-Hughes</h5>
+                  <p class="card-text">I am a Post-Doctoral Research Assistant at the School of Computing at the University of Glasgow.</p>
+
+                  <nav class="navbar navbar-expand-md">
+                    <button class="navbar-toggler btn btn-outline-dark btn-sm"
+                            type="button"
+                            data-toggle="collapse"
+                            data-target="#navbarNavDropdown1"
+                            aria-controls="navbarNavDropdown1"
+                            aria-expanded="false"
+                            aria-label="Toggle navigation">
+                      Follow
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNavDropdown1">
+                      <ul class="navbar-nav flex-column">
+                        <li class="nav-item"><a class="nav-link" href="https://www.glasgow.ac.uk">University of Glasgow</a></li>
+                        <li class="nav-item"><a class="nav-link" href="https://www.github.com/jfdm">Github</a></li>
+                        <li class="nav-item"><a class="nav-link" href="https://www.twitter.com/jfdm">Twitter</a></li>
+                        <li class="nav-item"><a class="nav-link" href="https://scholar.google.com/citations?user=MoieSwcAAAAJ">Google Scholar</a></li>
+                        <li class="nav-item"><a class="nav-link" href="https://academic.microsoft.com/#/profile/jfdm">Microsoft Academic</a></li>
+                        <li class="nav-item"><a class="nav-link" href="https://orcid.org/0000-0003-2185-8543">ORCID</a></li>
+                      </ul>
+                    </div>
+                  </nav>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- ====================================================
+               Main
+               ====================================================
+            -->
+<div class="col-md-9">
+          <main role="main" class="container-fluid">
+            <div class="content">
+              <h1>$title$</h1>
+              $body$
+            </div>
+          </main>
+</div>
+        </div>
       </div>
-      </div>
+      <!-- ====================================================
+           Footer
+           ====================================================
+        -->
         <footer class="footer">
           <div class="container">
 <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons Licence" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/80x15.png" /> </a><span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Dataset" property="dct:title" rel="dct:type">jfdm.github.io</span> by <a xmlns:cc="http://creativecommons.org/ns#" href="http://jfdm.github.io/" property="cc:attributionName" rel="cc:attributionURL">Jan de Muijnck-Hughes</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.
             Site proudly generated by
-<a href="http://jaspervdj.be/hakyll">Hakyll</a> and <a href="https://github.com/commercialhaskell/stack">Stack</a>, and hosted on <a href="http://github.com">GitHub</a>
-
+<a href="http://jaspervdj.be/hakyll">Hakyll</a> and <a href="https://github.com/commercialhaskell/stack">Stack</a>, and hosted on <a href="http://github.com/jfdm/jfdm.github.io">GitHub</a>
           </div>
         </footer>
 
@@ -60,7 +111,10 @@
    <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+
+
     </body>
 </html>
