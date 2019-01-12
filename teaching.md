@@ -12,7 +12,7 @@ At Glasgow I am involved with a variety of teaching duties at Level 4, and Maste
 ### 2018-2019
 
 + CS4025P: Individual Project
-   + Supervisor to two Level 4 Students.
+    + Supervisor to two Level 4 Students.
 + CS4021: Functional Programming with Haskell
     + Co-Lecturer, and tutor on course's corresponding MOOC.
 
