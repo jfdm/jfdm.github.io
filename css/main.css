@@ -8,8 +8,25 @@ html {
 body {
   /* Margin bottom by footer height */
   margin-bottom: 60px;
-  padding-top: 10px;
   background-color: #f8f9fa;
+  font-family: 'Roboto', sans-serif;
+}
+
+h1, h2, h3, h4, h5 {
+    font-family: 'EB Garamond', serif;
+}
+
+code {
+    font-family: 'Inconsolata', monospace;
+}
+
+pre {
+    font-family: 'Inconsolata', monospace;
+    border-left: 1px solid black;
+    background-color: #ffffff;
+    font-size: 75%;
+    padding-left: 10px;
+//    margin-left: 10px;
 }
 
 .footer {
@@ -26,42 +43,49 @@ body {
   background-color: #000000 !important;
 }
 
-.fa-bars {
-  color: #fff;
-}
 /* ------------------------------------------------------------ [ Container ] */
 
-body > .container {
+body .container {
   padding: 30px 15px 0;
-  background: #FFFFFF repeat-y left top;
+//  background: #FFFFFF repeat-y left top;
 //  border-radius: 15px;
 }
 
-#container h1 {
-    margin: 10px 0px;
+h1 {
+    margin-top: 15px;
+    margin-bottom: 15px;
+    margin-left: 0px;
+    margin-right: 0px;
 }
 
-#container a {
+a {
         text-decoration: none;
 }
 
-#container ul {
+ul {
     padding-left: 20px;
     list-style: square;
 }
 
-#container dt {
+dt {
    color: #E37500;
 }
 
 blockquote {
-    font-size: 75%;
+    font-size: 90%;
     font-style: italic;
+    margin-left: 20px;
+    margin-right: 20px;
 }
 
 /* ----------------------------------------------------------------- [ Misc ] */
 
-#container #text-muted {
+.profile-sidebar {
+    margin-top: 15px;
+    font-size: 85%;
+}
+
+.container #text-muted {
   margin: 20px 0;
 }
 
@@ -69,11 +93,6 @@ blockquote {
   padding-right: 15px;
   padding-left: 15px;
 }
-
-code {
-  font-size: 80%;
-}
-
 
 .cus table {
     border-collapse: collapse;
