@@ -1,6 +1,6 @@
 ---
-title:  A Short Note of Collecting Dependently Typed Values
-tags: idris,dependent-types
+title:  A Short Note on Collecting Dependently Typed Values
+tags: idris,dependent-types,paper
 ...
 
 I've finally found a _round tuit_ down the back of the sofa and worked out how to a) use arXiv for publishing preprint eprints, and b) publishing a short note on collecting dependently typed values.
