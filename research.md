@@ -12,9 +12,16 @@ The project's goal is to make the design of hardware systems, and in particular 
 I have been involved with the project for many years as developer and community participant.
 I help administer the Github project pages for the compiler and community.
 
-+ **BiGraph** I am currently getting involved with the [BigraphER project](http://www.dcs.gla.ac.uk/~michele/bigrapher.html).
++ **BiGraphER** I am currently getting involved with the [BigraphER project](http://www.dcs.gla.ac.uk/~michele/bigrapher.html).
 Bigraphs are an interesting formalism for modelling communicating systems.
 I am applying my expertise in dependent types to help further reason about domain specific bigraphical models.
+
+### Previous Projects
+
++ **Security by Design and Construction** was a six-month project looking at type-driven verification of communicating systems. I was employed as an RA to investigate how to use dependent types and algebraic effect handlers to reason about communicating systems.
+
++ **Type-Driven Verification of Communicating Systems** was a one year EPSRC first grant to investigate the use of dependent types to reason about communicating systems. I was responsible for development of a *Multiparty Session Type* inspired EDSL and corresponding runtime.
+
 
 ## Software
 
