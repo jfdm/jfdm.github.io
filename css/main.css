@@ -109,4 +109,14 @@ blockquote {
 .cus tr:nth-child(even){background-color: #f2f2f2}
 
 
+/* ------------------------------------------------------------------- [ Idris ]*/
+
+.idris-data { color: red; }
+.idris-type { color: blue; }
+.idris-function {color: green; }
+.idris-keyword { font-weight: bold; }
+.idris-bound { color: purple; }
+.idris-implicit { font-style: italic; }
+.idris-underlined { text-decoration: underline; }
+
 /* ------------------------------------------------------------------ [ EOF ] */
