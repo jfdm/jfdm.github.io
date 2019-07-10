@@ -4,13 +4,9 @@ title: Publications
 
 Copies of my publications are available on request.
 
-## To Appear
-
-+ [@deMuijnckHughes2019ecoop]
-
-
 ## Conferences/Workshops
 
++ [@deMuijnckHughes2019ecoop]
 + [@deMuijnckHughes2019places]
 + [@deMuijnckHughes2015wpp]
 + [@Duncan2014spe]
