@@ -114,7 +114,7 @@ blockquote {
 .idris-data { color: red; }
 .idris-type { color: blue; }
 .idris-function {color: green; }
-.idris-keyword { font-weight: bold; }
+.idris-keyword { font-weight: bold; text-decoration: underline; }
 .idris-bound { color: purple; }
 .idris-implicit { font-style: italic; }
 .idris-underlined { text-decoration: underline; }
