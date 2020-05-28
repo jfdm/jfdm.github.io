@@ -76,8 +76,28 @@ blockquote {
     font-style: italic;
     margin-left: 20px;
     margin-right: 20px;
+    border-left-style: solid;
+    border-left-width: thick;
+    border-left-color: crimson;
+    padding-left: 10px;
 }
 
+.content p {
+    margin-top: 0.75rem;
+    margin-bottom: 0.75rem;
+}
+
+.card-body > .mdata {
+    padding: 0.5rem;
+    margin-top: 0.25rem;
+    margin-bottom: 0.25rem;
+    font-size: smaller;
+}
+
+.card p {
+    margin-top: 0.25rem;
+    margin-bottom: 0.25rem;
+}
 /* ----------------------------------------------------------------- [ Misc ] */
 
 .profile-sidebar {
