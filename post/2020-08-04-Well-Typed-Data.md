@@ -3,15 +3,15 @@ title: Defining Intrinsically Typed Data Structures
 tags: idris,dependent-types,tdd,musing
 ...
 
-When reading foundational texts such as [PLFA](https://plfa.github.io/), [TAPL](https://www.cis.upenn.edu/~bcpierce/tapl/), and [Software Foundations](https://softwarefoundations.cis.upenn.edu/plf-current/index.html) the learner is presented with Simply-Typed Lambda Calculi that supports both [products](https://www.ncatlab.org/nlab/show/product+type) and [sums](https://www.ncatlab.org/nlab/show/sum+type).
-When translating these calculi to dependently typed languages such [Idris](https://www.idris-lang.org) & Agda, however, how we might approach
+When reading foundational texts such as [PLFA](https://plfa.github.io/), [TAPL](https://www.cis.upenn.edu/~bcpierce/tapl/), and [Software Foundations](https://softwarefoundations.cis.upenn.edu/plf-current/index.html) the learner is often presented with Simply-Typed Lambda Calculi that supports both [products](https://www.ncatlab.org/nlab/show/product+type) and [sums](https://www.ncatlab.org/nlab/show/sum+type).
+When translating these calculi to dependently typed languages in an intrinsically typed way as we do with [Idris](https://www.idris-lang.org) & Agda, how we might approach
 supporting other data structures such as tuples, records and variants is not precisely clear.
 In fact Software Foundations [*does give an idea*](https://softwarefoundations.cis.upenn.edu/plf-current/Records.html#lab346) on how to do so but let us explore how we may choose to represent such structures in Idris/Agda.
 
 My aim for this post is to:
 
 1. consider how we can construct intrinsically typed data structures for an EDSL in the Idris(2) programming language; and
-1. detail an approach to preserve the uniques of variant types.
+1. detail an approach to preserve the uniqueness of variant types.
 
 I am not going to claim that the techniques in this post are new, my literature review of the area is weak, but I wanted to have a public record detailing *my approach* that others can find using the great big search engines floating around cyberspace.
 
@@ -19,14 +19,14 @@ I am not going to claim that the techniques in this post are new, my literature 
 
 Before reading this post, I will assume that the reader is familiar with [Part 2 of TAPL](https://www.cis.upenn.edu/~bcpierce/tapl/), may have skimmed [Software Foundations](https://softwarefoundations.cis.upenn.edu/plf-current/index.html), and perused [Part 2 of PLFA](https://plfa.github.io/).
 
-The examples will be in [Idris2](https://www.idris-lang.org) but they should translate to Idris1, and other dependently typed programming languages.
+The examples will be in [Idris2](https://www.idris-lang.org) but they should translate to Idris1, and other similar dependently typed programming languages.
 
 A small caveat, is that I will be discussing the representation of the data types, but have yet to explore their use in reasoning about progress and preservation, nor their use in building a working compiler.
 This is for later on in the month.
 
 ## The Starting Razor
 
-In this post our starting razor will start as an intrinsically typed expression language that supports let-bindings, and primitive data types representing integers and characters.
+In this post our starting razor will begin as an intrinsically typed expression language that supports let-bindings, and primitive data types representing integers and characters.
 We will expand this language to support pairs and sums (their construction, projection, and destruction), before morphing the language to see how we can support tuples, records, and variant types.
 
 Thus, our base types will be:
@@ -35,7 +35,7 @@ Thus, our base types will be:
 data Ty = TyInt | TyChar
 ```
 
-with the follow combined base syntax/static semantics:
+with the following combined base syntax/static semantics:
 
 ```{.idris}
 data Razor : List Ty -> Ty -> Type where
@@ -49,7 +49,7 @@ data Razor : List Ty -> Ty -> Type where
   C : Char -> Razor g TyChar
 ```
 
-Our razor follows standard constructions used in intrinsically typed interpreters in which variables are De Bruijn indicies realised using the `Elem` list existential quantifier from `Data.List.Elem` that is quantified over a type-level context.
+Our razor follows standard constructions used in intrinsically typed interpreters: variables are De Bruijn indicies realised using the `Elem` list existential quantifier from `Data.List.Elem` that quantifies over a type-level context.
 
 So let's get started.
 
@@ -63,8 +63,8 @@ This section will extend our razor with sums and products.
 data Ty = TyInt | TyChar | TyProd Ty Ty | TySum Ty Ty
 ```
 
-A product type allows us to pair two structures together, and a sum type to have a structure that contains one of two possible structures.
-Thus we extend the definition with two data constructors that pair two type's together.
+A product type pairs two structures together, and a sum type contains one of two possible structures.
+We can extend our set of types with two data constructors that represent two type's together as a product or sum.
 
 ### Syntax and Static Semantics
 
@@ -154,9 +154,10 @@ rp = Match r (MkPair (I 2) (Var Here)) (MkPair (Var Here) (C 'w'))
 
 ### We need Type-Ascriptions for Type Unique Sums
 
-Notice that all our examples a statically typed.
+Notice that all our examples are statically typed.
 
-A question to remind ourselves about Sum types is what is the type of the scrutinee in the following match expression:
+A question to remind ourselves about Sum types is:
+What is the type of the scrutinee in the following match expression:
 
 ```{.idris}
 snip : Razor Nil TyChar
@@ -175,10 +176,10 @@ Mismatch between:
 and
     TyProd ?l TyChar
 at:
-84      rfail = Match (Right (I 1)) (Var Here) (Split (Var Here) (Var Here))
+84      snip = Match (Right (I 1)) (Var Here) (Split (Var Here) (Var Here))
 ```
 
-Here Idris2 has worked out that the scruntinee has type `(TySum TyChar (TyProd ?l TyChar))`.
+Idris2 has worked out that the scruntinee has type `(TySum TyChar (TyProd ?l TyChar))`.
 The left case is clearly type char, but the right case is a product type and there is not enough information to work out what the first entry in the pair is.
 
 Software Foundations, and TAPL, suggest that we can make these types unique by providing a full or partial type ascription.
@@ -187,7 +188,7 @@ Thus we can attempt to rewrite our data constructor for sum either following the
 
 ```{.idris}
   Left : (type: Ty)
-      -> (leftValue Razor g tyL)
+      -> (leftValue : Razor g tyL)
       -> Razor g type
 ```
 
@@ -195,7 +196,7 @@ or the Software Foundation style:
 
 ```{.idris}
   Left : (tyR : Ty)
-      -> (leftValue Razor g tyL)
+      -> (leftValue : Razor g tyL)
       -> Razor g (TySum tyL tyR)
 ```
 
@@ -207,10 +208,10 @@ This is okay but doesn't look right and could be construed as counterintuitive: 
 It would be better to provide the full type as in the TAPL style but with the correct static guarantees.
 Further, it is interesting to see that within TAPL type-synonym are an aspect of the presented language.
 
-Having type-synonym directly within the Razor itself would be beneficial.
-However, as we will see later on we can remedy this problem by introducing data declarations.
+Having type-synonyms directly within the Razor itself would be beneficial.
+As we will see later on we can remedy this problem by introducing data declarations.
 
-But first we will detail how to provide tuples and record first.
+But first we will detail how to provide tuples and records first, as this gives us the intuition when introducing data declarations.
 
 ## A Razor with Tuples
 
@@ -218,7 +219,7 @@ Tuples improve on pairs by generalising the concept of pairing structures and su
 
 ### Types
 
-It is important to remember that a tupled has one ore more entries.
+It is important to remember that a tuple has one ore more entries.
 We can enforce this by using sized lists (vectors).
 
 ```{.idris}
@@ -230,7 +231,7 @@ data Ty = TyInt | TyChar
 
 With syntax and static semantics we need to be a bit clever.
 The data constructor for tuple requires a vector.
-We need a data structure (`RazorT`) that allows us to collect one or more razor values at the value level, but also types at the type level.
+We need a data structure (`RazorT`) to collect one or more razor values at the value level, but also types at the type level.
 Naturally, I would use the `All` quantifier (or really my own `DList` variant), however, here we will use a custom data structure.
 
 ```{.idris}
@@ -245,7 +246,7 @@ data RazorT : List Ty -> Vect (S n) Ty -> Type where
 The type of `RaqzorT` ensures that there are one or more entries that *might* also already exist in a given context.
 The constructor `Singleton` represent the **right most** entry in the list i.e. the one with the highest index, and `Extend` appends an entry to the left of an existing tuple.
 
-With `RazorT` we can now extend our Razor with syntax for projection and deconstruction.
+With `RazorT` we can now extend our Razor with syntax for projection (`Proj`) and deconstruction---`Split`.
 
 ```{.idris}
 data Razor : List Ty -> Ty -> Type where
@@ -266,12 +267,12 @@ data Razor : List Ty -> Ty -> Type where
       -> (  idx   : Fin (S n))
                  -> Razor g (index idx types)
 
-  Split : (tuple : Razor g                (TyTuple types))
+  Split : (tuple : Razor               g  (TyTuple types))
        -> (body  : Razor (revAdd types g) b)
-                -> Razor g                b
+                -> Razor               g  b
 ```
 
-Taking advantage of vectors we can define a safe projection constructor (`Proj`) that takes as an index a number known to be within the range represented by `[0,S n]`.
+By taking advantage of vectors we can define a safe projection constructor (`Proj`) that takes as an index a number known to be within the range represented by `[0,S n]`.
 The type of `Proj` can then reconstruct the type of the entry using a type-level application of vector's `index` function.
 
 The destructor `Split` decomposes a tuple into its constituent elements i.e. pattern matching.
@@ -311,9 +312,26 @@ Notice that the effect of the `revAdd` as the third entry in the tupled is acces
 
 ## The Recorded Razor
 
-We now turn our attention towards Records, otherwise known as named Tuples.
+We now turn our attention towards Records, also known as named Tuples.
 Unsurprisingly, how we represent records does not differ much from tuples.
-We need to provide accounting for names.
+We need to provide accounting for names to support disambiguation between otherwise isomorphic structures.
+For example:
+
+```{.idris}
+record PairIC where
+  constructor MkPair
+  first : Int
+  second : Char
+```
+
+should be seen as different from:
+
+```{.idris}
+record ICPair where
+  constructor MkPair
+  getInt : Int
+  getChar : Char
+```
 
 ### Types
 
@@ -326,7 +344,7 @@ data Ty = TyInt | TyChar
         | TyRecord (Vect (S n) (Pair String Ty))
 ```
 
-Not that by using a vector we provide no guarantees that the set of labels is actually a set.
+Note that by using a vector we provide no guarantees that the set of labels is actually a set.
 Use of a set-like structure would improve the robustness of record definition.
 
 ### Syntax and Static Semantics.
@@ -341,14 +359,14 @@ data RazorR : List Ty -> Vect (S n) (Pair String Ty) -> Type where
            -> (value : Razor  g ty)
                    ->  RazorR g [(label, ty)]
   Extend : (label : String)
-        -> (value : Razor  g ty)
-        -> (rest  : RazorR g kvs)
+        -> (value : Razor  g          ty)
+        -> (rest  : RazorR g                 kvs)
                  -> RazorR g ((label, ty) :: kvs)
 ```
 
 Much with the definition of `Tuple` we can replace `RazorR` with a better data structure.
 
-Unsurprisingly, describing record, construction, destruction, and projection follows that for tuples.
+Unsurprisingly, describing record, construction (`MkRecord`), destruction (`Split`), and projection (`Proj`) follows that for tuples.
 The data constructor `MkRecord` creates records using `RazorR`, and `Split` deconstructs records ensuring that the constituent components are available for a given body.
 The type-level function, `revAdd` is replaced with `revAdd' : Vect n (String, a) -> List a -> List a`.
 Projection of records using `Proj` differs slightly (is simpler) by using existential quantification of the label and type directly to find the corresponding type.
@@ -373,9 +391,9 @@ data Razor : List Ty -> Ty -> Type where
       -> (  idx   : Elem (label, type) types)
                  -> Razor g type
 
-  Split : (rec  : Razor g                 (TyRecord types))
+  Split : (rec  : Razor                g  (TyRecord types))
        -> (body : Razor (revAdd' types g) b)
-               -> Razor g                 b
+               -> Razor                g  b
 ```
 
 Note that we assume in our record specification that each label is unique.
@@ -455,19 +473,19 @@ data Razor : List Ty -> Ty -> Type where
 
   Let : (this     : Razor        g  expr)
      -> (beInThis : Razor (expr::g) body)
-             -> Razor        g  body
+                 -> Razor        g  body
 
   I : Int -> Razor g TyInt
   C : Char -> Razor g TyChar
 
   Tag : (label : String)
-     -> (value : Razor g ty)
-     -> (prf   : Elem (label, ty) kvs)
+     -> (value : Razor g      ty)
+     -> (prf   : Elem (label, ty)   kvs)
               -> Razor g (TyVariant kvs)
 
   Match : (value : Razor  g (TyVariant kvs))
-       -> (cases : RazorC g kvs b)
-                -> Razor  g b
+       -> (cases : RazorC g            kvs b)
+                -> Razor  g                b
 ```
 
 Variants are constructed using `Tag` which when given a valid label will associate the value with said label.
@@ -477,11 +495,12 @@ We do so using `RazorC`, which we define as:
 
 ```{.idris}
 data RazorC : List Ty -> Vect (S n) (Pair String Ty) -> Ty -> Type where
-  Singleton : (branch : Razor (ty::g) b) -> RazorC g [(label, ty)] b
+  Singleton : (branch : Razor  (ty::g)              b)
+                     -> RazorC      g [(label, ty)] b
 
-  Extend : (branch : Razor  (ty::g) b)
-        -> (rest   : RazorC g                 kvs  b)
-                  -> RazorC g ((label, ty) :: kvs) b
+  Extend : (branch : Razor  (ty::g)                     b)
+        -> (rest   : RazorC      g                 kvs  b)
+                  -> RazorC      g ((label, ty) :: kvs) b
 ```
 
 The type of `RazorC` is parameterised by:
@@ -562,14 +581,14 @@ data Ty = TyInt | TyChar
 
 and extend the syntax to include:
 
-1, the variant type construction `Variant` in which we list or fields and types; and
+1. the variant type construction `Variant` in which we list or fields and types; and
 2. an extended `Tag` constructor to incorporate the required ascription.
 
 Matching remains unchanged.
 
 ```{.idris}
   Variant : (kvs : Vect (S n) (Pair String Ty))
-                -> Razor  g (TyVariantDecl kvs)
+                -> Razor g (TyVariantDecl kvs)
 
   Tag : (label : String)
      -> (value : Razor g ty)
@@ -655,7 +674,7 @@ data RazorField : Context lvls -> String -> Ty One -> Type where
                     -> RazorField g label type
 
    ComplexField : (label : String)
-               -> (type  : Razor      g ty)
+               -> (type  : Razor      g       ty)
                         -> RazorField g label ty
 ```
 
@@ -669,11 +688,11 @@ Here we have constructed a custom data type `RazorD` but `All` (or `DList`) are 
 
 ```{.idris}
 data RazorD : Context lvls -> Vect (S n) (Pair String (Ty One)) -> Type where
-  SingletonD : (field : RazorField g label type)
+  SingletonD : (field : RazorField g   label  type)
                      -> RazorD     g [(label, type)]
 
-  ExtendD : (field : RazorField g label type)
-         -> (rest  : RazorD     g fields)
+  ExtendD : (field : RazorField g   label  type)
+         -> (rest  : RazorD     g                 fields)
                   -> RazorD     g ((label, type)::fields)
 ```
 
@@ -694,18 +713,18 @@ data Razor : Context lvls -> Ty lvl -> Type where
   I : Int -> Razor g TyInt
   C : Char -> Razor g TyChar
 
-  Variant : (fields : RazorD g kvs)
+  Variant : (fields : RazorD g                kvs)
                    -> Razor  g (TyVariantDecl kvs)
 
   Tag : (label : String)
-     -> (value : Razor g ty)
-     -> (type  : Razor g (TyVariantDecl kvs))
-     -> (prf   : Elem (label, ty) kvs)
-              -> Razor g (TyVariant kvs)
+     -> (value : Razor g      ty)
+     -> (type  : Razor g          (TyVariantDecl kvs))
+     -> (prf   : Elem (label, ty)                kvs)
+              -> Razor g          (TyVariant     kvs)
 
   Match : (value : Razor  g (TyVariant kvs))
-       -> (cases : RazorC g kvs b)
-                -> Razor  g b
+       -> (cases : RazorC g            kvs b)
+                -> Razor  g                b
 ```
 
 Much of our Razor stays as before, aside from changes to how contexts are defined.
