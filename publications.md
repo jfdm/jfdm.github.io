@@ -4,28 +4,25 @@ title: Publications
 
 Copies of my publications are available on request.
 
-## To Appear
-
-+ [@deMuijnckHughes2012ecoop]
-+ [@deMuijnckHughes2020ecoopae]
-
 ## Conferences/Workshops
 
++ [@DBLP:conf/ecoop/Muijnck-HughesB19]
 + [@deMuijnckHughes2019sfmoves]
-+ [@deMuijnckHughes2019ecoop]
-+ [@deMuijnckHughes2019places]
++ [@DBLP:conf/ecoop/Muijnck-HughesV19]
++ [@DBLP:journals/corr/abs-1904-01288]
 + [@deMuijnckHughes2015wpp]
-+ [@Duncan2014spe]
++ [@DBLP:conf/sose/DuncanM14]
 + [@deMuijnckHughes2013ias]
-+ [@deMuijnckHughes2012ttp]
++ [@DBLP:conf/ssiri/Muijnck-HughesD12]
 
 ## Book Reviews
 
-+ [@deMuijnckHughes2020jfp]
++ [@DBLP:journals/jfp/Muijnck-Hughes20]
 
 ## Artefacts
 
-+ [@deMuijnckHughes2019ecoopae]
++ [@DBLP:journals/darts/Muijnck-HughesB20]
++ [@DBLP:journals/darts/Muijnck-HughesV19]
 
 ## Unpublished
 
