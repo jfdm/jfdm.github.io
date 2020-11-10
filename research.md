@@ -21,7 +21,12 @@ This will impact both Society and The Economy by guaranteeing that our systems a
 
 ## Projects
 
-+ **Border Patrol** is an [EPSRC funded research project](http://gow.epsrc.ac.uk/NGBOViewGrant.aspx?GrantRef=EP/N028201/1) as part of the [Trust, Identity, Privacy and Security in the Digital Economy](https://www.epsrc.ac.uk/funding/calls/trustidentityprivacysecurity/) call.
++ **AppControl** is an [EPSRC funded research project](https://gow.epsrc.ukri.org/NGBOViewGrant.aspx?GrantRef=EP/V000462/1) that is part of the Industrial Strategy Challenge Fund: [Digital Security by Design](https://epsrc.ukri.org/funding/calls/iscf-digital-security-by-design-research-projects/).
+It is a collaborative project between the Universities of Glasgow, Imperial College London, and Essex.
+This project's goal is to improve upon the trustworthiness of Hardware/Software Co-Design by combining the results of **Border Patrol** with that of Capability Hardware as developed by the [CHERI Program](https://www.cl.cam.ac.uk/research/security/ctsrd/cheri/dsbd.html).
+
+
++ **Border Patrol** is an [EPSRC funded research project](http://gow.epsrc.ac.uk/NGBOViewGrant.aspx?GrantRef=EP/N028201/1) that is part of the [Trust, Identity, Privacy and Security in the Digital Economy](https://www.epsrc.ac.uk/funding/calls/trustidentityprivacysecurity/) call.
 It is a collaborative project between the Universities of Glasgow, Heriot-Watt, and Imperial College London.
 The project's goal is to make the design of hardware systems, and in particular smart devices, resiliant against hidden malicious functionality by ensuring that devices only do what is expected of them. It is an ambitious project that combines state-of-the-art advances in type theory and compiler technology, and applies them to hardware design.
 
@@ -29,9 +34,11 @@ The project's goal is to make the design of hardware systems, and in particular 
 I have been involved with the project for many years as developer and community participant.
 I help administer the Github project pages for the compiler and community.
 
+<!--
 + **BiGraphER** I am currently getting involved with the [BigraphER project](http://www.dcs.gla.ac.uk/~michele/bigrapher.html).
 Bigraphs are an interesting formalism for modelling communicating systems.
 I am applying my expertise in dependent types to help further reason about domain specific bigraphical models.
+-->
 
 ### Previous Projects
 
