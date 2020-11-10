@@ -1,6 +1,23 @@
 ---
-title: Research
+title: Engineering should be TyDe
 ...
+
+## Vision
+
+In Welsh English, the word 'tidy' describes anything positive, pleasurable, good, neat *et cetera*.
+How we engineering our Computer Systems is not tidy nor trustworthy.
+Today's systems will utilise a specification that is separate from the implementation, and their deployment requires that we verify that implementations adhere to specifications through external processes.
+There is a fundamental separation-of-concerns between system: *specification*---by domain experts; *verification*---by verification experts; *creation*---by software engineers; *use*---by end users; and *certification*---by auditors.
+Such a disconnect leads to issues over system security and safety by allowing errors to be present at various points during a system's lifecycle.
+Allowing our computer systems to be a clear and present risk to national, and personal safety and security by possessing potentially exploitable vulnerabilities.
+I want to fundamentally change the way we engineer systems. % both critical and non-critical.
+I believe that if we are to ever build truly trustworthy (tidy) systems, we must make machine checkable specifications an intrinsic aspect of the system through adoption of type-driven approaches.
+By doing so we can:
+reduce mismatches between a system's specification and implementation;
+increase productivity of system creation and verification; and
+fundamentally enhance system trustworthiness.
+This will impact both Society and The Economy by guaranteeing that our systems are trustworthy because our engineering practises are themselves: **Ty**pe **D**riv**e**n!
+
 
 ## Projects
 
