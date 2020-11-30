@@ -9,6 +9,16 @@ Module descriptions are available from the respective University's course catalo
 
 At Glasgow I am involved with a variety of teaching duties at Level 4, and Masters Level.
 
+### 2019-2020
+
++ CS4025P: Individual Project
+    + Supervisor to two Level 4 Student.
+
+### 2019-2020
+
++ CS4025P: Individual Project
+    + Supervisor to one Level 4 Student.
+
 ### 2018-2019
 
 + CS4025P: Individual Project

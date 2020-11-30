@@ -100,15 +100,15 @@ main = hakyll $ do
             >>= loadAndApplyTemplate "templates/default.html" defaultContext
             >>= relativizeUrls
 
-    match "index.html" $ do
-        route idRoute
-        compile $ do
+    match "index.md" $ do
+      route   $ setExtension "html"
+      compile $ do
             posts <- recentFirst =<< loadAll "post/*"
             let indexCtx =
                     listField "posts" postCtx (return $ take 5 posts) `mappend`
                     defaultContext
 
-            getResourceBody
+            pandocCompiler
                 >>= applyAsTemplate indexCtx
                 >>= loadAndApplyTemplate "templates/default.html" indexCtx
                 >>= relativizeUrls

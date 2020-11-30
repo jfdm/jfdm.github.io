@@ -43,5 +43,5 @@ I maintain active research collaborations with the following research groups:
 
 + [Mobility Reading Group](http://mrg.doc.ic.ac.uk/) at Imperial College London
 + [Dependable Systems Group](http://www.macs.hw.ac.uk/~dsg/) at Heriot Watt University
-+ [Functional Programming Group](https://plrg.cs.st-andrews.ac.uk) at University of St Andrews
++ [Programming Languages Research Group](https://plrg.cs.st-andrews.ac.uk) at University of St Andrews
 + [Department of Software Science](https://www.sws.cs.ru.nl/) at the Radboud Universiteit Nijmegen.

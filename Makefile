@@ -8,20 +8,21 @@ REPO := git@github.com:jfdm/jfdm.github.io.git
 
 SITE := stack exec site
 
-.PHONY: build serve deploy clean
+.PHONY: build serve deploy clean watch
 
 config:
 	stack build
-build:
+
+build: config
 	${SITE} build
 
-clean:
+clean: config
 	${SITE} clean
 
-serve:
+serve: config
 	${SITE} server
 
-watch:
+watch: config
 	${SITE} watch
 
 deploy: config build
