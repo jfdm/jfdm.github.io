@@ -3,9 +3,15 @@ title: Professional Activities
 ...
 
 
-## Organisational Committee Membership
+## Committee Membership
 
-+ I organise the [*Programming Languages at University of Glasgow*](http://www.dcs.gla.ac.uk/plug/) (PLuG) seminar series
+### Representation
+
++ From October 2020 I am one of the Research Representatives at the School of Computing, University of Glasgow.
+
+### Organisational
+
++ Between August, 2018 to December 2020 I organised the [*Programming Languages at University of Glasgow*](http://www.dcs.gla.ac.uk/plug/) (PLuG) seminar series.
 + I was part of the organisation team for SPLS March 2018, and SPLS October 2019
 + During my PhD I was organiser of departmental lunch time talks, and co-founder of a departmental security colloquium
 
