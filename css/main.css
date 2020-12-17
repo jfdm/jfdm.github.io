@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,400;0,700;1,400;1,700&family=Montserrat:ital,wght@0,400;0,700;1,400;1,700&family=Raleway:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
 /* Sticky footer styles
 -------------------------------------------------- */
 html {
@@ -6,22 +8,21 @@ html {
 }
 
 body {
-  /* Margin bottom by footer height */
   margin-bottom: 60px;
   background-color: #f8f9fa;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Montserrat', sans-serif;
 }
 
 h1, h2, h3, h4, h5 {
-    font-family: 'EB Garamond', serif;
+    font-family: 'Raleway', sans-serif;
 }
 
 code {
-    font-family: 'Inconsolata', monospace;
+    font-family: 'IBM Plex Mono', monospace;
 }
 
 pre {
-    font-family: 'Inconsolata', monospace;
+    font-family: 'IBM Plex Mono', monospace;
     border-left: 1px solid black;
     background-color: #ffffff;
     font-size: 75%;
@@ -44,6 +45,10 @@ pre {
 }
 
 /* ------------------------------------------------------------ [ Container ] */
+
+body .nav-link {
+    font-weight: 700;
+}
 
 body .container {
   padding: 30px 15px 0;
@@ -126,7 +131,10 @@ blockquote {
     padding: 8px;
 }
 
-.cus tr:nth-child(even){background-color: #f2f2f2}
+.cus tr:nth-child(even) {
+    background-color: #f2f2f2;
+
+                       }
 
 
 /* ------------------------------------------------------------------- [ Idris ]*/
