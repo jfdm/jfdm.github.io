@@ -4,6 +4,8 @@ title: Talks
 
 ## 2020
 
++ @SPLS2020HW
++ @PLUG2020
 + @MSP1012020
 
 ## 2019
