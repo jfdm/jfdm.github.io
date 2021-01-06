@@ -21,7 +21,11 @@ title: Professional Activities
 + Member of ACM & IEEE
 + Participant of the *Scottish Programming Language Seminar* (SPLS) series
 
-## Reviewing
+## Reveiwing
+
+### Artifact
+
+I serve/d on [PLDI 2021 Artefact Evaluation Committee](https://pldi21.sigplan.org/track/pldi-2021-PLDI-Research-Artifacts).
 
 ### Journals
 
