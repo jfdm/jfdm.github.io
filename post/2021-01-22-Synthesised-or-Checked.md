@@ -5,6 +5,14 @@ tags: idris,dependent-types,tdd,musing
 
 A classic example in the world of dependently typed programming is that of presenting the STLC (and extensions) as well-typed EDSLs.
 
+<!-- idris
+
+import Data.List.Elem
+
+%default total
+
+-->
+
 ## The STLC as an Idris EDSL.
 
 Below we give a simple example of the STLC with Booleans.
@@ -80,8 +88,8 @@ For example, compare:
 with
 
 ```idris
-example : STLC Nil Bool
-example = App (Func (Var H)) (B true)
+example : STLC Nil TyBool
+example = App (Func (Var Here)) (B True)
 ```
 
 ## Types can be synthesised, or checked.
@@ -125,7 +133,7 @@ The simple question is yes it does, but it depends on context!
 Let us now take our example again and have a look at it:
 
     example : STLC Nil Bool
-    example = App (Func (Var H)) (B true)
+    example = App (Func (Var Here)) (B true)
 
 Here it's definition is using Idris' type checker to **check** if the body of `example` matches it's type as defined in the type-signature.
 
@@ -169,7 +177,7 @@ Which means the type you think the function has, might not be the type it actual
 Well the solution is rather simple, we can add an **explicit** type annotation to the definition of `Func`.
 For example:
 
-```
+```idris
 data TypedSTLC : (ctxt : List Ty)
               -> (type : Ty)
                       -> Type
@@ -189,4 +197,15 @@ data TypedSTLC : (ctxt : List Ty)
 
 This gives Idris' type-checker a *source of truth* when synthesising the type of `Func'` and checking the type when `Func'` is used.
 
+Thus our running example is now:
+
+```idris
+
+example' : TypedSTLC Nil TyBool
+example' = App' (Func' TyBool (Var' Here)) (B' True)
+
+```
+
 ## The End.
+
+PS, this file is a literate Idris2 file ;-)
