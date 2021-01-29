@@ -10,7 +10,7 @@ Copies of my publications are available on request.
 + [@deMuijnckHughes2019sfmoves]
 + [@DBLP:conf/ecoop/Muijnck-HughesV19]
 + [@DBLP:journals/corr/abs-1904-01288]
-+ [@deMuijnckHughes2015wpp]
++ [@10.5555/3124497.3124502]
 + [@DBLP:conf/sose/DuncanM14]
 + [@deMuijnckHughes2013ias]
 + [@DBLP:conf/ssiri/Muijnck-HughesD12]
