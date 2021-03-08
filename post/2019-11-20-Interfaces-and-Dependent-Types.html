@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>On Interfaces and Dependent Types</title>
+
+    <!--
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,400;0,700;1,400;1,700&family=Montserrat:ital,wght@0,400;0,700;1,400;1,700&family=Raleway:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+      rel="stylesheet">
+    -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+    <!-- Custom styles for this template -->
+    <link rel="stylesheet" href="../css/main.css" media="all" />
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+      <![endif]-->
+
+    </head>
+    <body>
+      <header>
+      <nav class="navbar navbar-expand-md navbar-fixed-top navbar-dark bg-dark bg-jfdm">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+            <a class="navbar-brand" href="../index.html">Jan de Muijnck-Hughes</a>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+              <ul class="navbar-nav justify-content-center">
+                <li class="nav-item"> <a class="nav-link" href="../research.html">Research</a></li>
+                <li class="nav-item"> <a class="nav-link" href="../professional.html">Activities</a></li>
+                <li class="nav-item"> <a class="nav-link" href="../publications.html">Publications</a></li>
+                <li class="nav-item"> <a class="nav-link" href="../talks.html">Talks</a></li>
+                <li class="nav-item"> <a class="nav-link" href="../teaching.html">Teaching</a></li>
+                <li class="nav-item"> <a class="nav-link" href="../contact.html">Contact</a></li>
+                <li class="nav-item"> <a class="nav-link" href="../posts.html">Blog</a></li>
+              </ul>
+            </div>
+      </nav>
+      </header>
+      <div class="container-fluid">
+        <div class="row">
+          <!-- ====================================================
+               Sidebar
+               ====================================================
+            -->
+          <div class="col-md-3 bg-light sidebar">
+            <div class="profile-sidebar">
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title">Jan de Muijnck-Hughes</h5>
+                  <p class="card-text">Research Associate, School of Computing, University of Glasgow.</p>
+
+                  <nav class="navbar navbar-expand-md">
+                    <button class="navbar-toggler btn btn-outline-dark btn-sm" type="button" data-toggle="collapse" data-target="#navbarNavDropdown1" aria-controls="navbarNavDropdown1" aria-expanded="false" aria-label="Toggle navigation">
+                      Follow
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNavDropdown1">
+                      <ul class="navbar-nav flex-column">
+                        <li class="nav-item"><a class="nav-link" href="https://www.gla.ac.uk/schools/computing/staff/jandemuijnck-hughes/"><i class="fas fa-university"></i> University of Glasgow</a></li>
+                        <li class="nav-item"><a class="nav-link" href="https://www.github.com/jfdm"><i class="fab fa-github"></i> Github</a></li>
+                        <li class="nav-item"><a class="nav-link" href="https://www.twitter.com/jfdm"><i class="fab fa-twitter"></i> Twitter</a></li>
+                        <li class="nav-item"><a class="nav-link" href="https://scholar.google.com/citations?user=MoieSwcAAAAJ"><i class="fab fa-google"></i> Google Scholar</a></li>
+                        <li class="nav-item"><a class="nav-link" href="https://academic.microsoft.com/#/profile/jfdm"><i class="fab fa-microsoft"></i> Microsoft Academic</a></li>
+                        <li class="nav-item"><a class="nav-link" href="https://orcid.org/0000-0003-2185-8543"><i class="fas fa-scroll"></i> ORCID</a></li>
+                        <li class="nav-item"><a class="nav-link" href="https://dblp.org/pid/117/5494"><i class="fas fa-book"></i> DBLP</a></li>
+                      </ul>
+                    </div>
+                  </nav>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- ====================================================
+               Main
+               ====================================================
+            -->
+          <div class="col-md-9 bg-light">
+            <main role="main" class="container-fluid">
+              <div class="content">
+                <h1>On Interfaces and Dependent Types</h1>
+                <div class="card card-body mdata">
+  <p>
+Posted on November 20, 2019
+
+</p>
+
+  <p>
+
+  Categories: <a title="All pages tagged 'idris'." href="../tags/idris.html">idris</a>, <a title="All pages tagged 'dependent-types'." href="../tags/dependent-types.html">dependent-types</a>, <a title="All pages tagged 'tdd'." href="../tags/tdd.html">tdd</a>, <a title="All pages tagged 'musing'." href="../tags/musing.html">musing</a>
+
+  </p>
+
+</div>
+
+ <p>In this post we will consider the interplay between dependently typed data structures and interfaces.</p>
+<p>This post is a literate Idris file so there will be some cruft related to Idris that will remain until I get round to<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> improving Idris’ literate mode support.</p>
+<pre><code>module Main</code></pre>
+<p>First we need to hide a few things from the default namespaces…</p>
+<pre><code>%hide List
+%default total</code></pre>
+<p>Consider the following interface that defines equality for a provided type:</p>
+<pre><code>interface Equals (type : Type) where
+  eq : (a,b : type) -&gt; Bool
+  notEq : (a,b : type) -&gt; Bool
+  notEq a b = not (eq a b)</code></pre>
+<p>At first glance there is nothing surprising about its definition. For example, let us look at the definition of equality for a simple cons-list data type.</p>
+<pre><code>namespace ConsList</code></pre>
+<p>Here is the data type:</p>
+<pre><code>  data List : (type : Type) -&gt; Type where
+    Empty : List type
+    Extend : (value : type)
+          -&gt; (rest  : List type)
+          -&gt; List type
+
+
+  %name ConsList.List rest, restA, restB</code></pre>
+<p>Here is the implementation:</p>
+<pre><code>  listEq : Equals type
+        =&gt; (a,b : List type)
+        -&gt; Bool
+  listEq Empty               Empty               = True
+  listEq Empty               (Extend value rest) = False
+  listEq (Extend value rest) Empty               = False
+  listEq (Extend value rest) (Extend x restA)    with (eq value x)
+    listEq (Extend value rest) (Extend x restA)    | False = False
+    listEq (Extend value rest) (Extend x restA)    | True = listEq rest restA</code></pre>
+<p>Which we can provide for an <code>Equals</code> instance:</p>
+<pre><code>Equals type =&gt; Equals (List type) where
+  eq = listEq</code></pre>
+<p>Great!</p>
+<p>Let us now consider ‘lists with length’, otherwise known as: <em>Vectors</em>.</p>
+<pre><code>namespace SizedList</code></pre>
+<p>Here is the data type:</p>
+<pre><code>  data Vect : (size : Nat) -&gt; (type : Type) -&gt; Type where
+     Empty : Vect Z type
+     Extend : (value : type)
+           -&gt; (rest  : Vect curr type)
+           -&gt; Vect (S curr) type
+
+  %name SizedList.Vect rest, restA, restB</code></pre>
+<p>Here is an implementation:</p>
+<pre><code>  vectEq : Equals type
+        =&gt; (a,b : Vect size type)
+        -&gt; Bool
+  vectEq Empty Empty = True
+  vectEq (Extend value rest) (Extend x restA) with (eq value x)
+    vectEq (Extend value rest) (Extend x restA) | False = False
+    vectEq (Extend value rest) (Extend x restA) | True = vectEq rest restA</code></pre>
+<p>Which we can provide an <code>Equals</code> instance for:</p>
+<pre><code>  Equals type =&gt; Equals (Vect n type) where
+     eq = vectEq</code></pre>
+<p>Notice that in the type signature for <code>vectEq</code>, and our <code>Equals</code>, implementation we have assumed that the compared vectors are of the same length. We see this with the short hand: <code>(a,b:...)</code> in our type signatures. When we compare vectors, however, it <em>might be</em> the case that they are potentially the different sizes, and potentially that they might be the same size. We need a better implementation.</p>
+<p>So let us write one:</p>
+<pre><code>   namespace Proper
+
+     vectEq : Equals type
+           =&gt; (a : Vect sizeA type)
+           -&gt; (b : Vect sizeB type)
+           -&gt; Bool
+     vectEq Empty Empty = True
+     vectEq Empty (Extend value rest) = False
+     vectEq (Extend value rest) Empty = False
+     vectEq (Extend value rest) (Extend x restA) with (eq value x)
+       vectEq (Extend value rest) (Extend x restA) | False = False
+       vectEq (Extend value rest) (Extend x restA) | True = Proper.vectEq rest restA</code></pre>
+<p>Now constructing an <code>Equals</code> instance will not result in a type error.</p>
+<pre><code>     [alt] Equals type =&gt; Equals (Vect size type) where
+       eq a b = Proper.vectEq a b</code></pre>
+<p>When we call <code>eq</code> it will only work with vectors that are the same length. This is the definition of <code>Equals</code>: given two values of the <em>same</em> type. To access the correct implementation we need to call <code>Proper.vectEq</code> explicitly, or really just <code>vectEq</code>.</p>
+<p>The question is to me is:</p>
+<blockquote>
+<p>Given this one obvious limitations of Interfaces in a dependently typed setting are they useful at all for dependently typed programming.</p>
+</blockquote>
+<p>In all my years playing with Idris, Interfaces are handy in a few settings:</p>
+<ol start="0" type="1">
+<li>Providing an API to work with structures work on similar data. i.e. <code>Ord</code> and <code>Functor</code>.</li>
+<li>when defining operations on single instances of values i.e. <code>Show</code>, <code>Ord</code>, and <code>Functor</code></li>
+<li>when composing programs based on the above: <code>ST</code></li>
+</ol>
+<p>However, when I write my Idris libraries and Idris programs I find that interfaces are not always the best thing to use. In fact I shy away from using interfaces unless absolutly necessary.</p>
+<p>I think there is a class of interface (of which <code>Equals</code> is a prime example, <code>DecEq</code> another) where we may need to think a little on their use in a dependently typed setting.</p>
+<p>But maybe we need:</p>
+<pre><code>namespace TheFuture
+  interface DEquals (ty : idx -&gt; Type) where
+    eq : ty a -&gt; ty b -&gt; Bool
+
+    notEq : ty a -&gt; ty b -&gt; Bool
+    notEq a b = not (eq a b)</code></pre>
+<p>But how do we then shoe horn <code>Vect</code> into this… <code>DEquals (Vect size type) where</code> will not type check. We would have to rewrite the type of <code>Vect</code> to be <code>Vect : Type -&gt; Nat -&gt; Type</code> for it to work, but this itself will cause interfaces such as <code>Functor</code> to no longer work…</p>
+<p>Idris’ support for namespaces alleviates the need for interfaces as it allows one to present similar named constructs and distinguish between them. But how to ensure that we have consistent names across our code base…</p>
+<p>Do we need to rethink interfaces in a dependently typed setting?</p>
+<p>The short answer is: I do not know.</p>
+<p>I haven’t performed a literature review of what the <a href="https://agda.readthedocs.io">other team</a> are doing or what the other PL people think about it.</p>
+<p>Maybe having modules as first class constructs might help, or maybe Idris’ support syntactic overloading is intriguing. By that I mean if you provide implementations for certain operators you get Do-notation and List-notation for free. I do not mean DSL notation or ‘syntax’ notation that allows one to produce horrible mix fix unicode abominations that are hard to read.</p>
+<p>I might be wrong here, and I am sure several people I know, and many I don’t know, will correct me. But if it was a solved issue, it would have been addressed in Idris2.</p>
+<section class="footnotes" role="doc-endnotes">
+<hr />
+<ol>
+<li id="fn1" role="doc-endnote"><p>By round too I mean I have been planning on doing it for half a decade or there abouts…<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
+
+              </div>
+            </main>
+          </div>
+        </div>
+      </div>
+      <!-- ====================================================
+           Footer
+           ====================================================
+        -->
+      <footer class="footer">
+          <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">
+            <img alt="Creative Commons Licence" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/80x15.png" />
+          </a>
+          <span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Dataset" property="dct:title" rel="dct:type">jfdm.github.io</span> by <a xmlns:cc="http://creativecommons.org/ns#" href="http://jfdm.github.io/" property="cc:attributionName" rel="cc:attributionURL">Jan de Muijnck-Hughes</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.
+            Site proudly generated by
+<a href="http://jaspervdj.be/hakyll">Hakyll</a> and <a href="https://github.com/commercialhaskell/stack">Stack</a>, and hosted on <a href="http://github.com/jfdm/jfdm.github.io">GitHub</a>
+      </footer>
+
+
+   <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+      <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+    </body>
+</html>

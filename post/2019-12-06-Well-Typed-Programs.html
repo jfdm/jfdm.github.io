@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>Well-Typed Expressions lead to Well-Typed Well-Scoped Programs</title>
+
+    <!--
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,400;0,700;1,400;1,700&family=Montserrat:ital,wght@0,400;0,700;1,400;1,700&family=Raleway:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+      rel="stylesheet">
+    -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+    <!-- Custom styles for this template -->
+    <link rel="stylesheet" href="../css/main.css" media="all" />
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+      <![endif]-->
+
+    </head>
+    <body>
+      <header>
+      <nav class="navbar navbar-expand-md navbar-fixed-top navbar-dark bg-dark bg-jfdm">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+            <a class="navbar-brand" href="../index.html">Jan de Muijnck-Hughes</a>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+              <ul class="navbar-nav justify-content-center">
+                <li class="nav-item"> <a class="nav-link" href="../research.html">Research</a></li>
+                <li class="nav-item"> <a class="nav-link" href="../professional.html">Activities</a></li>
+                <li class="nav-item"> <a class="nav-link" href="../publications.html">Publications</a></li>
+                <li class="nav-item"> <a class="nav-link" href="../talks.html">Talks</a></li>
+                <li class="nav-item"> <a class="nav-link" href="../teaching.html">Teaching</a></li>
+                <li class="nav-item"> <a class="nav-link" href="../contact.html">Contact</a></li>
+                <li class="nav-item"> <a class="nav-link" href="../posts.html">Blog</a></li>
+              </ul>
+            </div>
+      </nav>
+      </header>
+      <div class="container-fluid">
+        <div class="row">
+          <!-- ====================================================
+               Sidebar
+               ====================================================
+            -->
+          <div class="col-md-3 bg-light sidebar">
+            <div class="profile-sidebar">
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title">Jan de Muijnck-Hughes</h5>
+                  <p class="card-text">Research Associate, School of Computing, University of Glasgow.</p>
+
+                  <nav class="navbar navbar-expand-md">
+                    <button class="navbar-toggler btn btn-outline-dark btn-sm" type="button" data-toggle="collapse" data-target="#navbarNavDropdown1" aria-controls="navbarNavDropdown1" aria-expanded="false" aria-label="Toggle navigation">
+                      Follow
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNavDropdown1">
+                      <ul class="navbar-nav flex-column">
+                        <li class="nav-item"><a class="nav-link" href="https://www.gla.ac.uk/schools/computing/staff/jandemuijnck-hughes/"><i class="fas fa-university"></i> University of Glasgow</a></li>
+                        <li class="nav-item"><a class="nav-link" href="https://www.github.com/jfdm"><i class="fab fa-github"></i> Github</a></li>
+                        <li class="nav-item"><a class="nav-link" href="https://www.twitter.com/jfdm"><i class="fab fa-twitter"></i> Twitter</a></li>
+                        <li class="nav-item"><a class="nav-link" href="https://scholar.google.com/citations?user=MoieSwcAAAAJ"><i class="fab fa-google"></i> Google Scholar</a></li>
+                        <li class="nav-item"><a class="nav-link" href="https://academic.microsoft.com/#/profile/jfdm"><i class="fab fa-microsoft"></i> Microsoft Academic</a></li>
+                        <li class="nav-item"><a class="nav-link" href="https://orcid.org/0000-0003-2185-8543"><i class="fas fa-scroll"></i> ORCID</a></li>
+                        <li class="nav-item"><a class="nav-link" href="https://dblp.org/pid/117/5494"><i class="fas fa-book"></i> DBLP</a></li>
+                      </ul>
+                    </div>
+                  </nav>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- ====================================================
+               Main
+               ====================================================
+            -->
+          <div class="col-md-9 bg-light">
+            <main role="main" class="container-fluid">
+              <div class="content">
+                <h1>Well-Typed Expressions lead to Well-Typed Well-Scoped Programs</h1>
+                <div class="card card-body mdata">
+  <p>
+Posted on December  6, 2019
+
+</p>
+
+  <p>
+
+  Categories: <a title="All pages tagged 'idris'." href="../tags/idris.html">idris</a>, <a title="All pages tagged 'dependent-types'." href="../tags/dependent-types.html">dependent-types</a>, <a title="All pages tagged 'tdd'." href="../tags/tdd.html">tdd</a>, <a title="All pages tagged 'musing'." href="../tags/musing.html">musing</a>
+
+  </p>
+
+</div>
+
+ <p>Let us consider the /Well-Typed Interpreter/ (WTI), a well known application of dependent types to ensure that our program’s are not only well-typed but also well-scoped w.r.t. variables. To be specific the WTI details not how program’s are correct but /expressions/. When dealing with program’s we will have a top-level expression that <em>may</em> depend on globally declared expressions.</p>
+<p>In this post I will describe a Razor, detailing how with a little thought we can use the concept of the WTI to described /Well-Typed Programs/.</p>
+<p>Further, I will also show how we can then convert a well-typed expression language to a well-typed program where certain Let-bound expressions are promoted to declarations. Thus, showing in some ways how to use dependent types for well-typed program transformations.</p>
+<p>This post was derived from a literate Idris file so there will be some cruft related to Idris.</p>
+<pre><code>module Main</code></pre>
+<p>We will need some data structures, and helper functions, not defined in Idris’ prelude.</p>
+<pre><code>import Data.List</code></pre>
+<p>The following import is from my <a href="https://github.com/jfdm/idris-containers">container’s library</a>, we will need these in the final sections to keep our musing’s DRY.</p>
+<pre><code>import Data.DList</code></pre>
+<p>Totality is a good thing here.</p>
+<pre><code>%default total</code></pre>
+<h2 id="a-well-typed-expression-language.">A Well-Typed Expression Language.</h2>
+<pre><code>namespace Source</code></pre>
+<p>Here we shall describe a well-typed expression language based on Hutton’s Original Razor.</p>
+<h3 id="types">Types</h3>
+<p>Within our expression language our types are either Boolean’s or Integers:</p>
+<pre><code>  data Ty = BOOL | INT</code></pre>
+<h3 id="expressions">Expressions</h3>
+<p>Using dependent types we can then construct our expression language as an algebraic data type whose type is indexed by the type of expressions:</p>
+<pre><code>  data Expr : Ty -&gt; Type where</code></pre>
+<p>We now describe our language’s expressions:</p>
+<pre><code>    Ref : String -&gt; (ty : Ty) -&gt; Expr ty</code></pre>
+<p>Our references are not well-scoped using DeBruijn indicies. I have done this purposefully to mirror a problem in a code generation tool I am currently developing.</p>
+<pre><code>    I : Int -&gt; Expr INT
+    B : Bool -&gt; Expr BOOL</code></pre>
+<p>Our values contain values. I have simplified values specification and an alternative formulation would be to specify a singular constructor with a type-level function to calculate the type of the value from an instance of <code>Ty</code>. This is not required for this post.</p>
+<pre><code>    Add : Expr INT -&gt; Expr INT -&gt; Expr INT
+    And : Expr BOOL -&gt; Expr BOOL -&gt; Expr BOOL</code></pre>
+<p>For each of our base types we present a singular binary operation (conjunction for booleans, and addition for integers).</p>
+<pre><code>    Let : (binder : String) -&gt; Expr typeA -&gt; Expr typeB -&gt; Expr typeB</code></pre>
+<p>Standard Let-bindings introduce variables.</p>
+<h3 id="examples">Examples</h3>
+<p>Here we describe some instances of our expression language.</p>
+<pre><code> example0 : Expr BOOL
+ example0 = And (B False) (B True)
+
+ example1 : Expr INT
+ example1 = Add (I 5) (I 9)
+
+ example2 : Expr BOOL
+ example2 = Let &quot;x&quot; example0
+                (And (Ref &quot;x&quot; BOOL) example0)
+
+ example3 : Expr INT
+ example3 = Let &quot;x&quot; example1
+                (Add (Ref &quot;x&quot; INT) example1)
+
+ example4 : Expr INT
+ example4 = Let &quot;y&quot; example0
+                (Let &quot;z&quot; (Ref &quot;y&quot; BOOL)
+                     (Add (I 4) example3)
+                )
+
+ example : Expr INT
+ example = Let &quot;x&quot; example0
+               (Let &quot;y&quot; example1
+                    (Let &quot;z&quot; (I 6)
+                         (Let &quot;a&quot; (And (B False) (Ref &quot;x&quot; BOOL))
+                              (Add (Ref &quot;z&quot; INT) (Ref &quot;y&quot; INT))
+                         )
+                    )
+               )</code></pre>
+<h2 id="a-well-typed-well-scoped-program">A Well-Typed Well-Scoped Program</h2>
+<pre><code>namespace Destination</code></pre>
+<p>Here we describe our well-typed and well scoped program. Many of the construct’s used follow that from the WTI and may be familiar, if not my previous post on <a href="#">Hutton’s Razor(s)</a> should give a quick introduction.</p>
+<h3 id="types-1">Types</h3>
+<p>Like our expression language we have two types: Booleans and Integers.</p>
+<pre><code>   data Ty = INT | BOOL</code></pre>
+<h3 id="context">Context</h3>
+<p>We can use our types to define a typing context as a list of name-value pairs.</p>
+<pre><code>   Context : Type
+   Context = List (String, Destination.Ty)</code></pre>
+<p>To help us construct existenial proofs (DeBruijn indicies) that a name-type pairing exisits in the typing context we need to provide an instance of Decidable Equality.</p>
+<pre><code>   intNotBool : Destination.INT = Destination.BOOL -     Void
+   intNotBool Refl impossible
+
+   DecEq Destination.Ty where
+     decEq INT INT = Yes Refl
+     decEq INT BOOL = No intNotBool
+     decEq BOOL INT = No (negEqSym intNotBool)
+     decEq BOOL BOOL = Yes Refl</code></pre>
+<p>Fortunatly, our language has two types or we would be here for a while providing a coherent proof of decidable equality…</p>
+<h3 id="expressions-1">Expressions</h3>
+<p>We now go on to describe our expression language.</p>
+<pre><code>   data Expr : (local  : Context)
+            -&gt; (global : Context)
+            -&gt; (type : Destination.Ty)
+            -&gt; Type
+     where</code></pre>
+<p>Our trick to describing well-typed programs is to parameterise the type of our expressions with <em>two</em> contexts: a local context; and global context.</p>
+<pre><code>       Local  : Elem (binder, ty) local  -&gt; Expr local global ty
+       Global : Elem (binder, ty) global -&gt; Expr local global ty</code></pre>
+<p>We can now define two kinds of references a <code>Local</code> reference that refers to a locally bound expression, and a <code>Global</code> reference that refers to a globally bound expression.</p>
+<pre><code>       I : Int  -&gt; Expr local global INT
+       B : Bool -&gt; Expr local global BOOL</code></pre>
+<p>As before, values are values.</p>
+<pre><code>       And : Expr local global BOOL
+          -&gt; Expr local global BOOL
+          -&gt; Expr local global BOOL
+
+       Add : Expr local global INT
+          -&gt; Expr local global INT
+          -&gt; Expr local global INT</code></pre>
+<p>And our two operations are defined as before.</p>
+<pre><code>       Let : (this   : String)
+          -&gt; (beThis : Expr local global x)
+          -&gt; (inThis : Expr ((binder,x)::local) global y)
+          -&gt; Expr local global y</code></pre>
+<p><code>Let</code> is a binding site to bind an expression to a variable name. As our well-scoped terms rely on true names, our let binding also requires that we provide the binder and at the type-level we extend the context for <code>inThis</code> with the introduced variable name.</p>
+<h4 id="examples-1">Examples</h4>
+<p>We now give some simple examples using locally and globaly bound expressions.</p>
+<pre><code>   expr : Expr Nil Nil BOOL
+   expr = (Let &quot;x&quot; (B True)
+               (And (Local Here) (B False)))
+
+   expr1 : Expr Nil [(&quot;foo&quot;, INT)] INT
+   expr1 = (Let &quot;x&quot; (I 1)
+                (Add (Local Here) (Global Here)))</code></pre>
+<h3 id="declarations">Declarations</h3>
+<p>Our attention now turns to global declarations. We define this using a cons-style list that contains expressions bound to names.</p>
+<pre><code>   data Decls : (global : Context) -&gt; Type where</code></pre>
+<p>We index the type of delcarations with the global context ensuring that our declarations can refer to earlier defined declarations.</p>
+<pre><code>     Empty   : Decls Nil</code></pre>
+<p>It is okay to have no global declarations in our programs.</p>
+<pre><code>     DeclAdd : (binder : String)
+            -&gt; (expr   : Expr Nil global type)
+            -&gt; (rest   : Decls global)
+            -&gt; Decls ((MkPair binder type) :: global)</code></pre>
+<p><code>DeclAdd</code> allows us to extend our list of declarations. We require that our expressions are <em>closed terms</em> w.r.t to the local context. Addition of a declaration extends the global context by one.</p>
+<p>Our declarations mirror <code>Let</code> bindings from our expressions.</p>
+<p><strong>Note</strong> that our use of real names makes our well-scoped representations named rather than <em>nameless</em>. We still need to think how to ensure that our list contains unique names in a nice fashion.</p>
+<h3 id="programs">Programs</h3>
+<p>We have expressions and declarations, so let us now define a program as a set of declarations paired with a single closed term.</p>
+<pre><code>   data Prog : Type where
+     MkProg : Decls global
+           -&gt; Expr Nil global type
+           -&gt; Prog</code></pre>
+<p>Done!</p>
+<p>And here is an example program:</p>
+<pre><code>   prog : Prog
+   prog = MkProg (DeclAdd &quot;bar&quot; (Let &quot;x&quot; (B True) (And (Local Here) (B False)))
+                          (DeclAdd &quot;foo&quot; (I 2) Empty))
+                 (Let &quot;x&quot; (I 1)
+                      (Add (Local Here) (Global (There Here))))</code></pre>
+<h2 id="going-from-source-to-destination.">Going from Source to Destination.</h2>
+<p>We have thus far shown an expression language, and a /program language/. Let us now consider how to build a program from an expression.</p>
+<h3 id="type-interpretation">Type interpretation</h3>
+<p>We first describe a function <code>interpTy</code> to map types from our expression language to our program language.</p>
+<pre><code>   interpTy : Source.Ty -&gt; Destination.Ty
+   interpTy BOOL = BOOL
+   interpTy INT  = INT</code></pre>
+<h3 id="build-environment">Build Environment</h3>
+<p>As with interpretation in the WTI we will have a /build environment/ to keep track of our local typing context and store our global declarations.</p>
+<pre><code>   data BuildEnv : (genv, lenv : Context)
+                -&gt; Type
+     where
+       MkBEnv : (decls  : Decls global)
+             -&gt; (local  : Context)
+             -&gt; BuildEnv global local</code></pre>
+<h3 id="build-result">Build Result</h3>
+<p>We also need a build result to return the resulting top-level expression and list of declarations that the expression depends upon.</p>
+<pre><code>   data BuildRes : (genv, lenv : Context)
+                -&gt; Destination.Ty
+                -&gt; Type
+     where
+       MkBRes : Decls genv
+             -&gt; Expr lenv genv type
+             -&gt; BuildRes genv lenv type</code></pre>
+<p>We also provide a default environment.</p>
+<pre><code>   defaultEnv : BuildEnv Nil Nil
+   defaultEnv = MkBEnv Empty Nil</code></pre>
+<h3 id="build-errors">Build Errors</h3>
+<p>Unfortunately, our conversion between the two programs will not be perfect and errors can happen. We present a set of helpful errors to help describe problems we have.</p>
+<pre><code>   data Error = NotAVar String
+
+              | AddLOperandWrong Error
+              | AddROperandWrong Error
+
+              | AndLOperandWrong Error
+              | AndROperandWrong Error
+
+              | BadContextL String (Context) Context
+              | BadContextV (Context) Context
+
+              | ToGlobalErrorExpr String Error
+              | ToGlobalErrorBody Error
+
+              | ToLocalErrorExpr String Error
+              | ToLocalErrorBody Error</code></pre>
+<h3 id="nasty-hack">Nasty Hack</h3>
+<p>When we convert the <code>inThis</code> body of a let binding for local variables we may extend the global context with new declarations. We need <code>updateThis</code> to facilitate updating the global references in the <code>this</code> expression.</p>
+<pre><code>   updateThis : (globalY : Context)
+      -&gt; (this    : Expr local globalX type)
+      -&gt; Either Error (Expr local globalY type)
+   updateThis globalY (And x y) =
+     do x' &lt;- (updateThis globalY x)
+        y' &lt;- (updateThis globalY y)
+        pure $ And x' y'
+   updateThis globalY (Add x y) =
+     do x' &lt;- (updateThis globalY x)
+        y' &lt;- (updateThis globalY y)
+        pure $ Add x' y'
+   updateThis globalY (Let binder y z) =
+     do x' &lt;- (updateThis globalY y)
+        y' &lt;- (updateThis globalY z)
+        pure $ Let binder x' y'
+
+   updateThis globalY (Global {binder} {ty} x) with (isElem (binder,ty) globalY)
+     updateThis globalY (Global {binder = binder} {ty = ty} x) | (Yes prf) = pure $ Global prf
+     updateThis globalY (Global {binder = binder} {ty = ty} x) | (No contra) = Left $ NotAVar binder
+
+   updateThis globalY (Local x) = pure $ Local x
+   updateThis globalY (I x) = pure $ I x
+   updateThis globalY (B x) = pure $ B x</code></pre>
+<p>There will probably be a better way to do this, as described in PLFA, but this is a quick and cheap hack…</p>
+<h3 id="the-conversion-function">The Conversion function!</h3>
+<p>With all our machinery we can now construct our conversion function:</p>
+<pre><code>   convert : (env : BuildEnv global lenv)
+          -&gt; (expr : Source.Expr type)
+          -&gt; Either Error (genv' ** BuildRes genv' lenv (interpTy type))</code></pre>
+<p>The result of converting an expression <code>expr</code>, with assumed environment <code>env</code>, will either be an error or the converted expression together with the global declarations. For <em>this</em> conversion we will promote all Boolean typed variables to be global declarations.</p>
+<p>For conversion to work properly we assume that our expression language is in a normal form: all let-bindings have been floated to the top of the expression tree.</p>
+<pre><code>   convert (MkBEnv {global} decls lenv) (Ref x type) with (interpTy type)
+     convert (MkBEnv {global} decls lenv) (Ref x type) | ty with (isElem (x,ty) lenv)
+       convert (MkBEnv {global} decls lenv) (Ref x type) | ty | (Yes prf) =
+           pure (_ ** MkBRes decls (Local prf))
+       convert (MkBEnv {global} decls lenv) (Ref x type) | ty | (No contra) with (isElem (x,ty) global)
+         convert (MkBEnv {global = global} decls lenv) (Ref x type) | ty | (No contra) | (Yes prf) =
+           pure (_ ** MkBRes decls (Global prf))
+         convert (MkBEnv {global = global} decls lenv) (Ref x type) | ty | (No contra) | (No f) = Left (NotAVar x)</code></pre>
+<p>When encountering a reference from the expression language, we check if the reference refers to a global or local context. If it doesn’t then we have an error.</p>
+<pre><code>   convert env@(MkBEnv ds lenv) (I x) = pure $ (_ ** MkBRes ds (I x))
+   convert env@(MkBEnv ds lenv) (B x) = pure $ (_ ** MkBRes ds (B x))</code></pre>
+<p>Constant conversion is straightforward.</p>
+<p>Conversion of operations is that liitle bit more involved both require that we convert both operands, however we need to ensure that the resulting global contexts are the same. If not then an error has occurred.</p>
+<p><strong>Note</strong> Some of this code will be hard to read as we have to use dependent pattern matching when using dependent pairs. I think this can be simpilified to using Do-notation and considered use of <code>case</code> but this works…</p>
+<pre><code>   convert env (Add x y) with (convert env x)
+     convert env (Add x y) | Left err = Left (AddLOperandWrong err)
+     convert env (Add x y) | (Right z) with (z)
+       convert env (Add x y) | (Right z) | (g' ** pfX) with (pfX)
+         convert env (Add x y) | (Right z) | (g' ** pfX) | (MkBRes declsX x') with (convert env y)
+           convert env (Add x y) | (Right z) | (g' ** pfX) | (MkBRes declsX x') | Left err = Left (AddROperandWrong err)
+           convert env (Add x y) | (Right z) | (g' ** pfX) | (MkBRes declsX x') | (Right w) with (w)
+             convert env (Add x y) | (Right z) | (g' ** pfX) | (MkBRes declsX x') | (Right w) | (g'' ** pfY) with (pfY)
+               convert env (Add x y) | (Right z) | (g' ** pfX) | (MkBRes declsX x') | (Right w) | (g'' ** pfY) | (MkBRes declsY y') with (decEq g' g'')
+                 convert env (Add x y) | (Right z) | (g'' ** pfX) | (MkBRes declsX x') | (Right w) | (g'' ** pfY) | (MkBRes declsY y') | (Yes Refl) = pure (_ ** MkBRes declsY (Add x' y'))
+                 convert env (Add x y) | (Right z) | (g' ** pfX) | (MkBRes declsX x') | (Right w) | (g'' ** pfY) | (MkBRes declsY y') | (No contra) = Left (BadContextV g' g'')</code></pre>
+<p>More of the same!</p>
+<pre><code>   convert env (And x y) with (convert env x)
+     convert env (And x y) | Left err = Left (AndLOperandWrong err)
+     convert env (And x y) | (Right z) with (z)
+       convert env (And x y) | (Right z) | (g' ** pfX) with (pfX)
+         convert env (And x y) | (Right z) | (g' ** pfX) | (MkBRes declsX x') with (convert env y)
+           convert env (And x y) | (Right z) | (g' ** pfX) | (MkBRes declsX x') | Left err = Left (AndROperandWrong err)
+           convert env (And x y) | (Right z) | (g' ** pfX) | (MkBRes declsX x') | (Right w) with (w)
+             convert env (And x y) | (Right z) | (g' ** pfX) | (MkBRes declsX x') | (Right w) | (g'' ** pfY) with (pfY)
+               convert env (And x y) | (Right z) | (g' ** pfX) | (MkBRes declsX x') | (Right w) | (g'' ** pfY) | (MkBRes declsY y') with (decEq g' g'')
+                 convert env (And x y) | (Right z) | (g'' ** pfX) | (MkBRes declsX x') | (Right w) | (g'' ** pfY) | (MkBRes declsY y') | (Yes Refl) = pure (_ ** MkBRes declsY (And x' y'))
+                 convert env (And x y) | (Right z) | (g' ** pfX) | (MkBRes declsX x') | (Right w) | (g'' ** pfY) | (MkBRes declsY y') | (No contra) = Left (BadContextV g' g'')</code></pre>
+<p>We now move onto dealing with let bindings. If the variable has type boolean then we promote it to a global definition.</p>
+<pre><code>   convert env (Let binder x {typeA} y) with (typeA)</code></pre>
+<p>First we convert the expression to be bound, ensuring that it is closed.</p>
+<pre><code>     convert (MkBEnv ds lenv) (Let binder x {typeA = typeA} y) | BOOL with (convert (MkBEnv ds Nil) x)
+       convert (MkBEnv ds lenv) (Let binder x {typeA = typeA} y) | BOOL | Left err = Left (ToGlobalErrorExpr binder err)
+       convert (MkBEnv ds lenv) (Let binder x {typeA = typeA} y) | BOOL | (Right resX) with (resX)
+         convert (MkBEnv ds lenv) (Let binder x {typeA = typeA} y) | BOOL | (Right resX) | (globalX ** exprX) with (exprX)</code></pre>
+<p>Then we extend our list of global declarations and return the result of converting the body.</p>
+<pre><code>           convert (MkBEnv ds lenv) (Let binder x {typeA = typeA} y) | BOOL | (Right resX) | (globalX ** exprX) | (MkBRes declsX x') = convert (MkBEnv (DeclAdd binder x' declsX) lenv) y</code></pre>
+<p>Now to look at converting locally bound variables, which we do not assume are closed.</p>
+<pre><code>     convert (MkBEnv decls lenv) (Let binder x {typeA = typeA} y) | INT with (convert (MkBEnv decls lenv) x)
+       convert (MkBEnv decls lenv) (Let binder x {typeA = typeA} y) | INT | (Left l) = Left (ToLocalErrorExpr binder l)
+       convert (MkBEnv decls lenv) (Let binder x {typeA = typeA} y) | INT | (Right resX) with (resX)
+         convert (MkBEnv decls lenv) (Let binder x {typeA = typeA} y) | INT | (Right resX) | (globalX ** exprX) with (exprX)</code></pre>
+<p>Once we have converted the expression to be bound we can look at converting the body.</p>
+<pre><code>           convert (MkBEnv decls lenv) (Let binder x {typeA = typeA} y) | INT | (Right resX) | (globalX ** exprX) | (MkBRes declsX x') with (convert (MkBEnv decls ((binder,INT)::lenv)) y)
+             convert (MkBEnv decls lenv) (Let binder x {typeA = typeA} y) | INT | (Right resX) | (globalX ** exprX) | (MkBRes declsX x') | (Left l) = Left (ToLocalErrorBody l)
+             convert (MkBEnv decls lenv) (Let binder x {typeA = typeA} y) | INT | (Right resX) | (globalX ** exprX) | (MkBRes declsX x') | (Right resY) with (resY)
+               convert (MkBEnv decls lenv) (Let binder x {typeA = typeA} y) | INT | (Right resX) | (globalX ** exprX) | (MkBRes declsX x') | (Right resY) | (globalY ** exprY) with (exprY)
+                 convert (MkBEnv decls lenv) (Let binder x {typeA = typeA} y) | INT | (Right resX) | (globalX ** exprX) | (MkBRes declsX x') | (Right resY) | (globalY ** exprY) | (MkBRes declsY y') =</code></pre>
+<p>Remember we need to update the variable’s value with the new set of global declarations.</p>
+<pre><code>                   do x'' &lt;- updateThis globalY x'</code></pre>
+<p>Now we can return the new <code>Let</code> binding.</p>
+<pre><code>                      pure (_ ** MkBRes declsY (Let binder x'' y'))</code></pre>
+<h4 id="helper-functions">Helper functions</h4>
+<p>To make like easier we define <code>convert'</code>, a helper function to set up the default environment for conversion.</p>
+<pre><code>   convert' : (expr : Source.Expr type)
+             -&gt; Either Error (genv ** BuildRes genv Nil (interpTy type))
+   convert' expr = convert defaultEnv expr</code></pre>
+<p>and <code>runConvert</code> to construct a program instance:</p>
+<pre><code>   runConvert : (expr : Source.Expr type)
+             -&gt; Either Error Prog
+   runConvert expr =
+     case convert' expr of
+       Left err =     Left err
+       Right (_ ** MkBRes decls e') =     Right (MkProg decls e')</code></pre>
+<h2 id="example">Example</h2>
+<p>We end with an example:</p>
+<p>Here is an example expression we defined earlier:</p>
+<pre><code>λΠ&gt; Source.example
+Let &quot;x&quot;
+    (And (B False) (B True))
+    (Let &quot;y&quot;
+         (Add (I 5) (I 9))
+         (Let &quot;z&quot;
+              (I 6)
+              (Let &quot;a&quot;
+                   (And (B False) (Ref &quot;x&quot; BOOL))
+                   (Add (Ref &quot;z&quot; INT) (Ref &quot;y&quot; INT))))) : Expr INT</code></pre>
+<p>Here is the resulting program:</p>
+<pre><code>λΠ&gt; runConvert Source.example
+Right ([(&quot;a&quot;, BOOL), (&quot;x&quot;, BOOL)] **
+       MkBRes (DeclAdd &quot;a&quot;
+                       (And (B False) (Global Here))
+                       (DeclAdd &quot;x&quot; (And (B False) (B True)) Empty))
+              (Let &quot;y&quot;
+                   (Add (I 5) (I 9))
+                   (Let &quot;z&quot; (I 6) (Add (Local Here) (Local (There Here)))))) : Either Error
+                                                                                      (genv : List (String,
+                                                                                                    Ty) **
+                                                                                       BuildRes genv
+                                                                                                []
+                                                                                                INT)
+λΠ&gt;</code></pre>
+<h2 id="coda">Coda</h2>
+<p>In this post we have looked at converting a well-typed expression language to a well-typed and well-scoped program. This was an interesting problem to solved, and aside from incorporating it into my work, I am not sure what other dependent type program enthusiats will make of this. Not sure if this would make a novel paper or not, but it <em>is</em> something work sharing.</p>
+<h3 id="improvements">Improvements…</h3>
+<p>I am hoping that the with-blocks can be turned into do-notation and dependent pairs second argument accessed using DPair’s projection functions…</p>
+<p>One interesting improvement here would to not only have <code>Source</code> be well-scoped, as well as well-typed, but to use Thinnings to better describe the type of <code>convert</code> to ensure that our resulting global and local contexts were originally sourced from the context of source. I will look at that later.</p>
+<!--
+-- Local Variables:
+-- idris-load-packages: ("containers")
+-- End:
+-->
+
+              </div>
+            </main>
+          </div>
+        </div>
+      </div>
+      <!-- ====================================================
+           Footer
+           ====================================================
+        -->
+      <footer class="footer">
+          <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">
+            <img alt="Creative Commons Licence" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/80x15.png" />
+          </a>
+          <span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Dataset" property="dct:title" rel="dct:type">jfdm.github.io</span> by <a xmlns:cc="http://creativecommons.org/ns#" href="http://jfdm.github.io/" property="cc:attributionName" rel="cc:attributionURL">Jan de Muijnck-Hughes</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.
+            Site proudly generated by
+<a href="http://jaspervdj.be/hakyll">Hakyll</a> and <a href="https://github.com/commercialhaskell/stack">Stack</a>, and hosted on <a href="http://github.com/jfdm/jfdm.github.io">GitHub</a>
+      </footer>
+
+
+   <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+      <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+    </body>
+</html>

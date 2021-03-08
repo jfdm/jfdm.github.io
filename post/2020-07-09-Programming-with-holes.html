@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>Programming with Holes</title>
+
+    <!--
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,400;0,700;1,400;1,700&family=Montserrat:ital,wght@0,400;0,700;1,400;1,700&family=Raleway:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+      rel="stylesheet">
+    -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+    <!-- Custom styles for this template -->
+    <link rel="stylesheet" href="../css/main.css" media="all" />
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+      <![endif]-->
+
+    </head>
+    <body>
+      <header>
+      <nav class="navbar navbar-expand-md navbar-fixed-top navbar-dark bg-dark bg-jfdm">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+            <a class="navbar-brand" href="../index.html">Jan de Muijnck-Hughes</a>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+              <ul class="navbar-nav justify-content-center">
+                <li class="nav-item"> <a class="nav-link" href="../research.html">Research</a></li>
+                <li class="nav-item"> <a class="nav-link" href="../professional.html">Activities</a></li>
+                <li class="nav-item"> <a class="nav-link" href="../publications.html">Publications</a></li>
+                <li class="nav-item"> <a class="nav-link" href="../talks.html">Talks</a></li>
+                <li class="nav-item"> <a class="nav-link" href="../teaching.html">Teaching</a></li>
+                <li class="nav-item"> <a class="nav-link" href="../contact.html">Contact</a></li>
+                <li class="nav-item"> <a class="nav-link" href="../posts.html">Blog</a></li>
+              </ul>
+            </div>
+      </nav>
+      </header>
+      <div class="container-fluid">
+        <div class="row">
+          <!-- ====================================================
+               Sidebar
+               ====================================================
+            -->
+          <div class="col-md-3 bg-light sidebar">
+            <div class="profile-sidebar">
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title">Jan de Muijnck-Hughes</h5>
+                  <p class="card-text">Research Associate, School of Computing, University of Glasgow.</p>
+
+                  <nav class="navbar navbar-expand-md">
+                    <button class="navbar-toggler btn btn-outline-dark btn-sm" type="button" data-toggle="collapse" data-target="#navbarNavDropdown1" aria-controls="navbarNavDropdown1" aria-expanded="false" aria-label="Toggle navigation">
+                      Follow
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNavDropdown1">
+                      <ul class="navbar-nav flex-column">
+                        <li class="nav-item"><a class="nav-link" href="https://www.gla.ac.uk/schools/computing/staff/jandemuijnck-hughes/"><i class="fas fa-university"></i> University of Glasgow</a></li>
+                        <li class="nav-item"><a class="nav-link" href="https://www.github.com/jfdm"><i class="fab fa-github"></i> Github</a></li>
+                        <li class="nav-item"><a class="nav-link" href="https://www.twitter.com/jfdm"><i class="fab fa-twitter"></i> Twitter</a></li>
+                        <li class="nav-item"><a class="nav-link" href="https://scholar.google.com/citations?user=MoieSwcAAAAJ"><i class="fab fa-google"></i> Google Scholar</a></li>
+                        <li class="nav-item"><a class="nav-link" href="https://academic.microsoft.com/#/profile/jfdm"><i class="fab fa-microsoft"></i> Microsoft Academic</a></li>
+                        <li class="nav-item"><a class="nav-link" href="https://orcid.org/0000-0003-2185-8543"><i class="fas fa-scroll"></i> ORCID</a></li>
+                        <li class="nav-item"><a class="nav-link" href="https://dblp.org/pid/117/5494"><i class="fas fa-book"></i> DBLP</a></li>
+                      </ul>
+                    </div>
+                  </nav>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- ====================================================
+               Main
+               ====================================================
+            -->
+          <div class="col-md-9 bg-light">
+            <main role="main" class="container-fluid">
+              <div class="content">
+                <h1>Programming with Holes</h1>
+                <div class="card card-body mdata">
+  <p>
+Posted on July  9, 2020
+
+</p>
+
+  <p>
+
+  Categories: <a title="All pages tagged 'idris'." href="../tags/idris.html">idris</a>, <a title="All pages tagged 'dependent-types'." href="../tags/dependent-types.html">dependent-types</a>, <a title="All pages tagged 'tdd'." href="../tags/tdd.html">tdd</a>, <a title="All pages tagged 'musing'." href="../tags/musing.html">musing</a>
+
+  </p>
+
+</div>
+
+ <p>Traditionally, computer programs must be complete when presented to the compiler. Typed Holes (also known as meta variables) are an important tool when programming that supports computing with incomplete programs in which holes (the things we do not know) are a core aspect of the language (and tooling) design. Specifically, if you have used dependently typed languages such as Idris and Agda you will have encountered holes before. Typed Holes in Idris allow us to inspect the local typing context from where the hole was placed. This allows us to see what information is directly available when looking to fill the hole. Further, computing the type of the typed hole also tells us the type of thing we need to insert.</p>
+<p>For example, take the following simple incomplete function:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode idris"><code class="sourceCode idris"><span id="cb1-1"><a href="#cb1-1"></a><span class="fu">hole_example</span> <span class="ot">:</span> (input <span class="ot">:</span> <span class="dt">Bool</span>) <span class="ot">-&gt;</span> <span class="dt">Bool</span></span>
+<span id="cb1-2"><a href="#cb1-2"></a>hole_example input <span class="fu">=</span> <span class="ot">?rhs</span> <span class="fu">&amp;&amp;</span> input</span></code></pre></div>
+<p>Here the hole is signified using <code>?rhs</code> and tells the compiler that we don’t know what should go here. Asking the compiler the type of <code>?rhs</code> tells us what is available, and that <code>?rhs</code> expects a boolean expression.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode idris"><code class="sourceCode idris"><span id="cb2-1"><a href="#cb2-1"></a><span class="dt">Hole</span><span class="fu">&gt;</span> <span class="ot">:</span>t <span class="dt">Hole</span><span class="fu">.</span>rhs</span>
+<span id="cb2-2"><a href="#cb2-2"></a>   <span class="fu">input</span> <span class="ot">:</span> <span class="dt">Bool</span></span>
+<span id="cb2-3"><a href="#cb2-3"></a><span class="co">----------------------------------</span></span>
+<span id="cb2-4"><a href="#cb2-4"></a>   <span class="fu">rhs</span> <span class="ot">:</span> <span class="dt">Bool</span></span></code></pre></div>
+<p>So the question is how to incorporate the notion of typed holes in a language. I am interested in adding typed-holes to the DSLs I develop as part of my work. Once I get other things finished, I think typed holes are a good feature to have to help user’s learn the language. So, as part of my studies I decided to explore how to build a simply-typed expression language with holes and construct a type-checker to work with them.</p>
+<p>We will be doing this in Idris, and let’s see what we can do.</p>
+<h2 id="our-razor">Our Razor</h2>
+<p>We will use the following simply typed expression language that supports: boolean conjunction; natural number addition; and binding expressions to names.</p>
+<p>Our types are simply Booleans and Natural numbers:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode idris"><code class="sourceCode idris"><span id="cb3-1"><a href="#cb3-1"></a><span class="kw">data</span> <span class="dt">Ty</span> <span class="fu">=</span> <span class="dt">BOOL</span> <span class="fu">|</span> <span class="dt">NAT</span></span></code></pre></div>
+<p>and expressions support values, conjunction, addition, binding and references:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode idris"><code class="sourceCode idris"><span id="cb4-1"><a href="#cb4-1"></a><span class="kw">data</span> <span class="dt">Expr</span> <span class="fu">=</span> <span class="dt">B</span> <span class="dt">Bool</span> <span class="fu">|</span> <span class="dt">N</span> <span class="dt">Nat</span></span>
+<span id="cb4-2"><a href="#cb4-2"></a>          <span class="fu">|</span> <span class="dt">AndB</span> <span class="dt">Expr</span> <span class="dt">Expr</span></span>
+<span id="cb4-3"><a href="#cb4-3"></a>          <span class="fu">|</span> <span class="dt">AddN</span> <span class="dt">Expr</span> <span class="dt">Expr</span></span>
+<span id="cb4-4"><a href="#cb4-4"></a>          <span class="fu">|</span> <span class="dt">Let</span> <span class="dt">String</span> <span class="dt">Expr</span> <span class="dt">Ty</span> <span class="dt">Expr</span></span>
+<span id="cb4-5"><a href="#cb4-5"></a>          <span class="fu">|</span> <span class="dt">Ref</span> <span class="dt">String</span></span>
+<span id="cb4-6"><a href="#cb4-6"></a>          <span class="fu">|</span> <span class="dt">Hole</span> <span class="dt">String</span></span></code></pre></div>
+<p>Notice that alongside our expected constructs there is <code>Hole</code> our expression that represents a ‘typed hole’. Now this hole is not typed and we will see in our type checker have we can discover the hole’s type.</p>
+<p>To make the presentation simple, I have used string-based naming and we will use extrinsic type checking. A good exercise will be to use DeBruijn indices, combined with intrinsically (well-typed) expressions, to ensure names are unique (based on their order of definition) and expressions are well-typed.</p>
+<h2 id="type-checker">Type Checker</h2>
+<p>Within Idris, typed holes really come into their own when type-checking expressions. Thus, our type checker needs to be able to return a local typing context with the locally bound variables as well as the usual True if things are well-typed.</p>
+<p>We will now look at building a type checker.</p>
+<h3 id="errors">Errors</h3>
+<p>Type-checking errors will consist of type mismatches and unbound names.</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode idris"><code class="sourceCode idris"><span id="cb5-1"><a href="#cb5-1"></a><span class="kw">data</span> <span class="dt">Error</span> <span class="fu">=</span> <span class="dt">MM</span> <span class="dt">Ty</span> <span class="dt">Ty</span> <span class="fu">|</span> <span class="dt">NotAvar</span> <span class="dt">String</span></span></code></pre></div>
+<h3 id="results">Results</h3>
+<p>Successful type-checking of a complete expression will return a type—<code>T</code>. Successful type-checking of an incomplete expression will (greedily) return <code>H</code> which includes the name of the first hole encountered, its type, and the local typing context. A more involved result will be to return a list of wholes encountered.</p>
+<p>An important aspect with typed holes is that of type-inference, we need to know the hole’s type. Given that we are in a simply typed expression language we can cheat and include an intermediate result (<code>HuTy</code>) that tells us we have encountered a hole and it needs to be typed. For more involved languages such type-inference is important and would require extra steps. A good exercise will be to see what happens when using well-typed expressions!</p>
+<pre><code>data Res = T Ty
+         | H String Ty (List (String, Ty))
+         | HuTy String</code></pre>
+<h3 id="the-checker">The Checker</h3>
+<p>We are now ready to write our type checker that, given a typing context and an expression, will either return an error or a result.</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode idris"><code class="sourceCode idris"><span id="cb7-1"><a href="#cb7-1"></a><span class="fu">check</span> <span class="ot">:</span> (ctxt <span class="ot">:</span> <span class="dt">List</span> (<span class="dt">String</span>, <span class="dt">Ty</span>))</span>
+<span id="cb7-2"><a href="#cb7-2"></a>     <span class="ot">-&gt;</span> (expr <span class="ot">:</span> <span class="dt">Expr</span>)</span>
+<span id="cb7-3"><a href="#cb7-3"></a>     <span class="ot">-&gt;</span> <span class="dt">Either</span> <span class="dt">Error</span> <span class="dt">Res</span></span></code></pre></div>
+<h4 id="constants">Constants</h4>
+<p>Type checking constants are straightforward:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode idris"><code class="sourceCode idris"><span id="cb8-1"><a href="#cb8-1"></a>check ctxt (<span class="dt">B</span> x) <span class="fu">=</span> <span class="dt">Right</span> (<span class="dt">T</span> <span class="dt">BOOL</span>)</span>
+<span id="cb8-2"><a href="#cb8-2"></a>check ctxt (<span class="dt">N</span> k) <span class="fu">=</span> <span class="dt">Right</span> (<span class="dt">T</span> <span class="dt">NAT</span>)</span></code></pre></div>
+<h4 id="binary-operations">Binary Operations</h4>
+<p>Type checking the two binary operations (conjunction and addition) are identical. First we check the left operand and then the right operand. If both operands are the same type we return that type, and ill-typed terms return a type mismatch error. If we encounter an untyped hole we can then assert its type and return the local context. Otherwise we propagate the hole as the type-checking result.</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode idris"><code class="sourceCode idris"><span id="cb9-1"><a href="#cb9-1"></a>check ctxt (<span class="dt">AndB</span> x y)</span>
+<span id="cb9-2"><a href="#cb9-2"></a>  <span class="fu">=</span> <span class="kw">do</span> <span class="dt">T</span> <span class="dt">BOOL</span> <span class="ot">&lt;-</span> check ctxt x</span>
+<span id="cb9-3"><a href="#cb9-3"></a>                  <span class="fu">|</span> <span class="dt">T</span> ty   <span class="ot">=&gt;</span> <span class="dt">Left</span> (<span class="dt">MM</span> <span class="dt">BOOL</span> ty)</span>
+<span id="cb9-4"><a href="#cb9-4"></a>                  <span class="fu">|</span> <span class="dt">HuTy</span> s <span class="ot">=&gt;</span> pure (<span class="dt">H</span> s <span class="dt">BOOL</span> ctxt)</span>
+<span id="cb9-5"><a href="#cb9-5"></a>                  <span class="fu">|</span> x      <span class="ot">=&gt;</span> pure x</span>
+<span id="cb9-6"><a href="#cb9-6"></a>       <span class="dt">T</span> <span class="dt">BOOL</span> <span class="ot">&lt;-</span> check ctxt y</span>
+<span id="cb9-7"><a href="#cb9-7"></a>                  <span class="fu">|</span> <span class="dt">T</span> ty   <span class="ot">=&gt;</span> <span class="dt">Left</span> (<span class="dt">MM</span> <span class="dt">BOOL</span> ty)</span>
+<span id="cb9-8"><a href="#cb9-8"></a>                  <span class="fu">|</span> <span class="dt">HuTy</span> s <span class="ot">=&gt;</span> pure (<span class="dt">H</span> s <span class="dt">BOOL</span> ctxt)</span>
+<span id="cb9-9"><a href="#cb9-9"></a>                  <span class="fu">|</span> x      <span class="ot">=&gt;</span> pure x</span>
+<span id="cb9-10"><a href="#cb9-10"></a></span>
+<span id="cb9-11"><a href="#cb9-11"></a>       pure (<span class="dt">T</span> <span class="dt">BOOL</span>)</span>
+<span id="cb9-12"><a href="#cb9-12"></a></span>
+<span id="cb9-13"><a href="#cb9-13"></a>check ctxt (<span class="dt">AddN</span> x y)</span>
+<span id="cb9-14"><a href="#cb9-14"></a>  <span class="fu">=</span> <span class="kw">do</span> <span class="dt">T</span> <span class="dt">NAT</span> <span class="ot">&lt;-</span> check ctxt x</span>
+<span id="cb9-15"><a href="#cb9-15"></a>                 <span class="fu">|</span> <span class="dt">T</span> ty   <span class="ot">=&gt;</span> <span class="dt">Left</span> (<span class="dt">MM</span> <span class="dt">NAT</span> ty)</span>
+<span id="cb9-16"><a href="#cb9-16"></a>                 <span class="fu">|</span> <span class="dt">HuTy</span> s <span class="ot">=&gt;</span> pure (<span class="dt">H</span> s <span class="dt">NAT</span> ctxt)</span>
+<span id="cb9-17"><a href="#cb9-17"></a>                 <span class="fu">|</span> x      <span class="ot">=&gt;</span> pure x</span>
+<span id="cb9-18"><a href="#cb9-18"></a>       <span class="dt">T</span> <span class="dt">NAT</span> <span class="ot">&lt;-</span> check ctxt y</span>
+<span id="cb9-19"><a href="#cb9-19"></a>                 <span class="fu">|</span> <span class="dt">T</span> ty   <span class="ot">=&gt;</span> <span class="dt">Left</span> (<span class="dt">MM</span> <span class="dt">NAT</span> ty)</span>
+<span id="cb9-20"><a href="#cb9-20"></a>                 <span class="fu">|</span> <span class="dt">HuTy</span> s <span class="ot">=&gt;</span> pure (<span class="dt">H</span> s <span class="dt">NAT</span> ctxt)</span>
+<span id="cb9-21"><a href="#cb9-21"></a>                 <span class="fu">|</span> x      <span class="ot">=&gt;</span> pure x</span>
+<span id="cb9-22"><a href="#cb9-22"></a>       pure (<span class="dt">T</span> <span class="dt">NAT</span>)</span></code></pre></div>
+<h4 id="let-bindings">Let-Bindings</h4>
+<p>We take similar actions with Let-bindings as we did with our binary operations. Encountering an untyped hole as the bound expression requires us to assert the expression’s type, otherwise we propagate a found hole as the result. If the bound expression does not match its ascription then a type-mismatch is returned. Otherwise we check the body with an expanded context.</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode idris"><code class="sourceCode idris"><span id="cb10-1"><a href="#cb10-1"></a>check ctxt (<span class="dt">Let</span> n e ty b)</span>
+<span id="cb10-2"><a href="#cb10-2"></a>  <span class="fu">=</span> <span class="kw">do</span> <span class="dt">T</span> tyE <span class="ot">&lt;-</span> check ctxt e</span>
+<span id="cb10-3"><a href="#cb10-3"></a>                  <span class="fu">|</span> <span class="dt">HuTy</span> s <span class="ot">=&gt;</span> pure (<span class="dt">H</span> s ty ctxt)</span>
+<span id="cb10-4"><a href="#cb10-4"></a>                  <span class="fu">|</span> x      <span class="ot">=&gt;</span> pure x</span>
+<span id="cb10-5"><a href="#cb10-5"></a>       <span class="kw">if</span> ty <span class="fu">==</span> tyE</span>
+<span id="cb10-6"><a href="#cb10-6"></a>         <span class="kw">then</span> check ((n,ty)<span class="ot">::</span>ctxt) b</span>
+<span id="cb10-7"><a href="#cb10-7"></a>         <span class="kw">else</span> <span class="dt">Left</span> (<span class="dt">MM</span> ty tyE)</span></code></pre></div>
+<h4 id="references">References</h4>
+<p>References lookup the name in the typing context and return the found type, otherwise the case raises an error.</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode idris"><code class="sourceCode idris"><span id="cb11-1"><a href="#cb11-1"></a>check ctxt (<span class="dt">Ref</span> x)</span>
+<span id="cb11-2"><a href="#cb11-2"></a>  <span class="fu">=</span> <span class="kw">case</span> (lookup x ctxt) <span class="kw">of</span></span>
+<span id="cb11-3"><a href="#cb11-3"></a>      <span class="dt">Nothing</span> <span class="ot">=&gt;</span> <span class="dt">Left</span> (<span class="dt">NotAvar</span> x)</span>
+<span id="cb11-4"><a href="#cb11-4"></a>      <span class="dt">Just</span> ty <span class="ot">=&gt;</span> <span class="dt">Right</span> (<span class="dt">T</span> ty)</span></code></pre></div>
+<p>We assume that we have presented an instance of <code>Eq</code> for <code>Ty</code> so that <code>lookup</code> works.</p>
+<h4 id="holes">Holes</h4>
+<p>When encountering a hole we return the untyped hole.</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode idris"><code class="sourceCode idris"><span id="cb12-1"><a href="#cb12-1"></a>check ctxt (<span class="dt">Hole</span> x) <span class="fu">=</span> pure (<span class="dt">HuTy</span> x)</span></code></pre></div>
+<h3 id="running-the-checker">Running the Checker</h3>
+<p>We finish the type-checker with a simple function that runs the check with an empty context.</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode idris"><code class="sourceCode idris"><span id="cb13-1"><a href="#cb13-1"></a><span class="fu">runCheck</span> <span class="ot">:</span> (expr <span class="ot">:</span> <span class="dt">Expr</span>) <span class="ot">-&gt;</span> <span class="dt">Either</span> <span class="dt">Error</span> <span class="dt">Res</span></span>
+<span id="cb13-2"><a href="#cb13-2"></a>runCheck <span class="fu">=</span> check <span class="dt">Nil</span></span></code></pre></div>
+<h2 id="examples">Examples</h2>
+<p>We end with some examples:</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode idris"><code class="sourceCode idris"><span id="cb14-1"><a href="#cb14-1"></a><span class="fu">test</span> <span class="ot">:</span> <span class="dt">Expr</span></span>
+<span id="cb14-2"><a href="#cb14-2"></a>test <span class="fu">=</span> <span class="dt">Let</span> <span class="st">&quot;x&quot;</span> (<span class="dt">B</span> <span class="dt">False</span>) <span class="dt">BOOL</span> (<span class="dt">AndB</span> (<span class="dt">B</span> <span class="dt">False</span>) (<span class="dt">Hole</span> <span class="st">&quot;?this&quot;</span>))</span></code></pre></div>
+<p>results in:</p>
+<pre><code>Hole&gt; runCheck test
+Right (H &quot;?this&quot; BOOL [(&quot;x&quot;, BOOL)])</code></pre>
+<p>and:</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode idris"><code class="sourceCode idris"><span id="cb16-1"><a href="#cb16-1"></a><span class="fu">test1</span> <span class="ot">:</span> <span class="dt">Expr</span></span>
+<span id="cb16-2"><a href="#cb16-2"></a>test1 <span class="fu">=</span> (<span class="dt">AndB</span> (<span class="dt">B</span> <span class="dt">False</span>) (<span class="dt">Hole</span> <span class="st">&quot;?this&quot;</span>))</span></code></pre></div>
+<p>results in:</p>
+<pre><code>Hole&gt; runCheck test1
+Right (H &quot;?this&quot; BOOL [])</code></pre>
+<p>and:</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode idris"><code class="sourceCode idris"><span id="cb18-1"><a href="#cb18-1"></a><span class="fu">test2</span> <span class="ot">:</span> <span class="dt">Expr</span></span>
+<span id="cb18-2"><a href="#cb18-2"></a>test2 <span class="fu">=</span> (<span class="dt">AndB</span> (<span class="dt">B</span> <span class="dt">False</span>) (<span class="dt">N</span> <span class="dv">1</span>))</span></code></pre></div>
+<p>results in:</p>
+<pre><code>Hole&gt; runCheck test2
+Left (MM BOOL NAT)</code></pre>
+<p>and:</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode idris"><code class="sourceCode idris"><span id="cb20-1"><a href="#cb20-1"></a><span class="fu">test3</span> <span class="ot">:</span> <span class="dt">Expr</span></span>
+<span id="cb20-2"><a href="#cb20-2"></a>test3 <span class="fu">=</span> (<span class="dt">AndB</span> (<span class="dt">Hole</span> <span class="st">&quot;?this&quot;</span>) (<span class="dt">N</span> <span class="dv">1</span>))</span></code></pre></div>
+<p>results in:</p>
+<pre><code>Hole&gt; runCheck test3
+Right (H &quot;?this&quot; BOOL [])</code></pre>
+<p>All of which are expected. Well-typed complete programs return the program’s type. Ill-typed complete program’s fail, and Ill-typed incomplete programmes will return a hole if the hole is found before ill-typed expression. Our type-checking traverses the expressions left-to-right, and fails early.</p>
+<h2 id="coda">Coda</h2>
+<p>This was a simple exercise in trying to realise a simple language with typed holes. Typed Holes are not limited to Idris and Agda, and how these languages work underneath in dealing with holes is more involved. These languages are more involved, especially if we look at Idris2 construction in which names (even those for) holes are well-scoped, and for these language’s type-checking doesn’t just return a yes or no but returns something more.</p>
+<p>As a side note, I learned a few years ago that Haskell also supports typed holes, and are represented by an underscore (<code>_</code>) that is placed on the right-hand side of an equation. When I get back to teaching Haskell (or really Idris2) holes will be an important feature to consider.</p>
+<p>More importantly there is some interesting research in providing principled approaches to typed-hole driven development in <a href="https://hazel.org/">Hazel</a> a live functional programming language environment with typed-holes. You should look at Hazel and what the research team behind it’s development are up to.</p>
+
+              </div>
+            </main>
+          </div>
+        </div>
+      </div>
+      <!-- ====================================================
+           Footer
+           ====================================================
+        -->
+      <footer class="footer">
+          <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">
+            <img alt="Creative Commons Licence" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/80x15.png" />
+          </a>
+          <span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Dataset" property="dct:title" rel="dct:type">jfdm.github.io</span> by <a xmlns:cc="http://creativecommons.org/ns#" href="http://jfdm.github.io/" property="cc:attributionName" rel="cc:attributionURL">Jan de Muijnck-Hughes</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.
+            Site proudly generated by
+<a href="http://jaspervdj.be/hakyll">Hakyll</a> and <a href="https://github.com/commercialhaskell/stack">Stack</a>, and hosted on <a href="http://github.com/jfdm/jfdm.github.io">GitHub</a>
+      </footer>
+
+
+   <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+      <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+    </body>
+</html>

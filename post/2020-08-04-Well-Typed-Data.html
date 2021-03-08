@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>Defining Intrinsically Typed Data Structures</title>
+
+    <!--
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,400;0,700;1,400;1,700&family=Montserrat:ital,wght@0,400;0,700;1,400;1,700&family=Raleway:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+      rel="stylesheet">
+    -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+    <!-- Custom styles for this template -->
+    <link rel="stylesheet" href="../css/main.css" media="all" />
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+      <![endif]-->
+
+    </head>
+    <body>
+      <header>
+      <nav class="navbar navbar-expand-md navbar-fixed-top navbar-dark bg-dark bg-jfdm">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+            <a class="navbar-brand" href="../index.html">Jan de Muijnck-Hughes</a>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+              <ul class="navbar-nav justify-content-center">
+                <li class="nav-item"> <a class="nav-link" href="../research.html">Research</a></li>
+                <li class="nav-item"> <a class="nav-link" href="../professional.html">Activities</a></li>
+                <li class="nav-item"> <a class="nav-link" href="../publications.html">Publications</a></li>
+                <li class="nav-item"> <a class="nav-link" href="../talks.html">Talks</a></li>
+                <li class="nav-item"> <a class="nav-link" href="../teaching.html">Teaching</a></li>
+                <li class="nav-item"> <a class="nav-link" href="../contact.html">Contact</a></li>
+                <li class="nav-item"> <a class="nav-link" href="../posts.html">Blog</a></li>
+              </ul>
+            </div>
+      </nav>
+      </header>
+      <div class="container-fluid">
+        <div class="row">
+          <!-- ====================================================
+               Sidebar
+               ====================================================
+            -->
+          <div class="col-md-3 bg-light sidebar">
+            <div class="profile-sidebar">
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title">Jan de Muijnck-Hughes</h5>
+                  <p class="card-text">Research Associate, School of Computing, University of Glasgow.</p>
+
+                  <nav class="navbar navbar-expand-md">
+                    <button class="navbar-toggler btn btn-outline-dark btn-sm" type="button" data-toggle="collapse" data-target="#navbarNavDropdown1" aria-controls="navbarNavDropdown1" aria-expanded="false" aria-label="Toggle navigation">
+                      Follow
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNavDropdown1">
+                      <ul class="navbar-nav flex-column">
+                        <li class="nav-item"><a class="nav-link" href="https://www.gla.ac.uk/schools/computing/staff/jandemuijnck-hughes/"><i class="fas fa-university"></i> University of Glasgow</a></li>
+                        <li class="nav-item"><a class="nav-link" href="https://www.github.com/jfdm"><i class="fab fa-github"></i> Github</a></li>
+                        <li class="nav-item"><a class="nav-link" href="https://www.twitter.com/jfdm"><i class="fab fa-twitter"></i> Twitter</a></li>
+                        <li class="nav-item"><a class="nav-link" href="https://scholar.google.com/citations?user=MoieSwcAAAAJ"><i class="fab fa-google"></i> Google Scholar</a></li>
+                        <li class="nav-item"><a class="nav-link" href="https://academic.microsoft.com/#/profile/jfdm"><i class="fab fa-microsoft"></i> Microsoft Academic</a></li>
+                        <li class="nav-item"><a class="nav-link" href="https://orcid.org/0000-0003-2185-8543"><i class="fas fa-scroll"></i> ORCID</a></li>
+                        <li class="nav-item"><a class="nav-link" href="https://dblp.org/pid/117/5494"><i class="fas fa-book"></i> DBLP</a></li>
+                      </ul>
+                    </div>
+                  </nav>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- ====================================================
+               Main
+               ====================================================
+            -->
+          <div class="col-md-9 bg-light">
+            <main role="main" class="container-fluid">
+              <div class="content">
+                <h1>Defining Intrinsically Typed Data Structures</h1>
+                <div class="card card-body mdata">
+  <p>
+Posted on August  4, 2020
+
+</p>
+
+  <p>
+
+  Categories: <a title="All pages tagged 'idris'." href="../tags/idris.html">idris</a>, <a title="All pages tagged 'dependent-types'." href="../tags/dependent-types.html">dependent-types</a>, <a title="All pages tagged 'tdd'." href="../tags/tdd.html">tdd</a>, <a title="All pages tagged 'musing'." href="../tags/musing.html">musing</a>
+
+  </p>
+
+</div>
+
+ <p>When reading foundational texts such as <a href="https://plfa.github.io/">PLFA</a>, <a href="https://www.cis.upenn.edu/~bcpierce/tapl/">TAPL</a>, and <a href="https://softwarefoundations.cis.upenn.edu/plf-current/index.html">Software Foundations</a> the learner is often presented with Simply-Typed Lambda Calculi that supports both <a href="https://www.ncatlab.org/nlab/show/product+type">products</a> and <a href="https://www.ncatlab.org/nlab/show/sum+type">sums</a>. When translating these calculi to dependently typed languages in an intrinsically typed way as we do with <a href="https://www.idris-lang.org">Idris</a> &amp; Agda, how we might approach supporting other data structures such as tuples, records and variants is not precisely clear. In fact Software Foundations <a href="https://softwarefoundations.cis.upenn.edu/plf-current/Records.html#lab346"><em>does give an idea</em></a> on how to do so but let us explore how we may choose to represent such structures in Idris/Agda.</p>
+<p>My aim for this post is to:</p>
+<ol type="1">
+<li>consider how we can construct intrinsically typed data structures for an EDSL in the Idris(2) programming language; and</li>
+<li>detail an approach to preserve the uniqueness of variant types.</li>
+</ol>
+<p>I am not going to claim that the techniques in this post are new, my literature review of the area is weak, but I wanted to have a public record detailing <em>my approach</em> that others can find using the great big search engines floating around cyberspace.</p>
+<h2 id="background">Background</h2>
+<p>Before reading this post, I will assume that the reader is familiar with <a href="https://www.cis.upenn.edu/~bcpierce/tapl/">Part 2 of TAPL</a>, may have skimmed <a href="https://softwarefoundations.cis.upenn.edu/plf-current/index.html">Software Foundations</a>, and perused <a href="https://plfa.github.io/">Part 2 of PLFA</a>.</p>
+<p>The examples will be in <a href="https://www.idris-lang.org">Idris2</a> but they should translate to Idris1, and other similar dependently typed programming languages.</p>
+<p>A small caveat, is that I will be discussing the representation of the data types, but have yet to explore their use in reasoning about progress and preservation, nor their use in building a working compiler. This is for later on in the month.</p>
+<h2 id="the-starting-razor">The Starting Razor</h2>
+<p>In this post our starting razor will begin as an intrinsically typed expression language that supports let-bindings, and primitive data types representing integers and characters. We will expand this language to support pairs and sums (their construction, projection, and destruction), before morphing the language to see how we can support tuples, records, and variant types.</p>
+<p>Thus, our base types will be:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode idris"><code class="sourceCode idris"><span id="cb1-1"><a href="#cb1-1"></a><span class="kw">data</span> <span class="dt">Ty</span> <span class="fu">=</span> <span class="dt">TyInt</span> <span class="fu">|</span> <span class="dt">TyChar</span></span></code></pre></div>
+<p>with the following combined base syntax/static semantics:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode idris"><code class="sourceCode idris"><span id="cb2-1"><a href="#cb2-1"></a><span class="kw">data</span> <span class="dt">Razor</span> <span class="ot">:</span> <span class="dt">List</span> <span class="dt">Ty</span> <span class="ot">-&gt;</span> <span class="dt">Ty</span> <span class="ot">-&gt;</span> <span class="dt">Type</span> <span class="kw">where</span></span>
+<span id="cb2-2"><a href="#cb2-2"></a>  <span class="dt">Var</span> <span class="ot">:</span> <span class="dt">Elem</span> ty g <span class="ot">-&gt;</span> <span class="dt">Razor</span> g ty</span>
+<span id="cb2-3"><a href="#cb2-3"></a></span>
+<span id="cb2-4"><a href="#cb2-4"></a>  <span class="dt">Let</span> <span class="ot">:</span> (this     <span class="ot">:</span> <span class="dt">Razor</span>        g  expr)</span>
+<span id="cb2-5"><a href="#cb2-5"></a>     <span class="ot">-&gt;</span> (beInThis <span class="ot">:</span> <span class="dt">Razor</span> (expr<span class="ot">::</span>g) body)</span>
+<span id="cb2-6"><a href="#cb2-6"></a>                 <span class="ot">-&gt;</span> <span class="dt">Razor</span>        g  body</span>
+<span id="cb2-7"><a href="#cb2-7"></a></span>
+<span id="cb2-8"><a href="#cb2-8"></a>  <span class="dt">I</span> <span class="ot">:</span> <span class="dt">Int</span>  <span class="ot">-&gt;</span> <span class="dt">Razor</span> g <span class="dt">TyInt</span></span>
+<span id="cb2-9"><a href="#cb2-9"></a>  <span class="dt">C</span> <span class="ot">:</span> <span class="dt">Char</span> <span class="ot">-&gt;</span> <span class="dt">Razor</span> g <span class="dt">TyChar</span></span></code></pre></div>
+<p>Our razor follows standard constructions used in intrinsically typed interpreters: variables are De Bruijn indicies realised using the <code>Elem</code> list existential quantifier from <code>Data.List.Elem</code> that quantifies over a type-level context.</p>
+<p>So let’s get started.</p>
+<h2 id="adding-sums-and-products">Adding Sums and Products</h2>
+<p>This section will extend our razor with sums and products.</p>
+<h3 id="types">Types</h3>
+<div class="sourceCode" id="cb3"><pre class="sourceCode idris"><code class="sourceCode idris"><span id="cb3-1"><a href="#cb3-1"></a><span class="kw">data</span> <span class="dt">Ty</span> <span class="fu">=</span> <span class="dt">TyInt</span> <span class="fu">|</span> <span class="dt">TyChar</span> <span class="fu">|</span> <span class="dt">TyProd</span> <span class="dt">Ty</span> <span class="dt">Ty</span> <span class="fu">|</span> <span class="dt">TySum</span> <span class="dt">Ty</span> <span class="dt">Ty</span></span></code></pre></div>
+<p>A product type pairs two structures together, and a sum type contains one of two possible structures. We can extend our set of types with two data constructors that represent two type’s together as a product or sum.</p>
+<h3 id="syntax-and-static-semantics">Syntax and Static Semantics</h3>
+<p>We can then extend the definition of our Razor with the following static semantics for data type:</p>
+<ul>
+<li><strong>contructors</strong>: for products (<code>MkPair</code>); and sums—<code>Left</code> &amp; <code>Right</code>;</li>
+<li><strong>accessors</strong>: for products <code>First</code> &amp; <code>Second</code>; and</li>
+<li><strong>destructors</strong>: for products (<code>Split</code>); and sums—<code>Match</code>.</li>
+</ul>
+<p>So that we now have:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode idris"><code class="sourceCode idris"><span id="cb4-1"><a href="#cb4-1"></a><span class="kw">data</span> <span class="dt">Razor</span> <span class="ot">:</span> <span class="dt">List</span> <span class="dt">Ty</span> <span class="ot">-&gt;</span> <span class="dt">Ty</span> <span class="ot">-&gt;</span> <span class="dt">Type</span> <span class="kw">where</span></span>
+<span id="cb4-2"><a href="#cb4-2"></a>  <span class="dt">Var</span> <span class="ot">:</span> <span class="dt">Elem</span> ty g <span class="ot">-&gt;</span> <span class="dt">Razor</span> g ty</span>
+<span id="cb4-3"><a href="#cb4-3"></a></span>
+<span id="cb4-4"><a href="#cb4-4"></a>  <span class="dt">Let</span> <span class="ot">:</span> (this     <span class="ot">:</span> <span class="dt">Razor</span>        g  expr)</span>
+<span id="cb4-5"><a href="#cb4-5"></a>     <span class="ot">-&gt;</span> (beInThis <span class="ot">:</span> <span class="dt">Razor</span> (expr<span class="ot">::</span>g) body)</span>
+<span id="cb4-6"><a href="#cb4-6"></a>                 <span class="ot">-&gt;</span> <span class="dt">Razor</span>        g  body</span>
+<span id="cb4-7"><a href="#cb4-7"></a></span>
+<span id="cb4-8"><a href="#cb4-8"></a>  <span class="dt">I</span> <span class="ot">:</span> <span class="dt">Int</span>  <span class="ot">-&gt;</span> <span class="dt">Razor</span> g <span class="dt">TyInt</span></span>
+<span id="cb4-9"><a href="#cb4-9"></a>  <span class="dt">C</span> <span class="ot">:</span> <span class="dt">Char</span> <span class="ot">-&gt;</span> <span class="dt">Razor</span> g <span class="dt">TyChar</span></span>
+<span id="cb4-10"><a href="#cb4-10"></a></span>
+<span id="cb4-11"><a href="#cb4-11"></a>  <span class="dt">MkPair</span> <span class="ot">:</span> (left  <span class="ot">:</span> <span class="dt">Razor</span> g l)</span>
+<span id="cb4-12"><a href="#cb4-12"></a>        <span class="ot">-&gt;</span> (right <span class="ot">:</span> <span class="dt">Razor</span> g r)</span>
+<span id="cb4-13"><a href="#cb4-13"></a>                 <span class="ot">-&gt;</span> <span class="dt">Razor</span> g (<span class="dt">TyProd</span> l r)</span>
+<span id="cb4-14"><a href="#cb4-14"></a></span>
+<span id="cb4-15"><a href="#cb4-15"></a>  <span class="dt">First</span>  <span class="ot">:</span> (pair <span class="ot">:</span> <span class="dt">Razor</span> g (<span class="dt">TyProd</span> l r))</span>
+<span id="cb4-16"><a href="#cb4-16"></a>                <span class="ot">-&gt;</span> <span class="dt">Razor</span> g l</span>
+<span id="cb4-17"><a href="#cb4-17"></a></span>
+<span id="cb4-18"><a href="#cb4-18"></a>  <span class="dt">Second</span> <span class="ot">:</span> (pair <span class="ot">:</span> <span class="dt">Razor</span> g (<span class="dt">TyProd</span> l r))</span>
+<span id="cb4-19"><a href="#cb4-19"></a>                <span class="ot">-&gt;</span> <span class="dt">Razor</span> g r</span>
+<span id="cb4-20"><a href="#cb4-20"></a></span>
+<span id="cb4-21"><a href="#cb4-21"></a>  <span class="dt">Split</span> <span class="ot">:</span> (pair <span class="ot">:</span> <span class="dt">Razor</span> g         (<span class="dt">TyProd</span> l r))</span>
+<span id="cb4-22"><a href="#cb4-22"></a>       <span class="ot">-&gt;</span> (body <span class="ot">:</span> <span class="dt">Razor</span> (r<span class="ot">::</span>l<span class="ot">::</span>g) b)</span>
+<span id="cb4-23"><a href="#cb4-23"></a>               <span class="ot">-&gt;</span> <span class="dt">Razor</span> g         b</span>
+<span id="cb4-24"><a href="#cb4-24"></a></span>
+<span id="cb4-25"><a href="#cb4-25"></a>  <span class="dt">Left</span> <span class="ot">:</span> (left <span class="ot">:</span> <span class="dt">Razor</span> g        l)</span>
+<span id="cb4-26"><a href="#cb4-26"></a>              <span class="ot">-&gt;</span> <span class="dt">Razor</span> g (<span class="dt">TySum</span> l r)</span>
+<span id="cb4-27"><a href="#cb4-27"></a></span>
+<span id="cb4-28"><a href="#cb4-28"></a>  <span class="dt">Right</span> <span class="ot">:</span> (right <span class="ot">:</span> <span class="dt">Razor</span> g          r)</span>
+<span id="cb4-29"><a href="#cb4-29"></a>                <span class="ot">-&gt;</span> <span class="dt">Razor</span> g (<span class="dt">TySum</span> l r)</span>
+<span id="cb4-30"><a href="#cb4-30"></a></span>
+<span id="cb4-31"><a href="#cb4-31"></a>  <span class="dt">Match</span> <span class="ot">:</span> (variant   <span class="ot">:</span> <span class="dt">Razor</span> g      (<span class="dt">TySum</span> l r))</span>
+<span id="cb4-32"><a href="#cb4-32"></a>       <span class="ot">-&gt;</span> (whenLeft  <span class="ot">:</span> <span class="dt">Razor</span> (l<span class="ot">::</span>g) b)</span>
+<span id="cb4-33"><a href="#cb4-33"></a>       <span class="ot">-&gt;</span> (whenRight <span class="ot">:</span> <span class="dt">Razor</span> (r<span class="ot">::</span>g) b)</span>
+<span id="cb4-34"><a href="#cb4-34"></a>                    <span class="ot">-&gt;</span> <span class="dt">Razor</span> g      b</span></code></pre></div>
+<h3 id="examples">Examples</h3>
+<p>These definitions follow standard descriptions from PLFA and the like, and we give example instances demonstrating the Razor in action:</p>
+<h4 id="pairs">Pairs</h4>
+<div class="sourceCode" id="cb5"><pre class="sourceCode idris"><code class="sourceCode idris"><span id="cb5-1"><a href="#cb5-1"></a><span class="fu">ab</span> <span class="ot">:</span> <span class="dt">Razor</span> <span class="dt">Nil</span> (<span class="dt">TyProd</span> <span class="dt">TyInt</span> <span class="dt">TyChar</span>)</span>
+<span id="cb5-2"><a href="#cb5-2"></a>ab <span class="fu">=</span> <span class="dt">MkPair</span> (<span class="dt">I</span> <span class="dv">1</span>) (<span class="dt">C</span> <span class="ch">'c'</span>)</span>
+<span id="cb5-3"><a href="#cb5-3"></a></span>
+<span id="cb5-4"><a href="#cb5-4"></a><span class="fu">a</span> <span class="ot">:</span> <span class="dt">Razor</span> <span class="dt">Nil</span> <span class="dt">TyInt</span></span>
+<span id="cb5-5"><a href="#cb5-5"></a>a <span class="fu">=</span> <span class="dt">First</span> ab</span>
+<span id="cb5-6"><a href="#cb5-6"></a></span>
+<span id="cb5-7"><a href="#cb5-7"></a><span class="fu">b</span> <span class="ot">:</span> <span class="dt">Razor</span> <span class="dt">Nil</span> <span class="dt">TyChar</span></span>
+<span id="cb5-8"><a href="#cb5-8"></a>b <span class="fu">=</span> <span class="dt">Second</span> ab</span>
+<span id="cb5-9"><a href="#cb5-9"></a></span>
+<span id="cb5-10"><a href="#cb5-10"></a><span class="fu">ba</span> <span class="ot">:</span> <span class="dt">Razor</span> <span class="dt">Nil</span> (<span class="dt">TyProd</span> <span class="dt">TyChar</span> <span class="dt">TyInt</span>)</span>
+<span id="cb5-11"><a href="#cb5-11"></a>ba <span class="fu">=</span> <span class="dt">Split</span> ab (<span class="dt">MkPair</span> (<span class="dt">Var</span> <span class="dt">Here</span>) (<span class="dt">Var</span> <span class="fu">$</span> <span class="dt">There</span> <span class="dt">Here</span>))</span></code></pre></div>
+<h4 id="sums">Sums</h4>
+<div class="sourceCode" id="cb6"><pre class="sourceCode idris"><code class="sourceCode idris"><span id="cb6-1"><a href="#cb6-1"></a><span class="fu">l</span> <span class="ot">:</span> <span class="dt">Razor</span> <span class="dt">Nil</span> (<span class="dt">TySum</span> <span class="dt">TyChar</span> <span class="dt">TyInt</span>)</span>
+<span id="cb6-2"><a href="#cb6-2"></a>l <span class="fu">=</span> <span class="dt">Left</span> (<span class="dt">C</span> <span class="ch">'c'</span>)</span>
+<span id="cb6-3"><a href="#cb6-3"></a></span>
+<span id="cb6-4"><a href="#cb6-4"></a><span class="fu">r</span> <span class="ot">:</span> <span class="dt">Razor</span> <span class="dt">Nil</span> (<span class="dt">TySum</span> <span class="dt">TyChar</span> <span class="dt">TyInt</span>)</span>
+<span id="cb6-5"><a href="#cb6-5"></a>r <span class="fu">=</span> <span class="dt">Right</span> (<span class="dt">I</span> <span class="dv">1</span>)</span>
+<span id="cb6-6"><a href="#cb6-6"></a></span>
+<span id="cb6-7"><a href="#cb6-7"></a><span class="fu">lp</span> <span class="ot">:</span> <span class="dt">Razor</span> <span class="dt">Nil</span> (<span class="dt">TyProd</span> <span class="dt">TyInt</span> <span class="dt">TyChar</span>)</span>
+<span id="cb6-8"><a href="#cb6-8"></a>lp <span class="fu">=</span> <span class="dt">Match</span> l (<span class="dt">MkPair</span> (<span class="dt">I</span> <span class="dv">2</span>) (<span class="dt">Var</span> <span class="dt">Here</span>)) (<span class="dt">MkPair</span> (<span class="dt">Var</span> <span class="dt">Here</span>) (<span class="dt">C</span> <span class="ch">'w'</span>))</span>
+<span id="cb6-9"><a href="#cb6-9"></a></span>
+<span id="cb6-10"><a href="#cb6-10"></a><span class="fu">rp</span> <span class="ot">:</span> <span class="dt">Razor</span> <span class="dt">Nil</span> (<span class="dt">TyProd</span> <span class="dt">TyInt</span> <span class="dt">TyChar</span>)</span>
+<span id="cb6-11"><a href="#cb6-11"></a>rp <span class="fu">=</span> <span class="dt">Match</span> r (<span class="dt">MkPair</span> (<span class="dt">I</span> <span class="dv">2</span>) (<span class="dt">Var</span> <span class="dt">Here</span>)) (<span class="dt">MkPair</span> (<span class="dt">Var</span> <span class="dt">Here</span>) (<span class="dt">C</span> <span class="ch">'w'</span>))</span></code></pre></div>
+<h3 id="we-need-type-ascriptions-for-type-unique-sums">We need Type-Ascriptions for Type Unique Sums</h3>
+<p>Notice that all our examples are statically typed.</p>
+<p>A question to remind ourselves about Sum types is: What is the type of the scrutinee in the following match expression:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode idris"><code class="sourceCode idris"><span id="cb7-1"><a href="#cb7-1"></a><span class="fu">snip</span> <span class="ot">:</span> <span class="dt">Razor</span> <span class="dt">Nil</span> <span class="dt">TyChar</span></span>
+<span id="cb7-2"><a href="#cb7-2"></a>snip <span class="fu">=</span> <span class="dt">Match</span> (<span class="dt">Right</span> (<span class="dt">I</span> <span class="dv">1</span>)) (<span class="dt">Var</span> <span class="dt">Here</span>) (<span class="dt">Split</span> (<span class="dt">Var</span> <span class="dt">Here</span>) (<span class="dt">Var</span> <span class="dt">Here</span>))</span></code></pre></div>
+<p>Here we have to give a best guess as to what the right type for <code>(Right (I 1))</code> is. We do not have enough information. Idris2 complains with:</p>
+<pre><code>ADT.idr:84:20--84:31:While processing right hand side of rfail at ADT.idr:84:5--86:1:
+When unifying Razor ?g (TySum ?l TyInt) and Razor [] (TySum TyChar (TyProd ?l TyChar))
+Mismatch between:
+    TyInt
+and
+    TyProd ?l TyChar
+at:
+84      snip = Match (Right (I 1)) (Var Here) (Split (Var Here) (Var Here))</code></pre>
+<p>Idris2 has worked out that the scruntinee has type <code>(TySum TyChar (TyProd ?l TyChar))</code>. The left case is clearly type char, but the right case is a product type and there is not enough information to work out what the first entry in the pair is.</p>
+<p>Software Foundations, and TAPL, suggest that we can make these types unique by providing a full or partial type ascription.</p>
+<p>Thus we can attempt to rewrite our data constructor for sum either following the TAPL style:</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode idris"><code class="sourceCode idris"><span id="cb9-1"><a href="#cb9-1"></a>  <span class="dt">Left</span> <span class="ot">:</span> (type<span class="ot">:</span> <span class="dt">Ty</span>)</span>
+<span id="cb9-2"><a href="#cb9-2"></a>      <span class="ot">-&gt;</span> (leftValue <span class="ot">:</span> <span class="dt">Razor</span> g tyL)</span>
+<span id="cb9-3"><a href="#cb9-3"></a>      <span class="ot">-&gt;</span> <span class="dt">Razor</span> g type</span></code></pre></div>
+<p>or the Software Foundation style:</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode idris"><code class="sourceCode idris"><span id="cb10-1"><a href="#cb10-1"></a>  <span class="dt">Left</span> <span class="ot">:</span> (tyR <span class="ot">:</span> <span class="dt">Ty</span>)</span>
+<span id="cb10-2"><a href="#cb10-2"></a>      <span class="ot">-&gt;</span> (leftValue <span class="ot">:</span> <span class="dt">Razor</span> g tyL)</span>
+<span id="cb10-3"><a href="#cb10-3"></a>      <span class="ot">-&gt;</span> <span class="dt">Razor</span> g (<span class="dt">TySum</span> tyL tyR)</span></code></pre></div>
+<p>With the TAPL style we have lost the intrinsic link between the value and its type. The style for Software Foundation allows us to assert what the missing piece of the sum type is, given that we can work out the type for the left value.</p>
+<p>The Software Foundation style requires that we must provide the right type when presenting the left value. This is okay but doesn’t look right and could be construed as counterintuitive: It’s the right type but the value is left. It would be better to provide the full type as in the TAPL style but with the correct static guarantees. Further, it is interesting to see that within TAPL type-synonym are an aspect of the presented language.</p>
+<p>Having type-synonyms directly within the Razor itself would be beneficial. As we will see later on we can remedy this problem by introducing data declarations.</p>
+<p>But first we will detail how to provide tuples and records first, as this gives us the intuition when introducing data declarations.</p>
+<h2 id="a-razor-with-tuples">A Razor with Tuples</h2>
+<p>Tuples improve on pairs by generalising the concept of pairing structures and supports pairing one or more entries together.</p>
+<h3 id="types-1">Types</h3>
+<p>It is important to remember that a tuple has one ore more entries. We can enforce this by using sized lists (vectors).</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode idris"><code class="sourceCode idris"><span id="cb11-1"><a href="#cb11-1"></a><span class="kw">data</span> <span class="dt">Ty</span> <span class="fu">=</span> <span class="dt">TyInt</span> <span class="fu">|</span> <span class="dt">TyChar</span></span>
+<span id="cb11-2"><a href="#cb11-2"></a>        <span class="fu">|</span> <span class="dt">TyTuple</span> (<span class="dt">Vect</span> (<span class="dt">S</span> n) <span class="dt">Ty</span>)</span></code></pre></div>
+<h3 id="syntax-static-semantics">Syntax &amp; Static Semantics</h3>
+<p>With syntax and static semantics we need to be a bit clever. The data constructor for tuple requires a vector. We need a data structure (<code>RazorT</code>) to collect one or more razor values at the value level, but also types at the type level. Naturally, I would use the <code>All</code> quantifier (or really my own <code>DList</code> variant), however, here we will use a custom data structure.</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode idris"><code class="sourceCode idris"><span id="cb12-1"><a href="#cb12-1"></a><span class="kw">data</span> <span class="dt">RazorT</span> <span class="ot">:</span> <span class="dt">List</span> <span class="dt">Ty</span> <span class="ot">-&gt;</span> <span class="dt">Vect</span> (<span class="dt">S</span> n) <span class="dt">Ty</span> <span class="ot">-&gt;</span> <span class="dt">Type</span> <span class="kw">where</span></span>
+<span id="cb12-2"><a href="#cb12-2"></a>  <span class="dt">Singleton</span> <span class="ot">:</span> (first <span class="ot">:</span> <span class="dt">Razor</span>  g ty)</span>
+<span id="cb12-3"><a href="#cb12-3"></a>                    <span class="ot">-&gt;</span> <span class="dt">RazorT</span> g [ty]</span>
+<span id="cb12-4"><a href="#cb12-4"></a></span>
+<span id="cb12-5"><a href="#cb12-5"></a>  <span class="dt">Extend</span> <span class="ot">:</span> (third <span class="ot">:</span> <span class="dt">Razor</span>  g  ty)</span>
+<span id="cb12-6"><a href="#cb12-6"></a>        <span class="ot">-&gt;</span> (rest  <span class="ot">:</span> <span class="dt">RazorT</span> g       tys)</span>
+<span id="cb12-7"><a href="#cb12-7"></a>                 <span class="ot">-&gt;</span> <span class="dt">RazorT</span> g (ty<span class="ot">::</span> tys)</span></code></pre></div>
+<p>The type of <code>RaqzorT</code> ensures that there are one or more entries that <em>might</em> also already exist in a given context. The constructor <code>Singleton</code> represent the <strong>right most</strong> entry in the list i.e. the one with the highest index, and <code>Extend</code> appends an entry to the left of an existing tuple.</p>
+<p>With <code>RazorT</code> we can now extend our Razor with syntax for projection (<code>Proj</code>) and deconstruction—<code>Split</code>.</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode idris"><code class="sourceCode idris"><span id="cb13-1"><a href="#cb13-1"></a><span class="kw">data</span> <span class="dt">Razor</span> <span class="ot">:</span> <span class="dt">List</span> <span class="dt">Ty</span> <span class="ot">-&gt;</span> <span class="dt">Ty</span> <span class="ot">-&gt;</span> <span class="dt">Type</span> <span class="kw">where</span></span>
+<span id="cb13-2"><a href="#cb13-2"></a>  <span class="dt">Var</span> <span class="ot">:</span> <span class="dt">Elem</span> ty g <span class="ot">-&gt;</span> <span class="dt">Razor</span> g ty</span>
+<span id="cb13-3"><a href="#cb13-3"></a></span>
+<span id="cb13-4"><a href="#cb13-4"></a>  <span class="dt">Let</span> <span class="ot">:</span> (this     <span class="ot">:</span> <span class="dt">Razor</span>        g  expr)</span>
+<span id="cb13-5"><a href="#cb13-5"></a>     <span class="ot">-&gt;</span> (beInThis <span class="ot">:</span> <span class="dt">Razor</span> (expr<span class="ot">::</span>g) body)</span>
+<span id="cb13-6"><a href="#cb13-6"></a>                 <span class="ot">-&gt;</span> <span class="dt">Razor</span>        g  body</span>
+<span id="cb13-7"><a href="#cb13-7"></a></span>
+<span id="cb13-8"><a href="#cb13-8"></a>  <span class="dt">I</span> <span class="ot">:</span> <span class="dt">Int</span>  <span class="ot">-&gt;</span> <span class="dt">Razor</span> g <span class="dt">TyInt</span></span>
+<span id="cb13-9"><a href="#cb13-9"></a>  <span class="dt">C</span> <span class="ot">:</span> <span class="dt">Char</span> <span class="ot">-&gt;</span> <span class="dt">Razor</span> g <span class="dt">TyChar</span></span>
+<span id="cb13-10"><a href="#cb13-10"></a></span>
+<span id="cb13-11"><a href="#cb13-11"></a>  <span class="dt">MkTuple</span> <span class="ot">:</span> (values <span class="ot">:</span> <span class="dt">RazorT</span> g          types)</span>
+<span id="cb13-12"><a href="#cb13-12"></a>                   <span class="ot">-&gt;</span> <span class="dt">Razor</span>  g (<span class="dt">TyTuple</span> types)</span>
+<span id="cb13-13"><a href="#cb13-13"></a></span>
+<span id="cb13-14"><a href="#cb13-14"></a>  <span class="dt">Proj</span> <span class="ot">:</span> {<span class="dv">0</span> types <span class="ot">:</span> <span class="dt">Vect</span> (<span class="dt">S</span> n) <span class="dt">Ty</span>}</span>
+<span id="cb13-15"><a href="#cb13-15"></a>      <span class="ot">-&gt;</span> (  tuple <span class="ot">:</span> <span class="dt">Razor</span> g (<span class="dt">TyTuple</span> types))</span>
+<span id="cb13-16"><a href="#cb13-16"></a>      <span class="ot">-&gt;</span> (  idx   <span class="ot">:</span> <span class="dt">Fin</span> (<span class="dt">S</span> n))</span>
+<span id="cb13-17"><a href="#cb13-17"></a>                 <span class="ot">-&gt;</span> <span class="dt">Razor</span> g (index idx types)</span>
+<span id="cb13-18"><a href="#cb13-18"></a></span>
+<span id="cb13-19"><a href="#cb13-19"></a>  <span class="dt">Split</span> <span class="ot">:</span> (tuple <span class="ot">:</span> <span class="dt">Razor</span>               g  (<span class="dt">TyTuple</span> types))</span>
+<span id="cb13-20"><a href="#cb13-20"></a>       <span class="ot">-&gt;</span> (body  <span class="ot">:</span> <span class="dt">Razor</span> (revAdd types g) b)</span>
+<span id="cb13-21"><a href="#cb13-21"></a>                <span class="ot">-&gt;</span> <span class="dt">Razor</span>               g  b</span></code></pre></div>
+<p>By taking advantage of vectors we can define a safe projection constructor (<code>Proj</code>) that takes as an index a number known to be within the range represented by <code>[0,S n]</code>. The type of <code>Proj</code> can then reconstruct the type of the entry using a type-level application of vector’s <code>index</code> function.</p>
+<p>The destructor <code>Split</code> decomposes a tuple into its constituent elements i.e. pattern matching. When augmenting the type of the body of the split we need to add the types of the tupled to the body’s context. Here we use <code>revAdd : Vect n a -&gt; List a -&gt; List a</code> to ensure that the elements are added right to left to the existing context. Thus ensuring that the right most pattern is the last one added to the context.</p>
+<h3 id="examples-1">Examples</h3>
+<p>We can see tuples in action here:</p>
+<h4 id="definition">Definition</h4>
+<div class="sourceCode" id="cb14"><pre class="sourceCode idris"><code class="sourceCode idris"><span id="cb14-1"><a href="#cb14-1"></a><span class="fu">abc</span> <span class="ot">:</span> <span class="dt">Razor</span> <span class="dt">Nil</span> (<span class="dt">TyTuple</span> [<span class="dt">TyInt</span>, <span class="dt">TyChar</span>, <span class="dt">TyChar</span>])</span>
+<span id="cb14-2"><a href="#cb14-2"></a>abc <span class="fu">=</span> <span class="dt">MkTuple</span> (<span class="dt">Extend</span> (<span class="dt">I</span> <span class="dv">1</span>) (<span class="dt">Extend</span> (<span class="dt">C</span> <span class="ch">'c'</span>) (<span class="dt">Singleton</span> (<span class="dt">C</span> <span class="ch">'2'</span>))))</span></code></pre></div>
+<h4 id="projection">Projection</h4>
+<div class="sourceCode" id="cb15"><pre class="sourceCode idris"><code class="sourceCode idris"><span id="cb15-1"><a href="#cb15-1"></a><span class="fu">a</span> <span class="ot">:</span> <span class="dt">Razor</span> <span class="dt">Nil</span> (<span class="dt">TyInt</span>)</span>
+<span id="cb15-2"><a href="#cb15-2"></a>a <span class="fu">=</span> <span class="dt">Proj</span> abc <span class="dt">FZ</span></span>
+<span id="cb15-3"><a href="#cb15-3"></a></span>
+<span id="cb15-4"><a href="#cb15-4"></a><span class="fu">b</span> <span class="ot">:</span> <span class="dt">Razor</span> <span class="dt">Nil</span> (<span class="dt">TyChar</span>)</span>
+<span id="cb15-5"><a href="#cb15-5"></a>b <span class="fu">=</span> <span class="dt">Proj</span> abc (<span class="dt">FS</span> <span class="dt">FZ</span>)</span></code></pre></div>
+<h4 id="splitting">Splitting</h4>
+<div class="sourceCode" id="cb16"><pre class="sourceCode idris"><code class="sourceCode idris"><span id="cb16-1"><a href="#cb16-1"></a><span class="fu">cba</span> <span class="ot">:</span> <span class="dt">Razor</span> <span class="dt">Nil</span> (<span class="dt">TyTuple</span> [<span class="dt">TyChar</span>, <span class="dt">TyChar</span>, <span class="dt">TyInt</span>])</span>
+<span id="cb16-2"><a href="#cb16-2"></a>cba <span class="fu">=</span> <span class="dt">Split</span> abc (<span class="dt">MkTuple</span> (<span class="dt">Extend</span> (<span class="dt">Var</span> <span class="dt">Here</span>) (<span class="dt">Extend</span> (<span class="dt">Var</span> (<span class="dt">There</span> <span class="dt">Here</span>)) (<span class="dt">Singleton</span> (<span class="dt">Var</span> (<span class="dt">There</span> (<span class="dt">There</span> <span class="dt">Here</span>)))))))</span></code></pre></div>
+<p>Notice that the effect of the <code>revAdd</code> as the third entry in the tupled is accessed using <code>Var Here</code> (the most recent entry into the context) and the first entry as <code>Var (There (There Here))</code>—the third most recent entry.</p>
+<h2 id="the-recorded-razor">The Recorded Razor</h2>
+<p>We now turn our attention towards Records, also known as named Tuples. Unsurprisingly, how we represent records does not differ much from tuples. We need to provide accounting for names to support disambiguation between otherwise isomorphic structures. For example:</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode idris"><code class="sourceCode idris"><span id="cb17-1"><a href="#cb17-1"></a><span class="kw">record</span> <span class="dt">PairIC</span> <span class="kw">where</span></span>
+<span id="cb17-2"><a href="#cb17-2"></a>  <span class="kw">constructor</span> <span class="dt">MkPair</span></span>
+<span id="cb17-3"><a href="#cb17-3"></a>  <span class="fu">first</span> <span class="ot">:</span> <span class="dt">Int</span></span>
+<span id="cb17-4"><a href="#cb17-4"></a>  <span class="fu">second</span> <span class="ot">:</span> <span class="dt">Char</span></span></code></pre></div>
+<p>should be seen as different from:</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode idris"><code class="sourceCode idris"><span id="cb18-1"><a href="#cb18-1"></a><span class="kw">record</span> <span class="dt">ICPair</span> <span class="kw">where</span></span>
+<span id="cb18-2"><a href="#cb18-2"></a>  <span class="kw">constructor</span> <span class="dt">MkPair</span></span>
+<span id="cb18-3"><a href="#cb18-3"></a>  <span class="fu">getInt</span> <span class="ot">:</span> <span class="dt">Int</span></span>
+<span id="cb18-4"><a href="#cb18-4"></a>  <span class="fu">getChar</span> <span class="ot">:</span> <span class="dt">Char</span></span></code></pre></div>
+<h3 id="types-2">Types</h3>
+<p>Records are named tuples. When extending our set of types we need to record both the name and the type of at least one entry. Again vectors help.</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode idris"><code class="sourceCode idris"><span id="cb19-1"><a href="#cb19-1"></a><span class="kw">data</span> <span class="dt">Ty</span> <span class="fu">=</span> <span class="dt">TyInt</span> <span class="fu">|</span> <span class="dt">TyChar</span></span>
+<span id="cb19-2"><a href="#cb19-2"></a>        <span class="fu">|</span> <span class="dt">TyRecord</span> (<span class="dt">Vect</span> (<span class="dt">S</span> n) (<span class="dt">Pair</span> <span class="dt">String</span> <span class="dt">Ty</span>))</span></code></pre></div>
+<p>Note that by using a vector we provide no guarantees that the set of labels is actually a set. Use of a set-like structure would improve the robustness of record definition.</p>
+<h3 id="syntax-and-static-semantics.">Syntax and Static Semantics.</h3>
+<p>Similar to our definition of tuples, we provide a helper data structure to collect the structure’s entries. This time we ensure that both a label and a type are collected. This is <code>RazorR</code>.</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode idris"><code class="sourceCode idris"><span id="cb20-1"><a href="#cb20-1"></a><span class="kw">data</span> <span class="dt">RazorR</span> <span class="ot">:</span> <span class="dt">List</span> <span class="dt">Ty</span> <span class="ot">-&gt;</span> <span class="dt">Vect</span> (<span class="dt">S</span> n) (<span class="dt">Pair</span> <span class="dt">String</span> <span class="dt">Ty</span>) <span class="ot">-&gt;</span> <span class="dt">Type</span> <span class="kw">where</span></span>
+<span id="cb20-2"><a href="#cb20-2"></a>  <span class="dt">Singleton</span> <span class="ot">:</span> (label <span class="ot">:</span> <span class="dt">String</span>)</span>
+<span id="cb20-3"><a href="#cb20-3"></a>           <span class="ot">-&gt;</span> (value <span class="ot">:</span> <span class="dt">Razor</span>  g ty)</span>
+<span id="cb20-4"><a href="#cb20-4"></a>                   <span class="ot">-&gt;</span>  <span class="dt">RazorR</span> g [(label, ty)]</span>
+<span id="cb20-5"><a href="#cb20-5"></a>  <span class="dt">Extend</span> <span class="ot">:</span> (label <span class="ot">:</span> <span class="dt">String</span>)</span>
+<span id="cb20-6"><a href="#cb20-6"></a>        <span class="ot">-&gt;</span> (value <span class="ot">:</span> <span class="dt">Razor</span>  g          ty)</span>
+<span id="cb20-7"><a href="#cb20-7"></a>        <span class="ot">-&gt;</span> (rest  <span class="ot">:</span> <span class="dt">RazorR</span> g                 kvs)</span>
+<span id="cb20-8"><a href="#cb20-8"></a>                 <span class="ot">-&gt;</span> <span class="dt">RazorR</span> g ((label, ty) <span class="ot">::</span> kvs)</span></code></pre></div>
+<p>Much with the definition of <code>Tuple</code> we can replace <code>RazorR</code> with a better data structure.</p>
+<p>Unsurprisingly, describing record, construction (<code>MkRecord</code>), destruction (<code>Split</code>), and projection (<code>Proj</code>) follows that for tuples. The data constructor <code>MkRecord</code> creates records using <code>RazorR</code>, and <code>Split</code> deconstructs records ensuring that the constituent components are available for a given body. The type-level function, <code>revAdd</code> is replaced with <code>revAdd' : Vect n (String, a) -&gt; List a -&gt; List a</code>. Projection of records using <code>Proj</code> differs slightly (is simpler) by using existential quantification of the label and type directly to find the corresponding type.</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode idris"><code class="sourceCode idris"><span id="cb21-1"><a href="#cb21-1"></a><span class="kw">data</span> <span class="dt">Razor</span> <span class="ot">:</span> <span class="dt">List</span> <span class="dt">Ty</span> <span class="ot">-&gt;</span> <span class="dt">Ty</span> <span class="ot">-&gt;</span> <span class="dt">Type</span> <span class="kw">where</span></span>
+<span id="cb21-2"><a href="#cb21-2"></a>  <span class="dt">Var</span> <span class="ot">:</span> <span class="dt">Elem</span> ty g <span class="ot">-&gt;</span> <span class="dt">Razor</span> g ty</span>
+<span id="cb21-3"><a href="#cb21-3"></a></span>
+<span id="cb21-4"><a href="#cb21-4"></a>  <span class="dt">Let</span> <span class="ot">:</span> (this     <span class="ot">:</span> <span class="dt">Razor</span>        g  expr)</span>
+<span id="cb21-5"><a href="#cb21-5"></a>     <span class="ot">-&gt;</span> (beInThis <span class="ot">:</span> <span class="dt">Razor</span> (expr<span class="ot">::</span>g) body)</span>
+<span id="cb21-6"><a href="#cb21-6"></a>                 <span class="ot">-&gt;</span> <span class="dt">Razor</span>        g  body</span>
+<span id="cb21-7"><a href="#cb21-7"></a></span>
+<span id="cb21-8"><a href="#cb21-8"></a>  <span class="dt">I</span> <span class="ot">:</span> <span class="dt">Int</span>  <span class="ot">-&gt;</span> <span class="dt">Razor</span> g <span class="dt">TyInt</span></span>
+<span id="cb21-9"><a href="#cb21-9"></a>  <span class="dt">C</span> <span class="ot">:</span> <span class="dt">Char</span> <span class="ot">-&gt;</span> <span class="dt">Razor</span> g <span class="dt">TyChar</span></span>
+<span id="cb21-10"><a href="#cb21-10"></a></span>
+<span id="cb21-11"><a href="#cb21-11"></a>  <span class="dt">MkRecord</span> <span class="ot">:</span> (values <span class="ot">:</span> <span class="dt">RazorR</span> g           types)</span>
+<span id="cb21-12"><a href="#cb21-12"></a>                    <span class="ot">-&gt;</span> <span class="dt">Razor</span>  g (<span class="dt">TyRecord</span> types)</span>
+<span id="cb21-13"><a href="#cb21-13"></a></span>
+<span id="cb21-14"><a href="#cb21-14"></a>  <span class="dt">Proj</span> <span class="ot">:</span> {<span class="dv">0</span> types <span class="ot">:</span> <span class="dt">Vect</span> (<span class="dt">S</span> n) (<span class="dt">Pair</span> <span class="dt">String</span> <span class="dt">Ty</span>)}</span>
+<span id="cb21-15"><a href="#cb21-15"></a>      <span class="ot">-&gt;</span> (  rec   <span class="ot">:</span> <span class="dt">Razor</span> g (<span class="dt">TyRecord</span> types))</span>
+<span id="cb21-16"><a href="#cb21-16"></a>      <span class="ot">-&gt;</span> (  label <span class="ot">:</span> <span class="dt">String</span>)</span>
+<span id="cb21-17"><a href="#cb21-17"></a>      <span class="ot">-&gt;</span> (  idx   <span class="ot">:</span> <span class="dt">Elem</span> (label, type) types)</span>
+<span id="cb21-18"><a href="#cb21-18"></a>                 <span class="ot">-&gt;</span> <span class="dt">Razor</span> g type</span>
+<span id="cb21-19"><a href="#cb21-19"></a></span>
+<span id="cb21-20"><a href="#cb21-20"></a>  <span class="dt">Split</span> <span class="ot">:</span> (rec  <span class="ot">:</span> <span class="dt">Razor</span>                g  (<span class="dt">TyRecord</span> types))</span>
+<span id="cb21-21"><a href="#cb21-21"></a>       <span class="ot">-&gt;</span> (body <span class="ot">:</span> <span class="dt">Razor</span> (revAdd' types g) b)</span>
+<span id="cb21-22"><a href="#cb21-22"></a>               <span class="ot">-&gt;</span> <span class="dt">Razor</span>                g  b</span></code></pre></div>
+<p>Note that we assume in our record specification that each label is unique. The existential quantification for <code>Proj</code> will select the left-most label and type it finds. We could improve the definition of Record’s type with a <strong>set</strong> to provide guarantees over label uniqueness and leave that as an exercise.</p>
+<h4 id="examples-2">Examples</h4>
+<p>We can show records in action by recreating a simple pair data type as a record.</p>
+<h5 id="definition-1">Definition</h5>
+<p>First we define a record instance:</p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode idris"><code class="sourceCode idris"><span id="cb22-1"><a href="#cb22-1"></a><span class="fu">pairIC</span> <span class="ot">:</span> <span class="dt">Razor</span> <span class="dt">Nil</span> (<span class="dt">TyRecord</span> [(<span class="st">&quot;first&quot;</span>, <span class="dt">TyInt</span>), (<span class="st">&quot;second&quot;</span>, <span class="dt">TyChar</span>)])</span>
+<span id="cb22-2"><a href="#cb22-2"></a>pairIC <span class="fu">=</span> <span class="dt">MkRecord</span> (<span class="dt">Extend</span> <span class="st">&quot;first&quot;</span> (<span class="dt">I</span> <span class="dv">1</span>) (<span class="dt">Singleton</span> <span class="st">&quot;second&quot;</span> (<span class="dt">C</span> <span class="ch">'c'</span>)))</span></code></pre></div>
+<h5 id="projection-1">Projection</h5>
+<p>Then we can project the individual elements within <code>pairIC</code>:</p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode idris"><code class="sourceCode idris"><span id="cb23-1"><a href="#cb23-1"></a><span class="fu">i</span> <span class="ot">:</span> <span class="dt">Razor</span> <span class="dt">Nil</span> <span class="dt">TyInt</span></span>
+<span id="cb23-2"><a href="#cb23-2"></a>i <span class="fu">=</span> <span class="dt">Proj</span> pairIC <span class="st">&quot;first&quot;</span> <span class="dt">Here</span></span>
+<span id="cb23-3"><a href="#cb23-3"></a></span>
+<span id="cb23-4"><a href="#cb23-4"></a><span class="fu">c</span> <span class="ot">:</span> <span class="dt">Razor</span> <span class="dt">Nil</span> <span class="dt">TyChar</span></span>
+<span id="cb23-5"><a href="#cb23-5"></a>c <span class="fu">=</span> <span class="dt">Proj</span> pairIC <span class="st">&quot;second&quot;</span> (<span class="dt">There</span> <span class="dt">Here</span>)</span></code></pre></div>
+<h5 id="deconstruction">Deconstruction</h5>
+<p>Finally, we demonstrate deconstruction.</p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode idris"><code class="sourceCode idris"><span id="cb24-1"><a href="#cb24-1"></a><span class="fu">i'</span> <span class="ot">:</span> <span class="dt">Razor</span> <span class="dt">Nil</span> <span class="dt">TyInt</span></span>
+<span id="cb24-2"><a href="#cb24-2"></a>i' <span class="fu">=</span> <span class="dt">Split</span> pairIC (<span class="dt">Var</span> (<span class="dt">There</span> <span class="dt">Here</span>))</span>
+<span id="cb24-3"><a href="#cb24-3"></a></span>
+<span id="cb24-4"><a href="#cb24-4"></a><span class="fu">c'</span> <span class="ot">:</span> <span class="dt">Razor</span> <span class="dt">Nil</span> <span class="dt">TyChar</span></span>
+<span id="cb24-5"><a href="#cb24-5"></a>c' <span class="fu">=</span> <span class="dt">Split</span> pairIC (<span class="dt">Var</span> (<span class="dt">Here</span>))</span></code></pre></div>
+<h2 id="unique-non-unique-razor-variants">Unique + Non-Unique Razor Variants</h2>
+<p>We end this post by looking at two ways to encode variant structures. The first will be a normal encoding supporting undecided types, and the second will allow for unique types to be given. Remember that variants are generalised sums that allow for at least one value to be contained.</p>
+<h3 id="non-unique-variants">Non-Unique Variants,</h3>
+<p>We begin by looking at non-unique variants.</p>
+<h4 id="types-3">Types</h4>
+<p>Similar to records, variant types must account for at least one set of labelled values. What differs is how we treat the values. Thus the type for variants is the same (aside from different data constructor) as for records:</p>
+<div class="sourceCode" id="cb25"><pre class="sourceCode idris"><code class="sourceCode idris"><span id="cb25-1"><a href="#cb25-1"></a><span class="kw">data</span> <span class="dt">Ty</span> <span class="fu">=</span> <span class="dt">TyInt</span> <span class="fu">|</span> <span class="dt">TyChar</span></span>
+<span id="cb25-2"><a href="#cb25-2"></a>        <span class="fu">|</span> <span class="dt">TyVariant</span> (<span class="dt">Vect</span> (<span class="dt">S</span> n) (<span class="dt">Pair</span> <span class="dt">String</span> <span class="dt">Ty</span>))</span></code></pre></div>
+<p>Like records our formulation of variants doesn’t assume label uniqueness.</p>
+<h4 id="syntax-static-semantics-1">Syntax &amp; Static Semantics</h4>
+<p>With records, construction was about pairing a set of values together. With variants construction is about selecting a value to include. We represent variants as follows:</p>
+<div class="sourceCode" id="cb26"><pre class="sourceCode idris"><code class="sourceCode idris"><span id="cb26-1"><a href="#cb26-1"></a><span class="kw">data</span> <span class="dt">Razor</span> <span class="ot">:</span> <span class="dt">List</span> <span class="dt">Ty</span> <span class="ot">-&gt;</span> <span class="dt">Ty</span> <span class="ot">-&gt;</span> <span class="dt">Type</span> <span class="kw">where</span></span>
+<span id="cb26-2"><a href="#cb26-2"></a>  <span class="dt">Var</span> <span class="ot">:</span> <span class="dt">Elem</span> ty g <span class="ot">-&gt;</span> <span class="dt">Razor</span> g ty</span>
+<span id="cb26-3"><a href="#cb26-3"></a></span>
+<span id="cb26-4"><a href="#cb26-4"></a>  <span class="dt">Let</span> <span class="ot">:</span> (this     <span class="ot">:</span> <span class="dt">Razor</span>        g  expr)</span>
+<span id="cb26-5"><a href="#cb26-5"></a>     <span class="ot">-&gt;</span> (beInThis <span class="ot">:</span> <span class="dt">Razor</span> (expr<span class="ot">::</span>g) body)</span>
+<span id="cb26-6"><a href="#cb26-6"></a>                 <span class="ot">-&gt;</span> <span class="dt">Razor</span>        g  body</span>
+<span id="cb26-7"><a href="#cb26-7"></a></span>
+<span id="cb26-8"><a href="#cb26-8"></a>  <span class="dt">I</span> <span class="ot">:</span> <span class="dt">Int</span> <span class="ot">-&gt;</span> <span class="dt">Razor</span> g <span class="dt">TyInt</span></span>
+<span id="cb26-9"><a href="#cb26-9"></a>  <span class="dt">C</span> <span class="ot">:</span> <span class="dt">Char</span> <span class="ot">-&gt;</span> <span class="dt">Razor</span> g <span class="dt">TyChar</span></span>
+<span id="cb26-10"><a href="#cb26-10"></a></span>
+<span id="cb26-11"><a href="#cb26-11"></a>  <span class="dt">Tag</span> <span class="ot">:</span> (label <span class="ot">:</span> <span class="dt">String</span>)</span>
+<span id="cb26-12"><a href="#cb26-12"></a>     <span class="ot">-&gt;</span> (value <span class="ot">:</span> <span class="dt">Razor</span> g      ty)</span>
+<span id="cb26-13"><a href="#cb26-13"></a>     <span class="ot">-&gt;</span> (prf   <span class="ot">:</span> <span class="dt">Elem</span> (label, ty)   kvs)</span>
+<span id="cb26-14"><a href="#cb26-14"></a>              <span class="ot">-&gt;</span> <span class="dt">Razor</span> g (<span class="dt">TyVariant</span> kvs)</span>
+<span id="cb26-15"><a href="#cb26-15"></a></span>
+<span id="cb26-16"><a href="#cb26-16"></a>  <span class="dt">Match</span> <span class="ot">:</span> (value <span class="ot">:</span> <span class="dt">Razor</span>  g (<span class="dt">TyVariant</span> kvs))</span>
+<span id="cb26-17"><a href="#cb26-17"></a>       <span class="ot">-&gt;</span> (cases <span class="ot">:</span> <span class="dt">RazorC</span> g            kvs b)</span>
+<span id="cb26-18"><a href="#cb26-18"></a>                <span class="ot">-&gt;</span> <span class="dt">Razor</span>  g                b</span></code></pre></div>
+<p>Variants are constructed using <code>Tag</code> which when given a valid label will associate the value with said label. Of interest here is <code>Match</code>. Analogous to records and tuples in which we had to collect all fields/entries as these structures pair data together, we must provide a way to examine (discriminate) each valid case in the variant. We do so using <code>RazorC</code>, which we define as:</p>
+<div class="sourceCode" id="cb27"><pre class="sourceCode idris"><code class="sourceCode idris"><span id="cb27-1"><a href="#cb27-1"></a><span class="kw">data</span> <span class="dt">RazorC</span> <span class="ot">:</span> <span class="dt">List</span> <span class="dt">Ty</span> <span class="ot">-&gt;</span> <span class="dt">Vect</span> (<span class="dt">S</span> n) (<span class="dt">Pair</span> <span class="dt">String</span> <span class="dt">Ty</span>) <span class="ot">-&gt;</span> <span class="dt">Ty</span> <span class="ot">-&gt;</span> <span class="dt">Type</span> <span class="kw">where</span></span>
+<span id="cb27-2"><a href="#cb27-2"></a>  <span class="dt">Singleton</span> <span class="ot">:</span> (branch <span class="ot">:</span> <span class="dt">Razor</span>  (ty<span class="ot">::</span>g)              b)</span>
+<span id="cb27-3"><a href="#cb27-3"></a>                     <span class="ot">-&gt;</span> <span class="dt">RazorC</span>      g [(label, ty)] b</span>
+<span id="cb27-4"><a href="#cb27-4"></a></span>
+<span id="cb27-5"><a href="#cb27-5"></a>  <span class="dt">Extend</span> <span class="ot">:</span> (branch <span class="ot">:</span> <span class="dt">Razor</span>  (ty<span class="ot">::</span>g)                     b)</span>
+<span id="cb27-6"><a href="#cb27-6"></a>        <span class="ot">-&gt;</span> (rest   <span class="ot">:</span> <span class="dt">RazorC</span>      g                 kvs  b)</span>
+<span id="cb27-7"><a href="#cb27-7"></a>                  <span class="ot">-&gt;</span> <span class="dt">RazorC</span>      g ((label, ty) <span class="ot">::</span> kvs) b</span></code></pre></div>
+<p>The type of <code>RazorC</code> is parameterised by:</p>
+<ol type="1">
+<li>the current typing context;</li>
+<li>the list of possible cases; and</li>
+<li>the type of body associated with each possible case.</li>
+</ol>
+<p>Note that each body must have the same type. As with our definitions for <code>RazorR</code> and <code>RazorT</code> the right-most case is the last case in the variant and we build up the ‘patterns’ by extending to the left. For each body associated with a case we ensure that the environment is extended by the appropriate value.</p>
+<h4 id="examples-3">Examples</h4>
+<p>With this definition we can now provide some examples demonstrating use of variants.</p>
+<h5 id="construction">Construction</h5>
+<p>Here we construct a variant containing an int or a char.</p>
+<div class="sourceCode" id="cb28"><pre class="sourceCode idris"><code class="sourceCode idris"><span id="cb28-1"><a href="#cb28-1"></a><span class="fu">ici</span> <span class="ot">:</span> <span class="dt">Razor</span> <span class="dt">Nil</span> (<span class="dt">TyVariant</span> [(<span class="st">&quot;int&quot;</span>, <span class="dt">TyInt</span>), (<span class="st">&quot;char&quot;</span>, <span class="dt">TyChar</span>)])</span>
+<span id="cb28-2"><a href="#cb28-2"></a>ici <span class="fu">=</span> <span class="dt">Tag</span> <span class="st">&quot;int&quot;</span> (<span class="dt">I</span> <span class="dv">1</span>) <span class="dt">Here</span></span>
+<span id="cb28-3"><a href="#cb28-3"></a></span>
+<span id="cb28-4"><a href="#cb28-4"></a><span class="fu">icc</span> <span class="ot">:</span> <span class="dt">Razor</span> <span class="dt">Nil</span> (<span class="dt">TyVariant</span> [(<span class="st">&quot;int&quot;</span>, <span class="dt">TyInt</span>), (<span class="st">&quot;char&quot;</span>, <span class="dt">TyChar</span>)])</span>
+<span id="cb28-5"><a href="#cb28-5"></a>icc <span class="fu">=</span> <span class="dt">Tag</span> <span class="st">&quot;char&quot;</span> (<span class="dt">C</span> <span class="ch">'c'</span>) (<span class="dt">There</span> <span class="dt">Here</span>)</span></code></pre></div>
+<p>Notice that much like the original non-unique sum type definition each variant is statically typed.</p>
+<p>We can see the error more clearly when destructing variants.</p>
+<h5 id="destruction">Destruction</h5>
+<p>First we provide some working destructors:</p>
+<div class="sourceCode" id="cb29"><pre class="sourceCode idris"><code class="sourceCode idris"><span id="cb29-1"><a href="#cb29-1"></a><span class="fu">iciM</span> <span class="ot">:</span> <span class="dt">Razor</span> <span class="dt">Nil</span> <span class="dt">TyInt</span></span>
+<span id="cb29-2"><a href="#cb29-2"></a>iciM <span class="fu">=</span> <span class="dt">Match</span> ici (<span class="dt">Extend</span> (<span class="dt">Var</span> <span class="dt">Here</span>) (<span class="dt">Singleton</span> (<span class="dt">I</span> <span class="dv">2</span>)))</span>
+<span id="cb29-3"><a href="#cb29-3"></a></span>
+<span id="cb29-4"><a href="#cb29-4"></a><span class="fu">iccM</span> <span class="ot">:</span> <span class="dt">Razor</span> <span class="dt">Nil</span> <span class="dt">TyInt</span></span>
+<span id="cb29-5"><a href="#cb29-5"></a>iccM <span class="fu">=</span> <span class="dt">Match</span> icc (<span class="dt">Extend</span> (<span class="dt">Var</span> <span class="dt">Here</span>) (<span class="dt">Singleton</span> (<span class="dt">I</span> <span class="dv">2</span>)))</span></code></pre></div>
+<p>Here is a non-working example:</p>
+<div class="sourceCode" id="cb30"><pre class="sourceCode idris"><code class="sourceCode idris"><span id="cb30-1"><a href="#cb30-1"></a><span class="fu">fail</span> <span class="ot">:</span> <span class="dt">Razor</span> <span class="dt">Nil</span> <span class="dt">TyChar</span></span>
+<span id="cb30-2"><a href="#cb30-2"></a>fail <span class="fu">=</span> <span class="dt">Let</span> (<span class="dt">Tag</span> <span class="st">&quot;int&quot;</span> (<span class="dt">I</span> <span class="dv">1</span>) <span class="dt">Here</span>) (<span class="dt">Match</span> (<span class="dt">Var</span> <span class="dt">Here</span>) (<span class="dt">Extend</span> (<span class="dt">C</span> <span class="ch">'c'</span>) (<span class="dt">Singleton</span> (<span class="dt">C</span> <span class="ch">'c'</span>))))</span></code></pre></div>
+<p>that causes Idris2 to complain with:</p>
+<pre><code>ADT.idr:238:74--238:91:Unsolved holes:
+ADT.Variants.Example.{label:5351} introduced at ADT.idr:238:74--238:91
+ADT.Variants.Example.{ty:5353} introduced at ADT.idr:238:74--238:91</code></pre>
+<p>So we need to make these variants unique!</p>
+<h3 id="unique-variants">Unique Variants</h3>
+<p>For unique variants we need to remind ourselves about how records and variants differ. Records/tuples have a structure that can be computed from <em>just</em> it’s values, with unqiue variants we need to know the whole structure prior to constructor. Thus, as in Software Foundations, we need to be able to <strong>declare</strong> our variants prior to use. That is we need to introduce data type declarations.</p>
+<p>Using our chosen Razor, adding such declarations is straightforward. We extend the set of types with a new type, the type for variants:</p>
+<div class="sourceCode" id="cb32"><pre class="sourceCode idris"><code class="sourceCode idris"><span id="cb32-1"><a href="#cb32-1"></a><span class="kw">data</span> <span class="dt">Ty</span> <span class="fu">=</span> <span class="dt">TyInt</span> <span class="fu">|</span> <span class="dt">TyChar</span></span>
+<span id="cb32-2"><a href="#cb32-2"></a>        <span class="fu">|</span> <span class="dt">TyVariant</span> (<span class="dt">Vect</span> (<span class="dt">S</span> n) (<span class="dt">Pair</span> <span class="dt">String</span> <span class="dt">Ty</span>))</span>
+<span id="cb32-3"><a href="#cb32-3"></a>        <span class="fu">|</span> <span class="dt">TyVariantDecl</span></span></code></pre></div>
+<p>and extend the syntax to include:</p>
+<ol type="1">
+<li>the variant type construction <code>Variant</code> in which we list or fields and types; and</li>
+<li>an extended <code>Tag</code> constructor to incorporate the required ascription.</li>
+</ol>
+<p>Matching remains unchanged.</p>
+<div class="sourceCode" id="cb33"><pre class="sourceCode idris"><code class="sourceCode idris"><span id="cb33-1"><a href="#cb33-1"></a>  <span class="dt">Variant</span> <span class="ot">:</span> (kvs <span class="ot">:</span> <span class="dt">Vect</span> (<span class="dt">S</span> n) (<span class="dt">Pair</span> <span class="dt">String</span> <span class="dt">Ty</span>))</span>
+<span id="cb33-2"><a href="#cb33-2"></a>                <span class="ot">-&gt;</span> <span class="dt">Razor</span> g (<span class="dt">TyVariantDecl</span> kvs)</span>
+<span id="cb33-3"><a href="#cb33-3"></a></span>
+<span id="cb33-4"><a href="#cb33-4"></a>  <span class="dt">Tag</span> <span class="ot">:</span> (label <span class="ot">:</span> <span class="dt">String</span>)</span>
+<span id="cb33-5"><a href="#cb33-5"></a>     <span class="ot">-&gt;</span> (value <span class="ot">:</span> <span class="dt">Razor</span> g ty)</span>
+<span id="cb33-6"><a href="#cb33-6"></a>     <span class="ot">-&gt;</span> (type  <span class="ot">:</span> <span class="dt">Razor</span> g (<span class="dt">TyVariantDecl</span>))</span>
+<span id="cb33-7"><a href="#cb33-7"></a>     <span class="ot">-&gt;</span> (prf   <span class="ot">:</span> <span class="dt">Elem</span> (label, ty) kvs)</span>
+<span id="cb33-8"><a href="#cb33-8"></a>              <span class="ot">-&gt;</span> <span class="dt">Razor</span> g (<span class="dt">TyVariant</span> kvs)</span></code></pre></div>
+<p>Done! Job’s a good’n or is it… There are two problems with this approach:</p>
+<ol type="1">
+<li>Variant declarations cannot included other variant declarations or other declarations we chose to include in the Razor; and</li>
+<li>The ascription does not intrinsically link the data declaration and data instantiation.</li>
+</ol>
+<p>To do so we need to be able to differentiate between different levels of types. That is the types we use to describe values are different to types that describe the types that describe values.</p>
+<h4 id="types-4">Types</h4>
+<p>We begin by describing the two levels which we call <code>Zero</code> the highest level we use to describing data types, and <code>One</code> the next level down which we use to describe values.</p>
+<div class="sourceCode" id="cb34"><pre class="sourceCode idris"><code class="sourceCode idris"><span id="cb34-1"><a href="#cb34-1"></a><span class="kw">data</span> <span class="dt">Level</span> <span class="fu">=</span> <span class="dt">Zero</span> <span class="fu">|</span> <span class="dt">One</span></span></code></pre></div>
+<p>Using these levels, we can now begin to describe our types more accurately:</p>
+<div class="sourceCode" id="cb35"><pre class="sourceCode idris"><code class="sourceCode idris"><span id="cb35-1"><a href="#cb35-1"></a><span class="kw">data</span> <span class="dt">Ty</span> <span class="ot">:</span> <span class="dt">Level</span> <span class="ot">-&gt;</span> <span class="dt">Type</span> <span class="kw">where</span></span>
+<span id="cb35-2"><a href="#cb35-2"></a>  <span class="dt">TyInt</span>  <span class="ot">:</span> <span class="dt">Ty</span> <span class="dt">One</span></span>
+<span id="cb35-3"><a href="#cb35-3"></a>  <span class="dt">TyChar</span> <span class="ot">:</span> <span class="dt">Ty</span> <span class="dt">One</span></span>
+<span id="cb35-4"><a href="#cb35-4"></a>  <span class="dt">TyVariant</span> <span class="ot">:</span> (fields <span class="ot">:</span> <span class="dt">Vect</span> (<span class="dt">S</span> n) (<span class="dt">Pair</span> <span class="dt">String</span> (<span class="dt">Ty</span> <span class="dt">One</span>))) <span class="ot">-&gt;</span> <span class="dt">Ty</span> <span class="dt">One</span></span>
+<span id="cb35-5"><a href="#cb35-5"></a></span>
+<span id="cb35-6"><a href="#cb35-6"></a>  <span class="dt">TyVariantDecl</span> <span class="ot">:</span> (fields <span class="ot">:</span> <span class="dt">Vect</span> (<span class="dt">S</span> n) (<span class="dt">Pair</span> <span class="dt">String</span> (<span class="dt">Ty</span> <span class="dt">One</span>))) <span class="ot">-&gt;</span> <span class="dt">Ty</span> <span class="dt">Zero</span></span></code></pre></div>
+<p>The type constructor <code>TyVariant</code> describes variant values and is such at level <code>One</code> and contains the list of fields and their level one types. This is expected. The type constructor <code>TyVariantDecl</code> is for describing variant types, this it is at level <code>Zero</code>. However, we need to ensure that we can structurally type-check variant values against variant types. Thus we also require a list of fields and their corresponding types.</p>
+<p>If we were constructring a regular compiler this correspondence wouldn’t necessarily be required as we can manually inspect the corresponding syntax for <code>TyVariantDecl</code>.</p>
+<h4 id="syntax-static-semantics-2">Syntax &amp; Static Semantics</h4>
+<p>Before we can introduce syntax and semantics, we need to rethink our Razor. The type for types is now dependent on a value. As with <code>RazorT</code> and <code>RazorR</code> we need a way to collect dependently typed values. Naturally, I would use the <code>All</code> quantifier (or really my own <code>DList</code> variant), however, here we will use a custom data structure to rethink our context and provide existential quantification.</p>
+<h5 id="contexts">Contexts</h5>
+<p>Contexts require us to collect the levels and the types.</p>
+<div class="sourceCode" id="cb36"><pre class="sourceCode idris"><code class="sourceCode idris"><span id="cb36-1"><a href="#cb36-1"></a><span class="kw">data</span> <span class="dt">Context</span> <span class="ot">:</span> <span class="dt">List</span> <span class="dt">Level</span> <span class="ot">-&gt;</span> <span class="dt">Type</span> <span class="kw">where</span></span>
+<span id="cb36-2"><a href="#cb36-2"></a>  <span class="dt">Nil</span>  <span class="ot">:</span> <span class="dt">Context</span> <span class="dt">Nil</span></span>
+<span id="cb36-3"><a href="#cb36-3"></a>  <span class="fu">(::)</span> <span class="ot">:</span> (type <span class="ot">:</span> <span class="dt">Ty</span> lvl) <span class="ot">-&gt;</span> (rest <span class="ot">:</span> <span class="dt">Context</span> lvls) <span class="ot">-&gt;</span> <span class="dt">Context</span> (lvl<span class="ot">::</span>lvls)</span></code></pre></div>
+<p>Existential quantification requires us to find the first instance of a value:</p>
+<div class="sourceCode" id="cb37"><pre class="sourceCode idris"><code class="sourceCode idris"><span id="cb37-1"><a href="#cb37-1"></a><span class="kw">data</span> <span class="dt">Elem</span> <span class="ot">:</span> (type <span class="ot">:</span> <span class="dt">Ty</span> lvl) <span class="ot">-&gt;</span> (ctxt <span class="ot">:</span> <span class="dt">Context</span> lvls) <span class="ot">-&gt;</span> <span class="dt">Type</span> <span class="kw">where</span></span>
+<span id="cb37-2"><a href="#cb37-2"></a>  <span class="dt">Here</span> <span class="ot">:</span> <span class="dt">Elem</span> type (type<span class="ot">::</span>rest)</span>
+<span id="cb37-3"><a href="#cb37-3"></a>  <span class="dt">There</span> <span class="ot">:</span> (later <span class="ot">:</span> <span class="dt">Elem</span> type         rest)</span>
+<span id="cb37-4"><a href="#cb37-4"></a>                <span class="ot">-&gt;</span> <span class="dt">Elem</span> type' (type<span class="ot">::</span>rest)</span></code></pre></div>
+<h5 id="helper-structures">Helper structures</h5>
+<p>Before we present the syntax we need some helper structures. To describe variants we need to collect label type pairings, however, we cannot just bundle this as a pair. We need to ensure that our label type pairing is either a pairing to an irreducible data type, or one that could be previously declared and bound to a name.</p>
+<div class="sourceCode" id="cb38"><pre class="sourceCode idris"><code class="sourceCode idris"><span id="cb38-1"><a href="#cb38-1"></a><span class="kw">data</span> <span class="dt">RazorField</span> <span class="ot">:</span> <span class="dt">Context</span> lvls <span class="ot">-&gt;</span> <span class="dt">String</span> <span class="ot">-&gt;</span> <span class="dt">Ty</span> <span class="dt">One</span> <span class="ot">-&gt;</span> <span class="dt">Type</span> <span class="kw">where</span></span>
+<span id="cb38-2"><a href="#cb38-2"></a>   <span class="dt">PrimField</span> <span class="ot">:</span> (label <span class="ot">:</span> <span class="dt">String</span>)</span>
+<span id="cb38-3"><a href="#cb38-3"></a>            <span class="ot">-&gt;</span> (type  <span class="ot">:</span> <span class="dt">Ty</span> <span class="dt">One</span>)</span>
+<span id="cb38-4"><a href="#cb38-4"></a>                    <span class="ot">-&gt;</span> <span class="dt">RazorField</span> g label type</span>
+<span id="cb38-5"><a href="#cb38-5"></a></span>
+<span id="cb38-6"><a href="#cb38-6"></a>   <span class="dt">ComplexField</span> <span class="ot">:</span> (label <span class="ot">:</span> <span class="dt">String</span>)</span>
+<span id="cb38-7"><a href="#cb38-7"></a>               <span class="ot">-&gt;</span> (type  <span class="ot">:</span> <span class="dt">Razor</span>      g       ty)</span>
+<span id="cb38-8"><a href="#cb38-8"></a>                        <span class="ot">-&gt;</span> <span class="dt">RazorField</span> g label ty</span></code></pre></div>
+<p>An alternative formulation would be to encode this using a data type with a singular constructor and an <code>Either</code> type but I chose this construction for a bit more clarity and reduction of type-level computation.</p>
+<p>The data type <code>RazorField</code> describes a single field. We still need to collect the separate cases. Borrowing from how record values are constructed, we can collect fields using as collection. Here we have constructed a custom data type <code>RazorD</code> but <code>All</code> (or <code>DList</code>) are just as suitable.</p>
+<div class="sourceCode" id="cb39"><pre class="sourceCode idris"><code class="sourceCode idris"><span id="cb39-1"><a href="#cb39-1"></a><span class="kw">data</span> <span class="dt">RazorD</span> <span class="ot">:</span> <span class="dt">Context</span> lvls <span class="ot">-&gt;</span> <span class="dt">Vect</span> (<span class="dt">S</span> n) (<span class="dt">Pair</span> <span class="dt">String</span> (<span class="dt">Ty</span> <span class="dt">One</span>)) <span class="ot">-&gt;</span> <span class="dt">Type</span> <span class="kw">where</span></span>
+<span id="cb39-2"><a href="#cb39-2"></a>  <span class="dt">SingletonD</span> <span class="ot">:</span> (field <span class="ot">:</span> <span class="dt">RazorField</span> g   label  type)</span>
+<span id="cb39-3"><a href="#cb39-3"></a>                     <span class="ot">-&gt;</span> <span class="dt">RazorD</span>     g [(label, type)]</span>
+<span id="cb39-4"><a href="#cb39-4"></a></span>
+<span id="cb39-5"><a href="#cb39-5"></a>  <span class="dt">ExtendD</span> <span class="ot">:</span> (field <span class="ot">:</span> <span class="dt">RazorField</span> g   label  type)</span>
+<span id="cb39-6"><a href="#cb39-6"></a>         <span class="ot">-&gt;</span> (rest  <span class="ot">:</span> <span class="dt">RazorD</span>     g                 fields)</span>
+<span id="cb39-7"><a href="#cb39-7"></a>                  <span class="ot">-&gt;</span> <span class="dt">RazorD</span>     g ((label, type)<span class="ot">::</span>fields)</span></code></pre></div>
+<p>Notice that for both <code>RazorField</code> and <code>RazorD</code> we index both types with the current typing context.</p>
+<h5 id="syntax-static-semantics.">Syntax &amp; Static Semantics.</h5>
+<p>We can now use these helper data types to declare and construct intrinsically typed variant types</p>
+<div class="sourceCode" id="cb40"><pre class="sourceCode idris"><code class="sourceCode idris"><span id="cb40-1"><a href="#cb40-1"></a><span class="kw">data</span> <span class="dt">Razor</span> <span class="ot">:</span> <span class="dt">Context</span> lvls <span class="ot">-&gt;</span> <span class="dt">Ty</span> lvl <span class="ot">-&gt;</span> <span class="dt">Type</span> <span class="kw">where</span></span>
+<span id="cb40-2"><a href="#cb40-2"></a>  <span class="dt">Var</span> <span class="ot">:</span> <span class="dt">Elem</span> ty g <span class="ot">-&gt;</span> <span class="dt">Razor</span> g ty</span>
+<span id="cb40-3"><a href="#cb40-3"></a></span>
+<span id="cb40-4"><a href="#cb40-4"></a>  <span class="dt">Let</span> <span class="ot">:</span> (this     <span class="ot">:</span> <span class="dt">Razor</span>        g  expr)</span>
+<span id="cb40-5"><a href="#cb40-5"></a>     <span class="ot">-&gt;</span> (beInThis <span class="ot">:</span> <span class="dt">Razor</span> (expr<span class="ot">::</span>g) body)</span>
+<span id="cb40-6"><a href="#cb40-6"></a>                 <span class="ot">-&gt;</span> <span class="dt">Razor</span>        g  body</span>
+<span id="cb40-7"><a href="#cb40-7"></a></span>
+<span id="cb40-8"><a href="#cb40-8"></a>  <span class="dt">I</span> <span class="ot">:</span> <span class="dt">Int</span> <span class="ot">-&gt;</span> <span class="dt">Razor</span> g <span class="dt">TyInt</span></span>
+<span id="cb40-9"><a href="#cb40-9"></a>  <span class="dt">C</span> <span class="ot">:</span> <span class="dt">Char</span> <span class="ot">-&gt;</span> <span class="dt">Razor</span> g <span class="dt">TyChar</span></span>
+<span id="cb40-10"><a href="#cb40-10"></a></span>
+<span id="cb40-11"><a href="#cb40-11"></a>  <span class="dt">Variant</span> <span class="ot">:</span> (fields <span class="ot">:</span> <span class="dt">RazorD</span> g                kvs)</span>
+<span id="cb40-12"><a href="#cb40-12"></a>                   <span class="ot">-&gt;</span> <span class="dt">Razor</span>  g (<span class="dt">TyVariantDecl</span> kvs)</span>
+<span id="cb40-13"><a href="#cb40-13"></a></span>
+<span id="cb40-14"><a href="#cb40-14"></a>  <span class="dt">Tag</span> <span class="ot">:</span> (label <span class="ot">:</span> <span class="dt">String</span>)</span>
+<span id="cb40-15"><a href="#cb40-15"></a>     <span class="ot">-&gt;</span> (value <span class="ot">:</span> <span class="dt">Razor</span> g      ty)</span>
+<span id="cb40-16"><a href="#cb40-16"></a>     <span class="ot">-&gt;</span> (type  <span class="ot">:</span> <span class="dt">Razor</span> g          (<span class="dt">TyVariantDecl</span> kvs))</span>
+<span id="cb40-17"><a href="#cb40-17"></a>     <span class="ot">-&gt;</span> (prf   <span class="ot">:</span> <span class="dt">Elem</span> (label, ty)                kvs)</span>
+<span id="cb40-18"><a href="#cb40-18"></a>              <span class="ot">-&gt;</span> <span class="dt">Razor</span> g          (<span class="dt">TyVariant</span>     kvs)</span>
+<span id="cb40-19"><a href="#cb40-19"></a></span>
+<span id="cb40-20"><a href="#cb40-20"></a>  <span class="dt">Match</span> <span class="ot">:</span> (value <span class="ot">:</span> <span class="dt">Razor</span>  g (<span class="dt">TyVariant</span> kvs))</span>
+<span id="cb40-21"><a href="#cb40-21"></a>       <span class="ot">-&gt;</span> (cases <span class="ot">:</span> <span class="dt">RazorC</span> g            kvs b)</span>
+<span id="cb40-22"><a href="#cb40-22"></a>                <span class="ot">-&gt;</span> <span class="dt">Razor</span>  g                b</span></code></pre></div>
+<p>Much of our Razor stays as before, aside from changes to how contexts are defined. Here <code>RazorC</code> is the same definition as before.</p>
+<p>The data constructor <code>Variant</code> introduces variant type declarations and uses <code>RazorD</code> to ensure that its type has the correct structural description.</p>
+<p>The data constructor <code>Tag</code> introduces variant values with type-ascriptions. Notice that with how the types for declarations and values are presented we can intrinsically typecheck these variant values!</p>
+<p>Now the job is a good’n!</p>
+<h4 id="examples-4">Examples</h4>
+<p>We finish this tutorial with examples:</p>
+<h5 id="variant-declaration-and-instantiation">Variant Declaration and Instantiation</h5>
+<p>We begin with describing a variant type that contains either an int or char value, and use that type to construct a value containing an int using both a let bound definition and directly using Idris.</p>
+<div class="sourceCode" id="cb41"><pre class="sourceCode idris"><code class="sourceCode idris"><span id="cb41-1"><a href="#cb41-1"></a><span class="fu">iciTy</span> <span class="ot">:</span> <span class="dt">Razor</span> <span class="dt">Nil</span> (<span class="dt">TyVariantDecl</span> [(<span class="st">&quot;int&quot;</span>, <span class="dt">TyInt</span>), (<span class="st">&quot;char&quot;</span>, <span class="dt">TyChar</span>)])</span>
+<span id="cb41-2"><a href="#cb41-2"></a>iciTy <span class="fu">=</span> <span class="dt">Variant</span> (<span class="dt">ExtendD</span> (<span class="dt">PrimField</span> <span class="st">&quot;int&quot;</span> <span class="dt">TyInt</span>) (<span class="dt">SingletonD</span> (<span class="dt">PrimField</span> <span class="st">&quot;char&quot;</span> <span class="dt">TyChar</span>)))</span>
+<span id="cb41-3"><a href="#cb41-3"></a></span>
+<span id="cb41-4"><a href="#cb41-4"></a><span class="fu">icc</span> <span class="ot">:</span> <span class="dt">Razor</span> <span class="dt">Nil</span> (<span class="dt">TyVariant</span> [(<span class="st">&quot;int&quot;</span>, <span class="dt">TyInt</span>), (<span class="st">&quot;char&quot;</span>, <span class="dt">TyChar</span>)])</span>
+<span id="cb41-5"><a href="#cb41-5"></a>icc <span class="fu">=</span> <span class="dt">Let</span> iciTy <span class="fu">$</span> <span class="dt">Tag</span> <span class="st">&quot;char&quot;</span> (<span class="dt">C</span> <span class="ch">'c'</span>) (<span class="dt">Var</span> <span class="dt">Here</span>) (<span class="dt">There</span> <span class="dt">Here</span>)</span>
+<span id="cb41-6"><a href="#cb41-6"></a></span>
+<span id="cb41-7"><a href="#cb41-7"></a><span class="fu">ici</span> <span class="ot">:</span> <span class="dt">Razor</span> <span class="dt">Nil</span> (<span class="dt">TyVariant</span> [(<span class="st">&quot;int&quot;</span>, <span class="dt">TyInt</span>), (<span class="st">&quot;char&quot;</span>, <span class="dt">TyChar</span>)])</span>
+<span id="cb41-8"><a href="#cb41-8"></a>ici <span class="fu">=</span> <span class="dt">Tag</span> <span class="st">&quot;int&quot;</span> (<span class="dt">I</span> <span class="dv">1</span>) iciTy <span class="dt">Here</span></span></code></pre></div>
+<h5 id="matching">Matching</h5>
+<p>Matching follows as before.</p>
+<div class="sourceCode" id="cb42"><pre class="sourceCode idris"><code class="sourceCode idris"><span id="cb42-1"><a href="#cb42-1"></a><span class="fu">iciM</span> <span class="ot">:</span> <span class="dt">Razor</span> <span class="dt">Nil</span> <span class="dt">TyInt</span></span>
+<span id="cb42-2"><a href="#cb42-2"></a>iciM <span class="fu">=</span> <span class="dt">Match</span> ici (<span class="dt">Extend</span> (<span class="dt">Var</span> <span class="dt">Here</span>) (<span class="dt">Singleton</span> (<span class="dt">I</span> <span class="dv">2</span>)))</span>
+<span id="cb42-3"><a href="#cb42-3"></a></span>
+<span id="cb42-4"><a href="#cb42-4"></a><span class="fu">iccM</span> <span class="ot">:</span> <span class="dt">Razor</span> <span class="dt">Nil</span> <span class="dt">TyInt</span></span>
+<span id="cb42-5"><a href="#cb42-5"></a>iccM <span class="fu">=</span> <span class="dt">Match</span> icc (<span class="dt">Extend</span> (<span class="dt">Var</span> <span class="dt">Here</span>) (<span class="dt">Singleton</span> (<span class="dt">I</span> <span class="dv">2</span>)))</span></code></pre></div>
+<h2 id="coda">Coda</h2>
+<p>In this post we:</p>
+<ol type="1">
+<li>have looked at how we can construct intrinsically typed data structures for an EDSL in the Idris(2) programming language; and</li>
+<li>detailed an approach to preserve the uniques of variant types.</li>
+</ol>
+<p>I do not believe that these techniques are new nor novel. We borrow existing ideas such as type-levels and use them to our advantage. Hopefully, someone will see this post and get something from it.</p>
+<h2 id="where-next">Where next…</h2>
+<p>We have describe rather straightforward data types. Future exploration would be to investigate:</p>
+<ol type="1">
+<li><a href="https://en.wikipedia.org/wiki/Algebraic_data_type">algebraic data types</a> using a singular representation and a singular pattern matching term. Algebraic data types are <em>disjunctions of conjunctions</em> combining how I’ve represented variants and adding tuples to the field declaration for each case. Note that we cannot expect to use tuples separately <em>and</em> as fields as this is not true to how such data type declarations work. Each individual field is not projectionable;</li>
+<li>kinding because why not;</li>
+<li>polymorphic type because why not; and</li>
+<li>recursive data types because of the trees and lists.</li>
+</ol>
+<p>These provide interesting enough structures to investigate how to reason about them in as part of an EDSL formulation, and get me to reading <a href="https://doi.org/10.1007/978-3-030-33636-3_10">some interesting work in formulising System F in Agda</a>.</p>
+<p>Another direction would be to look at a more generic simpler powerful representation of data types as found in Idris’ core language TT. This representation is <a href="https://ncatlab.org/nlab/show/inductive+family">inductive families</a>, and will require <a href="https://doi.org/10.1017/S0956796803004829">dependent pattern matching</a>. However, I have yet to find time to grok the canonical references (or beginners tutorials) as to how this works in the first place before I attempt it… I have a back log of references from Idris’ journal paper to read about this…and shows gaps in my understanding of dependent type theory and practice…</p>
+
+              </div>
+            </main>
+          </div>
+        </div>
+      </div>
+      <!-- ====================================================
+           Footer
+           ====================================================
+        -->
+      <footer class="footer">
+          <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">
+            <img alt="Creative Commons Licence" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/80x15.png" />
+          </a>
+          <span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Dataset" property="dct:title" rel="dct:type">jfdm.github.io</span> by <a xmlns:cc="http://creativecommons.org/ns#" href="http://jfdm.github.io/" property="cc:attributionName" rel="cc:attributionURL">Jan de Muijnck-Hughes</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.
+            Site proudly generated by
+<a href="http://jaspervdj.be/hakyll">Hakyll</a> and <a href="https://github.com/commercialhaskell/stack">Stack</a>, and hosted on <a href="http://github.com/jfdm/jfdm.github.io">GitHub</a>
+      </footer>
+
+
+   <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+      <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+    </body>
+</html>

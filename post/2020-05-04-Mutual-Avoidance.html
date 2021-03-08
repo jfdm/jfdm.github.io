@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>Mutual Avoidance</title>
+
+    <!--
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,400;0,700;1,400;1,700&family=Montserrat:ital,wght@0,400;0,700;1,400;1,700&family=Raleway:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+      rel="stylesheet">
+    -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+    <!-- Custom styles for this template -->
+    <link rel="stylesheet" href="../css/main.css" media="all" />
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+      <![endif]-->
+
+    </head>
+    <body>
+      <header>
+      <nav class="navbar navbar-expand-md navbar-fixed-top navbar-dark bg-dark bg-jfdm">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+            <a class="navbar-brand" href="../index.html">Jan de Muijnck-Hughes</a>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+              <ul class="navbar-nav justify-content-center">
+                <li class="nav-item"> <a class="nav-link" href="../research.html">Research</a></li>
+                <li class="nav-item"> <a class="nav-link" href="../professional.html">Activities</a></li>
+                <li class="nav-item"> <a class="nav-link" href="../publications.html">Publications</a></li>
+                <li class="nav-item"> <a class="nav-link" href="../talks.html">Talks</a></li>
+                <li class="nav-item"> <a class="nav-link" href="../teaching.html">Teaching</a></li>
+                <li class="nav-item"> <a class="nav-link" href="../contact.html">Contact</a></li>
+                <li class="nav-item"> <a class="nav-link" href="../posts.html">Blog</a></li>
+              </ul>
+            </div>
+      </nav>
+      </header>
+      <div class="container-fluid">
+        <div class="row">
+          <!-- ====================================================
+               Sidebar
+               ====================================================
+            -->
+          <div class="col-md-3 bg-light sidebar">
+            <div class="profile-sidebar">
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title">Jan de Muijnck-Hughes</h5>
+                  <p class="card-text">Research Associate, School of Computing, University of Glasgow.</p>
+
+                  <nav class="navbar navbar-expand-md">
+                    <button class="navbar-toggler btn btn-outline-dark btn-sm" type="button" data-toggle="collapse" data-target="#navbarNavDropdown1" aria-controls="navbarNavDropdown1" aria-expanded="false" aria-label="Toggle navigation">
+                      Follow
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNavDropdown1">
+                      <ul class="navbar-nav flex-column">
+                        <li class="nav-item"><a class="nav-link" href="https://www.gla.ac.uk/schools/computing/staff/jandemuijnck-hughes/"><i class="fas fa-university"></i> University of Glasgow</a></li>
+                        <li class="nav-item"><a class="nav-link" href="https://www.github.com/jfdm"><i class="fab fa-github"></i> Github</a></li>
+                        <li class="nav-item"><a class="nav-link" href="https://www.twitter.com/jfdm"><i class="fab fa-twitter"></i> Twitter</a></li>
+                        <li class="nav-item"><a class="nav-link" href="https://scholar.google.com/citations?user=MoieSwcAAAAJ"><i class="fab fa-google"></i> Google Scholar</a></li>
+                        <li class="nav-item"><a class="nav-link" href="https://academic.microsoft.com/#/profile/jfdm"><i class="fab fa-microsoft"></i> Microsoft Academic</a></li>
+                        <li class="nav-item"><a class="nav-link" href="https://orcid.org/0000-0003-2185-8543"><i class="fas fa-scroll"></i> ORCID</a></li>
+                        <li class="nav-item"><a class="nav-link" href="https://dblp.org/pid/117/5494"><i class="fas fa-book"></i> DBLP</a></li>
+                      </ul>
+                    </div>
+                  </nav>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- ====================================================
+               Main
+               ====================================================
+            -->
+          <div class="col-md-9 bg-light">
+            <main role="main" class="container-fluid">
+              <div class="content">
+                <h1>Mutual Avoidance</h1>
+                <div class="card card-body mdata">
+  <p>
+Posted on May  4, 2020
+
+</p>
+
+  <p>
+
+  Categories: <a title="All pages tagged 'idris'." href="../tags/idris.html">idris</a>, <a title="All pages tagged 'dependent-types'." href="../tags/dependent-types.html">dependent-types</a>, <a title="All pages tagged 'tdd'." href="../tags/tdd.html">tdd</a>, <a title="All pages tagged 'musing'." href="../tags/musing.html">musing</a>
+
+  </p>
+
+</div>
+
+ <p>Sometimes dependent types push you towards mutually defined data structures: I try to avoid them where I can. For me, this occurrs when you need a helper data type where a container is not suitable expressive at the type level to capture the inductive case. When this happens you can index your helper data structure with the signature of the top type. This helps remove the need for a mutual definition, that is turn the call graph edge from undirected to directed.</p>
+<p>Here we illustrate the problem and provide a nice solution.</p>
+<h2 id="preliminaries">Preliminaries</h2>
+<p>First we define some helper containers that exist outside of the example in public libraries but we include here to keep the example self-contained.</p>
+<pre>
+<span class="idris-keyword">namespace</span><!-- closing Keyword--> Vect
+  <span class="idris-keyword">data</span><!-- closing Keyword--> <span class="idris-type" title="
+Nat -> Type -> Type">Vect</span><!-- closing Name TypeConstructor "" "Nat -> Type -> Type"--> : (<span class="idris-bound">s</span><!-- closing Bound False--> : <span class="idris-type" title="Natural numbers: unbounded, unsigned integers
+which can be pattern matched.
+Type">Nat</span><!-- closing Name TypeConstructor "Natural numbers: unbounded, unsigned integers\nwhich can be pattern matched." "Type"-->)
+           -&gt; (<span class="idris-bound">e</span><!-- closing Bound False--> : <span class="idris-type" title="The type of types
+Type">Type</span><!-- closing Name TypeConstructor "The type of types" "Type"-->)
+           -&gt; <span class="idris-type" title="The type of types
+Type">Type</span><!-- closing Name TypeConstructor "The type of types" "Type"-->
+    <span class="idris-keyword">where</span><!-- closing Keyword-->
+      <span class="idris-data" title="
+Vect 0 a">Empty</span><!-- closing Name Constructor "" "Vect 0 a"--> : <span class="idris-type" title="
+Nat -> Type -> Type">Vect</span><!-- closing Name TypeConstructor "" "Nat -> Type -> Type"--> <span class="idris-data" title="Zero
+Nat">Z</span><!-- closing Name Constructor "Zero" "Nat"--> <span class="idris-bound">a</span><!-- closing Bound False-->
+      <span class="idris-data" title="
+a -> Vect k a -> Vect (S k) a">Extend</span><!-- closing Name Constructor "" "a -> Vect k a -> Vect (S k) a"--> : (<span class="idris-bound">head</span><!-- closing Bound False--> : <span class="idris-bound">a</span><!-- closing Bound False-->)
+            -&gt; (<span class="idris-bound">tail</span><!-- closing Bound False--> : <span class="idris-type" title="
+Nat -> Type -> Type">Vect</span><!-- closing Name TypeConstructor "" "Nat -> Type -> Type"--> <span class="idris-bound">k</span><!-- closing Bound False--> <span class="idris-bound">a</span><!-- closing Bound False-->)
+            -&gt; <span class="idris-type" title="
+Nat -> Type -> Type">Vect</span><!-- closing Name TypeConstructor "" "Nat -> Type -> Type"--> (<span class="idris-data" title="Successor
+Nat -> Nat">S</span><!-- closing Name Constructor "Successor" "Nat -> Nat"--> <span class="idris-bound">k</span><!-- closing Bound False-->) <span class="idris-bound">a</span><!-- closing Bound False-->
+</pre>
+<p>A reformulation of a vector of dependent pairs. Analogous to the forall list quantifier.</p>
+<pre>
+<span class="idris-keyword">namespace</span><!-- closing Keyword--> VectD
+
+  <span class="idris-keyword">data</span><!-- closing Keyword--> <span class="idris-type" title="A reformulation of a vector of dependent pairs.
+(a : Type) ->
+(a -> Type) -> (s : Nat) -> Vect s a -> Type">VectD</span><!-- closing Name TypeConstructor "A reformulation of a vector of dependent pairs." "(a : Type) ->\n(a -> Type) -> (s : Nat) -> Vect s a -> Type"--> : (<span class="idris-bound">a</span><!-- closing Bound False-->  : <span class="idris-type" title="The type of types
+Type">Type</span><!-- closing Name TypeConstructor "The type of types" "Type"-->)
+            -&gt; (<span class="idris-bound">e</span><!-- closing Bound False-->  : <span class="idris-bound">a</span><!-- closing Bound False--> -&gt; <span class="idris-type" title="The type of types
+Type">Type</span><!-- closing Name TypeConstructor "The type of types" "Type"-->)
+            -&gt; (<span class="idris-bound">s</span><!-- closing Bound False-->  : <span class="idris-type" title="Natural numbers: unbounded, unsigned integers
+which can be pattern matched.
+Type">Nat</span><!-- closing Name TypeConstructor "Natural numbers: unbounded, unsigned integers\nwhich can be pattern matched." "Type"-->)
+            -&gt; (<span class="idris-bound">as</span><!-- closing Bound False--> : <span class="idris-type" title="
+Nat -> Type -> Type">Vect</span><!-- closing Name TypeConstructor "" "Nat -> Type -> Type"--> <span class="idris-bound">s</span><!-- closing Bound False--> <span class="idris-bound">a</span><!-- closing Bound False-->)
+            -&gt; <span class="idris-type" title="The type of types
+Type">Type</span><!-- closing Name TypeConstructor "The type of types" "Type"-->
+    <span class="idris-keyword">where</span><!-- closing Keyword-->
+      <span class="idris-data" title="
+VectD a e 0 Empty">Empty</span><!-- closing Name Constructor "" "VectD a e 0 Empty"--> : <span class="idris-type" title="A reformulation of a vector of dependent pairs.
+(a : Type) ->
+(a -> Type) -> (s : Nat) -> Vect s a -> Type">VectD</span><!-- closing Name TypeConstructor "A reformulation of a vector of dependent pairs." "(a : Type) ->\n(a -> Type) -> (s : Nat) -> Vect s a -> Type"--> <span class="idris-bound">a</span><!-- closing Bound False--> <span class="idris-bound">e</span><!-- closing Bound False--> <span class="idris-data" title="Zero
+Nat">Z</span><!-- closing Name Constructor "Zero" "Nat"--> <span class="idris-data" title="
+Vect 0 a">Empty</span><!-- closing Name Constructor "" "Vect 0 a"-->
+      <span class="idris-data" title="
+e v ->
+VectD a e k vs -> VectD a e (S k) (Extend v vs)">Extend</span><!-- closing Name Constructor "" "e v ->\nVectD a e k vs -> VectD a e (S k) (Extend v vs)"--> : (<span class="idris-bound">head</span><!-- closing Bound False--> : <span class="idris-bound">e</span><!-- closing Bound False--> <span class="idris-bound">v</span><!-- closing Bound False-->)
+            -&gt; (<span class="idris-bound">tail</span><!-- closing Bound False--> : <span class="idris-type" title="A reformulation of a vector of dependent pairs.
+(a : Type) ->
+(a -> Type) -> (s : Nat) -> Vect s a -> Type">VectD</span><!-- closing Name TypeConstructor "A reformulation of a vector of dependent pairs." "(a : Type) ->\n(a -> Type) -> (s : Nat) -> Vect s a -> Type"--> <span class="idris-bound">a</span><!-- closing Bound False--> <span class="idris-bound">e</span><!-- closing Bound False--> <span class="idris-bound">k</span><!-- closing Bound False--> <span class="idris-bound">vs</span><!-- closing Bound False-->)
+            -&gt; <span class="idris-type" title="A reformulation of a vector of dependent pairs.
+(a : Type) ->
+(a -> Type) -> (s : Nat) -> Vect s a -> Type">VectD</span><!-- closing Name TypeConstructor "A reformulation of a vector of dependent pairs." "(a : Type) ->\n(a -> Type) -> (s : Nat) -> Vect s a -> Type"--> <span class="idris-bound">a</span><!-- closing Bound False--> <span class="idris-bound">e</span><!-- closing Bound False--> (<span class="idris-data" title="Successor
+Nat -> Nat">S</span><!-- closing Name Constructor "Successor" "Nat -> Nat"--> <span class="idris-bound">k</span><!-- closing Bound False-->) (<span class="idris-data" title="
+a -> Vect k a -> Vect (S k) a">Extend</span><!-- closing Name Constructor "" "a -> Vect k a -> Vect (S k) a"--> <span class="idris-bound">v</span><!-- closing Bound False--> <span class="idris-bound">vs</span><!-- closing Bound False-->)
+</pre>
+<p>A reformulation of a vector of dependent pairs but with an added constraint on the parameter/index. Analogous to the forall list quantifier.</p>
+<pre>
+<span class="idris-keyword">namespace</span><!-- closing Keyword--> VectP
+  <span class="idris-keyword">data</span><!-- closing Keyword--> <span class="idris-type" title="A reformulation of a vector of dependent pairs but
+with an added constraint on the parameter/index.
+(a : Type) ->
+(a -> Type) ->
+(p : a -> Type) ->
+(s : Nat) ->
+(as : Vect s a) -> VectD a p s as -> Type">VectP</span><!-- closing Name TypeConstructor "A reformulation of a vector of dependent pairs but\nwith an added constraint on the parameter/index." "(a : Type) ->\n(a -> Type) ->\n(p : a -> Type) ->\n(s : Nat) ->\n(as : Vect s a) -> VectD a p s as -> Type"--> : (<span class="idris-bound">a</span><!-- closing Bound False-->  : <span class="idris-type" title="The type of types
+Type">Type</span><!-- closing Name TypeConstructor "The type of types" "Type"-->)
+            -&gt; (<span class="idris-bound">e</span><!-- closing Bound False-->  : <span class="idris-bound">a</span><!-- closing Bound False--> -&gt; <span class="idris-type" title="The type of types
+Type">Type</span><!-- closing Name TypeConstructor "The type of types" "Type"-->)
+            -&gt; (<span class="idris-bound">p</span><!-- closing Bound False-->  : <span class="idris-bound">a</span><!-- closing Bound False--> -&gt; <span class="idris-type" title="The type of types
+Type">Type</span><!-- closing Name TypeConstructor "The type of types" "Type"-->)
+            -&gt; (<span class="idris-bound">s</span><!-- closing Bound False-->  : <span class="idris-type" title="Natural numbers: unbounded, unsigned integers
+which can be pattern matched.
+Type">Nat</span><!-- closing Name TypeConstructor "Natural numbers: unbounded, unsigned integers\nwhich can be pattern matched." "Type"-->)
+            -&gt; (<span class="idris-bound">as</span><!-- closing Bound False--> : <span class="idris-type" title="
+Nat -> Type -> Type">Vect</span><!-- closing Name TypeConstructor "" "Nat -> Type -> Type"--> <span class="idris-bound">s</span><!-- closing Bound False--> <span class="idris-bound">a</span><!-- closing Bound False-->)
+            -&gt; (<span class="idris-bound">ps</span><!-- closing Bound False--> : <span class="idris-type" title="A reformulation of a vector of dependent pairs.
+(a : Type) ->
+(a -> Type) -> (s : Nat) -> Vect s a -> Type">VectD</span><!-- closing Name TypeConstructor "A reformulation of a vector of dependent pairs." "(a : Type) ->\n(a -> Type) -> (s : Nat) -> Vect s a -> Type"--> <span class="idris-bound">a</span><!-- closing Bound False--> <span class="idris-bound">p</span><!-- closing Bound False--> <span class="idris-bound">s</span><!-- closing Bound False--> <span class="idris-bound">as</span><!-- closing Bound False-->)
+            -&gt; <span class="idris-type" title="The type of types
+Type">Type</span><!-- closing Name TypeConstructor "The type of types" "Type"-->
+    <span class="idris-keyword">where</span><!-- closing Keyword-->
+</pre>
+<p>A reformulation of a vector of dependent pairs. Analogous to the forall list quantifier.</p>
+<pre>
+<span class="idris-keyword">namespace</span><!-- closing Keyword--> ListD
+  <span class="idris-keyword">data</span><!-- closing Keyword--> <span class="idris-type" title="A reformulation of a vector of dependent pairs.
+(a : Type) -> (a -> Type) -> List a -> Type">ListD</span><!-- closing Name TypeConstructor "A reformulation of a vector of dependent pairs." "(a : Type) -> (a -> Type) -> List a -> Type"--> : (<span class="idris-bound">a</span><!-- closing Bound False-->  : <span class="idris-type" title="The type of types
+Type">Type</span><!-- closing Name TypeConstructor "The type of types" "Type"-->)
+            -&gt; (<span class="idris-bound">e</span><!-- closing Bound False-->  : <span class="idris-bound">a</span><!-- closing Bound False--> -&gt; <span class="idris-type" title="The type of types
+Type">Type</span><!-- closing Name TypeConstructor "The type of types" "Type"-->)
+            -&gt; (<span class="idris-bound">as</span><!-- closing Bound False--> : <span class="idris-type" title="Generic lists
+Type -> Type">List</span><!-- closing Name TypeConstructor "Generic lists" "Type -> Type"--> <span class="idris-bound">a</span><!-- closing Bound False-->)
+            -&gt; <span class="idris-type" title="The type of types
+Type">Type</span><!-- closing Name TypeConstructor "The type of types" "Type"-->
+    <span class="idris-keyword">where</span><!-- closing Keyword-->
+      <span class="idris-data" title="
+ListD a e Empty">Empty</span><!-- closing Name Constructor "" "ListD a e v"--> : <span class="idris-type" title="A reformulation of a vector of dependent pairs.
+(a : Type) -> (a -> Type) -> List a -> Type">ListD</span><!-- closing Name TypeConstructor "A reformulation of a vector of dependent pairs." "(a : Type) -> (a -> Type) -> List a -> Type"--> <span class="idris-bound">a</span><!-- closing Bound False--> <span class="idris-bound">e</span><!-- closing Bound False--> <span class="idris-data">Nil</span><!-- closing Bound False-->
+      <span class="idris-data" title="
+e v -> ListD a e vs -> ListD a e (v :: vs)">Extend</span><!-- closing Name Constructor "" "e v -> ListD a e vs -> ListD a e (v :: vs)"--> : (<span class="idris-bound">head</span><!-- closing Bound False--> : <span class="idris-bound">e</span><!-- closing Bound False--> <span class="idris-bound">v</span><!-- closing Bound False-->)
+            -&gt; (<span class="idris-bound">tail</span><!-- closing Bound False--> : <span class="idris-type" title="A reformulation of a vector of dependent pairs.
+(a : Type) -> (a -> Type) -> List a -> Type">ListD</span><!-- closing Name TypeConstructor "A reformulation of a vector of dependent pairs." "(a : Type) -> (a -> Type) -> List a -> Type"--> <span class="idris-bound">a</span><!-- closing Bound False--> <span class="idris-bound">e</span><!-- closing Bound False--> <span class="idris-bound">vs</span><!-- closing Bound False-->)
+            -&gt; <span class="idris-type" title="A reformulation of a vector of dependent pairs.
+(a : Type) -> (a -> Type) -> List a -> Type">ListD</span><!-- closing Name TypeConstructor "A reformulation of a vector of dependent pairs." "(a : Type) -> (a -> Type) -> List a -> Type"--> <span class="idris-bound">a</span><!-- closing Bound False--> <span class="idris-bound">e</span><!-- closing Bound False--> (<span class="idris-bound">v<span class="idris-data" title="A non-empty list, consisting of a head element and
+the rest of the list.
+elem -> List elem -> List elem">::<span class="idris-bound">vs</span><!-- closing Bound False--></span><!-- closing Name Constructor "A non-empty list, consisting of a head element and\nthe rest of the list." "elem -> List elem -> List elem"--></span><!-- closing Bound False-->)
+</pre>
+<h2 id="the-setting">The Setting</h2>
+<p>Here we provide the setting in which our problem and solution must exist.</p>
+<h3 id="meta-typing">Meta typing</h3>
+<pre>
+<span class="idris-keyword">data</span><!-- closing Keyword--> <span class="idris-type" title="Meta typing
+Type"><span class="idris-type" title="The type of types
+Type">Meta</span><!-- closing Name TypeConstructor "The type of types" "Type"--></span><!-- closing Name TypeConstructor "Meta typing" "Type"--> = <span class="idris-data" title="
+Meta">A</span><!-- closing Name Constructor "" "Meta"--> | <span class="idris-data" title="
+String -> Meta">B</span><!-- closing Name Constructor "" "String -> Meta"--> <span class="idris-type" title="Strings in some unspecified encoding
+Type">String</span><!-- closing Name TypeConstructor "Strings in some unspecified encoding" "Type"--> | <span class="idris-data" title="
+Vect (S n) String -> Meta">C</span><!-- closing Name Constructor "" "Vect (S n) String -> Meta"--> (<span class="idris-type" title="
+Nat -> Type -> Type">Vect</span><!-- closing Name TypeConstructor "" "Nat -> Type -> Type"--> (<span class="idris-data" title="Successor
+Nat -> Nat">S</span><!-- closing Name Constructor "Successor" "Nat -> Nat"--> <span class="idris-bound">n</span><!-- closing Bound False-->) <span class="idris-type" title="Strings in some unspecified encoding
+Type">String</span><!-- closing Name TypeConstructor "Strings in some unspecified encoding" "Type"-->)
+</pre>
+<h3 id="some-important-information">Some important information</h3>
+<pre>
+<span class="idris-keyword">data</span><!-- closing Keyword--> <span class="idris-type" title="
+Type"><span class="idris-type" title="The type of types
+Type">Foo</span><!-- closing Name TypeConstructor "The type of types" "Type"--></span><!-- closing Name TypeConstructor "" "Type"-->
+</pre>
+<h3 id="types">Types</h3>
+<pre>
+<span class="idris-keyword">data</span><!-- closing Keyword--> <span class="idris-type" title="Types
+Meta -> Type">Ty</span><!-- closing Name TypeConstructor "Types" "Meta -> Type"--> : (<span class="idris-bound">meta</span><!-- closing Bound False--> : <span class="idris-type" title="Meta typing
+Type">Meta</span><!-- closing Name TypeConstructor "Meta typing" "Type"-->) -&gt; <span class="idris-type" title="The type of types
+Type">Type</span><!-- closing Name TypeConstructor "The type of types" "Type"--> <span class="idris-keyword">where</span><!-- closing Keyword-->
+  <span class="idris-data" title="
+Ty A">Alpha</span><!-- closing Name Constructor "" "Ty A"--> : <span class="idris-type" title="Types
+Meta -> Type">Ty</span><!-- closing Name TypeConstructor "Types" "Meta -> Type"--> <span class="idris-data" title="
+Meta">A</span><!-- closing Name Constructor "" "Meta"-->
+  <span class="idris-data" title="
+Ty A">Oscar</span><!-- closing Name Constructor "" "Ty A"--> : <span class="idris-type" title="Types
+Meta -> Type">Ty</span><!-- closing Name TypeConstructor "Types" "Meta -> Type"--> <span class="idris-data" title="
+Meta">A</span><!-- closing Name Constructor "" "Meta"-->
+  <span class="idris-data" title="
+Nat -> Ty A -> Ty A">Delta</span><!-- closing Name Constructor "" "Nat -> Ty A -> Ty A"--> : <span class="idris-type" title="Natural numbers: unbounded, unsigned integers
+which can be pattern matched.
+Type">Nat</span><!-- closing Name TypeConstructor "Natural numbers: unbounded, unsigned integers\nwhich can be pattern matched." "Type"--> -&gt; <span class="idris-type" title="Types
+Meta -> Type">Ty</span><!-- closing Name TypeConstructor "Types" "Meta -> Type"--> <span class="idris-data" title="
+Meta">A</span><!-- closing Name Constructor "" "Meta"--> -&gt; <span class="idris-type" title="Types
+Meta -> Type">Ty</span><!-- closing Name TypeConstructor "Types" "Meta -> Type"--> <span class="idris-data" title="
+Meta">A</span><!-- closing Name Constructor "" "Meta"-->
+
+  <span class="idris-data" title="
+(s : String) -> Foo -> Bool -> Ty (B s)">Bravo</span><!-- closing Name Constructor "" "(s : String) -> Foo -> Bool -> Ty (B s)"--> : (<span class="idris-bound">s</span><!-- closing Bound False--> : <span class="idris-type" title="Strings in some unspecified encoding
+Type">String</span><!-- closing Name TypeConstructor "Strings in some unspecified encoding" "Type"-->) -&gt; (<span class="idris-bound">foo</span><!-- closing Bound False--> : <span class="idris-type" title="
+Type">Foo</span><!-- closing Name TypeConstructor "" "Type"-->) -&gt; (<span class="idris-bound">b</span><!-- closing Bound False--> : <span class="idris-type" title="Boolean Data Type
+Type">Bool</span><!-- closing Name TypeConstructor "Boolean Data Type" "Type"-->) -&gt; <span class="idris-type" title="Types
+Meta -> Type">Ty</span><!-- closing Name TypeConstructor "Types" "Meta -> Type"--> (<span class="idris-data" title="
+String -> Meta">B</span><!-- closing Name Constructor "" "String -> Meta"--> <span class="idris-bound">s</span><!-- closing Bound False-->)
+
+  <span class="idris-data" title="
+VectD String (Ty . B) (S n) ss -> Ty (C ss)">Charlie</span><!-- closing Name Constructor "" "VectD String (Ty . B) (S n) ss -> Ty (C ss)"--> : (<span class="idris-bound">cs</span><!-- closing Bound False--> : <span class="idris-type" title="A reformulation of a vector of dependent pairs.
+(a : Type) ->
+(a -> Type) -> (s : Nat) -> Vect s a -> Type">VectD</span><!-- closing Name TypeConstructor "A reformulation of a vector of dependent pairs." "(a : Type) ->\n(a -> Type) -> (s : Nat) -> Vect s a -> Type"--> <span class="idris-type" title="Strings in some unspecified encoding
+Type">String</span><!-- closing Name TypeConstructor "Strings in some unspecified encoding" "Type"--> (<span class="idris-type" title="Types
+Meta -> Type">Ty</span><!-- closing Name TypeConstructor "Types" "Meta -> Type"--> <span class="idris-function" title="Function composition
+(b -> c) -> (a -> b) -> a -> c">.</span><!-- closing Name Function "Function composition" "(b -> c) -> (a -> b) -> a -> c"--> <span class="idris-data" title="
+String -> Meta">B</span><!-- closing Name Constructor "" "String -> Meta"-->) (<span class="idris-data" title="Successor
+Nat -> Nat">S</span><!-- closing Name Constructor "Successor" "Nat -> Nat"--> <span class="idris-bound">n</span><!-- closing Bound False-->) <span class="idris-bound">ss</span><!-- closing Bound False-->)
+         -&gt; <span class="idris-type" title="Types
+Meta -> Type">Ty</span><!-- closing Name TypeConstructor "Types" "Meta -> Type"--> (<span class="idris-data" title="
+Vect (S n) String -> Meta">C</span><!-- closing Name Constructor "" "Vect (S n) String -> Meta"--> <span class="idris-bound">ss</span><!-- closing Bound False-->)
+</pre>
+<h3 id="context">Context</h3>
+<p>We define a collection of types as follows.</p>
+<pre>
+<span class="idris-function" title="We define a collection of types as follows.
+List Meta -> Type">Types</span><!-- closing Name Function "We define a collection of types as follows." "List Meta -> Type"--> : <span class="idris-type" title="Generic lists
+Type -> Type">List</span><!-- closing Name TypeConstructor "Generic lists" "Type -> Type"--> <span class="idris-type" title="Meta typing
+Type">Meta</span><!-- closing Name TypeConstructor "Meta typing" "Type"--> -&gt; <span class="idris-type" title="The type of types
+Type">Type</span><!-- closing Name TypeConstructor "The type of types" "Type"-->
+<span class="idris-function" title="We define a collection of types as follows.
+List Meta -> Type">Types</span><!-- closing Name Function "We define a collection of types as follows." "List Meta -> Type"--> = <span class="idris-type" title="A reformulation of a vector of dependent pairs.
+(a : Type) -> (a -> Type) -> List a -> Type">ListD</span><!-- closing Name TypeConstructor "A reformulation of a vector of dependent pairs." "(a : Type) -> (a -> Type) -> List a -> Type"--> <span class="idris-type" title="Meta typing
+Type">Meta</span><!-- closing Name TypeConstructor "Meta typing" "Type"--> <span class="idris-type" title="Types
+Meta -> Type">Ty</span><!-- closing Name TypeConstructor "Types" "Meta -> Type"-->
+</pre>
+<h2 id="the-problem">The Problem</h2>
+<p>Our problem comes from wanting to establish a predicate over a given instance of <code>Types</code> such that <em>all</em> instances of <code>Bravo</code> are set to true.</p>
+<p>We will call this predicate: <code>AllTrueBravos</code>.</p>
+<p>The interesting case is not defining a predicate over <code>Types</code> but over a single instance of <code>Type</code>. The interesting case is for `Charlie.</p>
+<p>We will call the predicate on a single <code>Type</code> instance: <code>AllTrueBravo</code>.</p>
+<p>We begin by defining an instance for <code>AllTrueBravo</code> to see what the problem is.</p>
+<pre>
+<span class="idris-keyword">namespace</span><!-- closing Keyword--> Problem
+
+  <span class="idris-keyword">data</span><!-- closing Keyword--> <span class="idris-type" title="
+Ty m -> Type">AllTrueBravo</span><!-- closing Name TypeConstructor "" "Ty m -> Type"--> : (<span class="idris-bound">type</span><!-- closing Bound False--> : <span class="idris-type" title="Types
+Meta -> Type">Ty</span><!-- closing Name TypeConstructor "Types" "Meta -> Type"--> <span class="idris-bound">m</span><!-- closing Bound False-->) -&gt; <span class="idris-type" title="The type of types
+Type">Type</span><!-- closing Name TypeConstructor "The type of types" "Type"--> <span class="idris-keyword">where</span><!-- closing Keyword-->
+    ||| Any `A` is true.
+    <span class="idris-data" title="Any A is true.
+AllTrueBravo a">AnyATrue</span><!-- closing Name Constructor "Any A is true." "AllTrueBravo a"--> : {<span class="idris-bound">a</span><!-- closing Bound False--> : <span class="idris-type" title="Types
+Meta -> Type">Ty</span><!-- closing Name TypeConstructor "Types" "Meta -> Type"--> <span class="idris-data" title="
+Meta">A</span><!-- closing Name Constructor "" "Meta"-->} -&gt; <span class="idris-type" title="
+Ty m -> Type">AllTrueBravo</span><!-- closing Name TypeConstructor "" "Ty m -> Type"--> <span class="idris-bound">a</span><!-- closing Bound False-->
+
+    ||| Bravo is true if the `b` field is `True`.
+    <span class="idris-data" title="Bravo is true if the b field is True.
+AllTrueBravo (Bravo s foo True)">BravoTrue</span><!-- closing Name Constructor "Bravo is true if the b field is True." "AllTrueBravo (Bravo s foo True)"--> : <span class="idris-type" title="
+Ty m -> Type">AllTrueBravo</span><!-- closing Name TypeConstructor "" "Ty m -> Type"--> (<span class="idris-data" title="
+(s : String) -> Foo -> Bool -> Ty (B s)">Bravo</span><!-- closing Name Constructor "" "(s : String) -> Foo -> Bool -> Ty (B s)"--> <span class="idris-bound">s</span><!-- closing Bound False--> <span class="idris-bound">foo</span><!-- closing Bound False--> <span class="idris-data" title="
+Bool">True</span><!-- closing Name Constructor "" "Bool"-->)
+
+    <span class="idris-data" title="
+?attempOneRhs -> AllTrueBravo (Charlie cs)">CharlieTrue</span><!-- closing Name Constructor "" "?attempOneRhs -> AllTrueBravo (Charlie cs)"--> : {<span class="idris-bound">ss</span><!-- closing Bound False--> : <span class="idris-type" title="
+Nat -> Type -> Type">Vect</span><!-- closing Name TypeConstructor "" "Nat -> Type -> Type"--> (<span class="idris-data" title="Successor
+Nat -> Nat">S</span><!-- closing Name Constructor "Successor" "Nat -> Nat"--> <span class="idris-bound">n</span><!-- closing Bound False-->) <span class="idris-type" title="Strings in some unspecified encoding
+Type">String</span><!-- closing Name TypeConstructor "Strings in some unspecified encoding" "Type"-->}
+               -&gt; {<span class="idris-bound">cs</span><!-- closing Bound False--> : <span class="idris-type" title="A reformulation of a vector of dependent pairs.
+(a : Type) ->
+(a -> Type) -> (s : Nat) -> Vect s a -> Type">VectD</span><!-- closing Name TypeConstructor "A reformulation of a vector of dependent pairs." "(a : Type) ->\n(a -> Type) -> (s : Nat) -> Vect s a -> Type"--> <span class="idris-type" title="Strings in some unspecified encoding
+Type">String</span><!-- closing Name TypeConstructor "Strings in some unspecified encoding" "Type"--> (<span class="idris-type" title="Types
+Meta -> Type">Ty</span><!-- closing Name TypeConstructor "Types" "Meta -> Type"--> <span class="idris-function" title="Function composition
+(b -> c) -> (a -> b) -> a -> c">.</span><!-- closing Name Function "Function composition" "(b -> c) -> (a -> b) -> a -> c"--> <span class="idris-data" title="
+String -> Meta">B</span><!-- closing Name Constructor "" "String -> Meta"-->) (<span class="idris-data" title="Successor
+Nat -> Nat">S</span><!-- closing Name Constructor "Successor" "Nat -> Nat"--> <span class="idris-bound">n</span><!-- closing Bound False-->) <span class="idris-bound">ss</span><!-- closing Bound False-->}
+               -&gt; (<span class="idris-bound">prfCSTrue</span><!-- closing Bound False--> : ?attempOneRhs)
+               -&gt; <span class="idris-type" title="
+Ty m -> Type">AllTrueBravo</span><!-- closing Name TypeConstructor "" "Ty m -> Type"--> (<span class="idris-data" title="
+VectD String (Ty . B) (S n) ss -> Ty (C ss)">Charlie</span><!-- closing Name Constructor "" "VectD String (Ty . B) (S n) ss -> Ty (C ss)"--> <span class="idris-bound">cs</span><!-- closing Bound False-->)
+</pre>
+<h2 id="attempt-one">Attempt One</h2>
+<p>A Question: What should the type of <code>?attempOneRhs</code> be?</p>
+<p>Ideally, we should want to use an instance of <code>VectP</code> as that gives us the type:</p>
+<pre>
+<span class="idris-keyword">namespace</span><!-- closing Keyword--> AttemptOne
+
+  <span class="idris-keyword">data</span><!-- closing Keyword--> <span class="idris-type" title="
+Ty m -> Type">AllTrueBravoA</span><!-- closing Name TypeConstructor "" "Ty m -> Type"--> : (<span class="idris-bound">type</span><!-- closing Bound False--> : <span class="idris-type" title="Types
+Meta -> Type">Ty</span><!-- closing Name TypeConstructor "Types" "Meta -> Type"--> <span class="idris-bound">m</span><!-- closing Bound False-->) -&gt; <span class="idris-type" title="The type of types
+Type">Type</span><!-- closing Name TypeConstructor "The type of types" "Type"--> <span class="idris-keyword">where</span><!-- closing Keyword-->
+    ||| Any `A` is true.
+    <span class="idris-data" title="Any A is true.
+AllTrueBravoA a">AnyATrue</span><!-- closing Name Constructor "Any A is true." "AllTrueBravoA a"--> : {<span class="idris-bound">a</span><!-- closing Bound False--> : <span class="idris-type" title="Types
+Meta -> Type">Ty</span><!-- closing Name TypeConstructor "Types" "Meta -> Type"--> <span class="idris-data" title="
+Meta">A</span><!-- closing Name Constructor "" "Meta"-->} -&gt; <span class="idris-type" title="
+Ty m -> Type">AllTrueBravoA</span><!-- closing Name TypeConstructor "" "Ty m -> Type"--> <span class="idris-bound">a</span><!-- closing Bound False-->
+
+    ||| Bravo is true if the `b` field is `True`.
+    <span class="idris-data" title="Bravo is true if the b field is True.
+AllTrueBravoA (Bravo s foo True)">BravoTrue</span><!-- closing Name Constructor "Bravo is true if the b field is True." "AllTrueBravoA (Bravo s foo True)"--> : <span class="idris-type" title="
+Ty m -> Type">AllTrueBravoA</span><!-- closing Name TypeConstructor "" "Ty m -> Type"--> (<span class="idris-data" title="
+(s : String) -> Foo -> Bool -> Ty (B s)">Bravo</span><!-- closing Name Constructor "" "(s : String) -> Foo -> Bool -> Ty (B s)"--> <span class="idris-bound">s</span><!-- closing Bound False--> <span class="idris-bound">foo</span><!-- closing Bound False--> <span class="idris-data" title="
+Bool">True</span><!-- closing Name Constructor "" "Bool"-->)
+
+    <span class="idris-data" title="
+VectP String
+      (\s => AllTrueBravoA (Bravo s foo True))
+      (Ty . B)
+      (S n)
+      ss
+      cs ->
+AllTrueBravoA (Charlie cs)">CharlieTrue</span><!-- closing Name Constructor "" "VectP String\n      (\\s => AllTrueBravoA (Bravo s foo True))\n      (Ty . B)\n      (S n)\n      ss\n      cs ->\nAllTrueBravoA (Charlie cs)"--> : {<span class="idris-bound">ss</span><!-- closing Bound False--> : <span class="idris-type" title="
+Nat -> Type -> Type">Vect</span><!-- closing Name TypeConstructor "" "Nat -> Type -> Type"--> (<span class="idris-data" title="Successor
+Nat -> Nat">S</span><!-- closing Name Constructor "Successor" "Nat -> Nat"--> <span class="idris-bound">n</span><!-- closing Bound False-->) <span class="idris-type" title="Strings in some unspecified encoding
+Type">String</span><!-- closing Name TypeConstructor "Strings in some unspecified encoding" "Type"-->}
+               -&gt; {<span class="idris-bound">cs</span><!-- closing Bound False--> : <span class="idris-type" title="A reformulation of a vector of dependent pairs.
+(a : Type) ->
+(a -> Type) -> (s : Nat) -> Vect s a -> Type">VectD</span><!-- closing Name TypeConstructor "A reformulation of a vector of dependent pairs." "(a : Type) ->\n(a -> Type) -> (s : Nat) -> Vect s a -> Type"--> <span class="idris-type" title="Strings in some unspecified encoding
+Type">String</span><!-- closing Name TypeConstructor "Strings in some unspecified encoding" "Type"--> (<span class="idris-type" title="Types
+Meta -> Type">Ty</span><!-- closing Name TypeConstructor "Types" "Meta -> Type"--> <span class="idris-function" title="Function composition
+(b -> c) -> (a -> b) -> a -> c">.</span><!-- closing Name Function "Function composition" "(b -> c) -> (a -> b) -> a -> c"--> <span class="idris-data" title="
+String -> Meta">B</span><!-- closing Name Constructor "" "String -> Meta"-->) (<span class="idris-data" title="Successor
+Nat -> Nat">S</span><!-- closing Name Constructor "Successor" "Nat -> Nat"--> <span class="idris-bound">n</span><!-- closing Bound False-->) <span class="idris-bound">ss</span><!-- closing Bound False-->}
+               -&gt; (<span class="idris-bound">prfCSTrue</span><!-- closing Bound False--> : <span class="idris-type" title="A reformulation of a vector of dependent pairs but
+with an added constraint on the parameter/index.
+(a : Type) ->
+(a -> Type) ->
+(p : a -> Type) ->
+(s : Nat) ->
+(as : Vect s a) -> VectD a p s as -> Type">VectP</span><!-- closing Name TypeConstructor "A reformulation of a vector of dependent pairs but\nwith an added constraint on the parameter/index." "(a : Type) ->\n(a -> Type) ->\n(p : a -> Type) ->\n(s : Nat) ->\n(as : Vect s a) -> VectD a p s as -> Type"--> <span class="idris-type" title="Strings in some unspecified encoding
+Type">String</span><!-- closing Name TypeConstructor "Strings in some unspecified encoding" "Type"-->
+                                     (\<span class="idris-bound">s</span><!-- closing Bound False--> =&gt; <span class="idris-type" title="
+Ty m -> Type">AllTrueBravoA</span><!-- closing Name TypeConstructor "" "Ty m -> Type"--> (<span class="idris-data" title="
+(s : String) -> Foo -> Bool -> Ty (B s)">Bravo</span><!-- closing Name Constructor "" "(s : String) -> Foo -> Bool -> Ty (B s)"--> <span class="idris-bound">s</span><!-- closing Bound False--> <span class="idris-bound">foo</span><!-- closing Bound False--> <span class="idris-data" title="
+Bool">True</span><!-- closing Name Constructor "" "Bool"-->))
+                                     (<span class="idris-type" title="Types
+Meta -> Type">Ty</span><!-- closing Name TypeConstructor "Types" "Meta -> Type"--> <span class="idris-function" title="Function composition
+(b -> c) -> (a -> b) -> a -> c">.</span><!-- closing Name Function "Function composition" "(b -> c) -> (a -> b) -> a -> c"--> <span class="idris-data" title="
+String -> Meta">B</span><!-- closing Name Constructor "" "String -> Meta"-->)
+                                     (<span class="idris-data" title="Successor
+Nat -> Nat">S</span><!-- closing Name Constructor "Successor" "Nat -> Nat"--> <span class="idris-bound">n</span><!-- closing Bound False-->)
+                                     <span class="idris-bound">ss</span><!-- closing Bound False-->
+                                     <span class="idris-bound">cs</span><!-- closing Bound False-->)
+               -&gt; <span class="idris-type" title="
+Ty m -> Type">AllTrueBravoA</span><!-- closing Name TypeConstructor "" "Ty m -> Type"--> (<span class="idris-data" title="
+VectD String (Ty . B) (S n) ss -> Ty (C ss)">Charlie</span><!-- closing Name Constructor "" "VectD String (Ty . B) (S n) ss -> Ty (C ss)"--> <span class="idris-bound">cs</span><!-- closing Bound False-->)
+</pre>
+<p>It type checks! Ship It!</p>
+<p>No!</p>
+<p>The problem is the unaccounted for <code>foo</code>. When you go to write your decidable procedure, this will cause a unification problem trying to assert that some foo is equal to another foo, and thus two bravo’s that you know are the same cannot be shown to be the same.</p>
+<h2 id="attempt-two-a-little-miss-direction-can-help">Attempt Two: A Little Miss-direction can ‘help’</h2>
+<p>Let us attemp to fix the problem by spinning out a definition to capture <code>BravoTrue</code> instances for the <code>CharlieTrue</code> case.</p>
+<p>Here we will need to define a mutual block to capture two mutually defined data structures.</p>
+<pre>
+<span class="idris-keyword">namespace</span><!-- closing Keyword--> AttempTwo
+
+  <span class="idris-keyword">mutual</span><!-- closing Keyword-->
+    <span class="idris-keyword">data</span><!-- closing Keyword--> <span class="idris-type" title="
+String -> Type">LittleMissDirect</span><!-- closing Name TypeConstructor "" "String -> Type"--> : (<span class="idris-bound">s</span><!-- closing Bound False--> : <span class="idris-type" title="Strings in some unspecified encoding
+Type">String</span><!-- closing Name TypeConstructor "Strings in some unspecified encoding" "Type"-->) -&gt; <span class="idris-type" title="The type of types
+Type">Type</span><!-- closing Name TypeConstructor "The type of types" "Type"--> <span class="idris-keyword">where</span><!-- closing Keyword-->
+      <span class="idris-data" title="
+AllTrueBravoC bravo -> LittleMissDirect s">ApplyLMD</span><!-- closing Name Constructor "" "AllTrueBravoC bravo -> LittleMissDirect s"--> : {<span class="idris-bound">bravo</span><!-- closing Bound False--> : <span class="idris-type" title="Types
+Meta -> Type">Ty</span><!-- closing Name TypeConstructor "Types" "Meta -> Type"--> (<span class="idris-data" title="
+String -> Meta">B</span><!-- closing Name Constructor "" "String -> Meta"--> <span class="idris-bound">s</span><!-- closing Bound False-->)}
+              -&gt; (<span class="idris-bound">prf</span><!-- closing Bound False--> : <span class="idris-type" title="
+Ty m -> Type">AllTrueBravoC</span><!-- closing Name TypeConstructor "" "Ty m -> Type"--> <span class="idris-bound">bravo</span><!-- closing Bound False-->)
+              -&gt; <span class="idris-type" title="
+String -> Type">LittleMissDirect</span><!-- closing Name TypeConstructor "" "String -> Type"--> <span class="idris-bound">s</span><!-- closing Bound False-->
+
+    <span class="idris-keyword">data</span><!-- closing Keyword--> <span class="idris-type" title="
+Ty m -> Type">AllTrueBravoC</span><!-- closing Name TypeConstructor "" "Ty m -> Type"--> : (<span class="idris-bound">type</span><!-- closing Bound False--> : <span class="idris-type" title="Types
+Meta -> Type">Ty</span><!-- closing Name TypeConstructor "Types" "Meta -> Type"--> <span class="idris-bound">m</span><!-- closing Bound False-->) -&gt; <span class="idris-type" title="The type of types
+Type">Type</span><!-- closing Name TypeConstructor "The type of types" "Type"--> <span class="idris-keyword">where</span><!-- closing Keyword-->
+         ||| Any `A` is true.
+         <span class="idris-data" title="Any A is true.
+AllTrueBravoC a">AnyATrue</span><!-- closing Name Constructor "Any A is true." "AllTrueBravoC a"--> : {<span class="idris-bound">a</span><!-- closing Bound False--> : <span class="idris-type" title="Types
+Meta -> Type">Ty</span><!-- closing Name TypeConstructor "Types" "Meta -> Type"--> <span class="idris-data" title="
+Meta">A</span><!-- closing Name Constructor "" "Meta"-->} -&gt; <span class="idris-type" title="
+Ty m -> Type">AllTrueBravoC</span><!-- closing Name TypeConstructor "" "Ty m -> Type"--> <span class="idris-bound">a</span><!-- closing Bound False-->
+
+         ||| Bravo is true if the `b` field is `True`.
+         <span class="idris-data" title="Bravo is true if the b field is True.
+AllTrueBravoC (Bravo s foo True)">BravoTrue</span><!-- closing Name Constructor "Bravo is true if the b field is True." "AllTrueBravoC (Bravo s foo True)"--> : <span class="idris-type" title="
+Ty m -> Type">AllTrueBravoC</span><!-- closing Name TypeConstructor "" "Ty m -> Type"--> (<span class="idris-data" title="
+(s : String) -> Foo -> Bool -> Ty (B s)">Bravo</span><!-- closing Name Constructor "" "(s : String) -> Foo -> Bool -> Ty (B s)"--> <span class="idris-bound">s</span><!-- closing Bound False--> <span class="idris-bound">foo</span><!-- closing Bound False--> <span class="idris-data" title="
+Bool">True</span><!-- closing Name Constructor "" "Bool"-->)
+
+         <span class="idris-data" title="
+VectP String
+      LittleMissDirect
+      (Ty . B)
+      (S n)
+      ss
+      cs ->
+AllTrueBravoC (Charlie cs)">CharlieTrue</span><!-- closing Name Constructor "" "VectP String\n      LittleMissDirect\n      (Ty . B)\n      (S n)\n      ss\n      cs ->\nAllTrueBravoC (Charlie cs)"--> : {<span class="idris-bound">ss</span><!-- closing Bound False--> : <span class="idris-type" title="
+Nat -> Type -> Type">Vect</span><!-- closing Name TypeConstructor "" "Nat -> Type -> Type"--> (<span class="idris-data" title="Successor
+Nat -> Nat">S</span><!-- closing Name Constructor "Successor" "Nat -> Nat"--> <span class="idris-bound">n</span><!-- closing Bound False-->) <span class="idris-type" title="Strings in some unspecified encoding
+Type">String</span><!-- closing Name TypeConstructor "Strings in some unspecified encoding" "Type"-->}
+                    -&gt; {<span class="idris-bound">cs</span><!-- closing Bound False--> : <span class="idris-type" title="A reformulation of a vector of dependent pairs.
+(a : Type) ->
+(a -> Type) -> (s : Nat) -> Vect s a -> Type">VectD</span><!-- closing Name TypeConstructor "A reformulation of a vector of dependent pairs." "(a : Type) ->\n(a -> Type) -> (s : Nat) -> Vect s a -> Type"--> <span class="idris-type" title="Strings in some unspecified encoding
+Type">String</span><!-- closing Name TypeConstructor "Strings in some unspecified encoding" "Type"--> (<span class="idris-type" title="Types
+Meta -> Type">Ty</span><!-- closing Name TypeConstructor "Types" "Meta -> Type"--> <span class="idris-function" title="Function composition
+(b -> c) -> (a -> b) -> a -> c">.</span><!-- closing Name Function "Function composition" "(b -> c) -> (a -> b) -> a -> c"--> <span class="idris-data" title="
+String -> Meta">B</span><!-- closing Name Constructor "" "String -> Meta"-->) (<span class="idris-data" title="Successor
+Nat -> Nat">S</span><!-- closing Name Constructor "Successor" "Nat -> Nat"--> <span class="idris-bound">n</span><!-- closing Bound False-->) <span class="idris-bound">ss</span><!-- closing Bound False-->}
+                    -&gt; (<span class="idris-bound">prfCSTrue</span><!-- closing Bound False--> : <span class="idris-type" title="A reformulation of a vector of dependent pairs but
+with an added constraint on the parameter/index.
+(a : Type) ->
+(a -> Type) ->
+(p : a -> Type) ->
+(s : Nat) ->
+(as : Vect s a) -> VectD a p s as -> Type">VectP</span><!-- closing Name TypeConstructor "A reformulation of a vector of dependent pairs but\nwith an added constraint on the parameter/index." "(a : Type) ->\n(a -> Type) ->\n(p : a -> Type) ->\n(s : Nat) ->\n(as : Vect s a) -> VectD a p s as -> Type"--> <span class="idris-type" title="Strings in some unspecified encoding
+Type">String</span><!-- closing Name TypeConstructor "Strings in some unspecified encoding" "Type"-->
+                                          (<span class="idris-type" title="
+String -> Type">LittleMissDirect</span><!-- closing Name TypeConstructor "" "String -> Type"-->)
+                                          (<span class="idris-type" title="Types
+Meta -> Type">Ty</span><!-- closing Name TypeConstructor "Types" "Meta -> Type"--> <span class="idris-function" title="Function composition
+(b -> c) -> (a -> b) -> a -> c">.</span><!-- closing Name Function "Function composition" "(b -> c) -> (a -> b) -> a -> c"--> <span class="idris-data" title="
+String -> Meta">B</span><!-- closing Name Constructor "" "String -> Meta"-->)
+                                          (<span class="idris-data" title="Successor
+Nat -> Nat">S</span><!-- closing Name Constructor "Successor" "Nat -> Nat"--> <span class="idris-bound">n</span><!-- closing Bound False-->)
+                                          <span class="idris-bound">ss</span><!-- closing Bound False-->
+                                          <span class="idris-bound">cs</span><!-- closing Bound False-->)
+                    -&gt; <span class="idris-type" title="
+Ty m -> Type">AllTrueBravoC</span><!-- closing Name TypeConstructor "" "Ty m -> Type"--> (<span class="idris-data" title="
+VectD String (Ty . B) (S n) ss -> Ty (C ss)">Charlie</span><!-- closing Name Constructor "" "VectD String (Ty . B) (S n) ss -> Ty (C ss)"--> <span class="idris-bound">cs</span><!-- closing Bound False-->)
+</pre>
+<p>It type checks! Ship It!</p>
+<p>No!</p>
+<p>We have the same problem as before.</p>
+<p>When you go to write your decidable procedure, the miss direction will cause a unification problem when working on the <code>ApplyLMD</code> pattern for the <code>CharlieTrue</code> cases.</p>
+<p>We need to ensure that the ‘proofs’ on <code>cs</code> are applied to <code>cs</code> and that there is no ambiguity. Unificiation will be problematic otherwise.</p>
+<h2 id="attempt-three-a-little-miss-direction-can-help-take-2">Attempt Three: A Little Miss-direction can ‘help’ Take 2</h2>
+<p>Let us attemp to fix the problem by <em>not</em> using <code>VectP</code> and using a custom data structrure.</p>
+<pre>
+<span class="idris-keyword">namespace</span><!-- closing Keyword--> AttempThree
+
+  <span class="idris-keyword">mutual</span><!-- closing Keyword-->
+
+    <span class="idris-keyword">data</span><!-- closing Keyword--> <span class="idris-type" title="
+VectD String (Ty . B) (S n) ss -> Type">LittleMissDirect</span><!-- closing Name TypeConstructor "" "VectD String (Ty . B) (S n) ss -> Type"--> : (<span class="idris-bound">cs</span><!-- closing Bound False--> : <span class="idris-type" title="A reformulation of a vector of dependent pairs.
+(a : Type) ->
+(a -> Type) -> (s : Nat) -> Vect s a -> Type">VectD</span><!-- closing Name TypeConstructor "A reformulation of a vector of dependent pairs." "(a : Type) ->\n(a -> Type) -> (s : Nat) -> Vect s a -> Type"--> <span class="idris-type" title="Strings in some unspecified encoding
+Type">String</span><!-- closing Name TypeConstructor "Strings in some unspecified encoding" "Type"--> (<span class="idris-type" title="Types
+Meta -> Type">Ty</span><!-- closing Name TypeConstructor "Types" "Meta -> Type"--> <span class="idris-function" title="Function composition
+(b -> c) -> (a -> b) -> a -> c">.</span><!-- closing Name Function "Function composition" "(b -> c) -> (a -> b) -> a -> c"--> <span class="idris-data" title="
+String -> Meta">B</span><!-- closing Name Constructor "" "String -> Meta"-->) (<span class="idris-data" title="Successor
+Nat -> Nat">S</span><!-- closing Name Constructor "Successor" "Nat -> Nat"--> <span class="idris-bound">n</span><!-- closing Bound False-->) <span class="idris-bound">ss</span><!-- closing Bound False-->) -&gt; <span class="idris-type" title="The type of types
+Type">Type</span><!-- closing Name TypeConstructor "The type of types" "Type"--> <span class="idris-keyword">where</span><!-- closing Keyword-->
+
+      ||| The length is `(S n)` remember.
+      <span class="idris-data" title="The length is (S n) remember.
+(bravo : Ty (B s)) ->
+AllTrueBravoD bravo ->
+LittleMissDirect (Extend bravo Empty)">Last</span><!-- closing Name Constructor "The length is (S n) remember." "(bravo : Ty (B s)) ->\nAllTrueBravoD bravo ->\nLittleMissDirect (Extend bravo Empty)"--> : (<span class="idris-bound">bravo</span><!-- closing Bound False--> : <span class="idris-type" title="Types
+Meta -> Type">Ty</span><!-- closing Name TypeConstructor "Types" "Meta -> Type"--> (<span class="idris-data" title="
+String -> Meta">B</span><!-- closing Name Constructor "" "String -> Meta"--> <span class="idris-bound">s</span><!-- closing Bound False-->))
+          -&gt; (<span class="idris-bound">prf</span><!-- closing Bound False--> : <span class="idris-type" title="
+Ty m -> Type">AllTrueBravoD</span><!-- closing Name TypeConstructor "" "Ty m -> Type"--> <span class="idris-bound">bravo</span><!-- closing Bound False-->)
+          -&gt; <span class="idris-type" title="
+VectD String (Ty . B) (S n) ss -> Type">LittleMissDirect</span><!-- closing Name TypeConstructor "" "VectD String (Ty . B) (S n) ss -> Type"--> (<span class="idris-data" title="
+e v ->
+VectD a e k vs -> VectD a e (S k) (Extend v vs)">Extend</span><!-- closing Name Constructor "" "e v ->\nVectD a e k vs -> VectD a e (S k) (Extend v vs)"--> <span class="idris-bound">bravo</span><!-- closing Bound False--> <span class="idris-data" title="
+VectD a e 0 Empty">Empty</span><!-- closing Name Constructor "" "VectD a e 0 Empty"-->)
+
+      <span class="idris-data" title="
+(bravo : Ty (B s)) ->
+AllTrueBravoD bravo ->
+LittleMissDirect bravos ->
+LittleMissDirect (Extend bravo bravos)">NotLast</span><!-- closing Name Constructor "" "(bravo : Ty (B s)) ->\nAllTrueBravoD bravo ->\nLittleMissDirect bravos ->\nLittleMissDirect (Extend bravo bravos)"--> : (<span class="idris-bound">bravo</span><!-- closing Bound False--> : <span class="idris-type" title="Types
+Meta -> Type">Ty</span><!-- closing Name TypeConstructor "Types" "Meta -> Type"--> (<span class="idris-data" title="
+String -> Meta">B</span><!-- closing Name Constructor "" "String -> Meta"--> <span class="idris-bound">s</span><!-- closing Bound False-->))
+             -&gt; (<span class="idris-bound">prf</span><!-- closing Bound False--> : <span class="idris-type" title="
+Ty m -> Type">AllTrueBravoD</span><!-- closing Name TypeConstructor "" "Ty m -> Type"--> <span class="idris-bound">bravo</span><!-- closing Bound False-->)
+             -&gt; (<span class="idris-bound">rest</span><!-- closing Bound False--> : <span class="idris-type" title="
+VectD String (Ty . B) (S n) ss -> Type">LittleMissDirect</span><!-- closing Name TypeConstructor "" "VectD String (Ty . B) (S n) ss -> Type"--> <span class="idris-bound">bravos</span><!-- closing Bound False-->)
+             -&gt; <span class="idris-type" title="
+VectD String (Ty . B) (S n) ss -> Type">LittleMissDirect</span><!-- closing Name TypeConstructor "" "VectD String (Ty . B) (S n) ss -> Type"--> (<span class="idris-data" title="
+e v ->
+VectD a e k vs -> VectD a e (S k) (Extend v vs)">Extend</span><!-- closing Name Constructor "" "e v ->\nVectD a e k vs -> VectD a e (S k) (Extend v vs)"--> <span class="idris-bound">bravo</span><!-- closing Bound False--> <span class="idris-bound">bravos</span><!-- closing Bound False-->)
+
+    <span class="idris-keyword">data</span><!-- closing Keyword--> <span class="idris-type" title="
+Ty m -> Type">AllTrueBravoD</span><!-- closing Name TypeConstructor "" "Ty m -> Type"--> : (<span class="idris-bound">type</span><!-- closing Bound False--> : <span class="idris-type" title="Types
+Meta -> Type">Ty</span><!-- closing Name TypeConstructor "Types" "Meta -> Type"--> <span class="idris-bound">m</span><!-- closing Bound False-->) -&gt; <span class="idris-type" title="The type of types
+Type">Type</span><!-- closing Name TypeConstructor "The type of types" "Type"--> <span class="idris-keyword">where</span><!-- closing Keyword-->
+         ||| Any `A` is true.
+         <span class="idris-data" title="Any A is true.
+AllTrueBravoD a">AnyATrue</span><!-- closing Name Constructor "Any A is true." "AllTrueBravoD a"--> : {<span class="idris-bound">a</span><!-- closing Bound False--> : <span class="idris-type" title="Types
+Meta -> Type">Ty</span><!-- closing Name TypeConstructor "Types" "Meta -> Type"--> <span class="idris-data" title="
+Meta">A</span><!-- closing Name Constructor "" "Meta"-->} -&gt; <span class="idris-type" title="
+Ty m -> Type">AllTrueBravoD</span><!-- closing Name TypeConstructor "" "Ty m -> Type"--> <span class="idris-bound">a</span><!-- closing Bound False-->
+
+         ||| Bravo is true if the `b` field is `True`.
+         <span class="idris-data" title="Bravo is true if the b field is True.
+AllTrueBravoD (Bravo s foo True)">BravoTrue</span><!-- closing Name Constructor "Bravo is true if the b field is True." "AllTrueBravoD (Bravo s foo True)"--> : <span class="idris-type" title="
+Ty m -> Type">AllTrueBravoD</span><!-- closing Name TypeConstructor "" "Ty m -> Type"--> (<span class="idris-data" title="
+(s : String) -> Foo -> Bool -> Ty (B s)">Bravo</span><!-- closing Name Constructor "" "(s : String) -> Foo -> Bool -> Ty (B s)"--> <span class="idris-bound">s</span><!-- closing Bound False--> <span class="idris-bound">foo</span><!-- closing Bound False--> <span class="idris-data" title="
+Bool">True</span><!-- closing Name Constructor "" "Bool"-->)
+
+         <span class="idris-data" title="
+LittleMissDirect cs -> AllTrueBravoD (Charlie cs)">CharlieTrue</span><!-- closing Name Constructor "" "LittleMissDirect cs -> AllTrueBravoD (Charlie cs)"--> : {<span class="idris-bound">ss</span><!-- closing Bound False--> : <span class="idris-type" title="
+Nat -> Type -> Type">Vect</span><!-- closing Name TypeConstructor "" "Nat -> Type -> Type"--> (<span class="idris-data" title="Successor
+Nat -> Nat">S</span><!-- closing Name Constructor "Successor" "Nat -> Nat"--> <span class="idris-bound">n</span><!-- closing Bound False-->) <span class="idris-type" title="Strings in some unspecified encoding
+Type">String</span><!-- closing Name TypeConstructor "Strings in some unspecified encoding" "Type"-->}
+                    -&gt; {<span class="idris-bound">cs</span><!-- closing Bound False--> : <span class="idris-type" title="A reformulation of a vector of dependent pairs.
+(a : Type) ->
+(a -> Type) -> (s : Nat) -> Vect s a -> Type">VectD</span><!-- closing Name TypeConstructor "A reformulation of a vector of dependent pairs." "(a : Type) ->\n(a -> Type) -> (s : Nat) -> Vect s a -> Type"--> <span class="idris-type" title="Strings in some unspecified encoding
+Type">String</span><!-- closing Name TypeConstructor "Strings in some unspecified encoding" "Type"--> (<span class="idris-type" title="Types
+Meta -> Type">Ty</span><!-- closing Name TypeConstructor "Types" "Meta -> Type"--> <span class="idris-function" title="Function composition
+(b -> c) -> (a -> b) -> a -> c">.</span><!-- closing Name Function "Function composition" "(b -> c) -> (a -> b) -> a -> c"--> <span class="idris-data" title="
+String -> Meta">B</span><!-- closing Name Constructor "" "String -> Meta"-->) (<span class="idris-data" title="Successor
+Nat -> Nat">S</span><!-- closing Name Constructor "Successor" "Nat -> Nat"--> <span class="idris-bound">n</span><!-- closing Bound False-->) <span class="idris-bound">ss</span><!-- closing Bound False-->}
+                    -&gt; (<span class="idris-bound">prfCSTrue</span><!-- closing Bound False--> : <span class="idris-type" title="
+VectD String (Ty . B) (S n) ss -> Type">LittleMissDirect</span><!-- closing Name TypeConstructor "" "VectD String (Ty . B) (S n) ss -> Type"--> <span class="idris-bound">cs</span><!-- closing Bound False-->)
+                    -&gt; <span class="idris-type" title="
+Ty m -> Type">AllTrueBravoD</span><!-- closing Name TypeConstructor "" "Ty m -> Type"--> (<span class="idris-data" title="
+VectD String (Ty . B) (S n) ss -> Ty (C ss)">Charlie</span><!-- closing Name Constructor "" "VectD String (Ty . B) (S n) ss -> Ty (C ss)"--> <span class="idris-bound">cs</span><!-- closing Bound False-->)
+</pre>
+<p>However, we are still in a mutual block. Let us parameterise <code>LittleMissDirect</code> by the type signature of <code>AllTrueBravoD</code> to allow us to remove the need for a mutual block.</p>
+<h2 id="attempt-four-the-rug-that-brings-it-all-together">Attempt Four: The Rug that brings it all together</h2>
+<pre>
+<span class="idris-keyword">namespace</span><!-- closing Keyword--> TheRug
+
+  <span class="idris-keyword">data</span><!-- closing Keyword--> <span class="idris-type" title="
+(Ty m -> Type) ->
+VectD String (Ty . B) (S n) ss -> Type">LittleMissDirect</span><!-- closing Name TypeConstructor "" "(Ty m -> Type) ->\nVectD String (Ty . B) (S n) ss -> Type"--> : (<span class="idris-bound">allTrueBravo</span><!-- closing Bound False--> : (<span class="idris-bound">type</span><!-- closing Bound False--> : <span class="idris-type" title="Types
+Meta -> Type">Ty</span><!-- closing Name TypeConstructor "Types" "Meta -> Type"--> <span class="idris-bound">m</span><!-- closing Bound False-->) -&gt; <span class="idris-type" title="The type of types
+Type">Type</span><!-- closing Name TypeConstructor "The type of types" "Type"-->)
+                       -&gt; (<span class="idris-bound">cs</span><!-- closing Bound False--> : <span class="idris-type" title="A reformulation of a vector of dependent pairs.
+(a : Type) ->
+(a -> Type) -> (s : Nat) -> Vect s a -> Type">VectD</span><!-- closing Name TypeConstructor "A reformulation of a vector of dependent pairs." "(a : Type) ->\n(a -> Type) -> (s : Nat) -> Vect s a -> Type"--> <span class="idris-type" title="Strings in some unspecified encoding
+Type">String</span><!-- closing Name TypeConstructor "Strings in some unspecified encoding" "Type"--> (<span class="idris-type" title="Types
+Meta -> Type">Ty</span><!-- closing Name TypeConstructor "Types" "Meta -> Type"--> <span class="idris-function" title="Function composition
+(b -> c) -> (a -> b) -> a -> c">.</span><!-- closing Name Function "Function composition" "(b -> c) -> (a -> b) -> a -> c"--> <span class="idris-data" title="
+String -> Meta">B</span><!-- closing Name Constructor "" "String -> Meta"-->) (<span class="idris-data" title="Successor
+Nat -> Nat">S</span><!-- closing Name Constructor "Successor" "Nat -> Nat"--> <span class="idris-bound">n</span><!-- closing Bound False-->) <span class="idris-bound">ss</span><!-- closing Bound False-->)
+                       -&gt; <span class="idris-type" title="The type of types
+Type">Type</span><!-- closing Name TypeConstructor "The type of types" "Type"-->
+    <span class="idris-keyword">where</span><!-- closing Keyword-->
+
+      ||| The length is `(S n)` remember.
+      <span class="idris-data" title="The length is (S n) remember.
+(bravo : Ty (B s)) ->
+allTrueBravoD bravo ->
+LittleMissDirect allTrueBravoD
+                 (Extend bravo Empty)">Last</span><!-- closing Name Constructor "The length is (S n) remember." "(bravo : Ty (B s)) ->\nallTrueBravoD bravo ->\nLittleMissDirect allTrueBravoD\n                 (Extend bravo Empty)"--> : (<span class="idris-bound">bravo</span><!-- closing Bound False--> : <span class="idris-type" title="Types
+Meta -> Type">Ty</span><!-- closing Name TypeConstructor "Types" "Meta -> Type"--> (<span class="idris-data" title="
+String -> Meta">B</span><!-- closing Name Constructor "" "String -> Meta"--> <span class="idris-bound">s</span><!-- closing Bound False-->))
+          -&gt; (<span class="idris-bound">prf</span><!-- closing Bound False--> : <span class="idris-bound">allTrueBravoD</span><!-- closing Bound False--> <span class="idris-bound">bravo</span><!-- closing Bound False-->)
+          -&gt; <span class="idris-type" title="
+(Ty m -> Type) ->
+VectD String (Ty . B) (S n) ss -> Type">LittleMissDirect</span><!-- closing Name TypeConstructor "" "(Ty m -> Type) ->\nVectD String (Ty . B) (S n) ss -> Type"--> <span class="idris-bound">allTrueBravoD</span><!-- closing Bound False--> (<span class="idris-data" title="
+e v ->
+VectD a e k vs -> VectD a e (S k) (Extend v vs)">Extend</span><!-- closing Name Constructor "" "e v ->\nVectD a e k vs -> VectD a e (S k) (Extend v vs)"--> <span class="idris-bound">bravo</span><!-- closing Bound False--> <span class="idris-data" title="
+VectD a e 0 Empty">Empty</span><!-- closing Name Constructor "" "VectD a e 0 Empty"-->)
+
+      <span class="idris-data" title="
+(bravo : Ty (B s)) ->
+allTrueBravoD bravo ->
+LittleMissDirect allTrueBravoD bravos ->
+LittleMissDirect allTrueBravoD
+                 (Extend bravo bravos)">NotLast</span><!-- closing Name Constructor "" "(bravo : Ty (B s)) ->\nallTrueBravoD bravo ->\nLittleMissDirect allTrueBravoD bravos ->\nLittleMissDirect allTrueBravoD\n                 (Extend bravo bravos)"--> : (<span class="idris-bound">bravo</span><!-- closing Bound False--> : <span class="idris-type" title="Types
+Meta -> Type">Ty</span><!-- closing Name TypeConstructor "Types" "Meta -> Type"--> (<span class="idris-data" title="
+String -> Meta">B</span><!-- closing Name Constructor "" "String -> Meta"--> <span class="idris-bound">s</span><!-- closing Bound False-->))
+             -&gt; (<span class="idris-bound">prf</span><!-- closing Bound False--> : <span class="idris-bound">allTrueBravoD</span><!-- closing Bound False--> <span class="idris-bound">bravo</span><!-- closing Bound False-->)
+             -&gt; (<span class="idris-bound">rest</span><!-- closing Bound False--> : <span class="idris-type" title="
+(Ty m -> Type) ->
+VectD String (Ty . B) (S n) ss -> Type">LittleMissDirect</span><!-- closing Name TypeConstructor "" "(Ty m -> Type) ->\nVectD String (Ty . B) (S n) ss -> Type"--> <span class="idris-bound">allTrueBravoD</span><!-- closing Bound False--> <span class="idris-bound">bravos</span><!-- closing Bound False-->)
+             -&gt; <span class="idris-type" title="
+(Ty m -> Type) ->
+VectD String (Ty . B) (S n) ss -> Type">LittleMissDirect</span><!-- closing Name TypeConstructor "" "(Ty m -> Type) ->\nVectD String (Ty . B) (S n) ss -> Type"--> <span class="idris-bound">allTrueBravoD</span><!-- closing Bound False--> (<span class="idris-data" title="
+e v ->
+VectD a e k vs -> VectD a e (S k) (Extend v vs)">Extend</span><!-- closing Name Constructor "" "e v ->\nVectD a e k vs -> VectD a e (S k) (Extend v vs)"--> <span class="idris-bound">bravo</span><!-- closing Bound False--> <span class="idris-bound">bravos</span><!-- closing Bound False-->)
+
+  <span class="idris-keyword">data</span><!-- closing Keyword--> <span class="idris-type" title="
+Ty m -> Type">AllTrueBravoE</span><!-- closing Name TypeConstructor "" "Ty m -> Type"--> : (<span class="idris-bound">type</span><!-- closing Bound False--> : <span class="idris-type" title="Types
+Meta -> Type">Ty</span><!-- closing Name TypeConstructor "Types" "Meta -> Type"--> <span class="idris-bound">m</span><!-- closing Bound False-->) -&gt; <span class="idris-type" title="The type of types
+Type">Type</span><!-- closing Name TypeConstructor "The type of types" "Type"--> <span class="idris-keyword">where</span><!-- closing Keyword-->
+       ||| Any `A` is true.
+       <span class="idris-data" title="Any A is true.
+AllTrueBravoE a">AnyATrue</span><!-- closing Name Constructor "Any A is true." "AllTrueBravoE a"--> : {<span class="idris-bound">a</span><!-- closing Bound False--> : <span class="idris-type" title="Types
+Meta -> Type">Ty</span><!-- closing Name TypeConstructor "Types" "Meta -> Type"--> <span class="idris-data" title="
+Meta">A</span><!-- closing Name Constructor "" "Meta"-->} -&gt; <span class="idris-type" title="
+Ty m -> Type">AllTrueBravoE</span><!-- closing Name TypeConstructor "" "Ty m -> Type"--> <span class="idris-bound">a</span><!-- closing Bound False-->
+
+       ||| Bravo is true if the `b` field is `True`.
+       <span class="idris-data" title="Bravo is true if the b field is True.
+AllTrueBravoE (Bravo s foo True)">BravoTrue</span><!-- closing Name Constructor "Bravo is true if the b field is True." "AllTrueBravoE (Bravo s foo True)"--> : <span class="idris-type" title="
+Ty m -> Type">AllTrueBravoE</span><!-- closing Name TypeConstructor "" "Ty m -> Type"--> (<span class="idris-data" title="
+(s : String) -> Foo -> Bool -> Ty (B s)">Bravo</span><!-- closing Name Constructor "" "(s : String) -> Foo -> Bool -> Ty (B s)"--> <span class="idris-bound">s</span><!-- closing Bound False--> <span class="idris-bound">foo</span><!-- closing Bound False--> <span class="idris-data" title="
+Bool">True</span><!-- closing Name Constructor "" "Bool"-->)
+
+       <span class="idris-data" title="
+LittleMissDirect AllTrueBravoE cs ->
+AllTrueBravoE (Charlie cs)">CharlieTrue</span><!-- closing Name Constructor "" "LittleMissDirect AllTrueBravoE cs ->\nAllTrueBravoE (Charlie cs)"--> : {<span class="idris-bound">ss</span><!-- closing Bound False--> : <span class="idris-type" title="
+Nat -> Type -> Type">Vect</span><!-- closing Name TypeConstructor "" "Nat -> Type -> Type"--> (<span class="idris-data" title="Successor
+Nat -> Nat">S</span><!-- closing Name Constructor "Successor" "Nat -> Nat"--> <span class="idris-bound">n</span><!-- closing Bound False-->) <span class="idris-type" title="Strings in some unspecified encoding
+Type">String</span><!-- closing Name TypeConstructor "Strings in some unspecified encoding" "Type"-->}
+                  -&gt; {<span class="idris-bound">cs</span><!-- closing Bound False--> : <span class="idris-type" title="A reformulation of a vector of dependent pairs.
+(a : Type) ->
+(a -> Type) -> (s : Nat) -> Vect s a -> Type">VectD</span><!-- closing Name TypeConstructor "A reformulation of a vector of dependent pairs." "(a : Type) ->\n(a -> Type) -> (s : Nat) -> Vect s a -> Type"--> <span class="idris-type" title="Strings in some unspecified encoding
+Type">String</span><!-- closing Name TypeConstructor "Strings in some unspecified encoding" "Type"--> (<span class="idris-type" title="Types
+Meta -> Type">Ty</span><!-- closing Name TypeConstructor "Types" "Meta -> Type"--> <span class="idris-function" title="Function composition
+(b -> c) -> (a -> b) -> a -> c">.</span><!-- closing Name Function "Function composition" "(b -> c) -> (a -> b) -> a -> c"--> <span class="idris-data" title="
+String -> Meta">B</span><!-- closing Name Constructor "" "String -> Meta"-->) (<span class="idris-data" title="Successor
+Nat -> Nat">S</span><!-- closing Name Constructor "Successor" "Nat -> Nat"--> <span class="idris-bound">n</span><!-- closing Bound False-->) <span class="idris-bound">ss</span><!-- closing Bound False-->}
+                  -&gt; (<span class="idris-bound">prfCSTrue</span><!-- closing Bound False--> : <span class="idris-type" title="
+(Ty m -> Type) ->
+VectD String (Ty . B) (S n) ss -> Type">LittleMissDirect</span><!-- closing Name TypeConstructor "" "(Ty m -> Type) ->\nVectD String (Ty . B) (S n) ss -> Type"--> <span class="idris-type" title="
+Ty m -> Type">AllTrueBravoE</span><!-- closing Name TypeConstructor "" "Ty m -> Type"--> <span class="idris-bound">cs</span><!-- closing Bound False-->)
+                  -&gt; <span class="idris-type" title="
+Ty m -> Type">AllTrueBravoE</span><!-- closing Name TypeConstructor "" "Ty m -> Type"--> (<span class="idris-data" title="
+VectD String (Ty . B) (S n) ss -> Ty (C ss)">Charlie</span><!-- closing Name Constructor "" "VectD String (Ty . B) (S n) ss -> Ty (C ss)"--> <span class="idris-bound">cs</span><!-- closing Bound False-->)
+
+
+  <span class="idris-keyword">data</span><!-- closing Keyword--> <span class="idris-type" title="
+Types ms -> Type">AllTrueBravos</span><!-- closing Name TypeConstructor "" "Types ms -> Type"--> : <span class="idris-function" title="We define a collection of types as follows.
+List Meta -> Type">Types</span><!-- closing Name Function "We define a collection of types as follows." "List Meta -> Type"--> <span class="idris-bound">ms</span><!-- closing Bound False--> -&gt; <span class="idris-type" title="The type of types
+Type">Type</span><!-- closing Name TypeConstructor "The type of types" "Type"--> <span class="idris-keyword">where</span><!-- closing Keyword-->
+    <span class="idris-data" title="
+AllTrueBravos Empty">Empty</span><!-- closing Name Constructor "" "AllTrueBravos Empty"--> : <span class="idris-type" title="
+Types ms -> Type">AllTrueBravos</span><!-- closing Name TypeConstructor "" "Types ms -> Type"--> <span class="idris-data" title="
+ListD a e v">Empty</span><!-- closing Name Constructor "" "ListD a e v"-->
+    <span class="idris-data" title="
+AllTrueBravoE type ->
+AllTrueBravos types ->
+AllTrueBravos (Extend type types)">Extend</span><!-- closing Name Constructor "" "AllTrueBravoE type ->\nAllTrueBravos types ->\nAllTrueBravos (Extend type types)"--> : (<span class="idris-bound">head</span><!-- closing Bound False--> : <span class="idris-type" title="
+Ty m -> Type">AllTrueBravoE</span><!-- closing Name TypeConstructor "" "Ty m -> Type"--> <span class="idris-bound">type</span><!-- closing Bound False-->)
+          -&gt; (<span class="idris-bound">tail</span><!-- closing Bound False--> : <span class="idris-type" title="
+Types ms -> Type">AllTrueBravos</span><!-- closing Name TypeConstructor "" "Types ms -> Type"--> <span class="idris-bound">types</span><!-- closing Bound False-->)
+          -&gt; <span class="idris-type" title="
+Types ms -> Type">AllTrueBravos</span><!-- closing Name TypeConstructor "" "Types ms -> Type"--> (<span class="idris-data" title="
+e v -> ListD a e vs -> ListD a e (v :: vs)">Extend</span><!-- closing Name Constructor "" "e v -> ListD a e vs -> ListD a e (v :: vs)"--> <span class="idris-bound">type</span><!-- closing Bound False--> <span class="idris-bound">types</span><!-- closing Bound False-->)
+</pre>
+<h2 id="note">Note</h2>
+<p>When writing the decision procedure for <code>littleMissDirect</code> you will want to first define the procedure signature for <code>allTrueBravo</code> first.</p>
+<pre>
+<span class="idris-function" title="
+(type : Ty m) -> Dec (AllTrueBravoE type)">allTrueBravo</span><!-- closing Name Function "" "(type : Ty m) -> Dec (AllTrueBravoE type)"--> : (<span class="idris-bound">type</span><!-- closing Bound False--> : <span class="idris-type" title="Types
+Meta -> Type">Ty</span><!-- closing Name TypeConstructor "Types" "Meta -> Type"--> <span class="idris-bound">m</span><!-- closing Bound False-->) -&gt; <span class="idris-type" title="Decidability. A decidable property either holds or
+is a contradiction.
+Type -> Type">Dec</span><!-- closing Name TypeConstructor "Decidability. A decidable property either holds or\nis a contradiction." "Type -> Type"--> (<span class="idris-type" title="
+Ty m -> Type">AllTrueBravoE</span><!-- closing Name TypeConstructor "" "Ty m -> Type"--> <span class="idris-bound">type</span><!-- closing Bound False-->)
+</pre>
+<p>and then realise <code>littleMissDirect</code>.</p>
+<pre>
+<span class="idris-function" title="
+(cs : VectD String (Ty . B) (S n) ss) ->
+Dec (LittleMissDirect AllTrueBravoE cs)">littleMissDirect</span><!-- closing Name Function "" "(cs : VectD String (Ty . B) (S n) ss) ->\nDec (LittleMissDirect AllTrueBravoE cs)"--> : (<span class="idris-bound">cs</span><!-- closing Bound False--> : <span class="idris-type" title="A reformulation of a vector of dependent pairs.
+(a : Type) ->
+(a -> Type) -> (s : Nat) -> Vect s a -> Type">VectD</span><!-- closing Name TypeConstructor "A reformulation of a vector of dependent pairs." "(a : Type) ->\n(a -> Type) -> (s : Nat) -> Vect s a -> Type"--> <span class="idris-type" title="Strings in some unspecified encoding
+Type">String</span><!-- closing Name TypeConstructor "Strings in some unspecified encoding" "Type"--> (<span class="idris-type" title="Types
+Meta -> Type">Ty</span><!-- closing Name TypeConstructor "Types" "Meta -> Type"--> <span class="idris-function" title="Function composition
+(b -> c) -> (a -> b) -> a -> c">.</span><!-- closing Name Function "Function composition" "(b -> c) -> (a -> b) -> a -> c"--> <span class="idris-data" title="
+String -> Meta">B</span><!-- closing Name Constructor "" "String -> Meta"-->) (<span class="idris-data" title="Successor
+Nat -> Nat">S</span><!-- closing Name Constructor "Successor" "Nat -> Nat"--> <span class="idris-bound">n</span><!-- closing Bound False-->) <span class="idris-bound">ss</span><!-- closing Bound False-->)
+                -&gt; <span class="idris-type" title="Decidability. A decidable property either holds or
+is a contradiction.
+Type -> Type">Dec</span><!-- closing Name TypeConstructor "Decidability. A decidable property either holds or\nis a contradiction." "Type -> Type"--> (<span class="idris-type" title="
+(Ty m -> Type) ->
+VectD String (Ty . B) (S n) ss -> Type">LittleMissDirect</span><!-- closing Name TypeConstructor "" "(Ty m -> Type) ->\nVectD String (Ty . B) (S n) ss -> Type"--> <span class="idris-type" title="
+Ty m -> Type">AllTrueBravoE</span><!-- closing Name TypeConstructor "" "Ty m -> Type"--> <span class="idris-bound">cs</span><!-- closing Bound False-->)
+</pre>
+<p>and <em>then</em> give the procedure body for <code>allTrueBravos</code>.</p>
+<pre>
+<span class="idris-function" title="
+(type : Ty m) -> Dec (AllTrueBravoE type)">allTrueBravo</span><!-- closing Name Function "" "(type : Ty m) -> Dec (AllTrueBravoE type)"--> <span class="idris-bound">type</span><!-- closing Bound False--> = ?allTrueBravo_rhs
+</pre>
+<p>Thus, further removing the need for a mutual block, as you will need <code>allTrueBravo</code>.</p>
+<p>Not to mention that last of all you will want to give the decision procedure for <code>allTrueBravos</code>.</p>
+<pre>
+<span class="idris-function" title="
+(types : Types ms) -> Dec (AllTrueBravos types)">allTrueBravos</span><!-- closing Name Function "" "(types : Types ms) -> Dec (AllTrueBravos types)"--> : (<span class="idris-bound">types</span><!-- closing Bound False--> : <span class="idris-function" title="We define a collection of types as follows.
+List Meta -> Type">Types</span><!-- closing Name Function "We define a collection of types as follows." "List Meta -> Type"--> <span class="idris-bound">ms</span><!-- closing Bound False-->) -&gt; <span class="idris-type" title="Decidability. A decidable property either holds or
+is a contradiction.
+Type -> Type">Dec</span><!-- closing Name TypeConstructor "Decidability. A decidable property either holds or\nis a contradiction." "Type -> Type"--> (<span class="idris-type" title="
+Types ms -> Type">AllTrueBravos</span><!-- closing Name TypeConstructor "" "Types ms -> Type"--> <span class="idris-bound">types</span><!-- closing Bound False-->)
+</pre>
+
+              </div>
+            </main>
+          </div>
+        </div>
+      </div>
+      <!-- ====================================================
+           Footer
+           ====================================================
+        -->
+      <footer class="footer">
+          <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">
+            <img alt="Creative Commons Licence" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/80x15.png" />
+          </a>
+          <span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Dataset" property="dct:title" rel="dct:type">jfdm.github.io</span> by <a xmlns:cc="http://creativecommons.org/ns#" href="http://jfdm.github.io/" property="cc:attributionName" rel="cc:attributionURL">Jan de Muijnck-Hughes</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.
+            Site proudly generated by
+<a href="http://jaspervdj.be/hakyll">Hakyll</a> and <a href="https://github.com/commercialhaskell/stack">Stack</a>, and hosted on <a href="http://github.com/jfdm/jfdm.github.io">GitHub</a>
+      </footer>
+
+
+   <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+      <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+    </body>
+</html>
