@@ -121,7 +121,7 @@ and lastly application:
     g |- (f $ e) synths t
 
 What this means is that for function definitions we have to calculate the type of the function body `e` and check it against the presented type.
-For function application is, get the type of the function from the function itself, check that the argument `e` has the write type we generated from `f`, and we can then generate the final type `t`.
+For function application is, get the type of the function from the function itself, check that the argument `e` has the correct type we generated from `f`, and we can then generate the final type `t`.
 
 ## Morally, the `STLC` is not Intrinsically Typed.
 
