@@ -7,7 +7,7 @@ title: Professional Activities
 
 ### Programme Committees
 
-I serve/have served on the follow Artefact Committee's:
+I have served as a committee member on the following committees:
 
 + 20th Asian Symposium on Programming Languages and Systems [APLAS 2022](https://2022.splashcon.org/home/aplas-2022)
 + 33rd Symposium on Implementation and Application of Functional Languages [IFL21](https://ifl21.cs.ru.nl/)
@@ -15,10 +15,10 @@ I serve/have served on the follow Artefact Committee's:
 
 ### Artefact Reviewing
 
-I serve/have served on the follow Artefact Committee's:
+I have served as committee member on the following artefact evaluation committees:
 
-+ ESOP 2022
-+ [PLDI 2021](https://pldi21.sigplan.org/track/pldi-2021-PLDI-Research-Artifacts).
++ 31st European Symposium on Programming [ESOP AEC 2022](https://etaps.org/user-profile/archive/53-etaps-2022/491-esop-2022-artifact-evaluation)
++ 42nd SIGPLAN Conference on Programming Language Design and Implementation [PLDI AEC 2021](https://pldi21.sigplan.org/track/pldi-2021-PLDI-Research-Artifacts).
 
 ### Journal Reviewing
 
@@ -68,4 +68,5 @@ I maintain active research collaborations with the following research groups:
 ## Societal Memberships
 
 + Member of ACM.
-+ Participant of the *Scottish Programming Language Seminar* (SPLS) series
++ Participant of the [*Scottish Programming Language Seminar* (SPLS) series](https://spls-series.github.io/).
++ Member of the [*Scottish Programming Languages Institute* (SPLI)](https://scottish-pl-institute.github.io/).
