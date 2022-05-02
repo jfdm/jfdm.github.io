@@ -9,6 +9,7 @@ title: Professional Activities
 
 I serve/have served on the follow Artefact Committee's:
 
++ 20th Asian Symposium on Programming Languages and Systems [APLAS 2022](https://2022.splashcon.org/home/aplas-2022)
 + 33rd Symposium on Implementation and Application of Functional Languages [IFL21](https://ifl21.cs.ru.nl/)
 + 9th Workshop on Mathematically Structured Functional Programming, [MSFP 2022](#)
 
