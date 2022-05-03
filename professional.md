@@ -15,7 +15,13 @@ I have served as a committee member on the following committees:
 
 ### Artefact Reviewing
 
-I have served as committee member on the following artefact evaluation committees:
+For the following artefact evaluation committees:
+
+I have co-chaired the:
+
++ 20th Asian Symposium on Programming Languages and Systems [APLAS AEC 2022](#).
+
+I have served as committee member on:
 
 + 31st European Symposium on Programming [ESOP AEC 2022](https://etaps.org/user-profile/archive/53-etaps-2022/491-esop-2022-artifact-evaluation)
 + 42nd SIGPLAN Conference on Programming Language Design and Implementation [PLDI AEC 2021](https://pldi21.sigplan.org/track/pldi-2021-PLDI-Research-Artifacts).
