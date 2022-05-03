@@ -2,7 +2,7 @@
 title: About
 ...
 
-I am a Post-Doctoral Research Associate at the [School of Computing at the University of Glasgow](http://www.gla.ac.uk/schools/computing/), where I am a member of the [Glasgow Parallelism Group](http://www.dcs.gla.ac.uk/research/gpg/) (GPG) as part of the [Glasgow Systems Section](https://www.gla.ac.uk/schools/computing/research/researchsections/systems-section/) (GLASS).
+I am a Research Associate at the [School of Computing at the University of Glasgow](http://www.gla.ac.uk/schools/computing/), where I am a member of the [Glasgow Parallelism Group](http://www.dcs.gla.ac.uk/research/gpg/) (GPG) as part of the [Glasgow Systems Section](https://www.gla.ac.uk/schools/computing/research/researchsections/systems-section/) (GLASS).
 I maintain strong links with the [Formal Methods Research Group](http://www.dcs.gla.ac.uk/research/formalmethods/) in [Formal Analysis, Theory & Algorithms](https://www.gla.ac.uk/schools/computing/research/researchsections/fata-section/) (FATA) Section through membership of the [Programming Languages](https://www.gla.ac.uk/schools/computing/research/researchthemes/pl-theme/) (PL) Theme.
 
 My core role at Glasgow is to investigate the construction and application of structural and behavioural type-systems for hardware design languages.
