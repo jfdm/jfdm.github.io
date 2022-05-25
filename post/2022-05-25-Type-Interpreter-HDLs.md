@@ -65,11 +65,8 @@ addVertex n (G vs es) with (isElem n vs)
     = G (n::vs) es
 
 
-addEdge (a,b) (G vs es) with (isElem (a,b) es)
-  addEdge (a,b) (G vs es) | (Yes prf)
-    = G vs es
-  addEdge (a,b) (G vs es) | (No contra)
-    = G vs ((a,b)::es)
+addEdge (a,b)
+  = { edges $= (::) (a,b) }
 
 fromEdges = foldl addEdge' (G Nil Nil)
   where
@@ -307,7 +304,7 @@ Interpretation of wires maps channels to a subgraph that is a directed edge betw
 ```idris
       Wire : (dtype : DataType)
           -> (scope : Term (S (S c_in))
-                           (merge (fromEdges [(S (S c_in), S (S c_in))])
+                           (merge (fromEdges [(S c_in, S (S c_in))])
                                   g_in)
                            (I (Chan dtype) (S c_in, S (S c_in)) :: ctxt)
                            Unit
@@ -416,12 +413,20 @@ example
 
 ```
 Main> fst (snd example)
-G [1, 3, 4, 2] [(4, 1), (3, 4), (2, 4)]
+G [1, 3, 4, 2]
+  [(4, 1), (3, 4), (2, 4)]
 Main> snd (snd example)
-Port LOGIC OUT (Port LOGIC IN (Port LOGIC IN (GDecl (Gate (Var (There (There Here))) (Var (There Here)) (Var Here)) Stop)))
+ Port LOGIC OUT
+(Port LOGIC IN
+(Port LOGIC IN
+(GDecl (Gate (Var (There (There Here)))
+            (Var (There Here))
+            (Var Here))
+ Stop)))
 Main> :t snd (snd example)
-snd (snd example) : Term 0 (G [] []) [] Unit () 4 (G [1, 3, 4, 2] [(4, 1), (3, 4), (2, 4)])
-Main>
+snd (snd example) : Term 0 (G [] []) [] Unit ()
+                         4 (G [1, 3, 4, 2]
+                              [(4, 1), (3, 4), (2, 4)])
 ```
 
 ### Example 2
@@ -450,11 +455,29 @@ example2
 
 ```
 Main> fst (snd example2)
-G [2, 5, 3, 1, 6, 4] [(2, 5), (5, 3), (4, 4), (6, 1), (4, 6)]
+G [2, 5, 3, 1, 6, 4]
+  [(2, 5), (2, 5), (5, 3), (3, 4), (6, 1), (4, 6), (4, 6)]
 Main> snd (snd example2)
-Port LOGIC OUT (Port LOGIC IN (Wire LOGIC (GDecl (Gate (ProjW (Var Here)) (Var (There Here)) (Var (There Here))) (GDecl (Gate (Var (There (There (There Here)))) (ProjR (Var (There Here))) (ProjR (Var (There Here)))) Stop))))
+ Port LOGIC OUT
+(Port LOGIC IN
+(Wire LOGIC
+(GDecl (Gate (ProjW (Var Here))
+             (Var (There Here))
+             (Var (There Here)))
+(GDecl (Gate (Var (There (There (There Here))))
+             (ProjR (Var (There Here)))
+             (ProjR (Var (There Here))))
+ Stop))))
 Main> :t snd (snd example2)
-snd (snd example2) : Term 0 (G [] []) [] Unit () 6 (G [2, 5, 3, 1, 6, 4] [(2, 5), (5, 3), (4, 4), (6, 1), (4, 6)])
+snd (snd example2) : Term 0 (G [] []) [] Unit ()
+                          6 (G [2, 5, 3, 1, 6, 4]
+                               [(2, 5),
+                                (2, 5),
+                                (5, 3),
+                                (3, 4),
+                                (6, 1),
+                                (4, 6),
+                                (4, 6)])
 ```
 
 ## Problems
