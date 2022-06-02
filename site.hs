@@ -5,18 +5,56 @@
 --  License   : see LICENSE
 --  -------------------------------------------------------------------- [ EOH ]
 
+import            Data.Maybe                      (fromMaybe, listToMaybe)
+import            Data.Either                     (fromRight)
+import            Data.Monoid                     ((<>), mconcat)
+import            Data.Functor                    ((<$>), fmap)
+import            Data.Char                       (isSpace, toLower, toUpper)
+import            Data.List                       (intercalate, intersperse, foldl', isPrefixOf)
+import            Data.Text                       (pack)
+import            Control.Applicative             ((<|>), Alternative(..))
+import            Control.Monad                   (msum, filterM, (<=<), liftM, filterM)
+import            Control.Monad.Fail              (MonadFail)
+import            System.Environment              (getArgs)
+import            Text.Blaze.Html                 (toHtml, toValue, (!))
+import            Text.Blaze.Html5.Attributes     (href, class_)
+import            Text.Blaze.Html.Renderer.String (renderHtml)
+
+import qualified  Text.Blaze.Html5                as H
+import            Text.Pandoc.Options
+import            Text.Pandoc.Templates
+import            Text.Pandoc.Class
+
 import Control.Applicative
 import Control.Arrow
 import Control.Monad
-
+import            Data.Either                     (fromRight)
+import            Data.Text                       (pack)
 import Data.Default           (def)
 import Data.Maybe (fromJust)
 import Data.Monoid (mappend)
-
+import            Text.Blaze.Html.Renderer.String (renderHtml)
+import           Text.Pandoc.Options            ( WriterOptions
+                                                , writerNumberSections
+                                                , writerSyntaxMap
+                                                , writerTOCDepth
+                                                , writerTableOfContents
+                                                , writerTemplate
+                                                )
+import            Text.Blaze.Html                 (toHtml, toValue, (!))
+import            Text.Blaze.Html5.Attributes     (href, class_)
+import            Text.Blaze.Html.Renderer.String (renderHtml)
+import qualified  Text.Blaze.Html5                as H
 import Hakyll
-
+import            Text.Pandoc.Options
+import            Text.Pandoc.Templates
 import Debug.Trace
 
+{-
+https://svejcar.dev/posts/2019/11/27/table-of-contents-in-hakyll/
+https://argumatronic.com/posts/2018-01-16-pandoc-toc.html
+https://gisli.hamstur.is/2020/08/my-personal-hakyll-cheatsheet/
+-}
 --------------------------------------------------------------------------------
 main :: IO ()
 main = hakyll $ do
@@ -25,6 +63,10 @@ main = hakyll $ do
         compile copyFileCompiler
 
     match "css/*" $ do
+        route   idRoute
+        compile compressCssCompiler
+
+    match "js/*" $ do
         route   idRoute
         compile compressCssCompiler
 
@@ -57,7 +99,7 @@ main = hakyll $ do
 
     match "post/*.md" $ do
       route $ setExtension "html"
-      compile $ pandocBiblioCompiler "style.csl" "biblio.bib"
+      compile $ blogCompiler -- pandocBiblioCompiler "style.csl" "biblio.bib"
         >>= loadAndApplyTemplate "templates/post.html" (postCtxWithTags tags)
         >>= loadAndApplyTemplate "templates/default.html" (postCtxWithTags tags)
         >>= relativizeUrls
@@ -123,7 +165,6 @@ main = hakyll $ do
 
     match "templates/*" $ compile templateCompiler
 
-
 --  --------------------------------------------------------------- [ Contexts ]
 
 postCtx :: Context String
@@ -135,3 +176,35 @@ postCtxWithTags :: Tags -> Context String
 postCtxWithTags tags = tagsField "tags" tags `mappend` postCtx
 
 --  -------------------------------------------------------------------- [ EOF ]
+
+blogCompiler :: Compiler (Item String)
+blogCompiler = do
+   ident <- getUnderlying
+   toc   <- getMetadataField ident "withtoc"
+   pandocCompilerWith defaultHakyllReaderOptions (maybe defaultOptions blogOptions toc)
+   where
+      defaultOptions = defaultHakyllWriterOptions
+      blogOptions = const blogWriterOptions
+
+blogWriterOptions :: WriterOptions
+blogWriterOptions =
+   defaultHakyllWriterOptions
+      {
+
+        writerTableOfContents = True
+      , writerNumberSections  = True
+      , writerTOCDepth        = 1
+      , writerTemplate        =
+         let
+            toc = "$toc$" :: String
+            body = "$body$" :: String
+            html = pack . renderHtml $ do
+                     H.div ! class_ "toc" $ do
+                        toHtml toc
+                     toHtml body
+            template  =  fromRight mempty <$> compileTemplate "" html
+            runPureWithDefaultPartials = runPure . runWithDefaultPartials
+            eitherToMaybe = either (const Nothing) Just
+         in
+            eitherToMaybe (runPureWithDefaultPartials template)
+   }
