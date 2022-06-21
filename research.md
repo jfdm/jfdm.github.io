@@ -68,6 +68,16 @@ There are more repo's on GitHub but I will list important ones here.
 
 ### Research
 
+#### AppControl
+
+See: <https://github.com/DSbD-AppControl>
+
+#### Border-Patrol
+
+See: <https://github.com/border-patrol>
+
+#### From My PhD
+
 + @sif-lang
 + @idris-xml
 + @idris-grl
@@ -77,6 +87,6 @@ There are more repo's on GitHub but I will list important ones here.
 + @edda
 
 
-### Other
+#### Other
 
 + @sta-latex
