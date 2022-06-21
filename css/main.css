@@ -8,7 +8,7 @@ html {
 }
 
 body {
-  margin-bottom: 60px;
+  margin-bottom: 100px;
   background-color: #f8f9fa;
   font-family: 'Montserrat', sans-serif;
 }
@@ -31,11 +31,13 @@ pre {
 }
 
 .footer {
-  position: absolute;
+  position: fixed;
   bottom: 0;
-  width: 80%;
+  width: 100%;
+  text-align: center;
+  font-size-adjust: 0.8;
   /* Set the fixed height of the footer here */
-  height: 60px;
+  height: 100px;
   background-color: #f5f5f5;
   border-top: 2px solid #000000  ;
 }
