@@ -1,0 +1,25 @@
+strict digraph g
+{
+        rankdir=LR;
+        1 [label="$"     , xlabel="S"];
+        2 [label="Check" , xlabel="S"];
+        3 [label="Fun"   , xlabel="C"];
+        4 [label="+"     , xlabel="C"];
+        5 [label="Synth" , xlabel="C"];
+        6 [label="x"     , xlabel="S"];
+        7 [label="1"     , xlabel="C"];
+        8 [label="5"     , xlabel="C"];
+
+        9 [label="(Nat -> Nat)", xlabel="TYPE"]
+        10 [label="Nat", xlabel="TYPE"];
+
+        1 -> 2;
+        2 -> 3;
+        3 -> 4;
+        4 -> {5,7};
+        5 -> 6;
+        1 -> 8;
+
+        9 -> 2;
+        10 -> 4;
+}

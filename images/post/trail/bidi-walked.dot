@@ -1,0 +1,39 @@
+strict digraph
+{
+  rankdir=LR;
+  0 [label="Alpha/Omega"];
+  1 [label="$", xlabel="S"];
+  0 -> 1 [label="0| Are you well typed?"];
+  2 [label="\\ni", xlabel="C"];
+  1 -> 2 [label="1| ask if func"];
+  3 [label="Nat -> Nat", xlabel="TYPE"];
+  6 [label="Fun", xlabel="C"];
+  2 -> 3 [ label="2| Fetch Type"];
+  3 -> 2 [ label="3| ret (Nat -> Nat)"];
+  2 -> 6 [label="4| check (Nat -> Nat)"];
+  7 [label="+", xlabel="C"];
+  11 [label="Nat", xlabel="TYPE"];
+
+  12 [label="Synth", xlabel="C"];
+  8 [label="x?", xlabel="S"];
+
+  6 -> 7 [label="5| check Nat"];
+  7 -> 11 [ label="6| Fetch Type"];
+  11 -> 7 [ label="7| ret Nat"];
+
+  7 -> 12 [label="8| check Nat"];
+  12 -> 8 [label="9| Are you a Nat?"];
+  8 -> 12 [label="10| resp Nat"];
+  12 -> 7 [label="11| resp Nat"];
+
+  9 [label="1", xlabel="C"];
+  7 -> 9 [label="12| check Nat"];
+  9 -> 7 [label="13| resp Nat"];
+  7 -> 6 [label="14| resp Nat"];
+  6 -> 2 [label="15| resp (Nat -> Nat)"];
+  2 -> 1 [label="16| resp (Nat -> Nat)"];
+  10 [label="5", xlabel="C"];
+  1 -> 10 [label="17| check Nat"];
+  10 -> 1 [label="18| resp Nat"];
+  1 -> 0 [label="19| Yes"];
+}
