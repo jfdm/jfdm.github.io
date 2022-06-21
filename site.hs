@@ -62,6 +62,11 @@ main = hakyll $ do
         route   idRoute
         compile copyFileCompiler
 
+    match "images/post/trail/*" $ do
+        route   idRoute
+        compile copyFileCompiler
+
+
     match "css/*" $ do
         route   idRoute
         compile compressCssCompiler
@@ -120,6 +125,31 @@ main = hakyll $ do
                 >>= loadAndApplyTemplate "templates/archive.html" archiveCtx
                 >>= loadAndApplyTemplate "templates/default.html" archiveCtx
                 >>= relativizeUrls
+
+-- [ Statements ]
+
+    match "statement/*.md" $ do
+      route   $ setExtension "html"
+      compile $ blogCompiler
+            >>= loadAndApplyTemplate "templates/post.html" postCtx
+            >>= loadAndApplyTemplate "templates/default.html" postCtx
+            >>= relativizeUrls
+
+    create ["statements.html"] $ do
+           route idRoute
+           compile $ do
+             stmts <- recentFirst =<< loadAll "statement/*"
+             let archiveCtx =
+                  listField "statements" postCtx (return stmts) `mappend`
+                  constField "title" "Statements" `mappend`
+                  defaultContext
+
+
+             makeItem ""
+                 >>= loadAndApplyTemplate "templates/archive-statement.html" archiveCtx
+                 >>= loadAndApplyTemplate "templates/default.html" archiveCtx
+                 >>= relativizeUrls
+
 
 --  ------------------------------------------------------------------ [ Index ]
 
