@@ -48,6 +48,11 @@ The project's goal is to make the design of hardware systems, and in particular 
 I have been involved with the project for many years as developer and community participant.
 I help administer the Github project pages for the compiler and community.
 
++ **Ola** is a personal project that sees me try and implement reference implementations of different styles of programming languages within Idris2.
+  Mostly for pedagogical reasons.
+  I have not seen reasons to write them up as academic papers.
+  So far there have been two 'main' languages: [Olaf](https://github.com/jfdm/olaf-lang) & [Olai](https://github.com/jfdm/olai-lang).
+
 <!--
 + **BiGraphER** I am currently getting involved with the [BigraphER project](http://www.dcs.gla.ac.uk/~michele/bigrapher.html).
 Bigraphs are an interesting formalism for modelling communicating systems.
