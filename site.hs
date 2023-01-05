@@ -50,150 +50,155 @@ import            Text.Pandoc.Options
 import            Text.Pandoc.Templates
 import Debug.Trace
 
+import qualified GHC.IO.Encoding as E
+
 {-
+https://discourse.nixosstag.fcio.net/t/need-help-building-a-project-with-hakyll-which-can-support-unicode/8306
 https://svejcar.dev/posts/2019/11/27/table-of-contents-in-hakyll/
 https://argumatronic.com/posts/2018-01-16-pandoc-toc.html
 https://gisli.hamstur.is/2020/08/my-personal-hakyll-cheatsheet/
 -}
 --------------------------------------------------------------------------------
 main :: IO ()
-main = hakyll $ do
-    match "images/*" $ do
-        route   idRoute
-        compile copyFileCompiler
+main
+  = do E.setLocaleEncoding E.utf8
+       hakyll $ do
+        match "images/*" $ do
+            route   idRoute
+            compile copyFileCompiler
 
-    match "images/post/trail/*" $ do
-        route   idRoute
-        compile copyFileCompiler
-
-
-    match "css/*" $ do
-        route   idRoute
-        compile compressCssCompiler
-
-    match "js/*" $ do
-        route   idRoute
-        compile compressCssCompiler
-
-    match "*.bib" $ compile biblioCompiler
-    match "*.csl" $ compile cslCompiler
-
-    match "draft/*" $ do
-        route   idRoute
-        compile copyFileCompiler
+        match "images/post/trail/*" $ do
+            route   idRoute
+            compile copyFileCompiler
 
 
---  ------------------------------------------------------------- [ Build Tags ]
-    tags <- buildTags ("post/*") (fromCapture "tags/*.html")
+        match "css/*" $ do
+            route   idRoute
+            compile compressCssCompiler
 
-    tagsRules tags $ \tag pattern -> do
-      let title = "Posts tagged \"" ++ tag ++ "\""
-      route idRoute
-      compile $ do
-        posts <- recentFirst =<< loadAll pattern
-        let ctx = constField "title" title
-                      `mappend` listField "posts" postCtx (return posts)
-                      `mappend` defaultContext
+        match "js/*" $ do
+            route   idRoute
+            compile compressCssCompiler
 
-        makeItem ""
-                >>= loadAndApplyTemplate "templates/tag.html" ctx
-                >>= loadAndApplyTemplate "templates/default.html" ctx
-                >>= relativizeUrls
+        match "*.bib" $ compile biblioCompiler
+        match "*.csl" $ compile cslCompiler
 
---  ------------------------------------------------------- [ Compile Patterns ]
+        match "draft/*" $ do
+            route   idRoute
+            compile copyFileCompiler
 
-    match "post/*.md" $ do
-      route $ setExtension "html"
-      compile $ blogCompiler -- pandocBiblioCompiler "style.csl" "biblio.bib"
-        >>= loadAndApplyTemplate "templates/post.html" (postCtxWithTags tags)
-        >>= loadAndApplyTemplate "templates/default.html" (postCtxWithTags tags)
-        >>= relativizeUrls
 
---  --------------------------------------------------------- [ Generate Lists ]
+    --  ------------------------------------------------------------- [ Build Tags ]
+        tags <- buildTags ("post/*") (fromCapture "tags/*.html")
 
-    create ["posts.html"] $ do
-        route idRoute
-        compile $ do
-            ps <- recentFirst =<< loadAll "post/*"
-            let archiveCtx =
-                    listField "posts" postCtx (return ps) `mappend`
-                    constField "title" "List o' Posts" `mappend`
-                    defaultContext
-
+        tagsRules tags $ \tag pattern -> do
+          let title = "Posts tagged \"" ++ tag ++ "\""
+          route idRoute
+          compile $ do
+            posts <- recentFirst =<< loadAll pattern
+            let ctx = constField "title" title
+                          `mappend` listField "posts" postCtx (return posts)
+                          `mappend` defaultContext
 
             makeItem ""
-                >>= loadAndApplyTemplate "templates/archive.html" archiveCtx
-                >>= loadAndApplyTemplate "templates/default.html" archiveCtx
+                    >>= loadAndApplyTemplate "templates/tag.html" ctx
+                    >>= loadAndApplyTemplate "templates/default.html" ctx
+                    >>= relativizeUrls
+
+    --  ------------------------------------------------------- [ Compile Patterns ]
+
+        match "post/*.md" $ do
+          route $ setExtension "html"
+          compile $ blogCompiler -- pandocBiblioCompiler "style.csl" "biblio.bib"
+            >>= loadAndApplyTemplate "templates/post.html" (postCtxWithTags tags)
+            >>= loadAndApplyTemplate "templates/default.html" (postCtxWithTags tags)
+            >>= relativizeUrls
+
+    --  --------------------------------------------------------- [ Generate Lists ]
+
+        create ["posts.html"] $ do
+            route idRoute
+            compile $ do
+                ps <- recentFirst =<< loadAll "post/*"
+                let archiveCtx =
+                        listField "posts" postCtx (return ps) `mappend`
+                        constField "title" "List o' Posts" `mappend`
+                        defaultContext
+
+
+                makeItem ""
+                    >>= loadAndApplyTemplate "templates/archive.html" archiveCtx
+                    >>= loadAndApplyTemplate "templates/default.html" archiveCtx
+                    >>= relativizeUrls
+
+    -- [ Statements ]
+
+        match "statement/*.md" $ do
+          route   $ setExtension "html"
+          compile $ blogCompiler
+                >>= loadAndApplyTemplate "templates/post.html" postCtx
+                >>= loadAndApplyTemplate "templates/default.html" postCtx
                 >>= relativizeUrls
 
--- [ Statements ]
-
-    match "statement/*.md" $ do
-      route   $ setExtension "html"
-      compile $ blogCompiler
-            >>= loadAndApplyTemplate "templates/post.html" postCtx
-            >>= loadAndApplyTemplate "templates/default.html" postCtx
-            >>= relativizeUrls
-
-    create ["statements.html"] $ do
-           route idRoute
-           compile $ do
-             stmts <- recentFirst =<< loadAll "statement/*"
-             let archiveCtx =
-                  listField "statements" postCtx (return stmts) `mappend`
-                  constField "title" "Statements" `mappend`
-                  defaultContext
+        create ["statements.html"] $ do
+               route idRoute
+               compile $ do
+                 stmts <- recentFirst =<< loadAll "statement/*"
+                 let archiveCtx =
+                      listField "statements" postCtx (return stmts) `mappend`
+                      constField "title" "Statements" `mappend`
+                      defaultContext
 
 
-             makeItem ""
-                 >>= loadAndApplyTemplate "templates/archive-statement.html" archiveCtx
-                 >>= loadAndApplyTemplate "templates/default.html" archiveCtx
-                 >>= relativizeUrls
+                 makeItem ""
+                     >>= loadAndApplyTemplate "templates/archive-statement.html" archiveCtx
+                     >>= loadAndApplyTemplate "templates/default.html" archiveCtx
+                     >>= relativizeUrls
 
 
---  ------------------------------------------------------------------ [ Index ]
+    --  ------------------------------------------------------------------ [ Index ]
 
-    match "talks.md" $ do
-      route   $ setExtension "html"
-      compile $ pandocBiblioCompiler "fullcite.csl" "talks.bib"
-            >>= loadAndApplyTemplate "templates/default.html" defaultContext
-            >>= relativizeUrls
-
-
-    match "publications.md" $ do
-      route   $ setExtension "html"
-      compile $ pandocBiblioCompiler "fullcite.csl" "publications.bib"
-            >>= loadAndApplyTemplate "templates/default.html" defaultContext
-            >>= relativizeUrls
-
-    match "research.md" $ do
-      route   $ setExtension "html"
-      compile $ pandocBiblioCompiler "fullcite.csl" "software.bib"
-            >>= loadAndApplyTemplate "templates/default.html" defaultContext
-            >>= relativizeUrls
-
-    match "index.md" $ do
-      route   $ setExtension "html"
-      compile $ do
-            posts <- recentFirst =<< loadAll "post/*"
-            let indexCtx =
-                    listField "posts" postCtx (return $ take 5 posts) `mappend`
-                    defaultContext
-
-            pandocCompiler
-                >>= applyAsTemplate indexCtx
-                >>= loadAndApplyTemplate "templates/default.html" indexCtx
+        match "talks.md" $ do
+          route   $ setExtension "html"
+          compile $ pandocBiblioCompiler "fullcite.csl" "talks.bib"
+                >>= loadAndApplyTemplate "templates/default.html" defaultContext
                 >>= relativizeUrls
 
-    match "*.md" $ do
-      route   $ setExtension "html"
-      compile $ pandocCompiler
-            >>= applyAsTemplate defaultContext
-            >>= loadAndApplyTemplate "templates/default.html" defaultContext
-            >>= relativizeUrls
+
+        match "publications.md" $ do
+          route   $ setExtension "html"
+          compile $ pandocBiblioCompiler "fullcite.csl" "publications.bib"
+                >>= loadAndApplyTemplate "templates/default.html" defaultContext
+                >>= relativizeUrls
+
+        match "research.md" $ do
+          route   $ setExtension "html"
+          compile $ pandocBiblioCompiler "fullcite.csl" "software.bib"
+                >>= loadAndApplyTemplate "templates/default.html" defaultContext
+                >>= relativizeUrls
+
+        match "index.md" $ do
+          route   $ setExtension "html"
+          compile $ do
+                posts <- recentFirst =<< loadAll "post/*"
+                let indexCtx =
+                        listField "posts" postCtx (return $ take 5 posts) `mappend`
+                        defaultContext
+
+                pandocCompiler
+                    >>= applyAsTemplate indexCtx
+                    >>= loadAndApplyTemplate "templates/default.html" indexCtx
+                    >>= relativizeUrls
+
+        match "*.md" $ do
+          route   $ setExtension "html"
+          compile $ pandocCompiler
+                >>= applyAsTemplate defaultContext
+                >>= loadAndApplyTemplate "templates/default.html" defaultContext
+                >>= relativizeUrls
 
 
-    match "templates/*" $ compile templateCompiler
+        match "templates/*" $ compile templateCompiler
 
 --  --------------------------------------------------------------- [ Contexts ]
 
