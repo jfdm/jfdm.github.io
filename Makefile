@@ -6,31 +6,25 @@
 
 REPO := git@github.com:jfdm/jfdm.github.io.git
 
-SITE := stack exec site
+#SITE := stack exec site
 
-.PHONY: build serve deploy clean watch
+.PHONY: build serve deploy clean
 
-config:
-	stack build
+build:
+	hugo
 
-build: config
-	${SITE} build
+clean:
+	rm -rf public_html
 
-clean: config
-	${SITE} clean
+serve:
+	hugo server
 
-serve: config
-	${SITE} server
-
-watch: config
-	${SITE} watch
-
-deploy: config build
-	rm -rf _site/.git
+deploy: clean build
 	(cd _site; git init && git add .)
 #	(cd _site; git config user.email "")
 #	(cd _site; git config user.name None)
 	(cd _site; git commit -m "Site Generated on `date`")
+	(cd _site; git branch -m master main)
 	(cd _site; git remote add origin ${REPO})
-	(cd _site; git push -f origin master)
+	(cd _site; git push -f origin main)
 # ---------------------------------------------------------------------- [ EOF ]

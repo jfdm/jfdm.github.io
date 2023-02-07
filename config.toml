@@ -1,4 +1,5 @@
-baseurl = "https://jfdm.github.io"
+baseURL = "https://jfdm.github.io"
+publishDir = "public_html"
 DefaultContentLanguage = "en"
 title = "Jan de Muijnck-Hughes"
 theme = ["beautifulhugo", "hugo-cite"]
