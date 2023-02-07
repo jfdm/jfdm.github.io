@@ -1,7 +1,0 @@
-flags: {}
-packages:
-- '.'
-extra-deps:
-  - hakyll-4.15.1.1
-resolver: lts-20.5
-system-ghc: true

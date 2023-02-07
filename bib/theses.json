@@ -1,0 +1,67 @@
+[
+  {
+    "author": [
+      {
+        "family": "de Muijnck-Hughes",
+        "given": "Jan"
+      }
+    ],
+    "genre": "Bachelor Thesis",
+    "id": "bachelour",
+    "issued": {
+      "date-parts": [
+        [
+          2008
+        ]
+      ]
+    },
+    "publisher": "School of Computer Science, University of St Andrews",
+    "publisher-place": "St Andrews",
+    "title": "<span class=\"nocase\">Searching for Efficient Permutation Codes</span>",
+    "type": "thesis"
+  },
+  {
+    "author": [
+      {
+        "family": "de Muijnck-Hughes",
+        "given": "Jan"
+      }
+    ],
+    "genre": "Master Thesis",
+    "id": "masters",
+    "issued": {
+      "date-parts": [
+        [
+          2011
+        ]
+      ]
+    },
+    "note": "No. 640",
+    "publisher": "Institute for Computer; Information Science, Radboud Universiteit Nijmegen",
+    "publisher-place": "Nijmegen",
+    "title": "<span class=\"nocase\">Data Protection and the Cloud</span>",
+    "type": "thesis"
+  },
+  {
+    "author": [
+      {
+        "family": "de Muijnck-Hughes",
+        "given": "Jan"
+      }
+    ],
+    "genre": "PhD Thesis",
+    "id": "phd",
+    "issued": {
+      "date-parts": [
+        [
+          2015,
+          12
+        ]
+      ]
+    },
+    "publisher": "School of Computer Science, University of St Andrews",
+    "publisher-place": "St Andrews",
+    "title": "<span class=\"nocase\">Machine Checkable Design Patterns using Dependent Types and Domain Specific Goal-Oriented Modelling Languages</span>",
+    "type": "thesis"
+  }
+]

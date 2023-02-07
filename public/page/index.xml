@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Pages on Jan de Muijnck-Hughes</title>
+    <link>http://localhost:1313/page/</link>
+    <description>Recent content in Pages on Jan de Muijnck-Hughes</description>
+    <generator>Hugo -- gohugo.io</generator><atom:link href="http://localhost:1313/page/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Engineering Should be TyDe!</title>
+      <link>http://localhost:1313/page/research/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/page/research/</guid>
+      <description>Interests Generally speaking, I am interested in how we can take state-of-the-art advances in programming language theory, namely type-systems &amp;amp; functional programming, and use these advances to fundamentally change how we design systems to make them more trustworthy: Secure and Safe.
+Specifically, I am interested in bettering system design and construction through applications of:
+functional programming; formal verification; mathematically informed programming; dependent types; sub-structural typing (quantitative, resource-dependent, session); and algebraic effect handlers.</description>
+    </item>
+    
+    <item>
+      <title>Service</title>
+      <link>http://localhost:1313/page/service/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/page/service/</guid>
+      <description>Programme Committees I have served as a committee member on the following committees:
+20th Asian Symposium on Programming Languages and Systems APLAS 2022 33rd Symposium on Implementation and Application of Functional Languages IFL21 9th Workshop on Mathematically Structured Functional Programming, MSFP 2022 Artefact Reviewing For the following artefact evaluation committees:
+I have co-chaired the:
+20th Asian Symposium on Programming Languages and Systems APLAS AEC 2022. I have served as committee member on:</description>
+    </item>
+    
+    <item>
+      <title>Teaching</title>
+      <link>http://localhost:1313/page/teaching/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/page/teaching/</guid>
+      <description>Details of duties performed during my tenure as an academic. Module descriptions are available from the respective University&amp;rsquo;s course catalogues.
+University of Glasgow At Glasgow I am involved with a variety of teaching duties at Level 4, and Masters Level.
+2020-2021 CS4025P: Individual Project Supervisor to two Level 4 Student. 2019-2020 CS4025P: Individual Project Supervisor to one Level 4 Student. 2018-2019 CS4025P: Individual Project Supervisor to two Level 4 Students. CS4021: Functional Programming with Haskell Co-Lecturer, and tutor on course&amp;rsquo;s corresponding MOOC.</description>
+    </item>
+    
+  </channel>
+</rss>

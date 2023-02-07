@@ -1,0 +1,130 @@
+baseurl = "https://jfdm.github.io"
+DefaultContentLanguage = "en"
+title = "Jan de Muijnck-Hughes"
+theme = ["beautifulhugo", "hugo-cite"]
+pygmentsStyle = "trac"
+pygmentsUseClasses = true
+pygmentsCodeFences = true
+pygmentsCodefencesGuessSyntax = true
+#pygmentsUseClassic = true
+#pygmentOptions = "linenos=inline"
+#disqusShortname = "XXX"
+#googleAnalytics = "XXX"
+
+[Params]
+#  homeTitle = "Beautiful Hugo Theme" # Set a different text for the header on the home page
+  subtitle = "Research Associate"
+  mainSections = ["post","posts", "output"]
+#  logo = "img/avatar-icon.png" # Expecting square dimensions
+#  favicon = "img/favicon.ico"
+  dateFormat = "2006-01-02"
+  commit = false
+  rss = true
+#  comments = true
+#  readingTime = true
+#  wordCount = true
+#  useHLJS = true
+#  socialShare = true
+#  delayDisqus = true
+#  showRelatedPosts = true
+
+  hideAuthor = true
+#  gcse = "012345678901234567890:abcdefghijk" # Get your code from google.com/cse. Make sure to go to "Look and Feel" and change Layout to "Full Width" and Theme to "Classic"
+
+#[[Params.bigimg]]
+#  src = "img/triangle.jpg"
+#  desc = "Triangle"
+#[[Params.bigimg]]
+#  src = "img/sphere.jpg"
+#  desc = "Sphere"
+#  # position: see values of CSS background-position.
+#  position = "center top"
+#[[Params.bigimg]]
+#  src = "img/hexagon.jpg"
+#  desc = "Hexagon"
+
+[Author]
+  # Set only your "username" for default hosts and full URLs otherwise (e.g., "https://MyGitLab.org/username")
+  name = "Jan de Muijnck-Hughes"
+  website = "jfdm.github.io"
+  github = "jfdm"
+  gitlab = "jfdm"
+  bitbucket = "jfdm"
+  twitter = "jfdm"
+  mastodon = "discuss.systems/@jfdm"
+#  linkedin = "username"
+#  reddit = "username"
+#  email = "youremail@domain.com"
+#  facebook = "username"
+#  xing = "username"
+#  stackoverflow = "users/XXXXXXX/username"
+#  snapchat = "username"
+#  instagram = "username"
+#  youtube = "user/username" # or channel/channelname
+#  soundcloud = "username"
+#  spotify = "username"
+#  bandcamp = "username"
+#  itchio = "username"
+#  vk = "username"
+#  paypal = "username"
+#  telegram = "username"
+#  500px = "username"
+#  codepen = "username"
+#  kaggle = "username"
+#  weibo = "username"
+#  slack = "username"
+#  discord = "invite code (https://discord.gg/XXXXXXX)"
+#  strava = "userid"
+
+[[menu.main]]
+    name = "Blog"
+    url = "post"
+    weight = 1
+
+[[menu.main]]
+#    parent = "about"
+    name = "Research"
+    url = "page/research"
+    weight = 2
+
+[[menu.main]]
+#    parent = "about"
+    name = "Service"
+    url = "page/service"
+    weight = 3
+
+[[menu.main]]
+    name = "Output"
+    identifier = "output"
+    weight = 5
+
+[[menu.main]]
+    parent = "output"
+    name = "Papers"
+    url = "page/papers"
+    weight = 3
+
+[[menu.main]]
+    parent = "output"
+    name = "Talks"
+    url = "page/talks"
+    weight = 2
+
+[[menu.main]]
+    parent = "output"
+    name = "Theses"
+    url = "page/theses"
+    weight = 1
+
+
+[[menu.main]]
+#    parent = "about"
+    name = "Teaching"
+    url = "page/teaching"
+    weight = 4
+
+
+[[menu.main]]
+    name = "Tags"
+    url = "tags"
+    weight = 5

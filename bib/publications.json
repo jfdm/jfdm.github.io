@@ -1,0 +1,455 @@
+[
+  {
+    "DOI": "10.48550/arXiv.2301.12852",
+    "URL": "https://doi.org/10.48550/arXiv.2301.12852",
+    "author": [
+      {
+        "family": "de Muijnck-Hughes",
+        "given": "Jan"
+      },
+      {
+        "family": "Allais",
+        "given": "Guillaume"
+      },
+      {
+        "family": "Brady",
+        "given": "Edwin C."
+      }
+    ],
+    "container-title": "CoRR",
+    "id": "DBLP:journals/corr/abs-2301-12852",
+    "issued": {
+      "date-parts": [
+        [
+          2023
+        ]
+      ]
+    },
+    "note": "To appear at the Eelco Visser COmmemorative Symposium ’23.",
+    "title": "Type theory as a language workbench",
+    "type": "article-journal",
+    "volume": "abs/2301.12852"
+  },
+  {
+    "DOI": "10.5555/3124497.3124502",
+    "ISBN": "9781941652039",
+    "abstract": "Design patterns are supposed to be the well documented, tried and tested solutions to recurrent problems. Current evaluation techniques do not provide a demonstrable and holistic means to evaluate pattern quality. This paper introduces Pattern Report Cards an evaluation process for software design patterns that is demonstrable, measurable, and reproducible. A set of quality indicators for determining pattern quality has been identified, and a set of qualitative and quantitative evaluation techniques assembled to determine the quality of adherence to these indicators. Further, management and execution of the evaluation process is controlled by the PREMES framework. This framework describes a management cycle that facilitates the construction of bespoke evaluation systems for design patterns. Process tailoring is achieved by providing guidance over the selection and construction of the techniques used to assess pattern quality. Use of these techniques will help bolster existing evaluation processes, and lead to the improvement of design pattern evaluation techniques.",
+    "author": [
+      {
+        "family": "de Muijnck-Hughes",
+        "given": "Jan"
+      },
+      {
+        "family": "Duncan",
+        "given": "Ishbel M. M."
+      }
+    ],
+    "collection-title": "PLoP ’15",
+    "container-title": "Proceedings of the 22nd conference on pattern languages of programs",
+    "id": "10.5555/3124497.3124502",
+    "issued": {
+      "date-parts": [
+        [
+          2015
+        ]
+      ]
+    },
+    "keyword": "design pattern evaluation, design pattern quality, pattern evaluation management system",
+    "publisher": "The Hillside Group",
+    "publisher-place": "USA",
+    "title": "What’s the premes behind your pattern?",
+    "type": "paper-conference"
+  },
+  {
+    "DOI": "10.4230/LIPIcs.ECOOP.2020.20",
+    "URL": "https://doi.org/10.4230/LIPIcs.ECOOP.2020.20",
+    "author": [
+      {
+        "family": "de Muijnck-Hughes",
+        "given": "Jan"
+      },
+      {
+        "family": "Brady",
+        "given": "Edwin C."
+      },
+      {
+        "family": "Vanderbauwhede",
+        "given": "Wim"
+      }
+    ],
+    "collection-title": "LIPIcs",
+    "container-title": "34th european conference on object-oriented programming, ECOOP 2020, november 15-17, 2020, berlin, germany (virtual conference)",
+    "editor": [
+      {
+        "family": "Hirschfeld",
+        "given": "Robert"
+      },
+      {
+        "family": "Pape",
+        "given": "Tobias"
+      }
+    ],
+    "id": "DBLP:conf/ecoop/Muijnck-HughesB19",
+    "issued": {
+      "date-parts": [
+        [
+          2020
+        ]
+      ]
+    },
+    "page": "20:1-20:31",
+    "publisher": "Schloss Dagstuhl - Leibniz-Zentrum für Informatik",
+    "title": "A framework for resource dependent edsls in a dependently typed language (pearl)",
+    "type": "paper-conference",
+    "volume": "166"
+  },
+  {
+    "DOI": "10.4230/DARTS.6.2.2",
+    "URL": "https://doi.org/10.4230/DARTS.6.2.2",
+    "author": [
+      {
+        "family": "de Muijnck-Hughes",
+        "given": "Jan"
+      },
+      {
+        "family": "Brady",
+        "given": "Edwin C."
+      },
+      {
+        "family": "Vanderbauwhede",
+        "given": "Wim"
+      }
+    ],
+    "container-title": "Dagstuhl Artifacts Ser.",
+    "id": "DBLP:journals/darts/Muijnck-HughesB20",
+    "issue": "2",
+    "issued": {
+      "date-parts": [
+        [
+          2020
+        ]
+      ]
+    },
+    "page": "02:1-02:3",
+    "title": "A framework for resource dependent edsls in a dependently typed language (artifact)",
+    "type": "article-journal",
+    "volume": "6"
+  },
+  {
+    "DOI": "10.1017/S0956796820000143",
+    "URL": "https://doi.org/10.1017/S0956796820000143",
+    "author": [
+      {
+        "family": "de Muijnck-Hughes",
+        "given": "Jan"
+      }
+    ],
+    "container-title": "J. Funct. Program.",
+    "id": "DBLP:journals/jfp/Muijnck-Hughes20",
+    "issued": {
+      "date-parts": [
+        [
+          2020
+        ]
+      ]
+    },
+    "note": "Invited Book Review",
+    "page": "e16",
+    "title": "Type-driven development with idris",
+    "type": "article-journal",
+    "volume": "30"
+  },
+  {
+    "URL": "http://www.dcs.gla.ac.uk/research/formalmethods/sfmoves/",
+    "annote": "Keywords: System-on-a-Chip, Dependent Types, Substructural Typing",
+    "author": [
+      {
+        "family": "de Muijnck-Hughes",
+        "given": "Jan"
+      },
+      {
+        "family": "Vanderbauwhede",
+        "given": "Wim"
+      }
+    ],
+    "container-title": "1st scottish seminar on formal modelling, verification, and synthesis (SFMoVeS)",
+    "id": "deMuijnckHughes2019sfmoves",
+    "issued": {
+      "date-parts": [
+        [
+          2019
+        ]
+      ]
+    },
+    "title": "<span class=\"nocase\">Well-Typed Models are Correct Models</span>: Applying state-of-the-art advances in programming language theory to systems-on-a-chip",
+    "title-short": "<span class=\"nocase\">Well-Typed Models are Correct Models</span>",
+    "type": "paper-conference"
+  },
+  {
+    "DOI": "10.4230/DARTS.5.2.14",
+    "ISSN": "2509-8195",
+    "URL": "http://drops.dagstuhl.de/opus/volltexte/2019/10791",
+    "annote": "Keywords: System-on-a-Chip, AXI, Dependent Types, Substructural Typing",
+    "author": [
+      {
+        "family": "de Muijnck-Hughes",
+        "given": "Jan"
+      },
+      {
+        "family": "Vanderbauwhede",
+        "given": "Wim"
+      }
+    ],
+    "container-title": "Dagstuhl Artifacts Series",
+    "id": "deMuijnckHughes2019ecoopae",
+    "issue": "2",
+    "issued": {
+      "date-parts": [
+        [
+          2019
+        ]
+      ]
+    },
+    "page": "14:1-14:3",
+    "publisher": "Schloss Dagstuhl–Leibniz-Zentrum fuer Informatik",
+    "publisher-place": "Dagstuhl, Germany",
+    "title": "<span class=\"nocase\">A Typing Discipline for Hardware Interfaces (Artifact)</span>",
+    "type": "article-journal",
+    "volume": "5"
+  },
+  {
+    "DOI": "10.4230/LIPIcs.ECOOP.2019.6",
+    "URL": "https://doi.org/10.4230/LIPIcs.ECOOP.2019.6",
+    "author": [
+      {
+        "family": "de Muijnck-Hughes",
+        "given": "Jan"
+      },
+      {
+        "family": "Vanderbauwhede",
+        "given": "Wim"
+      }
+    ],
+    "collection-title": "LIPIcs",
+    "container-title": "33rd european conference on object-oriented programming, ECOOP 2019, july 15-19, 2019, london, united kingdom",
+    "editor": [
+      {
+        "family": "Donaldson",
+        "given": "Alastair F."
+      }
+    ],
+    "id": "DBLP:conf/ecoop/Muijnck-HughesV19",
+    "issued": {
+      "date-parts": [
+        [
+          2019
+        ]
+      ]
+    },
+    "page": "6:1-6:27",
+    "publisher": "Schloss Dagstuhl - Leibniz-Zentrum für Informatik",
+    "title": "A typing discipline for hardware interfaces",
+    "type": "paper-conference",
+    "volume": "134"
+  },
+  {
+    "DOI": "10.4204/EPTCS.291.5",
+    "URL": "https://doi.org/10.4204/EPTCS.291.5",
+    "author": [
+      {
+        "family": "de Muijnck-Hughes",
+        "given": "Jan"
+      },
+      {
+        "family": "Brady",
+        "given": "Edwin C."
+      },
+      {
+        "family": "Vanderbauwhede",
+        "given": "Wim"
+      }
+    ],
+    "collection-title": "EPTCS",
+    "container-title": "Proceedings programming language approaches to concurrency- and communication-cEntric software, places@ETAPS 2019, prague, czech republic, 7th april 2019",
+    "editor": [
+      {
+        "family": "Martins",
+        "given": "Francisco"
+      },
+      {
+        "family": "Orchard",
+        "given": "Dominic"
+      }
+    ],
+    "id": "DBLP:journals/corr/abs-1904-01288",
+    "issued": {
+      "date-parts": [
+        [
+          2019
+        ]
+      ]
+    },
+    "page": "47-59",
+    "title": "Value-dependent session design in a dependently typed language",
+    "type": "paper-conference",
+    "volume": "291"
+  },
+  {
+    "DOI": "10.4230/DARTS.5.2.14",
+    "URL": "https://doi.org/10.4230/DARTS.5.2.14",
+    "author": [
+      {
+        "family": "de Muijnck-Hughes",
+        "given": "Jan"
+      },
+      {
+        "family": "Vanderbauwhede",
+        "given": "Wim"
+      }
+    ],
+    "container-title": "Dagstuhl Artifacts Ser.",
+    "id": "DBLP:journals/darts/Muijnck-HughesV19",
+    "issue": "2",
+    "issued": {
+      "date-parts": [
+        [
+          2019
+        ]
+      ]
+    },
+    "page": "14:1-14:3",
+    "title": "A typing discipline for hardware interfaces (artifact)",
+    "type": "article-journal",
+    "volume": "5"
+  },
+  {
+    "URL": "http://arxiv.org/abs/1808.09234",
+    "author": [
+      {
+        "family": "de Muijnck-Hughes",
+        "given": "Jan"
+      }
+    ],
+    "container-title": "CoRR",
+    "id": "DBLP:journals/corr/abs-1808-09234",
+    "issued": {
+      "date-parts": [
+        [
+          2018
+        ]
+      ]
+    },
+    "note": "Non-peer reviewed musings.",
+    "title": "A short note on collecting dependently typed values",
+    "type": "manuscript",
+    "volume": "abs/1808.09234"
+  },
+  {
+    "URL": "https://jfdm.github.io/draft/2017-tdvsp.pdf",
+    "author": [
+      {
+        "family": "de Muijnck-Hughes",
+        "given": "Jan"
+      },
+      {
+        "family": "Brady",
+        "given": "Edwin"
+      }
+    ],
+    "id": "deMuijnckHughes2017obt",
+    "issued": {
+      "date-parts": [
+        [
+          2017
+        ]
+      ]
+    },
+    "note": "An extended abstract on a research idea.",
+    "title": "Type-driven verification of security protocols",
+    "type": "manuscript"
+  },
+  {
+    "DOI": "10.1109/SERE-C.2012.34",
+    "URL": "https://doi.org/10.1109/SERE-C.2012.34",
+    "author": [
+      {
+        "family": "de Muijnck-Hughes",
+        "given": "Jan"
+      },
+      {
+        "family": "Duncan",
+        "given": "Ishbel"
+      }
+    ],
+    "container-title": "Sixth international conference on software security and reliability, SERE 2012, gaithersburg, maryland, usa, 20-22 june 2012 - companion volume",
+    "id": "DBLP:conf/ssiri/Muijnck-HughesD12",
+    "issued": {
+      "date-parts": [
+        [
+          2012
+        ]
+      ]
+    },
+    "page": "27-32",
+    "publisher": "IEEE",
+    "title": "Thinking towards a pattern language for predicate based encryption crypto-systems",
+    "type": "paper-conference"
+  },
+  {
+    "URL": "http://tech.brookes.ac.uk/CyberPatterns2013/",
+    "author": [
+      {
+        "family": "de Muijnck-Hughes",
+        "given": "Jan"
+      },
+      {
+        "family": "Duncan",
+        "given": "Ishbel Mary Macdonald"
+      }
+    ],
+    "container-title": "Proceedings of the second international conference on cyberpatterns",
+    "id": "deMuijnckHughes2013ias",
+    "issued": {
+      "date-parts": [
+        [
+          2013,
+          7,
+          9
+        ]
+      ]
+    },
+    "keyword": "Security, Design patterns, Security patterns, Pattern engineering, Software engineering",
+    "note": "Cyberpatterns 2013 ; Conference date: 08-07-2013 Through 09-07-2013",
+    "page": "62-69",
+    "publisher": "Oxford Brookes University",
+    "title": "Issues affecting security design pattern engineering",
+    "type": "paper-conference"
+  },
+  {
+    "DOI": "10.1109/SOSE.2014.61",
+    "URL": "https://doi.org/10.1109/SOSE.2014.61",
+    "author": [
+      {
+        "family": "Duncan",
+        "given": "Ishbel"
+      },
+      {
+        "family": "de Muijnck-Hughes",
+        "given": "Jan"
+      }
+    ],
+    "container-title": "8th IEEE international symposium on service oriented system engineering, SOSE 2014, oxford, united kingdom, april 7-11, 2014",
+    "id": "DBLP:conf/sose/DuncanM14",
+    "issued": {
+      "date-parts": [
+        [
+          2014
+        ]
+      ]
+    },
+    "page": "428-429",
+    "publisher": "IEEE Computer Society",
+    "title": "Security pattern evaluation",
+    "type": "paper-conference"
+  }
+]

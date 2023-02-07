@@ -1,0 +1,999 @@
+[
+  {
+    "URL": "https://www.cryptoforma.org.uk/2014/12/meeting-kent-15-january/",
+    "author": [
+      {
+        "dropping-particle": "de",
+        "family": "Muijnck-Hughes",
+        "given": "Jan"
+      },
+      {
+        "family": "Brady",
+        "given": "Edwin"
+      },
+      {
+        "family": "Hammond",
+        "given": "Kevin"
+      }
+    ],
+    "container-title": "CryptoForma jan ’15",
+    "id": "CryptoForma2014",
+    "issued": {
+      "date-parts": [
+        [
+          2015,
+          1,
+          15
+        ]
+      ]
+    },
+    "note": "Contributed talk at meeting of CryptoForma",
+    "publisher": "University of Canterbury",
+    "publisher-place": "Kent,UK",
+    "title": "Using dependent types to specify, implement, and reason on communication protocols",
+    "type": "paper-conference"
+  },
+  {
+    "author": [
+      {
+        "dropping-particle": "de",
+        "family": "Muijnck-Hughes",
+        "given": "Jan"
+      }
+    ],
+    "container-title": "FATA seminar",
+    "id": "FATA20190205",
+    "issued": {
+      "date-parts": [
+        [
+          2019,
+          2,
+          5
+        ]
+      ]
+    },
+    "publisher": "University of Glasgow",
+    "publisher-place": "Glasgow",
+    "title": "Handling side-effects using resource dependent algebraic effects.",
+    "type": "paper-conference"
+  },
+  {
+    "URL": "https://wiki.clean.cs.ru.nl/NL-FP_dag_2017",
+    "author": [
+      {
+        "dropping-particle": "de",
+        "family": "Muijnck-Hughes",
+        "given": "Jan"
+      },
+      {
+        "family": "Brady",
+        "given": "Edwin"
+      }
+    ],
+    "container-title": "FP dag ’17",
+    "event": "FP dag ’17",
+    "event-date": {
+      "date-parts": [
+        [
+          2017,
+          1,
+          6
+        ]
+      ]
+    },
+    "id": "FPDag2017",
+    "issued": {
+      "date-parts": [
+        [
+          2017,
+          1,
+          6
+        ]
+      ]
+    },
+    "publisher": "Radboud Universiteit Nijmegen",
+    "publisher-place": "Nijmegen, NL",
+    "title": "Type-driven design of communicating systems using idris",
+    "type": "paper-conference"
+  },
+  {
+    "author": [
+      {
+        "dropping-particle": "de",
+        "family": "Muijnck-Hughes",
+        "given": "Jan"
+      },
+      {
+        "literal": "others"
+      }
+    ],
+    "container-title": "University of glasgow gpg seminar.",
+    "event": "GPG seminar series 17/18",
+    "event-date": {
+      "date-parts": [
+        [
+          2017,
+          12,
+          5
+        ]
+      ]
+    },
+    "id": "GPGSeminar2017",
+    "issued": {
+      "date-parts": [
+        [
+          2017,
+          12,
+          5
+        ]
+      ]
+    },
+    "publisher": "University of Glasgow",
+    "publisher-place": "Glasgow",
+    "title": "Structural & behavioural types for soc design: Motivations & challenges.",
+    "title-short": "Structural & behavioural types for soc design",
+    "type": "paper-conference"
+  },
+  {
+    "author": [
+      {
+        "dropping-particle": "de",
+        "family": "Muijnck-Hughes",
+        "given": "Jan"
+      },
+      {
+        "family": "Brady",
+        "given": "Edwin"
+      }
+    ],
+    "container-title": "Heriot watt university logic and programming languages group seminar.",
+    "id": "HWSeminar2017",
+    "issued": {
+      "date-parts": [
+        [
+          2017,
+          12,
+          6
+        ]
+      ]
+    },
+    "note": "Talk at the local seminar.",
+    "publisher": "Heriot Watt University",
+    "publisher-place": "Edinburgh",
+    "title": "Type-driven development of communicating systems.",
+    "type": "paper-conference"
+  },
+  {
+    "author": [
+      {
+        "dropping-particle": "de",
+        "family": "Muijnck-Hughes",
+        "given": "Jan"
+      },
+      {
+        "family": "Brady",
+        "given": "Edwin"
+      }
+    ],
+    "container-title": "Imperal college london mrg seminar.",
+    "id": "Imperial2017",
+    "issued": {
+      "date-parts": [
+        [
+          2017,
+          7,
+          25
+        ]
+      ]
+    },
+    "note": "Talk at the local seminar.",
+    "publisher": "Imperial College London",
+    "publisher-place": "London",
+    "title": "Type-driven development of communicating systems.",
+    "type": "paper-conference"
+  },
+  {
+    "abstract": "The protocols that describe the interactions between IP Cores on System-on-a-Chip architectures are well-documented. These protocols described not only the structural properties of the physical interfaces but also the behaviour of the emanating signals. However, there is a disconnect between the design of SoC architectures, their formal description, and the verification of their implementation in known hardware description languages. Within the Border Patrol project we are investigating how to capture and reason about the structural and behavioural properties of SoC architectures using state-of-the-art advances in programming language research. Namely, we are investigating using dependent types and session types for the description of hardware communication. In this talk I will discuss my work in designing a linked family of languages that captures and reasons about the topological structure of a System-on-a-Chip. These languages provide correct-by-construction guarantees over the interaction protocols themselves; the adherence of a component that connects using said protocols; and the validity of the specified connections. These guarantees are provided through abuse of indexed monads to reason about resource usage; and general (ab)use of dependent types as presented in Idris. I will not cover all aspects of the languages but will concentrate my talk detailing the underlying theories that facilitate the correct-by-construction guarantees.",
+    "author": [
+      {
+        "dropping-particle": "de",
+        "family": "Muijnck-Hughes",
+        "given": "Jan"
+      },
+      {
+        "literal": "others"
+      }
+    ],
+    "container-title": "University of strathclyde msp group seminar",
+    "event": "MSP101 17/18",
+    "event-date": {
+      "date-parts": [
+        [
+          2018,
+          2,
+          21
+        ]
+      ]
+    },
+    "event-place": "University of Strathclyde",
+    "id": "MSP1012018",
+    "issued": {
+      "date-parts": [
+        [
+          2018,
+          2,
+          21
+        ]
+      ]
+    },
+    "title": "A type-system for describing the structural topology of system-on-a-chip architectures",
+    "type": "paper-conference"
+  },
+  {
+    "author": [
+      {
+        "dropping-particle": "de",
+        "family": "Muijnck-Hughes",
+        "given": "Jan"
+      }
+    ],
+    "event": "MSP101 ’18/19",
+    "id": "MSP1012019",
+    "issued": {
+      "date-parts": [
+        [
+          2019,
+          5,
+          12
+        ]
+      ]
+    },
+    "publisher": "University of Strathclyde",
+    "publisher-place": "Glasgow, UK",
+    "title": "A type-system of sorts for bigraphs.",
+    "type": "paper-conference"
+  },
+  {
+    "author": [
+      {
+        "dropping-particle": "de",
+        "family": "Muijnck-Hughes",
+        "given": "Jan"
+      },
+      {
+        "family": "Brady",
+        "given": "Edwin"
+      },
+      {
+        "family": "Vanderbauwhede",
+        "given": "Wim"
+      }
+    ],
+    "event": "MSP101 ’19/20",
+    "id": "MSP1012020",
+    "issued": {
+      "date-parts": [
+        [
+          2020,
+          5,
+          19
+        ]
+      ]
+    },
+    "publisher": "University of Strathclyde",
+    "publisher-place": "Glasgow, UK",
+    "title": "Building resource-dependent EDSLs in a dependently-typed language.",
+    "type": "paper-conference"
+  },
+  {
+    "abstract": "The protocols that describe the interactions between IP Cores on System-on-a-Chip (SoC) architectures are well-documented. Describing not only the structural properties of the physical interfaces but also the behaviour of the emanating signals. However, there is a disconnect between the design of SoC architectures, their formal description, and the verification of their implementation in known hardware description languages. Within the Border Patrol project we are investigating how to capture and reason about the structural and behavioural properties of SoC architectures using state-of-the-art advances in programming language research. Namely, we are investigating using dependent types and session types to capture and reason about hardware communication at design and runtime. In this talk I will discuss my work in designing a dependent type- system and corresponding languages that captures and reasons about the topological structure of a System-on-a-Chip. These languages provide correct-by-construction guarantees over:the physical structure of an interaction protocol;the adherence of a component’s interface to a given protocol; andthe validity of the specified connections made between components.We provide these guarantees through the (ab)use of dependent types as presented in Idris; and abuse of parameterised monads to reason about resource usage.",
+    "author": [
+      {
+        "dropping-particle": "de",
+        "family": "Muijnck-Hughes",
+        "given": "Jan"
+      },
+      {
+        "family": "Vanderbauwhede",
+        "given": "Wim"
+      }
+    ],
+    "event": "PL-interest seminar series ’17/18",
+    "id": "PLINTEREST2018",
+    "issued": {
+      "date-parts": [
+        [
+          2018,
+          7,
+          12
+        ]
+      ]
+    },
+    "publisher": "University of Edinburgh",
+    "publisher-place": "Edinburgh, UK",
+    "title": "Type-systems for describing system-on-a-chip architectures.",
+    "type": "paper-conference"
+  },
+  {
+    "author": [
+      {
+        "dropping-particle": "de",
+        "family": "Muijnck-Hughes",
+        "given": "Jan"
+      },
+      {
+        "family": "Brady",
+        "given": "Edwin"
+      },
+      {
+        "family": "Vanderbauwhede",
+        "given": "Wim"
+      }
+    ],
+    "container-title": "PLUG seminar",
+    "id": "PLUG20190205",
+    "issued": {
+      "date-parts": [
+        [
+          2019,
+          2,
+          5
+        ]
+      ]
+    },
+    "publisher": "University of Glasgow",
+    "publisher-place": "Glasgow",
+    "title": "Type-driven design of communicating systems.",
+    "type": "paper-conference"
+  },
+  {
+    "author": [
+      {
+        "dropping-particle": "de",
+        "family": "Muijnck-Hughes",
+        "given": "Jan"
+      },
+      {
+        "family": "Vanderbauwhede",
+        "given": "Wim"
+      }
+    ],
+    "event": "Shameless plug ’20/21",
+    "id": "PLUG2020",
+    "issued": {
+      "date-parts": [
+        [
+          2020,
+          9,
+          29
+        ]
+      ]
+    },
+    "publisher": "University of Glasgow",
+    "publisher-place": "Glasgow, UK",
+    "title": "A mechanisation of systemfoo & friends in idris.",
+    "type": "paper-conference"
+  },
+  {
+    "author": [
+      {
+        "dropping-particle": "de",
+        "family": "Muijnck-Hughes",
+        "given": "Jan"
+      }
+    ],
+    "event": "Practical types 2015",
+    "id": "PracticalTypes2015",
+    "issued": {
+      "date-parts": [
+        [
+          2015,
+          8,
+          4
+        ]
+      ]
+    },
+    "publisher": "University of St Andrews",
+    "publisher-place": "St Andrews, UK",
+    "title": "Re-targeting the grl for different domains",
+    "type": "paper-conference"
+  },
+  {
+    "author": [
+      {
+        "dropping-particle": "de",
+        "family": "Muijnck-Hughes",
+        "given": "Jan"
+      },
+      {
+        "family": "Brady",
+        "given": "Edwin"
+      },
+      {
+        "family": "Hammond",
+        "given": "Kevin"
+      }
+    ],
+    "container-title": "SICSA cybersec meetup nov ’14",
+    "id": "SICSACyberSec2014",
+    "issued": {
+      "date-parts": [
+        [
+          2014,
+          11,
+          5
+        ]
+      ]
+    },
+    "note": "Presentation at Nov 2014 CyberSec Meetup.",
+    "publisher-place": "University of Edinburgh",
+    "title": "Veri–app–behaviour: Using dependent types to enforce protocol specification adherence.",
+    "title-short": "Veri–app–behaviour",
+    "type": "paper-conference"
+  },
+  {
+    "author": [
+      {
+        "dropping-particle": "de",
+        "family": "Muijnck-Hughes",
+        "given": "Jan"
+      },
+      {
+        "literal": "others"
+      }
+    ],
+    "container-title": "Scottish programming languages seminar october 18 university of strathclyde",
+    "event": "SPLS oct ’18",
+    "event-date": {
+      "date-parts": [
+        [
+          2018,
+          10,
+          17
+        ]
+      ]
+    },
+    "event-place": "University of Strathclyde",
+    "id": "SPLS2018strath",
+    "issued": {
+      "date-parts": [
+        [
+          2018,
+          10,
+          17
+        ]
+      ]
+    },
+    "title": "Type-system driven development of soc architectures.",
+    "type": "paper-conference"
+  },
+  {
+    "URL": "https://msp-strath.github.io/spls-16/",
+    "author": [
+      {
+        "dropping-particle": "de",
+        "family": "Muijnck-Hughes",
+        "given": "Jan"
+      },
+      {
+        "family": "Brady",
+        "given": "Edwin"
+      }
+    ],
+    "container-title": "SPLS nov ’16",
+    "event": "SPLS nov ’16",
+    "event-date": {
+      "date-parts": [
+        [
+          2016,
+          11,
+          9
+        ]
+      ]
+    },
+    "id": "SPLSNov2016",
+    "issued": {
+      "date-parts": [
+        [
+          2016,
+          11,
+          9
+        ]
+      ]
+    },
+    "publisher": "University of Strathclyde",
+    "publisher-place": "Glasgow",
+    "title": "Type-driven design of communicating systems using idris",
+    "type": "paper-conference"
+  },
+  {
+    "URL": "http://simonjf.com/spls-oct2017/",
+    "author": [
+      {
+        "dropping-particle": "de",
+        "family": "Muijnck-Hughes",
+        "given": "Jan"
+      },
+      {
+        "literal": "others"
+      }
+    ],
+    "container-title": "SPLS oct ’17",
+    "event": "SPLS oct ’17",
+    "event-date": {
+      "date-parts": [
+        [
+          2017,
+          10,
+          11
+        ]
+      ]
+    },
+    "event-place": "University of Edinburgh",
+    "id": "SPLSNov2017",
+    "issued": {
+      "date-parts": [
+        [
+          2017,
+          10,
+          11
+        ]
+      ]
+    },
+    "title": "Designing hardware using session types and dependent types: A first look",
+    "title-short": "Designing hardware using session types and dependent types",
+    "type": "paper-conference"
+  },
+  {
+    "URL": "https://blogs.cs.st-andrews.ac.uk/csblog/2018/03/30/a-type-system-for-describing-system-on-a-chip-architectures-jan-de-muijnck-hughes/",
+    "abstract": "The protocols that describe the interactions between IP Cores on System-on-a-Chip (SoC) architectures are well-documented. These protocols described not only the structural properties of the physical interfaces but also the behaviour of the emanating signals. However, there is a disconnect between the design of SoC architectures, their formal description, and the verification of their implementation in known hardware description languages. Within the Border Patrol project we are investigating how to capture and reason about the structural and behavioural properties of SoC architectures using state-of-the-art advances in programming language research. Namely, we are investigating using dependent types and session types to capture and reason about hardware communication. In this talk I will discuss my work in designing a dependent type- system and corresponding language that captures and reasons about the topological structure of a System-on-a-Chip. This language provides correct-by-construction guarantees over: the physical structure of an interaction protocol;the adherence of a component’s interface to a given protocol; andthe validity of the specified connections made between components.We provide these guarantees through the (ab)use of dependent types as presented in Idris; and abuse of indexed monads to reason about resource usage. Given time I will give an account of how this language enables reasoning about SoC behaviour when considered in conjunction with Session Types.",
+    "author": [
+      {
+        "dropping-particle": "de",
+        "family": "Muijnck-Hughes",
+        "given": "Jan"
+      },
+      {
+        "literal": "others"
+      }
+    ],
+    "container-title": "StACS functional programming group seminar",
+    "event": "StACS fp 17/18",
+    "event-date": {
+      "date-parts": [
+        [
+          2018,
+          4,
+          5
+        ]
+      ]
+    },
+    "event-place": "University of St Andrews",
+    "id": "STACSFP2018",
+    "issued": {
+      "date-parts": [
+        [
+          2018,
+          4,
+          5
+        ]
+      ]
+    },
+    "title": "A type-system for describing system-on-a-chip architectures",
+    "type": "paper-conference"
+  },
+  {
+    "author": [
+      {
+        "dropping-particle": "de",
+        "family": "Muijnck-Hughes",
+        "given": "Jan"
+      }
+    ],
+    "container-title": "University of st andrews security colloquium.",
+    "id": "STACSecColloq2012",
+    "issued": {
+      "date-parts": [
+        [
+          2012,
+          10,
+          30
+        ]
+      ]
+    },
+    "note": "Contributed talk at a local Security Colloquium.",
+    "publisher": "University of St Andrews,",
+    "publisher-place": "St Andrews",
+    "title": "Self-protecting electronic medical records using attribute based encryption",
+    "type": "paper-conference"
+  },
+  {
+    "URL": "https://blogs.cs.st-andrews.ac.uk/csblog/2019/10/27/jan-de-muijnck-hughes/",
+    "author": [
+      {
+        "dropping-particle": "de",
+        "family": "Muijnck-Hughes",
+        "given": "Jan"
+      },
+      {
+        "family": "Vanderbauwhede",
+        "given": "Wim"
+      }
+    ],
+    "event": "StACS school seminar series ’19/20",
+    "id": "StACS20191105",
+    "issued": {
+      "date-parts": [
+        [
+          2019,
+          11,
+          5
+        ]
+      ]
+    },
+    "publisher": "University of St Andrews",
+    "publisher-place": "St Andrews, UK",
+    "title": "LightClick: A linear typed orchestration language for system-on-a-chip designs",
+    "title-short": "LightClick",
+    "type": "paper-conference"
+  },
+  {
+    "author": [
+      {
+        "dropping-particle": "de",
+        "family": "Muijnck-Hughes",
+        "given": "Jan"
+      }
+    ],
+    "container-title": "University of st andrews fp group seminar.",
+    "id": "StACSFP2015",
+    "issued": {
+      "date-parts": [
+        [
+          2015,
+          1,
+          29
+        ]
+      ]
+    },
+    "note": "Presentation at local seminar.",
+    "publisher": "University of St Andrews",
+    "publisher-place": "St Andrews",
+    "title": "Real world idris: Building practical tools in a depdnently typed language.",
+    "title-short": "Real world idris",
+    "type": "paper-conference"
+  },
+  {
+    "author": [
+      {
+        "dropping-particle": "de",
+        "family": "Muijnck-Hughes",
+        "given": "Jan"
+      }
+    ],
+    "container-title": "University of st andrews fp group seminar.",
+    "id": "StACSFP2016",
+    "issued": {
+      "date-parts": [
+        [
+          2016,
+          4,
+          14
+        ]
+      ]
+    },
+    "publisher": "University of St Andrews",
+    "publisher-place": "St Andrews",
+    "title": "Using dependent types to improve the grl.",
+    "type": "paper-conference"
+  },
+  {
+    "author": [
+      {
+        "dropping-particle": "de",
+        "family": "Muijnck-Hughes",
+        "given": "Jan"
+      },
+      {
+        "family": "Brady",
+        "given": "Edwin"
+      }
+    ],
+    "container-title": "University of st andrews fp group seminar,",
+    "id": "StACSFPGroup2017",
+    "issued": {
+      "date-parts": [
+        [
+          2017,
+          2,
+          23
+        ]
+      ]
+    },
+    "note": "Talk at the local FP/SRG Seminar.",
+    "publisher": "University of St Andrews",
+    "publisher-place": "St Andrews",
+    "title": "Type-driven development of communicating systems.",
+    "type": "paper-conference"
+  },
+  {
+    "author": [
+      {
+        "dropping-particle": "de",
+        "family": "Muijnck-Hughes",
+        "given": "Jan"
+      },
+      {
+        "literal": "others"
+      }
+    ],
+    "container-title": "System seminar series, university of glasgow",
+    "event": "Systems seminar series ’18",
+    "event-place": "University of Glasgow",
+    "id": "Systems2018dec",
+    "issued": {
+      "date-parts": [
+        [
+          2018,
+          12,
+          11
+        ]
+      ]
+    },
+    "title": "Type-system driven development of soc architectures.",
+    "type": "paper-conference"
+  },
+  {
+    "URL": "https://eb.host.cs.st-andrews.ac.uk/TPL/",
+    "author": [
+      {
+        "dropping-particle": "de",
+        "family": "Muijnck-Hughes",
+        "given": "Jan"
+      }
+    ],
+    "container-title": "SICSA summer school on types and programming languages",
+    "event": "SICSA summer school on types and programming languages",
+    "id": "TPL2012",
+    "issued": {
+      "date-parts": [
+        [
+          2012,
+          6,
+          9
+        ]
+      ]
+    },
+    "note": "Contributed talk at TPL 2012",
+    "publisher-place": "University of St Andrews",
+    "title": "Modern cryptography & formal methods",
+    "type": "paper-conference"
+  },
+  {
+    "URL": "https://samoa.dcs.gla.ac.uk/events/viewtalk.jsp?id=2646",
+    "author": [
+      {
+        "dropping-particle": "de",
+        "family": "Muijnck-Hughes",
+        "given": "Jan"
+      },
+      {
+        "family": "Brady",
+        "given": "Edwin"
+      }
+    ],
+    "container-title": "University of glasgow gpg seminar.",
+    "id": "UoGGPG2017",
+    "issued": {
+      "date-parts": [
+        [
+          2017,
+          3,
+          1
+        ]
+      ]
+    },
+    "note": "Talk at the local GPG Seminar.",
+    "publisher": "University of Glasgow",
+    "publisher-place": "St Andrews",
+    "title": "Type-driven development of communicating systems.",
+    "type": "paper-conference"
+  },
+  {
+    "author": [
+      {
+        "dropping-particle": "de",
+        "family": "Muijnck-Hughes",
+        "given": "Jan"
+      },
+      {
+        "family": "Vanderbauwhede",
+        "given": "Wim"
+      }
+    ],
+    "container-title": "Scottish programming languages seminar october 20 heriot-watt university",
+    "event": "SPLS oct ’20",
+    "event-date": {
+      "date-parts": [
+        [
+          2020,
+          10,
+          21
+        ]
+      ]
+    },
+    "event-place": "Heriot-Watt University",
+    "id": "SPLS2020HW",
+    "issued": {
+      "date-parts": [
+        [
+          2020,
+          10,
+          21
+        ]
+      ]
+    },
+    "title": "Towards a formalisation of the (sub)-structural aspects of systemverilog",
+    "type": "paper-conference"
+  },
+  {
+    "author": [
+      {
+        "dropping-particle": "de",
+        "family": "Muijnck-Hughes",
+        "given": "Jan"
+      },
+      {
+        "family": "Vanderbauwhede",
+        "given": "Wim"
+      }
+    ],
+    "event": "Seminar of the programming languages and systems research group ’20/21",
+    "event-place": "University of Kent",
+    "id": "PLAS-21",
+    "issued": {
+      "date-parts": [
+        [
+          2021,
+          3,
+          8
+        ]
+      ]
+    },
+    "publisher-place": "Canterbury, UK",
+    "title": "Formalising the (sub-)structural aspects of systemverilog.",
+    "type": "paper-conference"
+  },
+  {
+    "author": [
+      {
+        "dropping-particle": "de",
+        "family": "Muijnck-Hughes",
+        "given": "Jan"
+      },
+      {
+        "family": "Vanderbauwhede",
+        "given": "Wim"
+      }
+    ],
+    "event": "MSP101 ’20/21",
+    "event-place": "University of Strathclyde",
+    "id": "MPS101-21",
+    "issued": {
+      "date-parts": [
+        [
+          2021,
+          6,
+          4
+        ]
+      ]
+    },
+    "publisher-place": "Glasgow, UK",
+    "title": "Formalising the (sub-)structural aspects of systemverilog, again…",
+    "type": "paper-conference"
+  },
+  {
+    "author": [
+      {
+        "dropping-particle": "de",
+        "family": "Muijnck-Hughes",
+        "given": "Jan"
+      },
+      {
+        "family": "Vanderbauwhede",
+        "given": "Wim"
+      }
+    ],
+    "event": "PL-interest seminar series ’21/22",
+    "id": "PLINTEREST2022",
+    "issued": {
+      "date-parts": [
+        [
+          2021,
+          3,
+          9
+        ]
+      ]
+    },
+    "publisher": "University of Edinburgh",
+    "publisher-place": "Edinburgh, UK",
+    "title": "Wiring circuits is as easy as $0-1-\\omega$, or is it…",
+    "type": "paper-conference"
+  },
+  {
+    "author": [
+      {
+        "dropping-particle": "de",
+        "family": "Muijnck-Hughes",
+        "given": "Jan"
+      },
+      {
+        "family": "Vanderbauwhede",
+        "given": "Wim"
+      }
+    ],
+    "container-title": "University of glasgow cybersecurity seminar.",
+    "event": "CyberSecurity theme seminar series ’21/22",
+    "event-date": {
+      "date-parts": [
+        [
+          2021,
+          11,
+          3
+        ]
+      ]
+    },
+    "id": "CYBERSEC2021",
+    "issued": {
+      "date-parts": [
+        [
+          2021,
+          11,
+          3
+        ]
+      ]
+    },
+    "publisher": "University of Glasgow",
+    "publisher-place": "Glasgow",
+    "title": "An introduction to building verified compilers using dependent-types",
+    "type": "paper-conference"
+  },
+  {
+    "author": [
+      {
+        "dropping-particle": "de",
+        "family": "Muijnck-Hughes",
+        "given": "Jan"
+      },
+      {
+        "family": "Vanderbauwhede",
+        "given": "Wim"
+      }
+    ],
+    "container-title": "University of glasgow glass seminar.",
+    "event": "GPG seminar series 21/22",
+    "event-date": {
+      "date-parts": [
+        [
+          2022,
+          5,
+          31
+        ]
+      ]
+    },
+    "id": "GLASS2022",
+    "issued": {
+      "date-parts": [
+        [
+          2022,
+          5,
+          31
+        ]
+      ]
+    },
+    "publisher": "University of Glasgow",
+    "publisher-place": "Glasgow",
+    "title": "Wiring circuits is as easy as $0-1-\\omega$, or is it…",
+    "type": "paper-conference"
+  }
+]
