@@ -11,7 +11,7 @@ REPO := git@github.com:jfdm/jfdm.github.io.git
 .PHONY: build serve deploy clean
 
 build:
-	hugo
+	hugo --minify
 
 clean:
 	rm -rf public_html
@@ -20,11 +20,11 @@ serve:
 	hugo server
 
 deploy: clean build
-	(cd _site; git init && git add .)
-#	(cd _site; git config user.email "")
-#	(cd _site; git config user.name None)
-	(cd _site; git commit -m "Site Generated on `date`")
-	(cd _site; git branch -m master main)
-	(cd _site; git remote add origin ${REPO})
-	(cd _site; git push -f origin main)
+	(cd public_html; git init && git add .)
+#	(cd public_html; git config user.email "")
+#	(cd public_html; git config user.name None)
+	(cd public_html; git commit -m "Site Generated on `date`")
+	(cd public_html; git branch -m master main)
+	(cd public_html; git remote add origin ${REPO})
+	(cd public_html; git push -f origin main)
 # ---------------------------------------------------------------------- [ EOF ]
