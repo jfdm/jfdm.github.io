@@ -4,7 +4,8 @@ title: "Engineering Should be TyDe!"
 
 ## Interests
 
-Generally speaking, I am interested in how we can take state-of-the-art advances in programming language theory, namely type-systems \& functional programming, and use these advances to fundamentally change how we design systems to make them more trustworthy: Secure and Safe.
+I am interested in how we can take state-of-the-art programming language theory and technologies, namely type-systems, dependent types, & functional programming, and use them to fundamentally change how we design systems to make them more trustworthy:
+Secure and Safe.
 
 Specifically, I am interested in bettering system design and construction through applications of:
 
