@@ -20,6 +20,7 @@ serve:
 	hugo server
 
 deploy: clean build
+	(cd public_html; echo tyde.systems > CNAME)
 	(cd public_html; git init && git add .)
 #	(cd public_html; git config user.email "")
 #	(cd public_html; git config user.name None)
