@@ -1,4 +1,4 @@
-baseURL = "https://jfdm.github.io"
+baseURL = "https://tyde.systems"
 publishDir = "public_html"
 DefaultContentLanguage = "en"
 title = "Jan de Muijnck-Hughes"
@@ -14,7 +14,7 @@ pygmentsCodefencesGuessSyntax = true
 
 [Params]
 #  homeTitle = "Beautiful Hugo Theme" # Set a different text for the header on the home page
-  subtitle = "Research Associate"
+  subtitle = "Lecturer in Cybersecurity"
   mainSections = ["post","posts", "output"]
 #  logo = "img/avatar-icon.png" # Expecting square dimensions
 #  favicon = "img/favicon.ico"
@@ -79,23 +79,46 @@ pygmentsCodefencesGuessSyntax = true
 
 [[menu.main]]
     name = "Blog"
+    identifier = "blog"
+    weight = 1
+
+[[menu.main]]
+    parent = "blog"
+    name = "Posts"
     url = "post"
     weight = 1
 
 [[menu.main]]
-#    parent = "about"
     name = "Research"
+    identifier = "research"
+    weight = 2
+
+[[menu.main]]
+    parent = "research"
+    name = "About"
     url = "page/research"
     weight = 2
 
 [[menu.main]]
-#    parent = "about"
+    parent = "research"
+    name = "Studying with Me"
+    url = "page/studying"
+    weight = 2
+
+[[menu.main]]
+    name = "Activities"
+    identifier = "activities"
+    weight = 3
+
+
+[[menu.main]]
+    parent = "activities"
     name = "Service"
     url = "page/service"
     weight = 3
 
 [[menu.main]]
-    name = "Output"
+    name = "Publications"
     identifier = "output"
     weight = 5
 
@@ -106,7 +129,7 @@ pygmentsCodefencesGuessSyntax = true
     weight = 3
 
 [[menu.main]]
-    parent = "output"
+    parent = "activities"
     name = "Talks"
     url = "page/talks"
     weight = 2
@@ -119,13 +142,14 @@ pygmentsCodefencesGuessSyntax = true
 
 
 [[menu.main]]
-#    parent = "about"
+    parent = "activities"
     name = "Teaching"
     url = "page/teaching"
     weight = 4
 
 
 [[menu.main]]
+    parent = "blog"
     name = "Tags"
     url = "tags"
     weight = 5

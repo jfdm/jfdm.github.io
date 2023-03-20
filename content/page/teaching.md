@@ -6,9 +6,24 @@ title: "Teaching"
 Details of duties performed during my tenure as an academic.
 Module descriptions are available from the respective University's course catalogues.
 
+
+
 ## University of Glasgow
 
-At Glasgow I am involved with a variety of teaching duties at Level 4, and Masters Level.
+At Glasgow I am involved with a variety of teaching duties at Level 4, MSci, and Masters Level.
+
+### 2022-2023
+
++ CS4025P: Individual Project
+  + Supervisor to one Level 4 student.
+
++ CS50xxx: Individual Project
+  + Supervisor to one Level 5 student.
+
+### 2021-2022
+
++ MSc Project
+  + Supervisor to three MSc students.
 
 ### 2020-2021
 

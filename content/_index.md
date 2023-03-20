@@ -1,25 +1,25 @@
 ---
 title: "Home"
-
-# The list of interests displayed
-#interests = [
-#  "type-driven development",
-#  "dependent types",
-#  "functional programming",
-#  "formal verification",
-#  "programming language design & implementation",
-#  "mathematically informed programming"
-#]
-
 ---
 
-I am a Research Associate at the [School of Computing](http://www.gla.ac.uk/schools/computing/), [University of Glasgow](http://www.gla.ac.uk).
+Starting September 2023 I will be joining the
+[University of Strathclyde](https://www.strath.ac.uk/)
+as a Lecturer in Cybersecurity as part of
+[Computer & Information Sciences](https://www.strath.ac.uk/science/computerinformationsciences/)
+, where I will be a member of the
+[StrathCyber group](https://www.strath.ac.uk/science/computerinformationsciences/strathcyber/)
+and be the bridge with the
+[MSP Group](https://msp.cis.strath.ac.uk/).
 
-My core research role is to investigate how we can leverage state-of-the-art advances in programming language theory to build more trustworthy systems.
-Current and past work has seen me look at bettering hardware design languages with resource-dependent typing to reason better about how circuits and modules are wired.
-I am now starting to shift my investigation to see how we can design better type-systems for high-level languages that take advantage of CHERI capabilities.
+At Strathclyde I will be continuing [my research](page/research) investigating how we can take programming language theory and technologies, namely type-systems, dependent types, & functional programming, and use them to fundamentally change systems to make them more trustworthy:
+Secure and Safe.
 
-Generally speaking, my other research interests are: type-driven development of trustworthy systems using dependent-types & session-types; and how to best teach state-of-the-art advances in programming language theory.
+If you are interested in student projects or research studies when I am in post at Strathclyde then [please read this](page/studying).
+
+
+In the mean time I am still a Research Associate at the [School of Computing](http://www.gla.ac.uk/schools/computing/), [University of Glasgow](http://www.gla.ac.uk)
+looking at using programming language theory and technologies to investigate bettering hardware design.
+Specifically, I investigated how to use quantitative typing to reason better about wiring, and I am currently investigating the interplay between System languages, Session Types, and CHERI Hardware capabilities.
 
 At Glasgow, I am a member of the
 [Glasgow Parallelism Group](http://www.dcs.gla.ac.uk/research/gpg/) (GPG)
