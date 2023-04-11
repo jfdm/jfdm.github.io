@@ -16,28 +16,40 @@ I am happy to discuss student-led projects that align with my research, so pleas
 I would be grateful if you can mention in your initial email _why my work interests you_, and detail any ideas that you have that also align with my research interests.
 Otherwise my projects that I suggest will be listed in the usual places...
 
-[I maintain a list of past projects, if you need more inspiration](../../page/student-projects).
+[I maintain a list of past projects, if you need more inspiration](../../page/people-alumni).
 
 
 ## Research Students: PhD & MPhil
 
-Funded research studentships at CIS are advertised on a adhoc basis through the normal channels: social media; and on jobs.ac.uk
+Funded research studentships at CIS are advertised on a adhoc basis through the normal channels: social media; findaphd; and on jobs.ac.uk.
+Otherwise one will have to self-fund, or apply for external funding.
+There are some notes below about funding.
 
 If you _are_ interested then please do contact me so that we can chat about it _before you submit your application_ to CIS.
 I would be grateful if you can mention in your initial email _why my work interests you_, and detail any ideas you have that align with my research interests.
 
-More details on CIS' application process is [available online](https://www.strath.ac.uk/courses/research/computerinformationsciences/), and my research is outlined in detail [here](../content/research).
+More details on CIS' application process is [available online](https://www.strath.ac.uk/courses/research/computerinformationsciences/), and my research is outlined in detail [here](../research).
 Part of the application process will require you to submit a research proposal, and if I feel that we are a good match I will work with you to develop this.
 
 ### Note on Funding
 
-CIS has...
+From time to time CIS will have pots of money through which doctoral studies can be funded.
+For example:
+_Doctoral Training Grants_ (DTGs), bespoke posts of money (that _may_ come with stipulations on student eligibility), _Centres for Doctoral Training_ (CDTs), and project related funding.
+To be clear, such funding can cover funding (stipends i.e. living costs) and tution fees, but not always.
+When available these opportunities will be advertised through CIS and related social media accounts, together with funding stipulations i.e. nationality and coverage.
 
-<!-- TODO -->
-
-If you are from outside the UK then funding your studies is, unfortunately, much harder.
+Generally speaking, if you are from outside the UK then funding your studies is, unfortunately, much harder but not impossible.
 Please do contact me if this is the case so that, together, we can explore funding options.
+
 If you are self-funded then please do say so.
+
+Otherwise there are pots of money that can be applied for:
+
++ [Carnegie Trust](https://www.carnegie-trust.org/award-schemes/carnegie-phd-scholarships/)
++ [Leverhulme Doctoral Scholarships](https://www.leverhulme.ac.uk/leverhulme-doctoral-scholarships)
++ [Various International](https://www.findaphd.com/guides/international-phd-funding-uk)
+
 
 ## Research Environment
 

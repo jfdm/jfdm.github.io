@@ -6,7 +6,9 @@ title: "Teaching"
 Details of duties performed during my tenure as an academic.
 Module descriptions are available from the respective University's course catalogues.
 
+## University of Strathclyde
 
+To be determined...
 
 ## University of Glasgow
 

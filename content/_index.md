@@ -15,6 +15,7 @@ At Strathclyde I will be continuing [my research](page/research) investigating h
 Secure and Safe.
 
 If you are interested in student projects or research studies when I am in post at Strathclyde then [please read this](page/studying).
+If you are interested in working with me as a research associate then [please read this](page/working)
 
 
 In the mean time I am still a Research Associate at the [School of Computing](http://www.gla.ac.uk/schools/computing/), [University of Glasgow](http://www.gla.ac.uk)

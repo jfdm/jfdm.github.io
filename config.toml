@@ -106,6 +106,12 @@ pygmentsCodefencesGuessSyntax = true
     weight = 2
 
 [[menu.main]]
+    parent = "research"
+    name = "Working with Me"
+    url = "page/working"
+    weight = 2
+
+[[menu.main]]
     name = "Activities"
     identifier = "activities"
     weight = 3
@@ -147,9 +153,25 @@ pygmentsCodefencesGuessSyntax = true
     url = "page/teaching"
     weight = 4
 
-
 [[menu.main]]
     parent = "blog"
     name = "Tags"
     url = "tags"
     weight = 5
+
+[[menu.main]]
+    name = "People"
+    identifier = "people"
+    weight = 4
+
+[[menu.main]]
+    parent = "people"
+    name = "Current"
+    url = "page/people-current"
+    weight = 1
+
+[[menu.main]]
+    parent = "people"
+    name = "Alumni"
+    url = "page/people-alumni"
+    weight = 2
