@@ -14,7 +14,7 @@ pygmentsCodefencesGuessSyntax = true
 
 [Params]
 #  homeTitle = "Beautiful Hugo Theme" # Set a different text for the header on the home page
-  subtitle = "Lecturer (Almost) in Cybersecurity"
+  subtitle = "Lecturer in Cybersecurity"
   mainSections = ["post","posts", "output"]
 #  logo = "img/avatar-icon.png" # Expecting square dimensions
 #  favicon = "img/favicon.ico"
@@ -47,7 +47,7 @@ pygmentsCodefencesGuessSyntax = true
 [Author]
   # Set only your "username" for default hosts and full URLs otherwise (e.g., "https://MyGitLab.org/username")
   name = "Jan de Muijnck-Hughes"
-  website = "jfdm.github.io"
+  website = "tyde.systems"
   github = "jfdm"
   gitlab = "jfdm"
   bitbucket = "jfdm"

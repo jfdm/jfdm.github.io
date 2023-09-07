@@ -4,19 +4,10 @@ title: "TyDe Systems are Trusthworthy Systems!"
 
 ## Interests
 
-I am interested in how we can take state-of-the-art programming language theory and technologies, namely type-systems, dependent types, & functional programming, and use them to fundamentally change how we design systems to make them more trustworthy:
-Secure and Safe.
-
-Specifically, I am interested in bettering system design and construction through applications of:
-
-+ functional programming;
-+ formal verification;
-+ mathematically informed programming;
-+ dependent types;
-+ sub-structural typing (quantitative, resource-dependent, session); and
-+ algebraic effect handlers.
-
-There are more topics that I am interested in, but the above keeps me busy for now!
+Generally speaking my research interests involve making Systems Engineering more TyDe: Type-Driven.
+I want to combine state-of-the-art programming language theory, namely from type-systems, dependent types & functional programming, and fundamentally change the way we engineer systems by interlinking our System's specifications and implementations.
+I believe that if we are to ever build trustworthy systems, we must make machine checkable specifications an intrinsic aspect of the system through adoption of type-driven approaches.
+There are more topics (privacy and cryptography) that I am interested in, but the above keeps me busy for now!
 
 ## Vision
 
