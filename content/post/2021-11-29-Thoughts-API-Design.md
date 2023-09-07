@@ -15,7 +15,7 @@ It is an observation:
 
 Consider, for example, the following predicate of the size of a list:
 
-```{idris}
+```idris
 data Size : (xs   : List a)
          -> (size : Nat)
                  -> Type
@@ -34,7 +34,7 @@ The first utilises a Dependent Pair as the result stating:
 "Given a list `xs` then we can provide the size of `xs`."
 
 
-```{idris}
+```idris
 sizeIs : (xs : List a) -> DPair Nat (Size xs)
 sizeIs [] = MkDPair Z Zero
 sizeIs (x :: xs) with (sizeIs xs)
@@ -43,7 +43,7 @@ sizeIs (x :: xs) with (sizeIs xs)
 
 We can, however, capitalise on the fact that we can calculate the length of the list using `length`.
 
-```{idris}
+```idris
 sizeIs : (xs : List a) -> Size xs (length xs)
 sizeIs [] = Zero
 sizeIs (x :: xs) = PlusOne (sizeIs xs)
@@ -56,7 +56,7 @@ Perhaps after some transformation on the list.
 For such a scenario it would be good to have a second style of function that *enforces* what the length is.
 We do so using a function that, given the list and its purported length, decides if the given length matches the length found.
 
-```{idris}
+```idris
 hasSize : (xs : List a) -> (d : Nat) -> Dec (Size xs d)
 hasSize xs d with (xs)
   hasSize xs 0 | [] = Yes Zero
@@ -70,7 +70,7 @@ hasSize xs d with (xs)
 
 To help we can describe some `absurd` cases to make the proof a little tidier.
 
-```{idris}
+```idris
 Uninhabited (Size Nil (S x)) where
   uninhabited Zero impossible
   uninhabited (PlusOne x) impossible
