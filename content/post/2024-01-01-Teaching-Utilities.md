@@ -1,6 +1,6 @@
 ---
 title: "Grading Utilities"
-date: 2024-01-05
+date: 2024-01-01
 ---
 
 At work we use Moodle (locally known as MyPlace) for handling course delivery, including the submission and grading of assignments.
@@ -72,7 +72,7 @@ When dealing with criteria, we _will_ ensure that the weights total to 100, and 
 
 One example:
 
-```{yaml}
+```yaml
 criteria:
   - name: Design
     ident: design
@@ -120,7 +120,7 @@ An example of each scheme follows:
 
 + Quantitative
 
-```{yaml}
+```yaml
 scheme:
   - name: yay
     bands:
@@ -144,7 +144,7 @@ scheme:
 
 + Qualitative
 
-```{yaml}
+```yaml
 scheme:
   - name: yay
     bands:
@@ -208,7 +208,7 @@ An interesting bit of research you might say.
 An example:
 
 
-```{yaml}
+```yaml
 results:
   - student: 12345
     grade: null
