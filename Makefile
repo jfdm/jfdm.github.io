@@ -25,7 +25,7 @@ deploy: clean build
 #	(cd public_html; git config user.email "")
 #	(cd public_html; git config user.name None)
 	(cd public_html; git commit -m "Site Generated on `date`")
-	(cd public_html; git branch -m master main)
+#	(cd public_html; git branch -m master main)
 	(cd public_html; git remote add origin ${REPO})
 	(cd public_html; git push -f origin main)
 # ---------------------------------------------------------------------- [ EOF ]
