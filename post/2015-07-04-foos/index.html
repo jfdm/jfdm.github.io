@@ -1,0 +1,92 @@
+<!doctype html><html lang=en itemscope itemtype=http://schema.org/WebPage><head><meta charset=utf-8><meta http-equiv=x-ua-compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1"><title>Embedded Domain Specific Type Systems for Declarative EDSls -</title><meta name=description content="Example of Embedded Domain Specific Type Systems for Declarative EDSLs. The full code can be found: https://gist.github.com/jfdm/2c37389f89203448f763
+This example represents the FooExpr language, this is a declarative language for specifiying different kinds of elements, and their links. The real world semantics of FooExpr do nto matter here, but think of we are building graphs and constraining the values for nodes and edges.
+The Meta Typing System Meet the meta-types in our typing system."><meta name=author content="Jan de Muijnck-Hughes"><script type=application/ld+json>{"@context":"http://schema.org","@type":"WebSite","name":"Jan de Muijnck-Hughes","url":"https:\/\/tyde.systems"}</script><script type=application/ld+json>{"@context":"http://schema.org","@type":"Organization","name":"","url":"https:\/\/tyde.systems"}</script><script type=application/ld+json>{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https:\/\/tyde.systems","name":"home"}},{"@type":"ListItem","position":3,"item":{"@id":"https:\/\/tyde.systems\/post\/2015-07-04-foos\/","name":"Embedded domain specific type systems for declarative edsls"}}]}</script><script type=application/ld+json>{"@context":"http://schema.org","@type":"Article","author":{"name":"Jan de Muijnck-Hughes"},"headline":"Embedded Domain Specific Type Systems for Declarative EDSls","description":"Example of Embedded Domain Specific Type Systems for Declarative EDSLs. The full code can be found: https:\/\/gist.github.com\/jfdm\/2c37389f89203448f763\nThis example represents the FooExpr language, this is a declarative language for specifiying different kinds of elements, and their links. The real world semantics of FooExpr do nto matter here, but think of we are building graphs and constraining the values for nodes and edges.\nThe Meta Typing System Meet the meta-types in our typing system.","inLanguage":"en","wordCount":486,"datePublished":"2015-07-04T00:00:00","dateModified":"2015-07-04T00:00:00","image":"https:\/\/tyde.systems","keywords":["idris"],"mainEntityOfPage":"https:\/\/tyde.systems\/post\/2015-07-04-foos\/","publisher":{"@type":"Organization","name":"https:\/\/tyde.systems","logo":{"@type":"ImageObject","url":"https:\/\/tyde.systems","height":60,"width":60}}}</script><meta property="og:title" content="Embedded Domain Specific Type Systems for Declarative EDSls"><meta property="og:description" content="Example of Embedded Domain Specific Type Systems for Declarative EDSLs. The full code can be found: https://gist.github.com/jfdm/2c37389f89203448f763
+This example represents the FooExpr language, this is a declarative language for specifiying different kinds of elements, and their links. The real world semantics of FooExpr do nto matter here, but think of we are building graphs and constraining the values for nodes and edges.
+The Meta Typing System Meet the meta-types in our typing system."><meta property="og:url" content="https://tyde.systems/post/2015-07-04-foos/"><meta property="og:type" content="website"><meta property="og:site_name" content="Jan de Muijnck-Hughes"><meta name=twitter:title content="Embedded Domain Specific Type Systems for Declarative EDSls"><meta name=twitter:description content="Example of Embedded Domain Specific Type Systems for Declarative EDSLs. The full code can be found: https://gist.github.com/jfdm/2c37389f89203448f763
+This example represents the FooExpr language, this …"><meta name=twitter:card content="summary_large_image"><meta name=twitter:site content="@jfdm"><meta name=twitter:creator content="@jfdm"><meta name=generator content="Hugo 0.118.2"><link rel=alternate href=https://tyde.systems/index.xml type=application/rss+xml title="Jan de Muijnck-Hughes"><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css integrity=sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X crossorigin=anonymous><link rel=stylesheet href=https://use.fontawesome.com/releases/v5.5.0/css/all.css integrity=sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU crossorigin=anonymous><link rel=stylesheet href=https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css integrity=sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u crossorigin=anonymous><link rel=stylesheet href=https://tyde.systems/css/main.css><link rel=stylesheet href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic"><link rel=stylesheet href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800"><link rel=stylesheet href=https://tyde.systems/css/syntax.css><link rel=stylesheet href=https://tyde.systems/css/codeblock.css><link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.css integrity=sha384-h/L2W9KefUClHWaty3SLE5F/qvc4djlyR4qY3NUV5HGQBBW7stbcfff1+I/vmsHh crossorigin=anonymous><link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/default-skin/default-skin.min.css integrity=sha384-iD0dNku6PYSIQLyfTOpB06F2KCZJAKLOThS5HRe8b3ibhdEQ6eKsFf/EeFxdOt5R crossorigin=anonymous><link rel=stylesheet type=text/css href=/hugo-cite.css></head><body><nav class="navbar navbar-default navbar-fixed-top navbar-custom"><div class=container-fluid><div class=navbar-header><button type=button class=navbar-toggle data-toggle=collapse data-target=#main-navbar>
+<span class=sr-only>Toggle navigation</span>
+<span class=icon-bar></span>
+<span class=icon-bar></span>
+<span class=icon-bar></span></button>
+<a class=navbar-brand href=https://tyde.systems>Jan de Muijnck-Hughes</a></div><div class="collapse navbar-collapse" id=main-navbar><ul class="nav navbar-nav navbar-right"><li class=navlinks-container><a class=navlinks-parent>Blog</a><div class=navlinks-children><a href=/post>Posts</a>
+<a href=/tags>Tags</a></div></li><li class=navlinks-container><a class=navlinks-parent>Research</a><div class=navlinks-children><a href=/page/research>About</a>
+<a href=/page/studying>Studying with Me</a>
+<a href=/page/working>Working with Me</a></div></li><li class=navlinks-container><a class=navlinks-parent>Activities</a><div class=navlinks-children><a href=/page/talks>Talks</a>
+<a href=/page/service>Service</a>
+<a href=/page/teaching>Teaching</a></div></li><li class=navlinks-container><a class=navlinks-parent>People</a><div class=navlinks-children><a href=/page/people-current>Current</a>
+<a href=/page/people-alumni>Alumni</a></div></li><li class=navlinks-container><a class=navlinks-parent>Publications</a><div class=navlinks-children><a href=/page/theses>Theses</a>
+<a href=/page/papers>Papers</a></div></li></ul></div></div></nav><div class=pswp tabindex=-1 role=dialog aria-hidden=true><div class=pswp__bg></div><div class=pswp__scroll-wrap><div class=pswp__container><div class=pswp__item></div><div class=pswp__item></div><div class=pswp__item></div></div><div class="pswp__ui pswp__ui--hidden"><div class=pswp__top-bar><div class=pswp__counter></div><button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+<button class="pswp__button pswp__button--share" title=Share></button>
+<button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+<button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button><div class=pswp__preloader><div class=pswp__preloader__icn><div class=pswp__preloader__cut><div class=pswp__preloader__donut></div></div></div></div></div><div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap"><div class=pswp__share-tooltip></div></div><button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)"></button>
+<button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)"></button><div class=pswp__caption><div class=pswp__caption__center></div></div></div></div></div><header class=header-section><div class="intro-header no-img"><div class=container><div class=row><div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1"><div class=post-heading><h1>Embedded Domain Specific Type Systems for Declarative EDSls</h1><span class=post-meta><i class="fas fa-calendar"></i>&nbsp;Posted on 2015-07-04</span></div></div></div></div></div></header><div class=container role=main><div class=row><div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1"><article role=main class=blog-post><p>Example of Embedded Domain Specific Type Systems for Declarative EDSLs. The full code can be found: <a href=https://gist.github.com/jfdm/2c37389f89203448f763>https://gist.github.com/jfdm/2c37389f89203448f763</a></p><p>This example represents the <code>FooExpr</code> language, this is a
+declarative language for specifiying different kinds of elements,
+and their links. The real world semantics of <code>FooExpr</code> do nto
+matter here, but think of we are building graphs and constraining
+the values for nodes and edges.</p><h2 id=the-meta-typing-system>The Meta Typing System</h2><p>Meet the meta-types in our typing system.</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>data ATy = A | B | C | D
+</span></span><span class=line><span class=cl>data WTy = W | X | Y | Z
+</span></span></code></pre></div><p>Meet the types in our type system.</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>data FooTy = Foo ATy | Bar WTy | FooBarTy | BarFooTy
+</span></span></code></pre></div><p>Meet the types for nodes and edges.</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>data StructTy = ELEM | LINK
+</span></span></code></pre></div><h2 id=some-external-typing-judgements>Some External Typing Judgements</h2><p>For links of type <code>FooBar</code> that connects a foo to a bar the
+following set of links are permissible.</p><pre><code>data ValidFB : ATy -&gt; WTy -&gt; Type where
+  AW : ValidFB A W
+  BX : ValidFB B X
+</code></pre><p>The typing judgements to determine what a valid <code>FooBar</code> link
+consists of.</p><pre><code>data ValidFooBar : FooTy -&gt; FooTy -&gt; Type where
+  ||| A Foo can connect a Bar iff it is a valid FB link.
+  FooBarFB : {auto prf : ValidFB x y} -&gt; ValidFooBar (Foo x) (Bar y)
+  ||| Any Foo can connect to any Foo.
+  FooBarFF : ValidFooBar (Foo x) (Foo y)
+</code></pre><p>Any Bar nodes can connect to a foo node.</p><pre><code>data ValidBarFoo : FooTy -&gt; FooTy -&gt; Type where
+  BarFooBF : ValidBarFoo (Bar x) (Foo y)
+</code></pre><p>A single bar node can connect to manny foo nodes.</p><pre><code>data ValidBarFoos : FooTy -&gt; List FooTy -&gt; Type where
+  Nil  : ValidBarFoos x Nil
+  (::) : (x : FooTy)
+      -&gt; (y : FooTy)
+      -&gt; {auto prf : ValidBarFoo x y}
+      -&gt; ValidBarFoos x ys
+      -&gt; ValidBarFoos x (y::ys)
+</code></pre><h2 id=well-typed-expressions>Well Typed Expressions</h2><p>The language of <code>FooExpr</code></p><pre><code>data FooExpr : FooTy -&gt; StructTy -&gt; Type where
+
+  ||| Create a node of type Foo
+  FooNode : (ty : ATy) -&gt; String -&gt; FooExpr (Foo ty) ELEM
+
+  ||| Create a node of type Bar
+  BarNode : (ty : WTy) -&gt; String -&gt; Maybe Nat -&gt; FooExpr (Bar ty) ELEM
+
+  ||| Create a valid FooBar link.
+  FooBar  : FooExpr x ELEM
+         -&gt; FooExpr y ELEM
+         -&gt; {auto prf : ValidFooBar x y}  -- Enforce typing judgement
+         -&gt; FooExpr FooBarTy LINK
+
+  ||| Create a valid BarFoo link.
+  BarFoo : FooExpr x ELEM
+        -&gt; FooExpr y ELEM
+        -&gt; {auto prf : ValidBarFoo x y}
+        -&gt; FooExpr BarFooTy LINK
+
+  ||| Create a valid BarFoos link.
+  BarFoos  : FooExpr x ELEM
+         -&gt; DList (FooTy) (\y =&gt; FooExpr y ELEM) ys
+         -&gt; {auto prf : ValidBarFoos x ys}
+         -&gt; FooExpr BarFooTy LINK
+</code></pre><p>The type <code>DList</code>, is a custom data type for collecting values of a dependent
+type. See <a href=http://www.github.com/jfdm/idris-containers>http://www.github.com/jfdm/idris-containers</a> for more
+information. <code>DList</code> allows for the witness of a dependent pair to be
+collected and externalised in the type.</p><div class=blog-tags><a href=https://tyde.systems/tags/idris/>idris</a>&nbsp;</div></article><ul class="pager blog-pager"><li class=previous><a href=https://tyde.systems/post/2015-07-04-nines/ data-toggle=tooltip data-placement=top title="Types and Abstract Interpretation">&larr; Previous Post</a></li><li class=next><a href=https://tyde.systems/post/2015-07-05-dependent-lists/ data-toggle=tooltip data-placement=top title="Dependent Lists">Next Post &rarr;</a></li></ul></div></div></div><footer><div class=container><div class=row><div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1"><ul class="list-inline text-center footer-links"><li><a href=https://github.com/jfdm title=GitHub><span class="fa-stack fa-lg"><i class="fas fa-circle fa-stack-2x"></i>
+<i class="fab fa-github fa-stack-1x fa-inverse"></i></span></a></li><li><a href=https://gitlab.com/jfdm title=GitLab><span class="fa-stack fa-lg"><i class="fas fa-circle fa-stack-2x"></i>
+<i class="fab fa-gitlab fa-stack-1x fa-inverse"></i></span></a></li><li><a href=https://bitbucket.org/jfdm title=Bitbucket><span class="fa-stack fa-lg"><i class="fas fa-circle fa-stack-2x"></i>
+<i class="fab fa-bitbucket fa-stack-1x fa-inverse"></i></span></a></li><li><a href=https://twitter.com/jfdm title=Twitter><span class="fa-stack fa-lg"><i class="fas fa-circle fa-stack-2x"></i>
+<i class="fab fa-twitter fa-stack-1x fa-inverse"></i></span></a></li><li><a rel=me href=https://discuss.systems/@jfdm title=Mastodon><span class="fa-stack fa-lg"><i class="fas fa-circle fa-stack-2x"></i>
+<i class="fab fa-mastodon fa-stack-1x fa-inverse"></i></span></a></li><li><a href title=RSS><span class="fa-stack fa-lg"><i class="fas fa-circle fa-stack-2x"></i>
+<i class="fas fa-rss fa-stack-1x fa-inverse"></i></span></a></li></ul><p class="credits copyright text-muted"><a href=tyde.systems>Jan de Muijnck-Hughes</a>
+&nbsp;&bull;&nbsp;&copy;
+2024
+&nbsp;&bull;&nbsp;
+<a href=https://tyde.systems>Jan de Muijnck-Hughes</a></p><p class="credits theme-by text-muted"><a href=https://gohugo.io>Hugo v0.118.2</a> powered &nbsp;&bull;&nbsp; Theme <a href=https://github.com/halogenica/beautifulhugo>Beautiful Hugo</a> adapted from <a href=https://deanattali.com/beautiful-jekyll/>Beautiful Jekyll</a></p></div></div></div></footer><script src=https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.js integrity=sha384-g7c+Jr9ZivxKLnZTDUhnkOnsh30B4H0rpLUpJ4jAIKs4fnJI+sEnkvrMWph2EDg4 crossorigin=anonymous></script>
+<script src=https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/contrib/auto-render.min.js integrity=sha384-mll67QQFJfxn0IYznZYonOWZ644AWYC+Pt2cHqMaRhXVrursRwvLnLaebdGIlYNa crossorigin=anonymous></script>
+<script src=https://code.jquery.com/jquery-3.5.1.slim.min.js integrity=sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj crossorigin=anonymous></script>
+<script src=https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js integrity=sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa crossorigin=anonymous></script>
+<script src=https://tyde.systems/js/main.js></script><script>renderMathInElement(document.body)</script><script src=https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.js integrity=sha384-QELNnmcmU8IR9ZAykt67vGr9/rZJdHbiWi64V88fCPaOohUlHCqUD/unNN0BXSqy crossorigin=anonymous></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe-ui-default.min.js integrity=sha384-m67o7SkQ1ALzKZIFh4CiTA8tmadaujiTa9Vu+nqPSwDOqHrDmxLezTdFln8077+q crossorigin=anonymous></script><script src=https://tyde.systems/js/load-photoswipe.js></script></body></html>

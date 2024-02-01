@@ -1,0 +1,304 @@
+<!doctype html><html lang=en itemscope itemtype=http://schema.org/WebPage><head><meta charset=utf-8><meta http-equiv=x-ua-compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1"><title>Effectful Channel Management -</title><meta name=description content="Communicating systems require channels to communicate, in many of the programming languages that provide communication channels the management of these channels at the application layer is left to the programmer to get right. That is, the programmer is responsible for ensuring that the channel is established, connected to, and then destroyed.
+In languages that support dependent types we can encoded, at the type level, extra properties about our software program. Further, the idea of algebraic effects supports the separation of a program&rsquo;s description from its realisation in different contexts."><meta name=author content="Jan de Muijnck-Hughes"><script type=application/ld+json>{"@context":"http://schema.org","@type":"WebSite","name":"Jan de Muijnck-Hughes","url":"https:\/\/tyde.systems"}</script><script type=application/ld+json>{"@context":"http://schema.org","@type":"Organization","name":"","url":"https:\/\/tyde.systems"}</script><script type=application/ld+json>{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https:\/\/tyde.systems","name":"home"}},{"@type":"ListItem","position":3,"item":{"@id":"https:\/\/tyde.systems\/post\/2016-10-05-effectful-channel-management\/","name":"Effectful channel management"}}]}</script><script type=application/ld+json>{"@context":"http://schema.org","@type":"Article","author":{"name":"Jan de Muijnck-Hughes"},"headline":"Effectful Channel Management","description":"Communicating systems require channels to communicate, in many of the programming languages that provide communication channels the management of these channels at the application layer is left to the programmer to get right. That is, the programmer is responsible for ensuring that the channel is established, connected to, and then destroyed.\nIn languages that support dependent types we can encoded, at the type level, extra properties about our software program. Further, the idea of algebraic effects supports the separation of a program\u0026rsquo;s description from its realisation in different contexts.","inLanguage":"en","wordCount":2148,"datePublished":"2015-08-28T00:00:00","dateModified":"2015-08-28T00:00:00","image":"https:\/\/tyde.systems","keywords":["idris, effects, sessions, tdvcs"],"mainEntityOfPage":"https:\/\/tyde.systems\/post\/2016-10-05-effectful-channel-management\/","publisher":{"@type":"Organization","name":"https:\/\/tyde.systems","logo":{"@type":"ImageObject","url":"https:\/\/tyde.systems","height":60,"width":60}}}</script><meta property="og:title" content="Effectful Channel Management"><meta property="og:description" content="Communicating systems require channels to communicate, in many of the programming languages that provide communication channels the management of these channels at the application layer is left to the programmer to get right. That is, the programmer is responsible for ensuring that the channel is established, connected to, and then destroyed.
+In languages that support dependent types we can encoded, at the type level, extra properties about our software program. Further, the idea of algebraic effects supports the separation of a program&rsquo;s description from its realisation in different contexts."><meta property="og:url" content="https://tyde.systems/post/2016-10-05-effectful-channel-management/"><meta property="og:type" content="website"><meta property="og:site_name" content="Jan de Muijnck-Hughes"><meta name=twitter:title content="Effectful Channel Management"><meta name=twitter:description content="Communicating systems require channels to communicate, in many of the programming languages that provide communication channels the management of these channels at the application layer is left to the …"><meta name=twitter:card content="summary_large_image"><meta name=twitter:site content="@jfdm"><meta name=twitter:creator content="@jfdm"><meta name=generator content="Hugo 0.118.2"><link rel=alternate href=https://tyde.systems/index.xml type=application/rss+xml title="Jan de Muijnck-Hughes"><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css integrity=sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X crossorigin=anonymous><link rel=stylesheet href=https://use.fontawesome.com/releases/v5.5.0/css/all.css integrity=sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU crossorigin=anonymous><link rel=stylesheet href=https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css integrity=sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u crossorigin=anonymous><link rel=stylesheet href=https://tyde.systems/css/main.css><link rel=stylesheet href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic"><link rel=stylesheet href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800"><link rel=stylesheet href=https://tyde.systems/css/syntax.css><link rel=stylesheet href=https://tyde.systems/css/codeblock.css><link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.css integrity=sha384-h/L2W9KefUClHWaty3SLE5F/qvc4djlyR4qY3NUV5HGQBBW7stbcfff1+I/vmsHh crossorigin=anonymous><link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/default-skin/default-skin.min.css integrity=sha384-iD0dNku6PYSIQLyfTOpB06F2KCZJAKLOThS5HRe8b3ibhdEQ6eKsFf/EeFxdOt5R crossorigin=anonymous><link rel=stylesheet type=text/css href=/hugo-cite.css></head><body><nav class="navbar navbar-default navbar-fixed-top navbar-custom"><div class=container-fluid><div class=navbar-header><button type=button class=navbar-toggle data-toggle=collapse data-target=#main-navbar>
+<span class=sr-only>Toggle navigation</span>
+<span class=icon-bar></span>
+<span class=icon-bar></span>
+<span class=icon-bar></span></button>
+<a class=navbar-brand href=https://tyde.systems>Jan de Muijnck-Hughes</a></div><div class="collapse navbar-collapse" id=main-navbar><ul class="nav navbar-nav navbar-right"><li class=navlinks-container><a class=navlinks-parent>Blog</a><div class=navlinks-children><a href=/post>Posts</a>
+<a href=/tags>Tags</a></div></li><li class=navlinks-container><a class=navlinks-parent>Research</a><div class=navlinks-children><a href=/page/research>About</a>
+<a href=/page/studying>Studying with Me</a>
+<a href=/page/working>Working with Me</a></div></li><li class=navlinks-container><a class=navlinks-parent>Activities</a><div class=navlinks-children><a href=/page/talks>Talks</a>
+<a href=/page/service>Service</a>
+<a href=/page/teaching>Teaching</a></div></li><li class=navlinks-container><a class=navlinks-parent>People</a><div class=navlinks-children><a href=/page/people-current>Current</a>
+<a href=/page/people-alumni>Alumni</a></div></li><li class=navlinks-container><a class=navlinks-parent>Publications</a><div class=navlinks-children><a href=/page/theses>Theses</a>
+<a href=/page/papers>Papers</a></div></li></ul></div></div></nav><div class=pswp tabindex=-1 role=dialog aria-hidden=true><div class=pswp__bg></div><div class=pswp__scroll-wrap><div class=pswp__container><div class=pswp__item></div><div class=pswp__item></div><div class=pswp__item></div></div><div class="pswp__ui pswp__ui--hidden"><div class=pswp__top-bar><div class=pswp__counter></div><button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+<button class="pswp__button pswp__button--share" title=Share></button>
+<button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+<button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button><div class=pswp__preloader><div class=pswp__preloader__icn><div class=pswp__preloader__cut><div class=pswp__preloader__donut></div></div></div></div></div><div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap"><div class=pswp__share-tooltip></div></div><button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)"></button>
+<button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)"></button><div class=pswp__caption><div class=pswp__caption__center></div></div></div></div></div><header class=header-section><div class="intro-header no-img"><div class=container><div class=row><div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1"><div class=post-heading><h1>Effectful Channel Management</h1><span class=post-meta><i class="fas fa-calendar"></i>&nbsp;Posted on 2015-08-28</span></div></div></div></div></div></header><div class=container role=main><div class=row><div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1"><article role=main class=blog-post><p>Communicating systems require channels to communicate, in many of the
+programming languages that provide communication channels the management
+of these channels at the application layer is left to the programmer to
+get right. That is, the programmer is responsible for ensuring that the
+channel is established, connected to, and then destroyed.</p><p>In languages that support dependent types we can encoded, at the type
+level, extra properties about our software program. Further, the idea
+of algebraic effects supports the separation of a program&rsquo;s
+description from its realisation in different contexts. Edwin Brady&rsquo;s
+<code>EFFECTS</code> library has shown how this is possible using dependent types
+[@Brady2015rda]. The implementation of <code>EFFECTS</code> allows for efficient
+management of a program&rsquo;s side-effects and dealings with the outside
+world. See the <em>Effects Tutorial</em> <a href=http://idris.readthedocs.io/en/latest/effects/index.html>for more information</a>.</p><h1 id=the-file-effect>The <code>FILE</code> Effect</h1><p>An interesting aspect of <code>EFFECTS</code> is that each effect is associated
+with a resource. For the <code>FILE</code> effect it is a file handler, for the
+<code>LOG</code> and <code>PERF</code> effects that I contributed to <code>EFFECTS</code> it is logging
+levels and captured metrics. With resource based algebraic effects we
+can capture (at the type level) the allowed (state) changes to this
+resource. If we <a href=https://raw.githubusercontent.com/idris-lang/Idris-dev/master/libs/effects/Effect/File.idr>examine the current <code>FILE</code> effect from Idris&rsquo; effects
+library</a>
+you can see this for file access. The resource for the <code>FILE</code> effect is
+the file descriptor and its relation to the mode of operation.</p><div class="highlight idris"><pre tabindex=0 class=chroma><code class=language-mysql data-lang=mysql><span class=line><span class=cl><span class=o>|||</span><span class=w> </span><span class=n>The</span><span class=w> </span><span class=n>file</span><span class=w> </span><span class=n>handle</span><span class=w> </span><span class=n>associated</span><span class=w> </span><span class=k>with</span><span class=w> </span><span class=n>the</span><span class=w> </span><span class=n>effect</span><span class=p>.</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w></span><span class=o>|||</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w></span><span class=o>|||</span><span class=w> </span><span class=o>@</span><span class=n>m</span><span class=w> </span><span class=n>The</span><span class=w> </span><span class=o>`</span><span class=n>Mode</span><span class=o>`</span><span class=w> </span><span class=n>that</span><span class=w> </span><span class=n>the</span><span class=w> </span><span class=n>handle</span><span class=w> </span><span class=n>was</span><span class=w> </span><span class=n>generated</span><span class=w> </span><span class=n>under</span><span class=p>.</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w></span><span class=n>data</span><span class=w> </span><span class=n>FileHandle</span><span class=w> </span><span class=p>:</span><span class=w> </span><span class=p>(</span><span class=n>m</span><span class=w> </span><span class=p>:</span><span class=w> </span><span class=n>Mode</span><span class=p>)</span><span class=w> </span><span class=o>-&gt;</span><span class=w> </span><span class=n>Type</span><span class=w> </span><span class=k>where</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=n>FH</span><span class=w> </span><span class=p>:</span><span class=w> </span><span class=n>File</span><span class=w> </span><span class=o>-&gt;</span><span class=w> </span><span class=n>FileHandle</span><span class=w> </span><span class=n>m</span><span class=w>
+</span></span></span></code></pre></div><p>The <code>FILE</code> effect is a dependent effect in that the result of the
+effectful operation is used to calculate the value of the resource being
+computed over. Given the function <code>calcResourceTy</code>:</p><div class="highlight idris"><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>calcResourceTy : (m  : Mode)
+</span></span><span class=line><span class=cl>              -&gt; (ty : FileOpReturnTy fOpTy retTy)
+</span></span><span class=line><span class=cl>              -&gt; Type
+</span></span><span class=line><span class=cl>calcResourceTy _ (FError e) = ()
+</span></span><span class=line><span class=cl>calcResourceTy m _          = FileHandle m
+</span></span></code></pre></div><p><code>calcResourceTy</code> computes the type of the resource as being unit if
+there is a failure, and if not the resource is the <code>FileHandle</code>
+parameterised by the mode of operation. When combined with the mode of
+operation we can have a more informed means to calculate the next value
+of the resource.</p><div class="highlight idris"><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>  ||| An effect to describe operations on a file.
+</span></span><span class=line><span class=cl>  data FileE : Effect where
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    -- Open/Close
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    Open : (fname : String)
+</span></span><span class=line><span class=cl>        -&gt; (m : Mode)
+</span></span><span class=line><span class=cl>        -&gt; sig FileE
+</span></span><span class=line><span class=cl>               (FileOpReturnTy SUCCESS ())
+</span></span><span class=line><span class=cl>               ()
+</span></span><span class=line><span class=cl>               (\res =&gt; calcResourceTy m res)
+</span></span><span class=line><span class=cl>....
+</span></span></code></pre></div><h1 id=communication-is-communication>Communication is Communication</h1><p>But why talk about the <code>FILE</code> effect? Well if we think about it, reading
+and writing with a file is analogous to communicating over a channel. We
+have to:</p><ol><li>establish access to the file (set up a means to communication);</li><li>read or write to the file (receive or send messages); and</li><li>shutdown access to the file (shut down the means of communication).</li></ol><p>So why not apply creation of a file effect to management of a
+communication channel?</p><p>Fortunatly, Idris comes with an <a href=https://github.com/idris-lang/Idris-dev/blob/master/libs/base/System/Concurrency/Channels.idr>unsafe means to perform concurrent
+communication between different Idris
+processes</a>
+(and IPC too). Edwin has shown how we can reason about communication in
+Idris at <a href=https://twitter.com/edwinbrady/status/782165539514875904>Lambda
+World</a>, and
+<strong>spoiler alert</strong> in the TDD book too.</p><p>However, over the summer I took a stab at using effects to manage
+channels. This <a href=https://github.com/SimonJF/IdrisNet2>was inspired by earlier work by Simon
+Fowler</a>.</p><p>For the remainder of this post, I shall describe my implementation of a
+resource based algebraic effect for channels.</p><h1 id=the-resource>The Resource</h1><p>Like the <code>FILE</code> effect we are going to model an active session using a
+simple resource <code>OpenSesh</code>, and parameterise it by the state of the
+channel represented by the enumerated type <code>SSTATE</code>.</p><div class="highlight idris"><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>data SSTATE =  Unconnected | Spawned | Active
+</span></span></code></pre></div><p>Channels are either: <em>Unconnected</em>&mdash;literally unconnected;
+<em>Spawned</em>&mdash;alive but not communicating; or <em>Active</em>&mdash;are communicating
+with another entity. <code>OpenSesh</code> is defined as follows:</p><div class="highlight idris"><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>data OpenSesh  : (st : SSTATE) -&gt; Type where
+</span></span><span class=line><span class=cl>   NoSesh      : OpenSesh Unconnected
+</span></span><span class=line><span class=cl>   SpawnedSesh : (pid : PID) -&gt; OpenSesh Spawned
+</span></span><span class=line><span class=cl>   ActiveSesh  : (pid : Maybe PID) -&gt; (sesh : Channel) -&gt; OpenSesh Active
+</span></span></code></pre></div><p>Here an unconnected channel is specified using <code>NoSesh</code> and contains no
+information. <code>SpawnedSesh</code> represents a spawned process, so we must
+capture the processes <code>PID</code>. <code>ActiveSesh</code> represents either a client
+channel or server channel. If the channel is connecting to another
+process, not only do we need the channel to communication on, but also
+the <code>PID</code> of the process. If we are the server process, we need to keep
+track of the communication channel only.</p><h1 id=helpers>Helpers</h1><p>Before we define the effect we first define some helper code.</p><h2 id=type-synonyms>Type Synonyms</h2><p>First, type synonyms.</p><div class="highlight idris"><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>INIT : Type
+</span></span><span class=line><span class=cl>INIT = OpenSesh Unconnected
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>WAIT : Type
+</span></span><span class=line><span class=cl>WAIT = OpenSesh Spawned
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>ACTIVE : Type
+</span></span><span class=line><span class=cl>ACTIVE = OpenSesh Active
+</span></span></code></pre></div><h2 id=state>State</h2><p>The allowed state transitions between resource types. We have decided
+that we shall use a <code>Bool</code> to describe success or not.</p><h3 id=connecting-to-a-process>Connecting to a Process</h3><ol><li><p>As a Client</p><p>If connection was successful then move to active, otherwise go back
+to wait.</p><div class="highlight idris"><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>connectedOK : Bool -&gt; Type
+</span></span><span class=line><span class=cl>connectedOK False = OpenSesh Spawned
+</span></span><span class=line><span class=cl>connectedOK True  = OpenSesh Active
+</span></span></code></pre></div></li><li><p>As a Server</p><p>If attempt to listen was successful then move to active, otherwise
+go back to unconnected.</p><div class="highlight idris"><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>listenedOK : Bool -&gt; Type
+</span></span><span class=line><span class=cl>listenedOK False = OpenSesh Unconnected
+</span></span><span class=line><span class=cl>listenedOK True  = OpenSesh Active
+</span></span></code></pre></div></li></ol><h3 id=sending-messages>Sending Messages</h3><p>If message was sent then stay active, otherwise there was a failure and
+move to unconnected.</p><div class="highlight idris"><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>sentOK : Bool -&gt; Type
+</span></span><span class=line><span class=cl>sentOK True  = OpenSesh Active
+</span></span><span class=line><span class=cl>sentOK False = OpenSesh Unconnected
+</span></span></code></pre></div><h3 id=receiving-messages>Receiving Messages</h3><p>If message was received then stay active, otherwise there was a failure
+and move to unconnected.</p><div class="highlight idris"><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>receivedOK : Maybe a -&gt; Type
+</span></span><span class=line><span class=cl>receivedOK (Just v) = OpenSesh Active
+</span></span><span class=line><span class=cl>receivedOK Nothing  = OpenSesh Unconnected
+</span></span></code></pre></div><h1 id=the-channel-effect>The <code>CHANNEL</code> Effect</h1><p>With the helper code defined, we can now describe an effectful means to
+manage processes. To do so we have to use a mutual block to allow an
+effectful process to spawn a second effectful process.</p><div class="highlight idris"><pre tabindex=0 class=chroma><code class=language-mysql data-lang=mysql><span class=line><span class=cl><span class=n>mutual</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>  </span><span class=n>ProcessE</span><span class=w> </span><span class=p>:</span><span class=w> </span><span class=p>(</span><span class=n>st</span><span class=w>      </span><span class=p>:</span><span class=w> </span><span class=n>Type</span><span class=p>)</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>          </span><span class=o>-&gt;</span><span class=w> </span><span class=p>(</span><span class=n>rTy</span><span class=w>     </span><span class=p>:</span><span class=w> </span><span class=n>Type</span><span class=p>)</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>          </span><span class=o>-&gt;</span><span class=w> </span><span class=p>(</span><span class=n>inEffs</span><span class=w>  </span><span class=p>:</span><span class=w> </span><span class=n>List</span><span class=w> </span><span class=n>EFFECT</span><span class=p>)</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>          </span><span class=o>-&gt;</span><span class=w> </span><span class=p>(</span><span class=n>outEffs</span><span class=w> </span><span class=p>:</span><span class=w> </span><span class=n>List</span><span class=w> </span><span class=n>EFFECT</span><span class=p>)</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>          </span><span class=o>-&gt;</span><span class=w> </span><span class=n>Type</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>  </span><span class=n>ProcessE</span><span class=w> </span><span class=n>st</span><span class=w> </span><span class=n>ty</span><span class=w> </span><span class=n>inEffs</span><span class=w> </span><span class=n>outEffs</span><span class=w> </span><span class=o>=</span><span class=w> </span><span class=n>Eff</span><span class=w> </span><span class=nf>ty</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>                                      </span><span class=p>(</span><span class=n>CHANNEL</span><span class=w> </span><span class=n>st</span><span class=w> </span><span class=p>::</span><span class=w> </span><span class=n>inEffs</span><span class=p>)</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>                                      </span><span class=p>(</span><span class=err>\</span><span class=n>_</span><span class=w> </span><span class=o>=&gt;</span><span class=w> </span><span class=p>(</span><span class=n>CHANNEL</span><span class=w> </span><span class=n>st</span><span class=w> </span><span class=p>::</span><span class=w> </span><span class=n>outEffs</span><span class=p>))</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>  </span><span class=o>|||</span><span class=w> </span><span class=n>The</span><span class=w> </span><span class=n>effectful</span><span class=w> </span><span class=n>description</span><span class=w> </span><span class=k>for</span><span class=w> </span><span class=o>`</span><span class=n>Session</span><span class=o>`</span><span class=p>.</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>  </span><span class=n>data</span><span class=w> </span><span class=n>ChannelE</span><span class=w> </span><span class=p>:</span><span class=w> </span><span class=n>Effect</span><span class=w> </span><span class=k>where</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=o>|||</span><span class=w> </span><span class=n>Spawn</span><span class=w> </span><span class=n>an</span><span class=w> </span><span class=n>effectful</span><span class=w> </span><span class=n>process</span><span class=w> </span><span class=k>to</span><span class=w> </span><span class=n>communicate</span><span class=w> </span><span class=k>with</span><span class=p>,</span><span class=w> </span><span class=n>transitioning</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=o>|||</span><span class=w> </span><span class=k>from</span><span class=w> </span><span class=o>`</span><span class=n>INIT</span><span class=o>`</span><span class=w> </span><span class=k>to</span><span class=w> </span><span class=o>`</span><span class=n>WAIT</span><span class=o>`</span><span class=p>.</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=n>Spawn</span><span class=w> </span><span class=p>:</span><span class=w> </span><span class=n>Env</span><span class=w> </span><span class=n>IO</span><span class=w> </span><span class=n>esi</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>         </span><span class=o>-&gt;</span><span class=w> </span><span class=n>ProcessE</span><span class=w> </span><span class=nf>INIT</span><span class=w> </span><span class=p>()</span><span class=w> </span><span class=n>esi</span><span class=w> </span><span class=n>eso</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>         </span><span class=o>-&gt;</span><span class=w> </span><span class=n>sig</span><span class=w> </span><span class=nf>ChannelE</span><span class=w> </span><span class=p>(</span><span class=n>PID</span><span class=p>)</span><span class=w> </span><span class=p>(</span><span class=n>INIT</span><span class=p>)</span><span class=w> </span><span class=p>(</span><span class=n>WAIT</span><span class=p>)</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=o>|||</span><span class=w> </span><span class=n>Connect</span><span class=w> </span><span class=k>to</span><span class=w> </span><span class=n>a</span><span class=w> </span><span class=n>spawned</span><span class=w> </span><span class=n>process</span><span class=p>,</span><span class=w> </span><span class=n>transitioning</span><span class=w> </span><span class=k>from</span><span class=w> </span><span class=o>`</span><span class=n>INIT</span><span class=o>`</span><span class=w> </span><span class=k>to</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=o>|||</span><span class=w> </span><span class=n>result</span><span class=w> </span><span class=n>of</span><span class=w> </span><span class=o>`</span><span class=n>connectedOK</span><span class=o>`</span><span class=p>.</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=n>Connect</span><span class=w> </span><span class=p>:</span><span class=w> </span><span class=n>sig</span><span class=w> </span><span class=nf>ChannelE</span><span class=w> </span><span class=p>(</span><span class=kt>Bool</span><span class=p>)</span><span class=w> </span><span class=p>(</span><span class=n>WAIT</span><span class=p>)</span><span class=w> </span><span class=p>(</span><span class=err>\</span><span class=n>res</span><span class=w> </span><span class=o>=&gt;</span><span class=w> </span><span class=n>connectedOK</span><span class=w> </span><span class=n>res</span><span class=p>)</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=o>|||</span><span class=w> </span><span class=n>Listen</span><span class=w> </span><span class=k>for</span><span class=w> </span><span class=n>a</span><span class=w> </span><span class=n>connection</span><span class=p>,</span><span class=w> </span><span class=n>traisitioning</span><span class=w> </span><span class=k>from</span><span class=w> </span><span class=o>`</span><span class=n>INIT</span><span class=o>`</span><span class=w> </span><span class=k>to</span><span class=w> </span><span class=n>result</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=o>|||</span><span class=w> </span><span class=n>of</span><span class=w> </span><span class=o>`</span><span class=n>listenedOK</span><span class=o>`</span><span class=p>.</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=n>Listen</span><span class=w> </span><span class=p>:</span><span class=w> </span><span class=p>(</span><span class=n>tout</span><span class=w> </span><span class=p>:</span><span class=w> </span><span class=kt>Int</span><span class=p>)</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>          </span><span class=o>-&gt;</span><span class=w> </span><span class=n>sig</span><span class=w> </span><span class=nf>ChannelE</span><span class=w> </span><span class=p>(</span><span class=kt>Bool</span><span class=p>)</span><span class=w> </span><span class=p>(</span><span class=n>INIT</span><span class=p>)</span><span class=w> </span><span class=p>(</span><span class=err>\</span><span class=n>res</span><span class=w> </span><span class=o>=&gt;</span><span class=w> </span><span class=n>listenedOK</span><span class=w>  </span><span class=n>res</span><span class=p>)</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=o>|||</span><span class=w> </span><span class=n>Send</span><span class=w> </span><span class=n>a</span><span class=w> </span><span class=n>message</span><span class=w> </span><span class=n>of</span><span class=w> </span><span class=n>type</span><span class=w> </span><span class=o>`</span><span class=n>a</span><span class=o>`</span><span class=p>,</span><span class=w> </span><span class=n>transitioning</span><span class=w> </span><span class=k>from</span><span class=w> </span><span class=o>`</span><span class=n>ACTIVE</span><span class=o>`</span><span class=w> </span><span class=k>to</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=o>|||</span><span class=w> </span><span class=n>result</span><span class=w> </span><span class=n>of</span><span class=w> </span><span class=o>`</span><span class=n>sentOK</span><span class=o>`</span><span class=p>.</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=n>Send</span><span class=w> </span><span class=p>:</span><span class=w> </span><span class=n>a</span><span class=w> </span><span class=o>-&gt;</span><span class=w> </span><span class=n>sig</span><span class=w> </span><span class=nf>ChannelE</span><span class=w> </span><span class=p>(</span><span class=kt>Bool</span><span class=p>)</span><span class=w> </span><span class=p>(</span><span class=n>ACTIVE</span><span class=p>)</span><span class=w> </span><span class=p>(</span><span class=err>\</span><span class=n>res</span><span class=w> </span><span class=o>=&gt;</span><span class=w> </span><span class=n>sentOK</span><span class=w> </span><span class=n>res</span><span class=p>)</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=o>|||</span><span class=w> </span><span class=n>Receive</span><span class=w> </span><span class=n>a</span><span class=w> </span><span class=n>message</span><span class=w> </span><span class=n>of</span><span class=w> </span><span class=n>type</span><span class=w> </span><span class=o>`</span><span class=n>a</span><span class=o>`</span><span class=p>,</span><span class=w> </span><span class=n>trasitioning</span><span class=w> </span><span class=k>from</span><span class=w> </span><span class=o>`</span><span class=n>ACTIVE</span><span class=o>`</span><span class=w> </span><span class=k>to</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=o>|||</span><span class=w> </span><span class=n>result</span><span class=w> </span><span class=n>of</span><span class=w> </span><span class=o>`</span><span class=n>receivedOK</span><span class=o>`</span><span class=p>.</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=n>Recv</span><span class=w> </span><span class=p>:</span><span class=w> </span><span class=p>(</span><span class=n>a</span><span class=w> </span><span class=p>:</span><span class=w> </span><span class=n>Type</span><span class=p>)</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>        </span><span class=o>-&gt;</span><span class=w> </span><span class=n>sig</span><span class=w> </span><span class=nf>ChannelE</span><span class=w> </span><span class=p>(</span><span class=n>Maybe</span><span class=w> </span><span class=n>a</span><span class=p>)</span><span class=w> </span><span class=p>(</span><span class=n>ACTIVE</span><span class=p>)</span><span class=w> </span><span class=p>(</span><span class=err>\</span><span class=n>res</span><span class=w> </span><span class=o>=&gt;</span><span class=w> </span><span class=n>receivedOK</span><span class=w> </span><span class=n>res</span><span class=p>)</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=o>|||</span><span class=w> </span><span class=n>End</span><span class=w> </span><span class=n>a</span><span class=w> </span><span class=n>session</span><span class=p>,</span><span class=w> </span><span class=n>trasitioning</span><span class=w> </span><span class=n>back</span><span class=w> </span><span class=k>to</span><span class=w> </span><span class=o>`</span><span class=n>INIT</span><span class=o>`</span><span class=p>.</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=n>End</span><span class=w> </span><span class=p>:</span><span class=w> </span><span class=n>sig</span><span class=w> </span><span class=nf>ChannelE</span><span class=w> </span><span class=p>()</span><span class=w> </span><span class=p>(</span><span class=n>ty</span><span class=p>)</span><span class=w> </span><span class=p>(</span><span class=n>INIT</span><span class=p>)</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>  </span><span class=o>|||</span><span class=w> </span><span class=n>An</span><span class=w> </span><span class=n>effectful</span><span class=w> </span><span class=n>API</span><span class=w> </span><span class=k>for</span><span class=w> </span><span class=o>`</span><span class=n>System</span><span class=p>.</span><span class=n>Concurrency</span><span class=p>.</span><span class=n>Sessions</span><span class=o>`</span><span class=p>.</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>  </span><span class=o>|||</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>  </span><span class=o>|||</span><span class=w> </span><span class=o>@</span><span class=n>st</span><span class=w> </span><span class=n>The</span><span class=w> </span><span class=n>state</span><span class=w> </span><span class=n>the</span><span class=w> </span><span class=n>session</span><span class=w> </span><span class=k>is</span><span class=w> </span><span class=k>in</span><span class=p>.</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>  </span><span class=n>CHANNEL</span><span class=w> </span><span class=p>:</span><span class=w> </span><span class=p>(</span><span class=n>st</span><span class=w> </span><span class=p>:</span><span class=w> </span><span class=n>Type</span><span class=p>)</span><span class=w> </span><span class=o>-&gt;</span><span class=w> </span><span class=n>EFFECT</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>  </span><span class=n>CHANNEL</span><span class=w> </span><span class=n>st</span><span class=w> </span><span class=o>=</span><span class=w> </span><span class=n>MkEff</span><span class=w> </span><span class=n>st</span><span class=w> </span><span class=n>ChannelE</span><span class=w>
+</span></span></span></code></pre></div><p>If we examine the description of the effectful functions, we can see the
+allowed state transitions between different API calls. For example,
+spawning a process will transition the effect from being unconnected to
+waiting. Then we can only progress to an active session if connecting to
+the spawned resource was successful. Similar transitions are encoded in
+the effect between the different operations.</p><h1 id=implementation-for-io>Implementation for IO.</h1><p>With the effect specified, we can now define an implementation for this
+effect for the <code>IO</code> context. This handler will describe how to realise
+the management tasks described in the effect. For concurrent processes
+this will require spawning processes, connecting to processes, listening
+for processes, sending and receding messages, and closing sessions down.</p><div class="highlight idris"><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>Handler ChannelE IO where
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>  handle NoSesh (Spawn env proc) k = do
+</span></span><span class=line><span class=cl>      pid &lt;- spawn $ runInit (NoSesh::env) (proc)
+</span></span><span class=line><span class=cl>      k (pid) (SpawnedSesh pid)
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>  handle (SpawnedSesh pid) Connect k = do
+</span></span><span class=line><span class=cl>      msesh &lt;- connect pid
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>      case msesh of
+</span></span><span class=line><span class=cl>          Nothing      =&gt; k False (SpawnedSesh pid)
+</span></span><span class=line><span class=cl>          r@(Just res) =&gt; k True  (ActiveSesh (Just pid) res)
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>  handle (NoSesh) (Listen tout) k = do
+</span></span><span class=line><span class=cl>      msesh &lt;- listen tout
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>      case msesh of
+</span></span><span class=line><span class=cl>          Nothing      =&gt; k False NoSesh
+</span></span><span class=line><span class=cl>          r@(Just res) =&gt; k True  (ActiveSesh Nothing res)
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>  handle st@(ActiveSesh pid sesh) (Send m) k = do
+</span></span><span class=line><span class=cl>      sent &lt;- unsafeSend sesh m
+</span></span><span class=line><span class=cl>      if sent
+</span></span><span class=line><span class=cl>        then k True st
+</span></span><span class=line><span class=cl>        else k False NoSesh
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>  handle st@(ActiveSesh pid sesh) (Recv ty) k = do
+</span></span><span class=line><span class=cl>      res &lt;- unsafeRecv ty sesh
+</span></span><span class=line><span class=cl>      case res of
+</span></span><span class=line><span class=cl>        Nothing    =&gt; k Nothing    NoSesh
+</span></span><span class=line><span class=cl>        (Just val) =&gt; k (Just val) st
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>  handle st End k = k () NoSesh
+</span></span></code></pre></div><h1 id=effectful-api>Effectful API</h1><p>With the effect and handler defined, we can now present the API that the
+developer can use to program with.</p><h2 id=describing-a-process>Describing a process.</h2><p>A <code>Process</code> is a function that can communicate using the session effect.
+We use this alias to make describing communicating processes that little
+bit easier.</p><p>Note that the definition of <code>Process</code> already specifies the session
+required for communicating.</p><div class="highlight idris"><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>Process : (st  : Type)
+</span></span><span class=line><span class=cl>       -&gt; (rTy : Type)
+</span></span><span class=line><span class=cl>       -&gt; (es  : List EFFECT)
+</span></span><span class=line><span class=cl>       -&gt; Type
+</span></span><span class=line><span class=cl>Process st ty inEffs = ProcessE st ty inEffs inEffs
+</span></span></code></pre></div><h2 id=spawning-connecting-and-listening>Spawning, Connecting, and Listening</h2><p>Attempt to spawn an effectful process that communicates using a
+<code>Sessions</code>. Returning the <code>PID</code> of the spawned process.</p><div class="highlight idris"><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>spawn : (env  : Env IO es)
+</span></span><span class=line><span class=cl>     -&gt; (proc : Process INIT () es)
+</span></span><span class=line><span class=cl>     -&gt; Eff (PID)
+</span></span><span class=line><span class=cl>            [CHANNEL INIT]
+</span></span><span class=line><span class=cl>            [CHANNEL WAIT]
+</span></span><span class=line><span class=cl>spawn env proc = call $ Spawn env proc
+</span></span></code></pre></div><p>Attempt to establish a connection to the spawned process. The function
+can only be used once a session has been spawned.</p><div class="highlight idris"><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>connect : Eff (Bool)
+</span></span><span class=line><span class=cl>              [CHANNEL WAIT]
+</span></span><span class=line><span class=cl>              (\res =&gt; [CHANNEL (connectedOK res)])
+</span></span><span class=line><span class=cl>connect = call $ Connect
+</span></span></code></pre></div><p>Listen for a fixed amount of time for a connection from an external
+process. The function is used by the spawned process to accept incomming
+requests.</p><div class="highlight idris"><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>listen : (timeout : Int)
+</span></span><span class=line><span class=cl>      -&gt; Eff (Bool)
+</span></span><span class=line><span class=cl>             [CHANNEL INIT]
+</span></span><span class=line><span class=cl>             (\res =&gt; [CHANNEL (listenedOK res)])
+</span></span><span class=line><span class=cl>listen t = call $ Listen t
+</span></span></code></pre></div><h2 id=message-passing>Message Passing</h2><p>Send a message of type <code>ty</code>. Returning a <code>Bool</code> describing success.</p><div class="highlight idris"><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>send : (msg : ty)
+</span></span><span class=line><span class=cl>    -&gt; Eff Bool
+</span></span><span class=line><span class=cl>           [CHANNEL ACTIVE]
+</span></span><span class=line><span class=cl>           (\res =&gt; [CHANNEL (sentOK res)])
+</span></span><span class=line><span class=cl>send msg = call $ Send msg
+</span></span></code></pre></div><p>Expect to receive a message of the specifyed type. This is unsafe as
+receive <strong>expects</strong> the incomming message to be of the specified type.</p><div class="highlight idris"><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>recv : (ty : Type)
+</span></span><span class=line><span class=cl>    -&gt; Eff (Maybe ty)
+</span></span><span class=line><span class=cl>           [CHANNEL ACTIVE]
+</span></span><span class=line><span class=cl>           (\res =&gt; [CHANNEL (receivedOK res)])
+</span></span><span class=line><span class=cl>recv ty = call $ Recv ty
+</span></span></code></pre></div><h2 id=stopping-the-session>Stopping the Session</h2><div class="highlight idris"><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>stop : Eff () [CHANNEL ty] [CHANNEL INIT]
+</span></span><span class=line><span class=cl>stop = call End
+</span></span></code></pre></div><h1 id=example>Example</h1><p>We finish of this post by showing the code for a game of ping pong.</p><p>First we describe the called process <code>ping</code>.</p><div class="highlight idris"><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>ping : Process INIT () [STDIO]
+</span></span><span class=line><span class=cl>ping = do
+</span></span><span class=line><span class=cl>  True &lt;- listen 10
+</span></span><span class=line><span class=cl>          | False =&gt; stop
+</span></span><span class=line><span class=cl>  True &lt;- send &#34;ping&#34;
+</span></span><span class=line><span class=cl>          | False =&gt; stop
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>  msg &lt;- recv String
+</span></span><span class=line><span class=cl>  case msg of
+</span></span><span class=line><span class=cl>    Nothing =&gt; pure ()
+</span></span><span class=line><span class=cl>    (Just v) =&gt; do
+</span></span><span class=line><span class=cl>        putStrLn &#34;Ping received&#34;
+</span></span><span class=line><span class=cl>        printLn v
+</span></span><span class=line><span class=cl>        stop
+</span></span></code></pre></div><p>Notice, that in the code we have to explicitly stop and terminate the
+process upon failure. If we remove these statements, the program will
+not compile as we have violated the transitions described in the effect.
+Further, if we try to send a message before we have connected, Idris
+will complain further.</p><p>Below <code>pong</code> is the client process that initiates the game of ping pong.</p><div class="highlight idris"><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>pong : Process INIT () [STDIO]
+</span></span><span class=line><span class=cl>pong = do
+</span></span><span class=line><span class=cl>  pid &lt;- spawn [()] ping
+</span></span><span class=line><span class=cl>  True &lt;- connect | False =&gt; stop
+</span></span><span class=line><span class=cl>  msg &lt;- recv String
+</span></span><span class=line><span class=cl>  case msg of
+</span></span><span class=line><span class=cl>    Nothing =&gt; stop
+</span></span><span class=line><span class=cl>    (Just v) =&gt; do
+</span></span><span class=line><span class=cl>        putStrLn &#34;pong received&#34;
+</span></span><span class=line><span class=cl>        printLn v
+</span></span><span class=line><span class=cl>        True &lt;- send &#34;pong&#34; | False =&gt; pure ()
+</span></span><span class=line><span class=cl>        stop
+</span></span></code></pre></div><p>Again we must call <code>spawn</code> before we call <code>connect</code> and both before we
+can send or receive messages.</p><p>We can play the game of ping pong by running the effectful program
+specifying that we expect two sessions to be used.</p><div class="highlight idris"><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>play : IO ()
+</span></span><span class=line><span class=cl>play = runInit [NoSesh,NoSesh] pong
+</span></span></code></pre></div><h1 id=the-end>The End.</h1><p>This post describes how effects can be used to manage our communication
+channels. <a href=https://gist.github.com/jfdm/52904b466298f1e53da5f43c723f01ac>A full code listing is available online</a>.</p><p>However, the communication over these channels is not type
+safe. <a href=https://twitter.com/edwinbrady/status/782165539514875904>Edwin demonstrated one means of ensuring such type safe communication at Lambda World 2016</a>. However, there are some other things we can do that are more advantageous and cooler. /Yes, there is more cooler stuff that what Edwin demonstrated at Lambda World./
+My research is currently focused on not only how to manage channels using dependent types but how to type check the communication itself.</p><p>Hopefully I will blog more about what I am up to, I do have some things in the pipeline that I won&rsquo;t share just yet as they are not complete.</p><h1 id=references>References</h1><div class=blog-tags><a href=https://tyde.systems/tags/idris/>idris</a>&nbsp;
+<a href=https://tyde.systems/tags/effects/>effects</a>&nbsp;
+<a href=https://tyde.systems/tags/sessions/>sessions</a>&nbsp;
+<a href=https://tyde.systems/tags/tdvcs/>tdvcs</a>&nbsp;</div></article><ul class="pager blog-pager"><li class=previous><a href=https://tyde.systems/post/2015-07-28-redomaining-grl/ data-toggle=tooltip data-placement=top title="Dependent Types and Goal-Oriented DSMLs">&larr; Previous Post</a></li><li class=next><a href=https://tyde.systems/post/2016-11-09-spls/ data-toggle=tooltip data-placement=top title="SPLS-Type-Driven Design of Communicating Systems using Idris">Next Post &rarr;</a></li></ul></div></div></div><footer><div class=container><div class=row><div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1"><ul class="list-inline text-center footer-links"><li><a href=https://github.com/jfdm title=GitHub><span class="fa-stack fa-lg"><i class="fas fa-circle fa-stack-2x"></i>
+<i class="fab fa-github fa-stack-1x fa-inverse"></i></span></a></li><li><a href=https://gitlab.com/jfdm title=GitLab><span class="fa-stack fa-lg"><i class="fas fa-circle fa-stack-2x"></i>
+<i class="fab fa-gitlab fa-stack-1x fa-inverse"></i></span></a></li><li><a href=https://bitbucket.org/jfdm title=Bitbucket><span class="fa-stack fa-lg"><i class="fas fa-circle fa-stack-2x"></i>
+<i class="fab fa-bitbucket fa-stack-1x fa-inverse"></i></span></a></li><li><a href=https://twitter.com/jfdm title=Twitter><span class="fa-stack fa-lg"><i class="fas fa-circle fa-stack-2x"></i>
+<i class="fab fa-twitter fa-stack-1x fa-inverse"></i></span></a></li><li><a rel=me href=https://discuss.systems/@jfdm title=Mastodon><span class="fa-stack fa-lg"><i class="fas fa-circle fa-stack-2x"></i>
+<i class="fab fa-mastodon fa-stack-1x fa-inverse"></i></span></a></li><li><a href title=RSS><span class="fa-stack fa-lg"><i class="fas fa-circle fa-stack-2x"></i>
+<i class="fas fa-rss fa-stack-1x fa-inverse"></i></span></a></li></ul><p class="credits copyright text-muted"><a href=tyde.systems>Jan de Muijnck-Hughes</a>
+&nbsp;&bull;&nbsp;&copy;
+2024
+&nbsp;&bull;&nbsp;
+<a href=https://tyde.systems>Jan de Muijnck-Hughes</a></p><p class="credits theme-by text-muted"><a href=https://gohugo.io>Hugo v0.118.2</a> powered &nbsp;&bull;&nbsp; Theme <a href=https://github.com/halogenica/beautifulhugo>Beautiful Hugo</a> adapted from <a href=https://deanattali.com/beautiful-jekyll/>Beautiful Jekyll</a></p></div></div></div></footer><script src=https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.js integrity=sha384-g7c+Jr9ZivxKLnZTDUhnkOnsh30B4H0rpLUpJ4jAIKs4fnJI+sEnkvrMWph2EDg4 crossorigin=anonymous></script>
+<script src=https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/contrib/auto-render.min.js integrity=sha384-mll67QQFJfxn0IYznZYonOWZ644AWYC+Pt2cHqMaRhXVrursRwvLnLaebdGIlYNa crossorigin=anonymous></script>
+<script src=https://code.jquery.com/jquery-3.5.1.slim.min.js integrity=sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj crossorigin=anonymous></script>
+<script src=https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js integrity=sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa crossorigin=anonymous></script>
+<script src=https://tyde.systems/js/main.js></script><script>renderMathInElement(document.body)</script><script src=https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.js integrity=sha384-QELNnmcmU8IR9ZAykt67vGr9/rZJdHbiWi64V88fCPaOohUlHCqUD/unNN0BXSqy crossorigin=anonymous></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe-ui-default.min.js integrity=sha384-m67o7SkQ1ALzKZIFh4CiTA8tmadaujiTa9Vu+nqPSwDOqHrDmxLezTdFln8077+q crossorigin=anonymous></script><script src=https://tyde.systems/js/load-photoswipe.js></script></body></html>

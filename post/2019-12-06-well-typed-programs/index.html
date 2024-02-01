@@ -1,0 +1,298 @@
+<!doctype html><html lang=en itemscope itemtype=http://schema.org/WebPage><head><meta charset=utf-8><meta http-equiv=x-ua-compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1"><title>Well-Typed Expressions lead to Well-Typed Well-Scoped Programs -</title><meta name=description content="Let us consider the /Well-Typed Interpreter/ (WTI), a well known application of dependent types to ensure that our program&rsquo;s are not only well-typed but also well-scoped w.r.t. variables. To be specific the WTI details not how program&rsquo;s are correct but /expressions/. When dealing with program&rsquo;s we will have a top-level expression that may depend on globally declared expressions.
+In this post I will describe a Razor, detailing how with a little thought we can use the concept of the WTI to described /Well-Typed Programs/."><meta name=author content="Jan de Muijnck-Hughes"><script type=application/ld+json>{"@context":"http://schema.org","@type":"WebSite","name":"Jan de Muijnck-Hughes","url":"https:\/\/tyde.systems"}</script><script type=application/ld+json>{"@context":"http://schema.org","@type":"Organization","name":"","url":"https:\/\/tyde.systems"}</script><script type=application/ld+json>{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https:\/\/tyde.systems","name":"home"}},{"@type":"ListItem","position":3,"item":{"@id":"https:\/\/tyde.systems\/post\/2019-12-06-well-typed-programs\/","name":"Well typed expressions lead to well typed well scoped programs"}}]}</script><script type=application/ld+json>{"@context":"http://schema.org","@type":"Article","author":{"name":"Jan de Muijnck-Hughes"},"headline":"Well-Typed Expressions lead to Well-Typed Well-Scoped Programs","description":"Let us consider the \/Well-Typed Interpreter\/ (WTI), a well known application of dependent types to ensure that our program\u0026rsquo;s are not only well-typed but also well-scoped w.r.t. variables. To be specific the WTI details not how program\u0026rsquo;s are correct but \/expressions\/. When dealing with program\u0026rsquo;s we will have a top-level expression that may depend on globally declared expressions.\nIn this post I will describe a Razor, detailing how with a little thought we can use the concept of the WTI to described \/Well-Typed Programs\/.","inLanguage":"en","wordCount":3330,"datePublished":"2019-12-06T00:00:00","dateModified":"2019-12-06T00:00:00","image":"https:\/\/tyde.systems","keywords":["idris, dependent-types, tdd, musing"],"mainEntityOfPage":"https:\/\/tyde.systems\/post\/2019-12-06-well-typed-programs\/","publisher":{"@type":"Organization","name":"https:\/\/tyde.systems","logo":{"@type":"ImageObject","url":"https:\/\/tyde.systems","height":60,"width":60}}}</script><meta property="og:title" content="Well-Typed Expressions lead to Well-Typed Well-Scoped Programs"><meta property="og:description" content="Let us consider the /Well-Typed Interpreter/ (WTI), a well known application of dependent types to ensure that our program&rsquo;s are not only well-typed but also well-scoped w.r.t. variables. To be specific the WTI details not how program&rsquo;s are correct but /expressions/. When dealing with program&rsquo;s we will have a top-level expression that may depend on globally declared expressions.
+In this post I will describe a Razor, detailing how with a little thought we can use the concept of the WTI to described /Well-Typed Programs/."><meta property="og:url" content="https://tyde.systems/post/2019-12-06-well-typed-programs/"><meta property="og:type" content="website"><meta property="og:site_name" content="Jan de Muijnck-Hughes"><meta name=twitter:title content="Well-Typed Expressions lead to Well-Typed Well-Scoped Programs"><meta name=twitter:description content="Let us consider the /Well-Typed Interpreter/ (WTI), a well known application of dependent types to ensure that our program&rsquo;s are not only well-typed but also well-scoped w.r.t. variables. To be …"><meta name=twitter:card content="summary_large_image"><meta name=twitter:site content="@jfdm"><meta name=twitter:creator content="@jfdm"><meta name=generator content="Hugo 0.118.2"><link rel=alternate href=https://tyde.systems/index.xml type=application/rss+xml title="Jan de Muijnck-Hughes"><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css integrity=sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X crossorigin=anonymous><link rel=stylesheet href=https://use.fontawesome.com/releases/v5.5.0/css/all.css integrity=sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU crossorigin=anonymous><link rel=stylesheet href=https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css integrity=sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u crossorigin=anonymous><link rel=stylesheet href=https://tyde.systems/css/main.css><link rel=stylesheet href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic"><link rel=stylesheet href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800"><link rel=stylesheet href=https://tyde.systems/css/syntax.css><link rel=stylesheet href=https://tyde.systems/css/codeblock.css><link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.css integrity=sha384-h/L2W9KefUClHWaty3SLE5F/qvc4djlyR4qY3NUV5HGQBBW7stbcfff1+I/vmsHh crossorigin=anonymous><link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/default-skin/default-skin.min.css integrity=sha384-iD0dNku6PYSIQLyfTOpB06F2KCZJAKLOThS5HRe8b3ibhdEQ6eKsFf/EeFxdOt5R crossorigin=anonymous><link rel=stylesheet type=text/css href=/hugo-cite.css></head><body><nav class="navbar navbar-default navbar-fixed-top navbar-custom"><div class=container-fluid><div class=navbar-header><button type=button class=navbar-toggle data-toggle=collapse data-target=#main-navbar>
+<span class=sr-only>Toggle navigation</span>
+<span class=icon-bar></span>
+<span class=icon-bar></span>
+<span class=icon-bar></span></button>
+<a class=navbar-brand href=https://tyde.systems>Jan de Muijnck-Hughes</a></div><div class="collapse navbar-collapse" id=main-navbar><ul class="nav navbar-nav navbar-right"><li class=navlinks-container><a class=navlinks-parent>Blog</a><div class=navlinks-children><a href=/post>Posts</a>
+<a href=/tags>Tags</a></div></li><li class=navlinks-container><a class=navlinks-parent>Research</a><div class=navlinks-children><a href=/page/research>About</a>
+<a href=/page/studying>Studying with Me</a>
+<a href=/page/working>Working with Me</a></div></li><li class=navlinks-container><a class=navlinks-parent>Activities</a><div class=navlinks-children><a href=/page/talks>Talks</a>
+<a href=/page/service>Service</a>
+<a href=/page/teaching>Teaching</a></div></li><li class=navlinks-container><a class=navlinks-parent>People</a><div class=navlinks-children><a href=/page/people-current>Current</a>
+<a href=/page/people-alumni>Alumni</a></div></li><li class=navlinks-container><a class=navlinks-parent>Publications</a><div class=navlinks-children><a href=/page/theses>Theses</a>
+<a href=/page/papers>Papers</a></div></li></ul></div></div></nav><div class=pswp tabindex=-1 role=dialog aria-hidden=true><div class=pswp__bg></div><div class=pswp__scroll-wrap><div class=pswp__container><div class=pswp__item></div><div class=pswp__item></div><div class=pswp__item></div></div><div class="pswp__ui pswp__ui--hidden"><div class=pswp__top-bar><div class=pswp__counter></div><button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+<button class="pswp__button pswp__button--share" title=Share></button>
+<button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+<button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button><div class=pswp__preloader><div class=pswp__preloader__icn><div class=pswp__preloader__cut><div class=pswp__preloader__donut></div></div></div></div></div><div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap"><div class=pswp__share-tooltip></div></div><button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)"></button>
+<button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)"></button><div class=pswp__caption><div class=pswp__caption__center></div></div></div></div></div><header class=header-section><div class="intro-header no-img"><div class=container><div class=row><div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1"><div class=post-heading><h1>Well-Typed Expressions lead to Well-Typed Well-Scoped Programs</h1><span class=post-meta><i class="fas fa-calendar"></i>&nbsp;Posted on 2019-12-06</span></div></div></div></div></div></header><div class=container role=main><div class=row><div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1"><article role=main class=blog-post><p>Let us consider the /Well-Typed Interpreter/ (WTI), a well known application of dependent types to ensure that our program&rsquo;s are not only well-typed but also well-scoped w.r.t. variables.
+To be specific the WTI details not how program&rsquo;s are correct but /expressions/.
+When dealing with program&rsquo;s we will have a top-level expression that <em>may</em> depend on globally declared expressions.</p><p>In this post I will describe a Razor, detailing how with a little thought we can use the concept of the WTI to described /Well-Typed Programs/.</p><p>Further, I will also show how we can then convert a well-typed expression language to a well-typed program where certain Let-bound expressions are promoted to declarations.
+Thus, showing in some ways how to use dependent types for well-typed program transformations.</p><p>This post was derived from a literate Idris file so there will be some cruft related to Idris.</p><pre><code>module Main
+</code></pre><p>We will need some data structures, and helper functions, not defined in Idris&rsquo; prelude.</p><pre><code>import Data.List
+</code></pre><p>The following import is from my <a href=https://github.com/jfdm/idris-containers>container&rsquo;s library</a>, we will need these in the final sections to keep our musing&rsquo;s DRY.</p><pre><code>import Data.DList
+</code></pre><p>Totality is a good thing here.</p><pre><code>%default total
+</code></pre><h2 id=a-well-typed-expression-language>A Well-Typed Expression Language.</h2><pre><code>namespace Source
+</code></pre><p>Here we shall describe a well-typed expression language based on Hutton&rsquo;s Original Razor.</p><h3 id=types>Types</h3><p>Within our expression language our types are either Boolean&rsquo;s or Integers:</p><pre><code>  data Ty = BOOL | INT
+</code></pre><h3 id=expressions>Expressions</h3><p>Using dependent types we can then construct our expression language as an algebraic data type whose type is indexed by the type of expressions:</p><pre><code>  data Expr : Ty -&gt; Type where
+</code></pre><p>We now describe our language&rsquo;s expressions:</p><pre><code>    Ref : String -&gt; (ty : Ty) -&gt; Expr ty
+</code></pre><p>Our references are not well-scoped using DeBruijn indicies.
+I have done this purposefully to mirror a problem in a code generation tool I am currently developing.</p><pre><code>    I : Int -&gt; Expr INT
+    B : Bool -&gt; Expr BOOL
+</code></pre><p>Our values contain values.
+I have simplified values specification and an alternative formulation would be to specify a singular constructor with a type-level function to calculate the type of the value from an instance of <code>Ty</code>.
+This is not required for this post.</p><pre><code>    Add : Expr INT -&gt; Expr INT -&gt; Expr INT
+    And : Expr BOOL -&gt; Expr BOOL -&gt; Expr BOOL
+</code></pre><p>For each of our base types we present a singular binary operation (conjunction for booleans, and addition for integers).</p><pre><code>    Let : (binder : String) -&gt; Expr typeA -&gt; Expr typeB -&gt; Expr typeB
+</code></pre><p>Standard Let-bindings introduce variables.</p><h3 id=examples>Examples</h3><p>Here we describe some instances of our expression language.</p><pre><code> example0 : Expr BOOL
+ example0 = And (B False) (B True)
+
+ example1 : Expr INT
+ example1 = Add (I 5) (I 9)
+
+ example2 : Expr BOOL
+ example2 = Let &quot;x&quot; example0
+                (And (Ref &quot;x&quot; BOOL) example0)
+
+ example3 : Expr INT
+ example3 = Let &quot;x&quot; example1
+                (Add (Ref &quot;x&quot; INT) example1)
+
+ example4 : Expr INT
+ example4 = Let &quot;y&quot; example0
+                (Let &quot;z&quot; (Ref &quot;y&quot; BOOL)
+                     (Add (I 4) example3)
+                )
+
+ example : Expr INT
+ example = Let &quot;x&quot; example0
+               (Let &quot;y&quot; example1
+                    (Let &quot;z&quot; (I 6)
+                         (Let &quot;a&quot; (And (B False) (Ref &quot;x&quot; BOOL))
+                              (Add (Ref &quot;z&quot; INT) (Ref &quot;y&quot; INT))
+                         )
+                    )
+               )
+</code></pre><h2 id=a-well-typed-well-scoped-program>A Well-Typed Well-Scoped Program</h2><pre><code>namespace Destination
+</code></pre><p>Here we describe our well-typed and well scoped program.
+Many of the construct&rsquo;s used follow that from the WTI and may be familiar, if not my previous post on <a href=#>Hutton&rsquo;s Razor(s)</a> should give a quick introduction.</p><h3 id=types-1>Types</h3><p>Like our expression language we have two types: Booleans and Integers.</p><pre><code>   data Ty = INT | BOOL
+</code></pre><h3 id=context>Context</h3><p>We can use our types to define a typing context as a list of name-value pairs.</p><pre><code>   Context : Type
+   Context = List (String, Destination.Ty)
+</code></pre><p>To help us construct existenial proofs (DeBruijn indicies) that a name-type pairing exisits in the typing context we need to provide an instance of Decidable Equality.</p><pre><code>   intNotBool : Destination.INT = Destination.BOOL -     Void
+   intNotBool Refl impossible
+
+   DecEq Destination.Ty where
+     decEq INT INT = Yes Refl
+     decEq INT BOOL = No intNotBool
+     decEq BOOL INT = No (negEqSym intNotBool)
+     decEq BOOL BOOL = Yes Refl
+</code></pre><p>Fortunatly, our language has two types or we would be here for a while providing a coherent proof of decidable equality&mldr;</p><h3 id=expressions-1>Expressions</h3><p>We now go on to describe our expression language.</p><pre><code>   data Expr : (local  : Context)
+            -&gt; (global : Context)
+            -&gt; (type : Destination.Ty)
+            -&gt; Type
+     where
+</code></pre><p>Our trick to describing well-typed programs is to parameterise the type of our expressions with <em>two</em> contexts: a local context; and global context.</p><pre><code>       Local  : Elem (binder, ty) local  -&gt; Expr local global ty
+       Global : Elem (binder, ty) global -&gt; Expr local global ty
+</code></pre><p>We can now define two kinds of references a <code>Local</code> reference that refers to a locally bound expression, and a <code>Global</code> reference that refers to a globally bound expression.</p><pre><code>       I : Int  -&gt; Expr local global INT
+       B : Bool -&gt; Expr local global BOOL
+</code></pre><p>As before, values are values.</p><pre><code>       And : Expr local global BOOL
+          -&gt; Expr local global BOOL
+          -&gt; Expr local global BOOL
+
+       Add : Expr local global INT
+          -&gt; Expr local global INT
+          -&gt; Expr local global INT
+</code></pre><p>And our two operations are defined as before.</p><pre><code>       Let : (this   : String)
+          -&gt; (beThis : Expr local global x)
+          -&gt; (inThis : Expr ((binder,x)::local) global y)
+          -&gt; Expr local global y
+</code></pre><p><code>Let</code> is a binding site to bind an expression to a variable name.
+As our well-scoped terms rely on true names, our let binding also requires that we provide the binder and at the type-level we extend the context for <code>inThis</code> with the introduced variable name.</p><h4 id=examples-1>Examples</h4><p>We now give some simple examples using locally and globaly bound expressions.</p><pre><code>   expr : Expr Nil Nil BOOL
+   expr = (Let &quot;x&quot; (B True)
+               (And (Local Here) (B False)))
+
+   expr1 : Expr Nil [(&quot;foo&quot;, INT)] INT
+   expr1 = (Let &quot;x&quot; (I 1)
+                (Add (Local Here) (Global Here)))
+</code></pre><h3 id=declarations>Declarations</h3><p>Our attention now turns to global declarations.
+We define this using a cons-style list that contains expressions bound to names.</p><pre><code>   data Decls : (global : Context) -&gt; Type where
+</code></pre><p>We index the type of delcarations with the global context ensuring that our declarations can refer to earlier defined declarations.</p><pre><code>     Empty   : Decls Nil
+</code></pre><p>It is okay to have no global declarations in our programs.</p><pre><code>     DeclAdd : (binder : String)
+            -&gt; (expr   : Expr Nil global type)
+            -&gt; (rest   : Decls global)
+            -&gt; Decls ((MkPair binder type) :: global)
+</code></pre><p><code>DeclAdd</code> allows us to extend our list of declarations.
+We require that our expressions are <em>closed terms</em> w.r.t to the local context.
+Addition of a declaration extends the global context by one.</p><p>Our declarations mirror <code>Let</code> bindings from our expressions.</p><p><strong>Note</strong> that our use of real names makes our well-scoped representations named rather than <em>nameless</em>.
+We still need to think how to ensure that our list contains unique names in a nice fashion.</p><h3 id=programs>Programs</h3><p>We have expressions and declarations, so let us now define a program as a set of declarations paired with a single closed term.</p><pre><code>   data Prog : Type where
+     MkProg : Decls global
+           -&gt; Expr Nil global type
+           -&gt; Prog
+</code></pre><p>Done!</p><p>And here is an example program:</p><pre><code>   prog : Prog
+   prog = MkProg (DeclAdd &quot;bar&quot; (Let &quot;x&quot; (B True) (And (Local Here) (B False)))
+                          (DeclAdd &quot;foo&quot; (I 2) Empty))
+                 (Let &quot;x&quot; (I 1)
+                      (Add (Local Here) (Global (There Here))))
+</code></pre><h2 id=going-from-source-to-destination>Going from Source to Destination.</h2><p>We have thus far shown an expression language, and a /program language/.
+Let us now consider how to build a program from an expression.</p><h3 id=type-interpretation>Type interpretation</h3><p>We first describe a function <code>interpTy</code> to map types from our expression language to our program language.</p><pre><code>   interpTy : Source.Ty -&gt; Destination.Ty
+   interpTy BOOL = BOOL
+   interpTy INT  = INT
+</code></pre><h3 id=build-environment>Build Environment</h3><p>As with interpretation in the WTI we will have a /build environment/ to keep track of our local typing context and store our global declarations.</p><pre><code>   data BuildEnv : (genv, lenv : Context)
+                -&gt; Type
+     where
+       MkBEnv : (decls  : Decls global)
+             -&gt; (local  : Context)
+             -&gt; BuildEnv global local
+</code></pre><h3 id=build-result>Build Result</h3><p>We also need a build result to return the resulting top-level expression and list of declarations that the expression depends upon.</p><pre><code>   data BuildRes : (genv, lenv : Context)
+                -&gt; Destination.Ty
+                -&gt; Type
+     where
+       MkBRes : Decls genv
+             -&gt; Expr lenv genv type
+             -&gt; BuildRes genv lenv type
+</code></pre><p>We also provide a default environment.</p><pre><code>   defaultEnv : BuildEnv Nil Nil
+   defaultEnv = MkBEnv Empty Nil
+</code></pre><h3 id=build-errors>Build Errors</h3><p>Unfortunately, our conversion between the two programs will not be perfect and errors can happen.
+We present a set of helpful errors to help describe problems we have.</p><pre><code>   data Error = NotAVar String
+
+              | AddLOperandWrong Error
+              | AddROperandWrong Error
+
+              | AndLOperandWrong Error
+              | AndROperandWrong Error
+
+              | BadContextL String (Context) Context
+              | BadContextV (Context) Context
+
+              | ToGlobalErrorExpr String Error
+              | ToGlobalErrorBody Error
+
+              | ToLocalErrorExpr String Error
+              | ToLocalErrorBody Error
+</code></pre><h3 id=nasty-hack>Nasty Hack</h3><p>When we convert the <code>inThis</code> body of a let binding for local variables we may extend the global context with new declarations.
+We need <code>updateThis</code> to facilitate updating the global references in the <code>this</code> expression.</p><pre><code>   updateThis : (globalY : Context)
+      -&gt; (this    : Expr local globalX type)
+      -&gt; Either Error (Expr local globalY type)
+   updateThis globalY (And x y) =
+     do x' &lt;- (updateThis globalY x)
+        y' &lt;- (updateThis globalY y)
+        pure $ And x' y'
+   updateThis globalY (Add x y) =
+     do x' &lt;- (updateThis globalY x)
+        y' &lt;- (updateThis globalY y)
+        pure $ Add x' y'
+   updateThis globalY (Let binder y z) =
+     do x' &lt;- (updateThis globalY y)
+        y' &lt;- (updateThis globalY z)
+        pure $ Let binder x' y'
+
+   updateThis globalY (Global {binder} {ty} x) with (isElem (binder,ty) globalY)
+     updateThis globalY (Global {binder = binder} {ty = ty} x) | (Yes prf) = pure $ Global prf
+     updateThis globalY (Global {binder = binder} {ty = ty} x) | (No contra) = Left $ NotAVar binder
+
+   updateThis globalY (Local x) = pure $ Local x
+   updateThis globalY (I x) = pure $ I x
+   updateThis globalY (B x) = pure $ B x
+</code></pre><p>There will probably be a better way to do this, as described in PLFA, but this is a quick and cheap hack&mldr;</p><h3 id=the-conversion-function>The Conversion function!</h3><p>With all our machinery we can now construct our conversion function:</p><pre><code>   convert : (env : BuildEnv global lenv)
+          -&gt; (expr : Source.Expr type)
+          -&gt; Either Error (genv' ** BuildRes genv' lenv (interpTy type))
+</code></pre><p>The result of converting an expression <code>expr</code>, with assumed environment <code>env</code>, will either be an error or the converted expression together with the global declarations.
+For <em>this</em> conversion we will promote all Boolean typed variables to be global declarations.</p><p>For conversion to work properly we assume that our expression language is in a normal form: all let-bindings have been floated to the top of the expression tree.</p><pre><code>   convert (MkBEnv {global} decls lenv) (Ref x type) with (interpTy type)
+     convert (MkBEnv {global} decls lenv) (Ref x type) | ty with (isElem (x,ty) lenv)
+       convert (MkBEnv {global} decls lenv) (Ref x type) | ty | (Yes prf) =
+           pure (_ ** MkBRes decls (Local prf))
+       convert (MkBEnv {global} decls lenv) (Ref x type) | ty | (No contra) with (isElem (x,ty) global)
+         convert (MkBEnv {global = global} decls lenv) (Ref x type) | ty | (No contra) | (Yes prf) =
+           pure (_ ** MkBRes decls (Global prf))
+         convert (MkBEnv {global = global} decls lenv) (Ref x type) | ty | (No contra) | (No f) = Left (NotAVar x)
+</code></pre><p>When encountering a reference from the expression language, we check if the reference refers to a global or local context.
+If it doesn&rsquo;t then we have an error.</p><pre><code>   convert env@(MkBEnv ds lenv) (I x) = pure $ (_ ** MkBRes ds (I x))
+   convert env@(MkBEnv ds lenv) (B x) = pure $ (_ ** MkBRes ds (B x))
+</code></pre><p>Constant conversion is straightforward.</p><p>Conversion of operations is that liitle bit more involved both require that we convert both operands, however we need to ensure that the resulting global contexts are the same.
+If not then an error has occurred.</p><p><strong>Note</strong> Some of this code will be hard to read as we have to use dependent pattern matching when using dependent pairs.
+I think this can be simpilified to using Do-notation and considered use of <code>case</code> but this works&mldr;</p><pre><code>   convert env (Add x y) with (convert env x)
+     convert env (Add x y) | Left err = Left (AddLOperandWrong err)
+     convert env (Add x y) | (Right z) with (z)
+       convert env (Add x y) | (Right z) | (g' ** pfX) with (pfX)
+         convert env (Add x y) | (Right z) | (g' ** pfX) | (MkBRes declsX x') with (convert env y)
+           convert env (Add x y) | (Right z) | (g' ** pfX) | (MkBRes declsX x') | Left err = Left (AddROperandWrong err)
+           convert env (Add x y) | (Right z) | (g' ** pfX) | (MkBRes declsX x') | (Right w) with (w)
+             convert env (Add x y) | (Right z) | (g' ** pfX) | (MkBRes declsX x') | (Right w) | (g'' ** pfY) with (pfY)
+               convert env (Add x y) | (Right z) | (g' ** pfX) | (MkBRes declsX x') | (Right w) | (g'' ** pfY) | (MkBRes declsY y') with (decEq g' g'')
+                 convert env (Add x y) | (Right z) | (g'' ** pfX) | (MkBRes declsX x') | (Right w) | (g'' ** pfY) | (MkBRes declsY y') | (Yes Refl) = pure (_ ** MkBRes declsY (Add x' y'))
+                 convert env (Add x y) | (Right z) | (g' ** pfX) | (MkBRes declsX x') | (Right w) | (g'' ** pfY) | (MkBRes declsY y') | (No contra) = Left (BadContextV g' g'')
+</code></pre><p>More of the same!</p><pre><code>   convert env (And x y) with (convert env x)
+     convert env (And x y) | Left err = Left (AndLOperandWrong err)
+     convert env (And x y) | (Right z) with (z)
+       convert env (And x y) | (Right z) | (g' ** pfX) with (pfX)
+         convert env (And x y) | (Right z) | (g' ** pfX) | (MkBRes declsX x') with (convert env y)
+           convert env (And x y) | (Right z) | (g' ** pfX) | (MkBRes declsX x') | Left err = Left (AndROperandWrong err)
+           convert env (And x y) | (Right z) | (g' ** pfX) | (MkBRes declsX x') | (Right w) with (w)
+             convert env (And x y) | (Right z) | (g' ** pfX) | (MkBRes declsX x') | (Right w) | (g'' ** pfY) with (pfY)
+               convert env (And x y) | (Right z) | (g' ** pfX) | (MkBRes declsX x') | (Right w) | (g'' ** pfY) | (MkBRes declsY y') with (decEq g' g'')
+                 convert env (And x y) | (Right z) | (g'' ** pfX) | (MkBRes declsX x') | (Right w) | (g'' ** pfY) | (MkBRes declsY y') | (Yes Refl) = pure (_ ** MkBRes declsY (And x' y'))
+                 convert env (And x y) | (Right z) | (g' ** pfX) | (MkBRes declsX x') | (Right w) | (g'' ** pfY) | (MkBRes declsY y') | (No contra) = Left (BadContextV g' g'')
+</code></pre><p>We now move onto dealing with let bindings.
+If the variable has type boolean then we promote it to a global definition.</p><pre><code>   convert env (Let binder x {typeA} y) with (typeA)
+</code></pre><p>First we convert the expression to be bound, ensuring that it is closed.</p><pre><code>     convert (MkBEnv ds lenv) (Let binder x {typeA = typeA} y) | BOOL with (convert (MkBEnv ds Nil) x)
+       convert (MkBEnv ds lenv) (Let binder x {typeA = typeA} y) | BOOL | Left err = Left (ToGlobalErrorExpr binder err)
+       convert (MkBEnv ds lenv) (Let binder x {typeA = typeA} y) | BOOL | (Right resX) with (resX)
+         convert (MkBEnv ds lenv) (Let binder x {typeA = typeA} y) | BOOL | (Right resX) | (globalX ** exprX) with (exprX)
+</code></pre><p>Then we extend our list of global declarations and return the result of converting the body.</p><pre><code>           convert (MkBEnv ds lenv) (Let binder x {typeA = typeA} y) | BOOL | (Right resX) | (globalX ** exprX) | (MkBRes declsX x') = convert (MkBEnv (DeclAdd binder x' declsX) lenv) y
+</code></pre><p>Now to look at converting locally bound variables, which we do not assume are closed.</p><pre><code>     convert (MkBEnv decls lenv) (Let binder x {typeA = typeA} y) | INT with (convert (MkBEnv decls lenv) x)
+       convert (MkBEnv decls lenv) (Let binder x {typeA = typeA} y) | INT | (Left l) = Left (ToLocalErrorExpr binder l)
+       convert (MkBEnv decls lenv) (Let binder x {typeA = typeA} y) | INT | (Right resX) with (resX)
+         convert (MkBEnv decls lenv) (Let binder x {typeA = typeA} y) | INT | (Right resX) | (globalX ** exprX) with (exprX)
+</code></pre><p>Once we have converted the expression to be bound we can look at converting the body.</p><pre><code>           convert (MkBEnv decls lenv) (Let binder x {typeA = typeA} y) | INT | (Right resX) | (globalX ** exprX) | (MkBRes declsX x') with (convert (MkBEnv decls ((binder,INT)::lenv)) y)
+             convert (MkBEnv decls lenv) (Let binder x {typeA = typeA} y) | INT | (Right resX) | (globalX ** exprX) | (MkBRes declsX x') | (Left l) = Left (ToLocalErrorBody l)
+             convert (MkBEnv decls lenv) (Let binder x {typeA = typeA} y) | INT | (Right resX) | (globalX ** exprX) | (MkBRes declsX x') | (Right resY) with (resY)
+               convert (MkBEnv decls lenv) (Let binder x {typeA = typeA} y) | INT | (Right resX) | (globalX ** exprX) | (MkBRes declsX x') | (Right resY) | (globalY ** exprY) with (exprY)
+                 convert (MkBEnv decls lenv) (Let binder x {typeA = typeA} y) | INT | (Right resX) | (globalX ** exprX) | (MkBRes declsX x') | (Right resY) | (globalY ** exprY) | (MkBRes declsY y') =
+</code></pre><p>Remember we need to update the variable&rsquo;s value with the new set of global declarations.</p><pre><code>                   do x'' &lt;- updateThis globalY x'
+</code></pre><p>Now we can return the new <code>Let</code> binding.</p><pre><code>                      pure (_ ** MkBRes declsY (Let binder x'' y'))
+</code></pre><h4 id=helper-functions>Helper functions</h4><p>To make like easier we define <code>convert'</code>, a helper function to set up the default environment for conversion.</p><pre><code>   convert' : (expr : Source.Expr type)
+             -&gt; Either Error (genv ** BuildRes genv Nil (interpTy type))
+   convert' expr = convert defaultEnv expr
+</code></pre><p>and <code>runConvert</code> to construct a program instance:</p><pre><code>   runConvert : (expr : Source.Expr type)
+             -&gt; Either Error Prog
+   runConvert expr =
+     case convert' expr of
+       Left err =     Left err
+       Right (_ ** MkBRes decls e') =     Right (MkProg decls e')
+</code></pre><h2 id=example>Example</h2><p>We end with an example:</p><p>Here is an example expression we defined earlier:</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>λΠ&gt; Source.example
+</span></span><span class=line><span class=cl>Let &#34;x&#34;
+</span></span><span class=line><span class=cl>    (And (B False) (B True))
+</span></span><span class=line><span class=cl>    (Let &#34;y&#34;
+</span></span><span class=line><span class=cl>         (Add (I 5) (I 9))
+</span></span><span class=line><span class=cl>         (Let &#34;z&#34;
+</span></span><span class=line><span class=cl>              (I 6)
+</span></span><span class=line><span class=cl>              (Let &#34;a&#34;
+</span></span><span class=line><span class=cl>                   (And (B False) (Ref &#34;x&#34; BOOL))
+</span></span><span class=line><span class=cl>                   (Add (Ref &#34;z&#34; INT) (Ref &#34;y&#34; INT))))) : Expr INT
+</span></span></code></pre></div><p>Here is the resulting program:</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>λΠ&gt; runConvert Source.example
+</span></span><span class=line><span class=cl>Right ([(&#34;a&#34;, BOOL), (&#34;x&#34;, BOOL)] **
+</span></span><span class=line><span class=cl>       MkBRes (DeclAdd &#34;a&#34;
+</span></span><span class=line><span class=cl>                       (And (B False) (Global Here))
+</span></span><span class=line><span class=cl>                       (DeclAdd &#34;x&#34; (And (B False) (B True)) Empty))
+</span></span><span class=line><span class=cl>              (Let &#34;y&#34;
+</span></span><span class=line><span class=cl>                   (Add (I 5) (I 9))
+</span></span><span class=line><span class=cl>                   (Let &#34;z&#34; (I 6) (Add (Local Here) (Local (There Here)))))) : Either Error
+</span></span><span class=line><span class=cl>                                                                                      (genv : List (String,
+</span></span><span class=line><span class=cl>                                                                                                    Ty) **
+</span></span><span class=line><span class=cl>                                                                                       BuildRes genv
+</span></span><span class=line><span class=cl>                                                                                                []
+</span></span><span class=line><span class=cl>                                                                                                INT)
+</span></span><span class=line><span class=cl>λΠ&gt;
+</span></span></code></pre></div><h2 id=coda>Coda</h2><p>In this post we have looked at converting a well-typed expression language to a well-typed and well-scoped program.
+This was an interesting problem to solved, and aside from incorporating it into my work, I am not sure what other dependent type program enthusiats will make of this.
+Not sure if this would make a novel paper or not, but it <em>is</em> something work sharing.</p><h3 id=improvements>Improvements&mldr;</h3><p>I am hoping that the with-blocks can be turned into do-notation and dependent pairs second argument accessed using DPair&rsquo;s projection functions&mldr;</p><p>One interesting improvement here would to not only have <code>Source</code> be well-scoped, as well as well-typed, but to use Thinnings to better describe the type of <code>convert</code> to ensure that our resulting global and local contexts were originally sourced from the context of source.
+I will look at that later.</p><div class=blog-tags><a href=https://tyde.systems/tags/idris/>idris</a>&nbsp;
+<a href=https://tyde.systems/tags/dependent-types/>dependent-types</a>&nbsp;
+<a href=https://tyde.systems/tags/tdd/>tdd</a>&nbsp;
+<a href=https://tyde.systems/tags/musing/>musing</a>&nbsp;</div></article><ul class="pager blog-pager"><li class=previous><a href=https://tyde.systems/post/2019-12-04-razor/ data-toggle=tooltip data-placement=top title="Hutton's Razor(s)">&larr; Previous Post</a></li><li class=next><a href=https://tyde.systems/post/2020-05-04-mutual-avoidance/ data-toggle=tooltip data-placement=top title="Mutual Avoidance">Next Post &rarr;</a></li></ul></div></div></div><footer><div class=container><div class=row><div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1"><ul class="list-inline text-center footer-links"><li><a href=https://github.com/jfdm title=GitHub><span class="fa-stack fa-lg"><i class="fas fa-circle fa-stack-2x"></i>
+<i class="fab fa-github fa-stack-1x fa-inverse"></i></span></a></li><li><a href=https://gitlab.com/jfdm title=GitLab><span class="fa-stack fa-lg"><i class="fas fa-circle fa-stack-2x"></i>
+<i class="fab fa-gitlab fa-stack-1x fa-inverse"></i></span></a></li><li><a href=https://bitbucket.org/jfdm title=Bitbucket><span class="fa-stack fa-lg"><i class="fas fa-circle fa-stack-2x"></i>
+<i class="fab fa-bitbucket fa-stack-1x fa-inverse"></i></span></a></li><li><a href=https://twitter.com/jfdm title=Twitter><span class="fa-stack fa-lg"><i class="fas fa-circle fa-stack-2x"></i>
+<i class="fab fa-twitter fa-stack-1x fa-inverse"></i></span></a></li><li><a rel=me href=https://discuss.systems/@jfdm title=Mastodon><span class="fa-stack fa-lg"><i class="fas fa-circle fa-stack-2x"></i>
+<i class="fab fa-mastodon fa-stack-1x fa-inverse"></i></span></a></li><li><a href title=RSS><span class="fa-stack fa-lg"><i class="fas fa-circle fa-stack-2x"></i>
+<i class="fas fa-rss fa-stack-1x fa-inverse"></i></span></a></li></ul><p class="credits copyright text-muted"><a href=tyde.systems>Jan de Muijnck-Hughes</a>
+&nbsp;&bull;&nbsp;&copy;
+2024
+&nbsp;&bull;&nbsp;
+<a href=https://tyde.systems>Jan de Muijnck-Hughes</a></p><p class="credits theme-by text-muted"><a href=https://gohugo.io>Hugo v0.118.2</a> powered &nbsp;&bull;&nbsp; Theme <a href=https://github.com/halogenica/beautifulhugo>Beautiful Hugo</a> adapted from <a href=https://deanattali.com/beautiful-jekyll/>Beautiful Jekyll</a></p></div></div></div></footer><script src=https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.js integrity=sha384-g7c+Jr9ZivxKLnZTDUhnkOnsh30B4H0rpLUpJ4jAIKs4fnJI+sEnkvrMWph2EDg4 crossorigin=anonymous></script>
+<script src=https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/contrib/auto-render.min.js integrity=sha384-mll67QQFJfxn0IYznZYonOWZ644AWYC+Pt2cHqMaRhXVrursRwvLnLaebdGIlYNa crossorigin=anonymous></script>
+<script src=https://code.jquery.com/jquery-3.5.1.slim.min.js integrity=sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj crossorigin=anonymous></script>
+<script src=https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js integrity=sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa crossorigin=anonymous></script>
+<script src=https://tyde.systems/js/main.js></script><script>renderMathInElement(document.body)</script><script src=https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.js integrity=sha384-QELNnmcmU8IR9ZAykt67vGr9/rZJdHbiWi64V88fCPaOohUlHCqUD/unNN0BXSqy crossorigin=anonymous></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe-ui-default.min.js integrity=sha384-m67o7SkQ1ALzKZIFh4CiTA8tmadaujiTa9Vu+nqPSwDOqHrDmxLezTdFln8077+q crossorigin=anonymous></script><script src=https://tyde.systems/js/load-photoswipe.js></script></body></html>
