@@ -1,5 +1,6 @@
 ---
 title: "Grading Utilities"
+tags: ["haskell", "tips", "teaching"]
 date: 2024-01-01
 ---
 
