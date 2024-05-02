@@ -8,7 +8,20 @@ Module descriptions are available from the respective University's course catalo
 
 ## University of Strathclyde
 
-To be determined...
+I teach on topics relating to functional programming, formal verification, and Cyber Security.
+Specifically, I teach on the following Masters level modules:
+
++ CS813: Advanced Information Security
++ CS886: Advanced Security-by-Design
+
+I also supervise undergraduate and masters projects.
+Specifically, I supervise students taking:
+
++ CS408 Individual Project (BSc (Hons) Final Year Dissertation)
++ CS958 Individual Project (MSc Dissertation Project)
++ CS811 Dissertation  (MSc GA Cyber Dissertation Project)
+
+
 
 ## University of Glasgow
 

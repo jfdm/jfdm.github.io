@@ -154,6 +154,12 @@ pygmentsCodefencesGuessSyntax = true
     weight = 4
 
 [[menu.main]]
+    parent = "activities"
+    name = "CS886 -- ASbD"
+    url = "page/teaching/cs886"
+    weight = 4
+
+[[menu.main]]
     parent = "blog"
     name = "Tags"
     url = "tags"
