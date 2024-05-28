@@ -1,0 +1,213 @@
+<!doctype html><html lang=en itemscope itemtype=http://schema.org/WebPage><head><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1"><title>Hutton's Razor(s) - </title><meta name=description content="In this post we will consider Hutton&rsquo;s Razor.
+This post was derived from a literate Idris file so there will be some cruft related to Idris that will remain until I get round to 1 improving Idris&rsquo; literate mode support.
+module Main We will need some data structures, and helper functions, not defined in Idris&rsquo; prelude.
+import Data.List The following two imports are from my container&rsquo;s library, we will need these in the final sections to keep our musing&rsquo;s DRY."><meta name=author content="Jan de Muijnck-Hughes"><script type=application/ld+json>{"@context":"http://schema.org","@type":"WebSite","name":"Jan de Muijnck-Hughes","url":"https:\/\/tyde.systems\/"}</script><script type=application/ld+json>{"@context":"http://schema.org","@type":"Organization","name":"","url":"https:\/\/tyde.systems\/"}</script><script type=application/ld+json>{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https:\/\/tyde.systems\/","name":"home"}},{"@type":"ListItem","position":3,"item":{"@id":"https:\/\/tyde.systems\/post\/2019-12-04-razor\/","name":"Hutton\u0027s razor(s)"}}]}</script><script type=application/ld+json>{"@context":"http://schema.org","@type":"Article","author":{"name":"Jan de Muijnck-Hughes"},"headline":"Hutton\u0027s Razor(s)","description":"In this post we will consider Hutton\u0026rsquo;s Razor.\nThis post was derived from a literate Idris file so there will be some cruft related to Idris that will remain until I get round to 1 improving Idris\u0026rsquo; literate mode support.\nmodule Main We will need some data structures, and helper functions, not defined in Idris\u0026rsquo; prelude.\nimport Data.List The following two imports are from my container\u0026rsquo;s library, we will need these in the final sections to keep our musing\u0026rsquo;s DRY.","inLanguage":"en","wordCount":2657,"datePublished":"2019-12-04T00:00:00","dateModified":"2019-12-04T00:00:00","image":"https:\/\/tyde.systems\/","keywords":["idris, dependent-types, tdd, musing"],"mainEntityOfPage":"https:\/\/tyde.systems\/post\/2019-12-04-razor\/","publisher":{"@type":"Organization","name":"https:\/\/tyde.systems\/","logo":{"@type":"ImageObject","url":"https:\/\/tyde.systems\/","height":60,"width":60}}}</script><meta property="og:title" content="Hutton's Razor(s)"><meta property="og:description" content="In this post we will consider Hutton&rsquo;s Razor.
+This post was derived from a literate Idris file so there will be some cruft related to Idris that will remain until I get round to 1 improving Idris&rsquo; literate mode support.
+module Main We will need some data structures, and helper functions, not defined in Idris&rsquo; prelude.
+import Data.List The following two imports are from my container&rsquo;s library, we will need these in the final sections to keep our musing&rsquo;s DRY."><meta property="og:url" content="https://tyde.systems/post/2019-12-04-razor/"><meta property="og:type" content="website"><meta property="og:site_name" content="Jan de Muijnck-Hughes"><meta name=twitter:title content="Hutton's Razor(s)"><meta name=twitter:description content="In this post we will consider Hutton&rsquo;s Razor.
+This post was derived from a literate Idris file so there will be some cruft related to Idris that will remain until I get round to 1 improving …"><meta name=twitter:card content="summary_large_image"><meta name=twitter:site content="@jfdm"><meta name=twitter:creator content="@jfdm"><meta name=generator content="Hugo 0.123.8"><link rel=alternate href=https://tyde.systems/index.xml type=application/rss+xml title="Jan de Muijnck-Hughes"><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css integrity=sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X crossorigin=anonymous><link rel=stylesheet href=https://use.fontawesome.com/releases/v5.5.0/css/all.css integrity=sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU crossorigin=anonymous><link rel=stylesheet href=https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css integrity=sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u crossorigin=anonymous><link rel=stylesheet href=https://tyde.systems/css/main.css><link rel=stylesheet href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic"><link rel=stylesheet href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800"><link rel=stylesheet href=https://tyde.systems/css/syntax.css><link rel=stylesheet href=https://tyde.systems/css/codeblock.css><link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.css integrity=sha384-h/L2W9KefUClHWaty3SLE5F/qvc4djlyR4qY3NUV5HGQBBW7stbcfff1+I/vmsHh crossorigin=anonymous><link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/default-skin/default-skin.min.css integrity=sha384-iD0dNku6PYSIQLyfTOpB06F2KCZJAKLOThS5HRe8b3ibhdEQ6eKsFf/EeFxdOt5R crossorigin=anonymous><link rel=stylesheet type=text/css href=/hugo-cite.css></head><body><nav class="navbar navbar-default navbar-fixed-top navbar-custom"><div class=container-fluid><div class=navbar-header><button type=button class=navbar-toggle data-toggle=collapse data-target=#main-navbar>
+<span class=sr-only>Toggle navigation</span>
+<span class=icon-bar></span>
+<span class=icon-bar></span>
+<span class=icon-bar></span>
+</button>
+<a class=navbar-brand href=https://tyde.systems/>Jan de Muijnck-Hughes</a></div><div class="collapse navbar-collapse" id=main-navbar><ul class="nav navbar-nav navbar-right"><li class=navlinks-container><a class=navlinks-parent>Blog</a><div class=navlinks-children><a href=/post>Posts</a>
+<a href=/tags>Tags</a></div></li><li class=navlinks-container><a class=navlinks-parent>Research</a><div class=navlinks-children><a href=/page/research>About</a>
+<a href=/page/studying>Studying with Me</a>
+<a href=/page/working>Working with Me</a></div></li><li class=navlinks-container><a class=navlinks-parent>Activities</a><div class=navlinks-children><a href=/page/talks>Talks</a>
+<a href=/page/service>Service</a>
+<a href=/page/teaching/cs886>CS886 -- ASbD</a>
+<a href=/page/teaching>Teaching</a></div></li><li class=navlinks-container><a class=navlinks-parent>People</a><div class=navlinks-children><a href=/page/people-current>Current</a>
+<a href=/page/people-alumni>Alumni</a></div></li><li class=navlinks-container><a class=navlinks-parent>Publications</a><div class=navlinks-children><a href=/page/theses>Theses</a>
+<a href=/page/papers>Papers</a></div></li></ul></div></div></nav><div class=pswp tabindex=-1 role=dialog aria-hidden=true><div class=pswp__bg></div><div class=pswp__scroll-wrap><div class=pswp__container><div class=pswp__item></div><div class=pswp__item></div><div class=pswp__item></div></div><div class="pswp__ui pswp__ui--hidden"><div class=pswp__top-bar><div class=pswp__counter></div><button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+<button class="pswp__button pswp__button--share" title=Share></button>
+<button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+<button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button><div class=pswp__preloader><div class=pswp__preloader__icn><div class=pswp__preloader__cut><div class=pswp__preloader__donut></div></div></div></div></div><div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap"><div class=pswp__share-tooltip></div></div><button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+</button>
+<button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)"></button><div class=pswp__caption><div class=pswp__caption__center></div></div></div></div></div><header class=header-section><div class="intro-header no-img"><div class=container><div class=row><div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1"><div class=post-heading><h1>Hutton's Razor(s)</h1><span class=post-meta><i class="fas fa-calendar"></i>&nbsp;Posted on 2019-12-04</span></div></div></div></div></div></header><div class=container role=main><div class=row><div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1"><article role=main class=blog-post><p>In this post we will consider <em>Hutton&rsquo;s Razor</em>.</p><p>This post was derived from a literate Idris file so there will be some cruft related to Idris that will remain until I get round to <sup id=fnref:1><a href=#fn:1 class=footnote-ref role=doc-noteref>1</a></sup> improving Idris&rsquo; literate mode support.</p><pre><code>module Main
+</code></pre><p>We will need some data structures, and helper functions, not defined in Idris&rsquo; prelude.</p><pre><code>import Data.List
+</code></pre><p>The following two imports are from my <a href=https://github.com/jfdm/idris-containers>container&rsquo;s library</a>, we will need these in the final sections to keep our musing&rsquo;s DRY.</p><pre><code>import Data.DList
+import Data.DeBruijn
+</code></pre><p>Totality is a good thing here.</p><pre><code>%default total
+</code></pre><h2 id=the-original-razor>The Original Razor</h2><pre><code>namespace Original
+</code></pre><p>Let us first consider the original razor.
+It is my understanding that <em>Hutton&rsquo;s Razor</em> is <em>the</em> mininal expression language to help reason about programming language concepts.
+That is operating on: Abstract Syntax.
+The phase is a homage to <a href=https://en.wikipedia.org/wiki/Occam%27s_razor><em>Occam&rsquo;s Razor</em></a> to ensure that our problems are stated as /Minimally Viable Problems/ (MVPs).</p><p>Hutton&rsquo;s Razor, first appeared in <a href=http://www.cs.nott.ac.uk/~pszgmh/bib.html#semantics>Fold and unfold for program semantics</a>, and contains integer values and integer addition.
+Within Idris the language is defined as a simple datatype:</p><pre><code>  data Razor = I Int | Add Razor Razor
+</code></pre><p>Although, the original definition is an indexed type to explore manipulation, we do not add the flexibility here.</p><p>With our definition, we can construct a simple evaluation function for <code>Razor</code> that runs the computation.</p><pre><code>  eval : Razor -&gt; Int
+  eval (I x) = x
+  eval (Add x y) = (+) (eval x) (eval y)
+</code></pre><p>Using type-level equality <code>(=)</code> we can also test to see if the evaluation function is correct:</p><pre><code>  Example : Razor
+  Example = Add (I 4) (I 5)
+
+  test : eval Example = 9
+  test = Refl
+</code></pre><h2 id=a-razor-with-variables>A Razor with Variables</h2><pre><code>namespace WithVars
+</code></pre><p><code>Razor</code> is a simple definition, and is useful for exploring fundamental program transformations.
+However, it is not expressive enough to explore simple program transformations such as &rsquo;let-floating&rsquo; and &rsquo;normal forms'
+To do so we need to include notions of variables and binding.
+Fortunatly, we can extend <code>Razor</code> to incorporate such notions.</p><pre><code>  data RazorV = I Int
+              | Var String
+              | Add RazorV RazorV
+              | Let String RazorV RazorV
+</code></pre><p>We now have a minimal expression language to reason about programming language concepts and transformations relating to form <sup id=fnref:2><a href=#fn:2 class=footnote-ref role=doc-noteref>2</a></sup>.
+Here <code>Var</code> represents a variable, and <code>Let</code> is a binding site to bind an expression to a variable name.
+As an example here is our previous example rewritten:</p><pre><code>  Example : RazorV
+  Example = Let &quot;x&quot; (I 4) (Add (Var &quot;x&quot;) (I 5))
+</code></pre><p>and here is an error handling evaluation function to run computations.</p><pre><code>   eval : (env : List (String, Int))
+       -&gt; (expr : RazorV)
+       -&gt; Maybe Int
+</code></pre><p>Error handling is required in case we encounter a variable name that is not found.
+We need to provide an environment (<code>env</code>) to record variables and their evaluated expressions.</p><pre><code>   eval env (I value) = Just value
+</code></pre><p>Constants return values.</p><pre><code>   eval env (Var x) = lookup x env
+</code></pre><p>When encountering variables we need to search the environment for it&rsquo;s value.
+It is this evaluation step that <em>can</em> fail.</p><pre><code>   eval env (Add x y) =
+     do x' &lt;- eval env x
+        y' &lt;- eval env y
+        pure (x' + y')
+</code></pre><p>For addition we can take advantage of <code>Maybe</code> being a computation context and use &lsquo;Do-Notation&rsquo; to pass failing cases around seemlessly.
+For <code>Add</code>, we evaluate each operand and perform the computation using the primitive operation <code>(+)</code>.</p><pre><code>   eval env (Let this beThis inThis) =
+     do beThis' &lt;- eval env beThis
+        eval ((this,beThis')::env) inThis
+</code></pre><p>Our final case is binding site creation.
+We evaluate <code>beThis</code> and extend our environment to associate variables called <code>this</code> with the evaluation result.
+We then evaluate <code>inThis</code>, the remaining computation, to operate the result.</p><p>We can run our test as before:</p><pre><code>   test : WithVars.eval Nil WithVars.Example = (Just 9)
+   test = Refl
+</code></pre><p>We have disambiguated the function and values to ensure our test uses the required function and value.</p><h2 id=a-well-scoped-razor>A Well Scoped Razor</h2><pre><code>namespace WellScoped
+</code></pre><p><code>RazorV</code> requires an error handling evaluation function.
+This is not ideal.
+Within Dependently Typed Languages we can imporve<code>RazorV</code> to better reason about variables such that our expressions will be <em>Well-Scoped</em> by default.
+We do so using standard techniques.</p><p>Thus we now have:</p><pre><code>  data RazorS : (ctxt : List String) -&gt; Type where
+</code></pre><p>We paramterise the type of our language with a variable context to record used variable names.</p><pre><code>    I : (value : Int) -&gt; RazorS ctxt
+</code></pre><p>Values remain the same.</p><pre><code>    Var : (idx : Elem binder ctxt) -&gt; RazorS ctxt
+</code></pre><p>Variables are now proofs that the variable name exists within the context.</p><pre><code>    Add : (x : RazorS ctxt)
+       -&gt; (y : RazorS ctxt)
+       -&gt; RazorS ctxt
+</code></pre><p>Addition is defined the same.</p><pre><code>    Let : (this   : String)
+       -&gt; (beThis : RazorS ctxt)
+       -&gt; (inThis : RazorS (this::ctxt))
+       -&gt; RazorS ctxt
+</code></pre><p>Our binding site is the same at the value level, but at the type-level we extend the context for <code>inThis</code> with the introduced variable name.</p><p>Much of the construction follows that of <code>RazorV</code> but these suitable type-level differences are important.
+Consider our running example:</p><pre><code>  Example : RazorS Nil
+</code></pre><p>The type-level typing context is empty as we make no assumptions about exisit names.</p><pre><code>  Example = Let &quot;x&quot; (I 4) (Add (Var Here) (I 5))
+</code></pre><p>The example is much the same as before except that <code>Var</code> states that we are referring to the latest variable that was introduced at a binding site.</p><p>Like <code>RazorV</code>, to evaluate <code>RazorS</code> expressions we need an environment.</p><pre><code>  data Env : (ctxt : List String) -&gt; Type where
+</code></pre><p>We parameterise the the type of <code>Env</code> with the variable context to ensure that our environment grows and shrinks in the same way as the variable-context.</p><pre><code>      Empty : Env Nil
+</code></pre><p>Empty environments have empty contexts.</p><pre><code>      Extend : (value : Int)
+            -&gt; (rest  : Env ctxt)
+            -&gt; Env (binder::ctxt)
+</code></pre><p>Extending the environment adds a <code>value</code> that has an associated <code>binder</code>.</p><p>We can use our proof that a variable binder exists to safely index our environment to retrieve a value.</p><pre><code>  lookup : (env : Env ctxt)
+        -&gt; (prf : Elem binder ctxt)
+        -&gt; Int
+  lookup (Extend value rest) Here = value
+  lookup (Extend value rest) (There later) = lookup rest later
+</code></pre><p>This function unrolls the <code>Elem</code> proof <em>and</em> environment until it encouters <code>Here</code>, and then returns the value at that position.</p><p>With <code>lookup</code> and <code>Env</code> we can construct a error handling free version of <code>eval</code>.</p><pre><code>  eval : (env  : Env ctxt)
+      -&gt; (expr : RazorS ctxt)
+      -&gt; Int
+</code></pre><p>Notice how the context of the expression matches the context of the environment!</p><pre><code>  eval env (I value) = value
+</code></pre><p>Values <em>still</em> return values.</p><pre><code>  eval env (Var idx) = lookup env idx
+</code></pre><p>Variables now use the safe lookup function to return a value free of error handling.</p><pre><code>  eval env (Add x y) = (+) (eval env x) (eval env y)
+</code></pre><p>We no longer need to use &lsquo;Do-notation&rsquo; to take advantage of computation contexts, of which we are no longer in one.</p><pre><code>  eval env (Let binder beThis inThis) = eval (Extend (eval env beThis) env) inThis
+</code></pre><p>Evaluation of binding sites also becomes &lsquo;simplified.</p><p>Our tests run as expected.</p><pre><code>  test : eval Empty Example = 9
+  test = Refl
+</code></pre><p>Of note: there was an Agda definition created by James Chapman for an <a href="http://sneezy.cs.nott.ac.uk/fplunch/weblog/?p=71">FP Lunch</a> <sup id=fnref:3><a href=#fn:3 class=footnote-ref role=doc-noteref>3</a></sup> at the University of Nottingham that presents a similar construction but sans binding sites.</p><h2 id=the-well-typed-razor>The Well-Typed Razor</h2><pre><code>namespace WellTyped
+</code></pre><p>We move on now to looking back at the original Razor in terms of program structure but to also include types.
+We shall do so in the style of the /Well-Typed Interpreter/.</p><p>Before, Hutton&rsquo;s Razor was singularly typed: Untyped if you feel that way inclined.
+We will introduce two types of numbers: Integers and Reals.</p><pre><code>  data Ty = INT | REAL
+</code></pre><p>We encode these types using an enumerated type.
+As part of our implementation of <code>RazorT</code> we need to map our types (<code>Ty</code>) to concrete implementations.
+We do so using <code>interpTy</code>:</p><pre><code>  interpTy : Ty -&gt; Type
+  interpTy INT  = Int
+  interpTy REAL = Double
+</code></pre><p>The mapping is straightforward.</p><p>However, we also need to construct a predicate to represent the same mapping.
+This will be useful when we write the evaluation function.</p><pre><code>  data InterpTy : Ty -&gt; Type -&gt; Type where
+    IsInt : InterpTy INT  Int
+    IsDbl : InterpTy REAL Double
+</code></pre><p>Here <code>InterpTy</code> captures the same mapping as <code>interpTy</code> but presents the mapping as evidence.</p><p>We can now construct our expression language.</p><pre><code>  data RazorT : Ty -&gt; Type where
+</code></pre><p>We now paramterise our type for expressions by <code>Ty</code> to ensure that all expressions are /well-typed/.</p><pre><code>     V : interpTy type -&gt; RazorT type
+</code></pre><p>Values contain &lsquo;real&rsquo; values computed from the type <code>type</code>.</p><pre><code>     Add : (x : RazorT type)
+        -&gt; (y : RazorT type)
+        -&gt; RazorT type
+</code></pre><p>Addition works on expressions of the same type.</p><p>Here are some examples of well-typed expressions.</p><pre><code>  ExampleI : RazorT INT
+  ExampleI = Add (V 5) (V 4)
+
+  ExampleF : RazorT REAL
+  ExampleF = Add (V 5.0) (V 4.0)
+</code></pre><p>Should we try and make ill-typed expressions our examples will fail to type-check.</p><p>We can now transition to writing our evaluation function.</p><pre><code>  doEval : (prf  : InterpTy ty type)
+        -&gt; (expr : RazorT ty)
+        -&gt; interpTy ty
+</code></pre><p>Our evaluation function is a dependent function whose return type is dependent on the to-be-evaluated expression&rsquo;s type.
+We also require a predicate to help inform the translation.
+We will see it&rsquo;s usefulness in the next equation.</p><pre><code>  doEval prf (V x) = x
+</code></pre><p>Values are returned as normal.</p><pre><code>  doEval prf (Add x y) with (prf)
+    doEval prf (Add x y) | IsInt = (+) (doEval IsInt x) (doEval IsInt y)
+    doEval prf (Add x y) | IsDbl = (+) (doEval IsDbl x) (doEval IsDbl y)
+</code></pre><p>The addition operator <code>(+)</code> is part of the <code>Num</code> interface.
+To enable use of the correct addition operation we need to tell Idris which addition operation we are using.
+Dependent pattern matching on the proof supplies the compiler with the required evidence.
+The Well-Typed Interpreter from Idris&rsquo; documentation doesn&rsquo;t require this as it uses a more generic construction that supplies the required operation.
+Here we strive for a Razor with <em>just</em> addition and not generic binary operations.</p><p>Before we can construct the evaluation function we present a simple function to construct proofs of type <code>InterpTy</code>.</p><pre><code>  whichPath : (ty : Ty)
+           -&gt; (type : Type ** InterpTy ty type)
+  whichPath INT  = (_ ** IsInt)
+  whichPath REAL = (_ ** IsDbl)
+</code></pre><p>Here <code>whichPath</code> acts as a partial covering function in that we return a dependent pair to introduce (at the type-level) the concrete type each <code>ty</code> is being mapped to.
+We now present the final evaluation function:</p><pre><code>  eval : (expr : RazorT ty)
+      -&gt; interpTy ty
+  eval expr {ty} with (whichPath ty)
+    eval expr {ty} | path = doEval (snd path) expr
+</code></pre><p>Here <code>eval</code> will calculate the required proof and pass it on to <code>doEval</code> which performs the evaluation.</p><h2 id=the-well-scoped-well-typed-nameless-razor>The Well-Scoped-Well-Typed (Nameless) Razor</h2><pre><code>namespace WellScopedTyped
+</code></pre><p>In our final example, we extend <code>RazorT</code> to include variables such that it becomes a well-scoped and well-typed expression language.
+This combines what we have seen with our previous examples.
+We shall reuse our definition of <code>Ty</code> from above.</p><p>First we reframe <code>InterpTy</code> as a new predicate called:</p><pre><code>  data IsNum : (type : Ty) -&gt; (real : Type) -&gt; Type where
+    IsInt : IsNum INT  Int
+    IsDbl : IsNum REAL Double
+</code></pre><p>We can now write our expression language.</p><pre><code>  data RazorST : List Ty -&gt; Ty -&gt; Type where
+</code></pre><p>We parameterise the type of expressions with a typing-context <em>and</em> a type.
+Our typing context here is a nameless representation and we will use a positional proof (as we did with <code>RazorS</code>) to ensure that we refer to variables with respect to their binding site.
+This is the &lsquo;DeBruijn&rsquo; representation often used in reasoning about names.
+Fortunatly this is a common design pattern when reasoning about languages.
+So much so, that I have a helper library (<code>Data.DeBruijn</code>) as part of the <a href=https://github.com/jfdm/idris-containers>containers package</a> to help make things easier.</p><pre><code>    Val : (value : interpTy type) -&gt; RazorST ctxt type
+</code></pre><p>Values have the same representation as <code>RazorT</code>.</p><pre><code>    Var : (idx : Index Ty ctxt ty) -&gt; RazorST ctxt ty
+</code></pre><p>Rather than use existenial quantification over lists memebership (i.e. <code>Elem</code>) we will use <code>Index</code> from <code>Data.DeBruijn</code>.
+Structurally, it is the same as <code>Elem</code> but we make explicit the type of elements in the list.
+It can be the case that when constructing environments or types there will be a slight difference in the element type you want to work with at the type-level, and the one contained in expressions.
+Being explicit here helps.</p><pre><code>    Add : (prf : IsNum a type)
+       -&gt; (x : RazorST ctxt a)
+       -&gt; (y : RazorST ctxt a)
+       -&gt; RazorST ctxt a
+</code></pre><p>Another change we make is how to carry proof over which implementation of <code>Add</code> we will need during evaluation.
+Rather than externalise the proof as we did in <code>RazorT</code>, we internalise it.
+Here we the proof is: <code>IsNum</code>.
+One can think of this construct as similar in concept to an interface constraint in that <code>prf</code> is the evidence that <code>a</code> can be translated to something that can perform numeric.
+If we were to add another type, <code>Booleans</code>, then we can introduce other predicates that present evidence that a type can do logical things.</p><pre><code>    Let : RazorST ctxt a
+       -&gt; RazorST (a::ctxt) b
+       -&gt; RazorST ctxt b
+</code></pre><p>The final constructor is <code>Let</code>.
+Let follows previous implementations but is nameless.
+We do not need to provide a binder to address the variable.</p><p>We can now move onto constructing our evaluation function:</p><pre><code>  eval : (env  : Env Ty interpTy ctxt)
+      -&gt; (expr : RazorST ctxt ty)
+      -&gt; interpTy ty
+</code></pre><p>The function <code>eval</code> is a dependent function that takes an environment and an expression, and returns a value.
+Here the type <code>Env</code> comes from <code>Data.DeBruijn</code> and is a dependent list that allows one to collect evaluated values.
+With use of <code>Env</code> comes <code>read</code> and <code>extend</code> functions to interact with environments.</p><pre><code>  eval env (Val value) = value
+</code></pre><p>Values are values.</p><pre><code>  eval env (Var idx) = read id x env
+</code></pre><p>As <code>RazorST</code> is well-scoped and well-typed variables can be read safely from the environment.</p><pre><code>  eval env (Add IsInt x y) = (+) (eval env x) (eval env y)
+  eval env (Add IsDbl x y) = (+) (eval env x) (eval env y)
+</code></pre><p>Addition is straightforward, and now that we have internalised the proof, explicit dependent pattern matching is not required.</p><pre><code>  eval env (Let x y) = eval (extend env (eval env x)) y
+</code></pre><p>Evaluation of binding sites defined by <code>Let</code> follows.</p><h2 id=coda>Coda</h2><p>In this post we have considered implementing Hutton&rsquo;s Razor, and two variants, in Idris:</p><ul><li>Razor with variables; and</li><li>Razor with types;</li></ul><p>and their combination as:</p><ul><li>Razor with variables and types.</li></ul><p>I should follow up these posts with describing how to reason more about the languages using Idris, much like we see in PLFA and software foundations.</p><p>I like the idea of Hutton&rsquo;s Razor not <em>being</em> the simplest expression language to reason about programs, but rather I think we should think of Hutton&rsquo;s Razor as being:</p><blockquote><p>the <em>Minimalist Viable Language</em> for demonstrating your idea.</p></blockquote><p>Much like we have notions of /Minimal Viable Product/ and /Minimal Failing Example/ simple examples help remove the cruft from presentation of your ideas.
+Sometimes starting with the STLC and it&rsquo;s extensions is just too complicated, and that our Razors should always fall in between Hutton&rsquo;s Original Razor and the many variants of the STLC.
+Thus allowing you to concentrate what you are doing and not corner cases you may not need.</p><p>When playing about with dependent types I have started to use these variants of Hutton&rsquo;s Razor to explore new construction techniques, and explore let-floating and normal forms!
+Deploying a suitable Razor makes things that little bit easier.</p><p>So</p><blockquote><p>Keep it Real; Keep it Simple; Keep it Small.</p></blockquote><div class=footnotes role=doc-endnotes><hr><ol><li id=fn:1><p>By round too I mean I have been planning on doing it for half a decade or there about&mldr;&#160;<a href=#fnref:1 class=footnote-backref role=doc-backlink>&#8617;&#xfe0e;</a></p></li><li id=fn:2><p>I will have future posts about this later&mldr;&#160;<a href=#fnref:2 class=footnote-backref role=doc-backlink>&#8617;&#xfe0e;</a></p></li><li id=fn:3><p>The link was working before I published this post&mldr;&#160;<a href=#fnref:3 class=footnote-backref role=doc-backlink>&#8617;&#xfe0e;</a></p></li></ol></div><div class=blog-tags><a href=https://tyde.systems//tags/idris/>idris</a>&nbsp;
+<a href=https://tyde.systems//tags/dependent-types/>dependent-types</a>&nbsp;
+<a href=https://tyde.systems//tags/tdd/>tdd</a>&nbsp;
+<a href=https://tyde.systems//tags/musing/>musing</a>&nbsp;</div></article><ul class="pager blog-pager"><li class=previous><a href=https://tyde.systems/post/2019-11-20-interfaces-and-dependent-types/ data-toggle=tooltip data-placement=top title="On Interfaces and Dependent Types">&larr; Previous Post</a></li><li class=next><a href=https://tyde.systems/post/2019-12-06-well-typed-programs/ data-toggle=tooltip data-placement=top title="Well-Typed Expressions lead to Well-Typed Well-Scoped Programs">Next Post &rarr;</a></li></ul></div></div></div><footer><div class=container><div class=row><div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1"><ul class="list-inline text-center footer-links"><li><a href=https://github.com/jfdm title=GitHub><span class="fa-stack fa-lg"><i class="fas fa-circle fa-stack-2x"></i>
+<i class="fab fa-github fa-stack-1x fa-inverse"></i></span></a></li><li><a href=https://gitlab.com/jfdm title=GitLab><span class="fa-stack fa-lg"><i class="fas fa-circle fa-stack-2x"></i>
+<i class="fab fa-gitlab fa-stack-1x fa-inverse"></i></span></a></li><li><a href=https://bitbucket.org/jfdm title=Bitbucket><span class="fa-stack fa-lg"><i class="fas fa-circle fa-stack-2x"></i>
+<i class="fab fa-bitbucket fa-stack-1x fa-inverse"></i></span></a></li><li><a href=https://twitter.com/jfdm title=Twitter><span class="fa-stack fa-lg"><i class="fas fa-circle fa-stack-2x"></i>
+<i class="fab fa-twitter fa-stack-1x fa-inverse"></i></span></a></li><li><a rel=me href=https://discuss.systems/@jfdm title=Mastodon><span class="fa-stack fa-lg"><i class="fas fa-circle fa-stack-2x"></i>
+<i class="fab fa-mastodon fa-stack-1x fa-inverse"></i></span></a></li><li><a href title=RSS><span class="fa-stack fa-lg"><i class="fas fa-circle fa-stack-2x"></i>
+<i class="fas fa-rss fa-stack-1x fa-inverse"></i></span></a></li></ul><p class="credits copyright text-muted"><a href=tyde.systems>Jan de Muijnck-Hughes</a>
+&nbsp;&bull;&nbsp;&copy;
+2024
+&nbsp;&bull;&nbsp;
+<a href=https://tyde.systems/>Jan de Muijnck-Hughes</a></p><p class="credits theme-by text-muted"><a href=https://gohugo.io>Hugo v0.123.8</a> powered &nbsp;&bull;&nbsp; Theme <a href=https://github.com/halogenica/beautifulhugo>Beautiful Hugo</a> adapted from <a href=https://deanattali.com/beautiful-jekyll/>Beautiful Jekyll</a></p></div></div></div></footer><script src=https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.js integrity=sha384-g7c+Jr9ZivxKLnZTDUhnkOnsh30B4H0rpLUpJ4jAIKs4fnJI+sEnkvrMWph2EDg4 crossorigin=anonymous></script><script src=https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/contrib/auto-render.min.js integrity=sha384-mll67QQFJfxn0IYznZYonOWZ644AWYC+Pt2cHqMaRhXVrursRwvLnLaebdGIlYNa crossorigin=anonymous></script><script src=https://code.jquery.com/jquery-3.5.1.slim.min.js integrity=sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj crossorigin=anonymous></script><script src=https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js integrity=sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa crossorigin=anonymous></script><script src=https://tyde.systems/js/main.js></script><script>renderMathInElement(document.body)</script><script src=https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.js integrity=sha384-QELNnmcmU8IR9ZAykt67vGr9/rZJdHbiWi64V88fCPaOohUlHCqUD/unNN0BXSqy crossorigin=anonymous></script><script src=https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe-ui-default.min.js integrity=sha384-m67o7SkQ1ALzKZIFh4CiTA8tmadaujiTa9Vu+nqPSwDOqHrDmxLezTdFln8077+q crossorigin=anonymous></script><script src=https://tyde.systems/js/load-photoswipe.js></script></body></html>

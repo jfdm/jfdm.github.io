@@ -1,0 +1,118 @@
+<!doctype html><html lang=en itemscope itemtype=http://schema.org/WebPage><head><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1"><title>On Interfaces and Dependent Types - </title><meta name=description content="In this post we will consider the interplay between dependently typed data structures and interfaces.
+This post is a literate Idris file so there will be some cruft related to Idris that will remain until I get round to 1 improving Idris&rsquo; literate mode support.
+module Main First we need to hide a few things from the default&mldr;
+%hide List %default total Consider the following interface that defines equality for a provided type:"><meta name=author content="Jan de Muijnck-Hughes"><script type=application/ld+json>{"@context":"http://schema.org","@type":"WebSite","name":"Jan de Muijnck-Hughes","url":"https:\/\/tyde.systems\/"}</script><script type=application/ld+json>{"@context":"http://schema.org","@type":"Organization","name":"","url":"https:\/\/tyde.systems\/"}</script><script type=application/ld+json>{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https:\/\/tyde.systems\/","name":"home"}},{"@type":"ListItem","position":3,"item":{"@id":"https:\/\/tyde.systems\/post\/2019-11-20-interfaces-and-dependent-types\/","name":"On interfaces and dependent types"}}]}</script><script type=application/ld+json>{"@context":"http://schema.org","@type":"Article","author":{"name":"Jan de Muijnck-Hughes"},"headline":"On Interfaces and Dependent Types","description":"In this post we will consider the interplay between dependently typed data structures and interfaces.\nThis post is a literate Idris file so there will be some cruft related to Idris that will remain until I get round to 1 improving Idris\u0026rsquo; literate mode support.\nmodule Main First we need to hide a few things from the default\u0026hellip;\n%hide List %default total Consider the following interface that defines equality for a provided type:","inLanguage":"en","wordCount":1027,"datePublished":"2019-11-20T00:00:00","dateModified":"2019-11-20T00:00:00","image":"https:\/\/tyde.systems\/","keywords":["idris, dependent-types, tdd, musing"],"mainEntityOfPage":"https:\/\/tyde.systems\/post\/2019-11-20-interfaces-and-dependent-types\/","publisher":{"@type":"Organization","name":"https:\/\/tyde.systems\/","logo":{"@type":"ImageObject","url":"https:\/\/tyde.systems\/","height":60,"width":60}}}</script><meta property="og:title" content="On Interfaces and Dependent Types"><meta property="og:description" content="In this post we will consider the interplay between dependently typed data structures and interfaces.
+This post is a literate Idris file so there will be some cruft related to Idris that will remain until I get round to 1 improving Idris&rsquo; literate mode support.
+module Main First we need to hide a few things from the default&mldr;
+%hide List %default total Consider the following interface that defines equality for a provided type:"><meta property="og:url" content="https://tyde.systems/post/2019-11-20-interfaces-and-dependent-types/"><meta property="og:type" content="website"><meta property="og:site_name" content="Jan de Muijnck-Hughes"><meta name=twitter:title content="On Interfaces and Dependent Types"><meta name=twitter:description content="In this post we will consider the interplay between dependently typed data structures and interfaces.
+This post is a literate Idris file so there will be some cruft related to Idris that will remain …"><meta name=twitter:card content="summary_large_image"><meta name=twitter:site content="@jfdm"><meta name=twitter:creator content="@jfdm"><meta name=generator content="Hugo 0.123.8"><link rel=alternate href=https://tyde.systems/index.xml type=application/rss+xml title="Jan de Muijnck-Hughes"><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css integrity=sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X crossorigin=anonymous><link rel=stylesheet href=https://use.fontawesome.com/releases/v5.5.0/css/all.css integrity=sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU crossorigin=anonymous><link rel=stylesheet href=https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css integrity=sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u crossorigin=anonymous><link rel=stylesheet href=https://tyde.systems/css/main.css><link rel=stylesheet href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic"><link rel=stylesheet href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800"><link rel=stylesheet href=https://tyde.systems/css/syntax.css><link rel=stylesheet href=https://tyde.systems/css/codeblock.css><link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.css integrity=sha384-h/L2W9KefUClHWaty3SLE5F/qvc4djlyR4qY3NUV5HGQBBW7stbcfff1+I/vmsHh crossorigin=anonymous><link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/default-skin/default-skin.min.css integrity=sha384-iD0dNku6PYSIQLyfTOpB06F2KCZJAKLOThS5HRe8b3ibhdEQ6eKsFf/EeFxdOt5R crossorigin=anonymous><link rel=stylesheet type=text/css href=/hugo-cite.css></head><body><nav class="navbar navbar-default navbar-fixed-top navbar-custom"><div class=container-fluid><div class=navbar-header><button type=button class=navbar-toggle data-toggle=collapse data-target=#main-navbar>
+<span class=sr-only>Toggle navigation</span>
+<span class=icon-bar></span>
+<span class=icon-bar></span>
+<span class=icon-bar></span>
+</button>
+<a class=navbar-brand href=https://tyde.systems/>Jan de Muijnck-Hughes</a></div><div class="collapse navbar-collapse" id=main-navbar><ul class="nav navbar-nav navbar-right"><li class=navlinks-container><a class=navlinks-parent>Blog</a><div class=navlinks-children><a href=/post>Posts</a>
+<a href=/tags>Tags</a></div></li><li class=navlinks-container><a class=navlinks-parent>Research</a><div class=navlinks-children><a href=/page/research>About</a>
+<a href=/page/studying>Studying with Me</a>
+<a href=/page/working>Working with Me</a></div></li><li class=navlinks-container><a class=navlinks-parent>Activities</a><div class=navlinks-children><a href=/page/talks>Talks</a>
+<a href=/page/service>Service</a>
+<a href=/page/teaching/cs886>CS886 -- ASbD</a>
+<a href=/page/teaching>Teaching</a></div></li><li class=navlinks-container><a class=navlinks-parent>People</a><div class=navlinks-children><a href=/page/people-current>Current</a>
+<a href=/page/people-alumni>Alumni</a></div></li><li class=navlinks-container><a class=navlinks-parent>Publications</a><div class=navlinks-children><a href=/page/theses>Theses</a>
+<a href=/page/papers>Papers</a></div></li></ul></div></div></nav><div class=pswp tabindex=-1 role=dialog aria-hidden=true><div class=pswp__bg></div><div class=pswp__scroll-wrap><div class=pswp__container><div class=pswp__item></div><div class=pswp__item></div><div class=pswp__item></div></div><div class="pswp__ui pswp__ui--hidden"><div class=pswp__top-bar><div class=pswp__counter></div><button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+<button class="pswp__button pswp__button--share" title=Share></button>
+<button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+<button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button><div class=pswp__preloader><div class=pswp__preloader__icn><div class=pswp__preloader__cut><div class=pswp__preloader__donut></div></div></div></div></div><div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap"><div class=pswp__share-tooltip></div></div><button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+</button>
+<button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)"></button><div class=pswp__caption><div class=pswp__caption__center></div></div></div></div></div><header class=header-section><div class="intro-header no-img"><div class=container><div class=row><div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1"><div class=post-heading><h1>On Interfaces and Dependent Types</h1><span class=post-meta><i class="fas fa-calendar"></i>&nbsp;Posted on 2019-11-20</span></div></div></div></div></div></header><div class=container role=main><div class=row><div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1"><article role=main class=blog-post><p>In this post we will consider the interplay between dependently typed data structures and interfaces.</p><p>This post is a literate Idris file so there will be some cruft related to Idris that will remain until I get round to <sup id=fnref:1><a href=#fn:1 class=footnote-ref role=doc-noteref>1</a></sup> improving Idris&rsquo; literate mode support.</p><pre><code>module Main
+</code></pre><p>First we need to hide a few things from the default&mldr;</p><pre><code>%hide List
+%default total
+</code></pre><p>Consider the following interface that defines equality for a provided type:</p><pre><code>interface Equals (type : Type) where
+  eq : (a,b : type) -&gt; Bool
+  notEq : (a,b : type) -&gt; Bool
+  notEq a b = not (eq a b)
+</code></pre><p>At first glance there is nothing surprising about its definition.
+For example, let us look at the definition of equality for a simple cons-list data type.</p><pre><code>namespace ConsList
+</code></pre><p>Here is the data type:</p><pre><code>  data List : (type : Type) -&gt; Type where
+    Empty : List type
+    Extend : (value : type)
+          -&gt; (rest  : List type)
+          -&gt; List type
+
+
+  %name ConsList.List rest, restA, restB
+</code></pre><p>Here is the implementation:</p><pre><code>  listEq : Equals type
+        =&gt; (a,b : List type)
+        -&gt; Bool
+  listEq Empty               Empty               = True
+  listEq Empty               (Extend value rest) = False
+  listEq (Extend value rest) Empty               = False
+  listEq (Extend value rest) (Extend x restA)    with (eq value x)
+    listEq (Extend value rest) (Extend x restA)    | False = False
+    listEq (Extend value rest) (Extend x restA)    | True = listEq rest restA
+</code></pre><p>Which we can provide for an <code>Equals</code> instance:</p><pre><code>Equals type =&gt; Equals (List type) where
+  eq = listEq
+</code></pre><p>Great!</p><p>Let us now consider &rsquo;lists with length&rsquo;, otherwise known as: <em>Vectors</em>.</p><pre><code>namespace SizedList
+</code></pre><p>Here is the data type:</p><pre><code>  data Vect : (size : Nat) -&gt; (type : Type) -&gt; Type where
+     Empty : Vect Z type
+     Extend : (value : type)
+           -&gt; (rest  : Vect curr type)
+           -&gt; Vect (S curr) type
+
+  %name SizedList.Vect rest, restA, restB
+</code></pre><p>Here is an implementation:</p><pre><code>  vectEq : Equals type
+        =&gt; (a,b : Vect size type)
+        -&gt; Bool
+  vectEq Empty Empty = True
+  vectEq (Extend value rest) (Extend x restA) with (eq value x)
+    vectEq (Extend value rest) (Extend x restA) | False = False
+    vectEq (Extend value rest) (Extend x restA) | True = vectEq rest restA
+</code></pre><p>Which we can provide an <code>Equals</code> instance for:</p><pre><code>  Equals type =&gt; Equals (Vect n type) where
+     eq = vectEq
+</code></pre><p>Notice that in the type signature for <code>vectEq</code>, and our <code>Equals</code>, implementation we have assumed that the compared vectors are of the same length.
+We see this with the short hand: <code>(a,b:...)</code> in our type signatures.
+When we compare vectors, however, it <em>might be</em> the case that they are potentially the different sizes, and potentially that they might be the same size.
+We need a better implementation.</p><p>So let us write one:</p><pre><code>   namespace Proper
+
+     vectEq : Equals type
+           =&gt; (a : Vect sizeA type)
+           -&gt; (b : Vect sizeB type)
+           -&gt; Bool
+     vectEq Empty Empty = True
+     vectEq Empty (Extend value rest) = False
+     vectEq (Extend value rest) Empty = False
+     vectEq (Extend value rest) (Extend x restA) with (eq value x)
+       vectEq (Extend value rest) (Extend x restA) | False = False
+       vectEq (Extend value rest) (Extend x restA) | True = Proper.vectEq rest restA
+</code></pre><p>Now constructing an <code>Equals</code> instance will not result in a type error.</p><pre><code>     [alt] Equals type =&gt; Equals (Vect size type) where
+       eq a b = Proper.vectEq a b
+</code></pre><p>When we call <code>eq</code> it will only work with vectors that are the same length.
+This is the definition of <code>Equals</code>: given two values of the <em>same</em> type.
+To access the correct implementation we need to call <code>Proper.vectEq</code> explicitly, or really just <code>vectEq</code>.</p><p>The question is to me is:</p><blockquote><p>Given this one obvious limitations of Interfaces in a dependently
+typed setting are they useful at all for dependently typed
+programming.</p></blockquote><p>In all my years playing with Idris, Interfaces are handy in a few settings:</p><ol start=0><li>Providing an API to work with structures work on similar data. i.e. <code>Ord</code> and <code>Functor</code>.</li><li>when defining operations on single instances of values i.e. <code>Show</code>, <code>Ord</code>, and <code>Functor</code></li><li>when composing programs based on the above: <code>ST</code></li></ol><p>However, when I write my Idris libraries and Idris programs I find that interfaces are not always the best thing to use.
+In fact I shy away from using interfaces unless absolutly necessary.</p><p>I think there is a class of interface (of which <code>Equals</code> is a prime example, <code>DecEq</code> another) where we may need to think a little on their use in a dependently typed setting.</p><p>But maybe we need:</p><pre><code>namespace TheFuture
+  interface DEquals (ty : idx -&gt; Type) where
+    eq : ty a -&gt; ty b -&gt; Bool
+
+    notEq : ty a -&gt; ty b -&gt; Bool
+    notEq a b = not (eq a b)
+</code></pre><p>But how do we then shoe horn <code>Vect</code> into this&mldr;<code>DEquals (Vect size type) where</code> will not type check.
+We would have to rewrite the type of <code>Vect</code> to be <code>Vect : Type -> Nat -> Type</code> for it to work, but this itself will cause interfaces such as <code>Functor</code> to no longer work&mldr;</p><p>Idris&rsquo; support for namespaces alleviates the need for interfaces as it allows one to present similar named constructs and distinguish between them.
+But how to ensure that we have consistent names across our code base&mldr;</p><p>Do we need to rethink interfaces in a dependently typed setting?</p><p>The short answer is: I do not know.</p><p>I haven&rsquo;t performed a literature review of what the <a href=https://agda.readthedocs.io>other team</a> are doing or what the other PL people think about it.</p><p>Maybe having modules as first class constructs might help, or maybe Idris&rsquo; support syntactic overloading is intriguing.
+By that I mean if you provide implementations for certain operators you get Do-notation and List-notation for free.
+I do not mean DSL notation or &lsquo;syntax&rsquo; notation that allows one to produce horrible mix fix unicode abominations that are hard to read.</p><p>I might be wrong here, and I am sure several people I know, and many I don&rsquo;t know, will correct me.
+But if it was a solved issue, it would have been addressed in Idris2.</p><hr><div class=footnotes role=doc-endnotes><hr><ol><li id=fn:1><p>By round too I mean I have been planning on doing it for half a decade or there about&mldr;&#160;<a href=#fnref:1 class=footnote-backref role=doc-backlink>&#8617;&#xfe0e;</a></p></li></ol></div><div class=blog-tags><a href=https://tyde.systems//tags/idris/>idris</a>&nbsp;
+<a href=https://tyde.systems//tags/dependent-types/>dependent-types</a>&nbsp;
+<a href=https://tyde.systems//tags/tdd/>tdd</a>&nbsp;
+<a href=https://tyde.systems//tags/musing/>musing</a>&nbsp;</div></article><ul class="pager blog-pager"><li class=previous><a href=https://tyde.systems/post/2019-11-05-stacs/ data-toggle=tooltip data-placement=top title="LightClick---A Linear Typed Orchestration Language for System-On-A-Chip Designs">&larr; Previous Post</a></li><li class=next><a href=https://tyde.systems/post/2019-12-04-razor/ data-toggle=tooltip data-placement=top title="Hutton's Razor(s)">Next Post &rarr;</a></li></ul></div></div></div><footer><div class=container><div class=row><div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1"><ul class="list-inline text-center footer-links"><li><a href=https://github.com/jfdm title=GitHub><span class="fa-stack fa-lg"><i class="fas fa-circle fa-stack-2x"></i>
+<i class="fab fa-github fa-stack-1x fa-inverse"></i></span></a></li><li><a href=https://gitlab.com/jfdm title=GitLab><span class="fa-stack fa-lg"><i class="fas fa-circle fa-stack-2x"></i>
+<i class="fab fa-gitlab fa-stack-1x fa-inverse"></i></span></a></li><li><a href=https://bitbucket.org/jfdm title=Bitbucket><span class="fa-stack fa-lg"><i class="fas fa-circle fa-stack-2x"></i>
+<i class="fab fa-bitbucket fa-stack-1x fa-inverse"></i></span></a></li><li><a href=https://twitter.com/jfdm title=Twitter><span class="fa-stack fa-lg"><i class="fas fa-circle fa-stack-2x"></i>
+<i class="fab fa-twitter fa-stack-1x fa-inverse"></i></span></a></li><li><a rel=me href=https://discuss.systems/@jfdm title=Mastodon><span class="fa-stack fa-lg"><i class="fas fa-circle fa-stack-2x"></i>
+<i class="fab fa-mastodon fa-stack-1x fa-inverse"></i></span></a></li><li><a href title=RSS><span class="fa-stack fa-lg"><i class="fas fa-circle fa-stack-2x"></i>
+<i class="fas fa-rss fa-stack-1x fa-inverse"></i></span></a></li></ul><p class="credits copyright text-muted"><a href=tyde.systems>Jan de Muijnck-Hughes</a>
+&nbsp;&bull;&nbsp;&copy;
+2024
+&nbsp;&bull;&nbsp;
+<a href=https://tyde.systems/>Jan de Muijnck-Hughes</a></p><p class="credits theme-by text-muted"><a href=https://gohugo.io>Hugo v0.123.8</a> powered &nbsp;&bull;&nbsp; Theme <a href=https://github.com/halogenica/beautifulhugo>Beautiful Hugo</a> adapted from <a href=https://deanattali.com/beautiful-jekyll/>Beautiful Jekyll</a></p></div></div></div></footer><script src=https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.js integrity=sha384-g7c+Jr9ZivxKLnZTDUhnkOnsh30B4H0rpLUpJ4jAIKs4fnJI+sEnkvrMWph2EDg4 crossorigin=anonymous></script><script src=https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/contrib/auto-render.min.js integrity=sha384-mll67QQFJfxn0IYznZYonOWZ644AWYC+Pt2cHqMaRhXVrursRwvLnLaebdGIlYNa crossorigin=anonymous></script><script src=https://code.jquery.com/jquery-3.5.1.slim.min.js integrity=sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj crossorigin=anonymous></script><script src=https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js integrity=sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa crossorigin=anonymous></script><script src=https://tyde.systems/js/main.js></script><script>renderMathInElement(document.body)</script><script src=https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.js integrity=sha384-QELNnmcmU8IR9ZAykt67vGr9/rZJdHbiWi64V88fCPaOohUlHCqUD/unNN0BXSqy crossorigin=anonymous></script><script src=https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe-ui-default.min.js integrity=sha384-m67o7SkQ1ALzKZIFh4CiTA8tmadaujiTa9Vu+nqPSwDOqHrDmxLezTdFln8077+q crossorigin=anonymous></script><script src=https://tyde.systems/js/load-photoswipe.js></script></body></html>

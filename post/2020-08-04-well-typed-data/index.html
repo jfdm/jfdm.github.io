@@ -1,0 +1,400 @@
+<!doctype html><html lang=en itemscope itemtype=http://schema.org/WebPage><head><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1"><title>Defining Intrinsically Typed Data Structures - </title><meta name=description content="When reading foundational texts such as PLFA, TAPL, and Software Foundations the learner is often presented with Simply-Typed Lambda Calculi that supports both products and sums. When translating these calculi to dependently typed languages in an intrinsically typed way as we do with Idris & Agda, how we might approach supporting other data structures such as tuples, records and variants is not precisely clear. In fact Software Foundations does give an idea on how to do so but let us explore how we may choose to represent such structures in Idris/Agda."><meta name=author content="Jan de Muijnck-Hughes"><script type=application/ld+json>{"@context":"http://schema.org","@type":"WebSite","name":"Jan de Muijnck-Hughes","url":"https:\/\/tyde.systems\/"}</script><script type=application/ld+json>{"@context":"http://schema.org","@type":"Organization","name":"","url":"https:\/\/tyde.systems\/"}</script><script type=application/ld+json>{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https:\/\/tyde.systems\/","name":"home"}},{"@type":"ListItem","position":3,"item":{"@id":"https:\/\/tyde.systems\/post\/2020-08-04-well-typed-data\/","name":"Defining intrinsically typed data structures"}}]}</script><script type=application/ld+json>{"@context":"http://schema.org","@type":"Article","author":{"name":"Jan de Muijnck-Hughes"},"headline":"Defining Intrinsically Typed Data Structures","description":"When reading foundational texts such as PLFA, TAPL, and Software Foundations the learner is often presented with Simply-Typed Lambda Calculi that supports both products and sums. When translating these calculi to dependently typed languages in an intrinsically typed way as we do with Idris \u0026amp; Agda, how we might approach supporting other data structures such as tuples, records and variants is not precisely clear. In fact Software Foundations does give an idea on how to do so but let us explore how we may choose to represent such structures in Idris\/Agda.","inLanguage":"en","wordCount":4572,"datePublished":"2020-08-04T00:00:00","dateModified":"2020-08-04T00:00:00","image":"https:\/\/tyde.systems\/","keywords":["idris, dependent-types, tdd, musing"],"mainEntityOfPage":"https:\/\/tyde.systems\/post\/2020-08-04-well-typed-data\/","publisher":{"@type":"Organization","name":"https:\/\/tyde.systems\/","logo":{"@type":"ImageObject","url":"https:\/\/tyde.systems\/","height":60,"width":60}}}</script><meta property="og:title" content="Defining Intrinsically Typed Data Structures"><meta property="og:description" content="When reading foundational texts such as PLFA, TAPL, and Software Foundations the learner is often presented with Simply-Typed Lambda Calculi that supports both products and sums. When translating these calculi to dependently typed languages in an intrinsically typed way as we do with Idris & Agda, how we might approach supporting other data structures such as tuples, records and variants is not precisely clear. In fact Software Foundations does give an idea on how to do so but let us explore how we may choose to represent such structures in Idris/Agda."><meta property="og:url" content="https://tyde.systems/post/2020-08-04-well-typed-data/"><meta property="og:type" content="website"><meta property="og:site_name" content="Jan de Muijnck-Hughes"><meta name=twitter:title content="Defining Intrinsically Typed Data Structures"><meta name=twitter:description content="When reading foundational texts such as PLFA, TAPL, and Software Foundations the learner is often presented with Simply-Typed Lambda Calculi that supports both products and sums. When translating …"><meta name=twitter:card content="summary_large_image"><meta name=twitter:site content="@jfdm"><meta name=twitter:creator content="@jfdm"><meta name=generator content="Hugo 0.123.8"><link rel=alternate href=https://tyde.systems/index.xml type=application/rss+xml title="Jan de Muijnck-Hughes"><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css integrity=sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X crossorigin=anonymous><link rel=stylesheet href=https://use.fontawesome.com/releases/v5.5.0/css/all.css integrity=sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU crossorigin=anonymous><link rel=stylesheet href=https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css integrity=sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u crossorigin=anonymous><link rel=stylesheet href=https://tyde.systems/css/main.css><link rel=stylesheet href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic"><link rel=stylesheet href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800"><link rel=stylesheet href=https://tyde.systems/css/syntax.css><link rel=stylesheet href=https://tyde.systems/css/codeblock.css><link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.css integrity=sha384-h/L2W9KefUClHWaty3SLE5F/qvc4djlyR4qY3NUV5HGQBBW7stbcfff1+I/vmsHh crossorigin=anonymous><link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/default-skin/default-skin.min.css integrity=sha384-iD0dNku6PYSIQLyfTOpB06F2KCZJAKLOThS5HRe8b3ibhdEQ6eKsFf/EeFxdOt5R crossorigin=anonymous><link rel=stylesheet type=text/css href=/hugo-cite.css></head><body><nav class="navbar navbar-default navbar-fixed-top navbar-custom"><div class=container-fluid><div class=navbar-header><button type=button class=navbar-toggle data-toggle=collapse data-target=#main-navbar>
+<span class=sr-only>Toggle navigation</span>
+<span class=icon-bar></span>
+<span class=icon-bar></span>
+<span class=icon-bar></span>
+</button>
+<a class=navbar-brand href=https://tyde.systems/>Jan de Muijnck-Hughes</a></div><div class="collapse navbar-collapse" id=main-navbar><ul class="nav navbar-nav navbar-right"><li class=navlinks-container><a class=navlinks-parent>Blog</a><div class=navlinks-children><a href=/post>Posts</a>
+<a href=/tags>Tags</a></div></li><li class=navlinks-container><a class=navlinks-parent>Research</a><div class=navlinks-children><a href=/page/research>About</a>
+<a href=/page/studying>Studying with Me</a>
+<a href=/page/working>Working with Me</a></div></li><li class=navlinks-container><a class=navlinks-parent>Activities</a><div class=navlinks-children><a href=/page/talks>Talks</a>
+<a href=/page/service>Service</a>
+<a href=/page/teaching/cs886>CS886 -- ASbD</a>
+<a href=/page/teaching>Teaching</a></div></li><li class=navlinks-container><a class=navlinks-parent>People</a><div class=navlinks-children><a href=/page/people-current>Current</a>
+<a href=/page/people-alumni>Alumni</a></div></li><li class=navlinks-container><a class=navlinks-parent>Publications</a><div class=navlinks-children><a href=/page/theses>Theses</a>
+<a href=/page/papers>Papers</a></div></li></ul></div></div></nav><div class=pswp tabindex=-1 role=dialog aria-hidden=true><div class=pswp__bg></div><div class=pswp__scroll-wrap><div class=pswp__container><div class=pswp__item></div><div class=pswp__item></div><div class=pswp__item></div></div><div class="pswp__ui pswp__ui--hidden"><div class=pswp__top-bar><div class=pswp__counter></div><button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+<button class="pswp__button pswp__button--share" title=Share></button>
+<button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+<button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button><div class=pswp__preloader><div class=pswp__preloader__icn><div class=pswp__preloader__cut><div class=pswp__preloader__donut></div></div></div></div></div><div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap"><div class=pswp__share-tooltip></div></div><button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+</button>
+<button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)"></button><div class=pswp__caption><div class=pswp__caption__center></div></div></div></div></div><header class=header-section><div class="intro-header no-img"><div class=container><div class=row><div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1"><div class=post-heading><h1>Defining Intrinsically Typed Data Structures</h1><span class=post-meta><i class="fas fa-calendar"></i>&nbsp;Posted on 2020-08-04</span></div></div></div></div></div></header><div class=container role=main><div class=row><div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1"><article role=main class=blog-post><p>When reading foundational texts such as <a href=https://plfa.github.io/>PLFA</a>, <a href=https://www.cis.upenn.edu/~bcpierce/tapl/>TAPL</a>, and <a href=https://softwarefoundations.cis.upenn.edu/plf-current/index.html>Software Foundations</a> the learner is often presented with Simply-Typed Lambda Calculi that supports both <a href=https://www.ncatlab.org/nlab/show/product+type>products</a> and <a href=https://www.ncatlab.org/nlab/show/sum+type>sums</a>.
+When translating these calculi to dependently typed languages in an intrinsically typed way as we do with <a href=https://www.idris-lang.org>Idris</a> & Agda, how we might approach
+supporting other data structures such as tuples, records and variants is not precisely clear.
+In fact Software Foundations <a href=https://softwarefoundations.cis.upenn.edu/plf-current/Records.html#lab346><em>does give an idea</em></a> on how to do so but let us explore how we may choose to represent such structures in Idris/Agda.</p><p>My aim for this post is to:</p><ol><li>consider how we can construct intrinsically typed data structures for an EDSL in the Idris(2) programming language; and</li><li>detail an approach to preserve the uniqueness of variant types.</li></ol><p>I am not going to claim that the techniques in this post are new, my literature review of the area is weak, but I wanted to have a public record detailing <em>my approach</em> that others can find using the great big search engines floating around cyberspace.</p><h2 id=background>Background</h2><p>Before reading this post, I will assume that the reader is familiar with <a href=https://www.cis.upenn.edu/~bcpierce/tapl/>Part 2 of TAPL</a>, may have skimmed <a href=https://softwarefoundations.cis.upenn.edu/plf-current/index.html>Software Foundations</a>, and perused <a href=https://plfa.github.io/>Part 2 of PLFA</a>.</p><p>The examples will be in <a href=https://www.idris-lang.org>Idris2</a> but they should translate to Idris1, and other similar dependently typed programming languages.</p><p>A small caveat, is that I will be discussing the representation of the data types, but have yet to explore their use in reasoning about progress and preservation, nor their use in building a working compiler.
+This is for later on in the month.</p><h2 id=the-starting-razor>The Starting Razor</h2><p>In this post our starting razor will begin as an intrinsically typed expression language that supports let-bindings, and primitive data types representing integers and characters.
+We will expand this language to support pairs and sums (their construction, projection, and destruction), before morphing the language to see how we can support tuples, records, and variant types.</p><p>Thus, our base types will be:</p><div class="highlight idris"><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>data Ty = TyInt | TyChar
+</span></span></code></pre></div><p>with the following combined base syntax/static semantics:</p><div class="highlight idris"><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>data Razor : List Ty -&gt; Ty -&gt; Type where
+</span></span><span class=line><span class=cl>  Var : Elem ty g -&gt; Razor g ty
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>  Let : (this     : Razor        g  expr)
+</span></span><span class=line><span class=cl>     -&gt; (beInThis : Razor (expr::g) body)
+</span></span><span class=line><span class=cl>                 -&gt; Razor        g  body
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>  I : Int  -&gt; Razor g TyInt
+</span></span><span class=line><span class=cl>  C : Char -&gt; Razor g TyChar
+</span></span></code></pre></div><p>Our razor follows standard constructions used in intrinsically typed interpreters: variables are De Bruijn indicies realised using the <code>Elem</code> list existential quantifier from <code>Data.List.Elem</code> that quantifies over a type-level context.</p><p>So let&rsquo;s get started.</p><h2 id=adding-sums-and-products>Adding Sums and Products</h2><p>This section will extend our razor with sums and products.</p><h3 id=types>Types</h3><div class="highlight idris"><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>data Ty = TyInt | TyChar | TyProd Ty Ty | TySum Ty Ty
+</span></span></code></pre></div><p>A product type pairs two structures together, and a sum type contains one of two possible structures.
+We can extend our set of types with two data constructors that represent two type&rsquo;s together as a product or sum.</p><h3 id=syntax-and-static-semantics>Syntax and Static Semantics</h3><p>We can then extend the definition of our Razor with the following static semantics for data type:</p><ul><li><strong>contructors</strong>: for products (<code>MkPair</code>); and sums&mdash;<code>Left</code> & <code>Right</code>;</li><li><strong>accessors</strong>: for products <code>First</code> & <code>Second</code>; and</li><li><strong>destructors</strong>: for products (<code>Split</code>); and sums&mdash;<code>Match</code>.</li></ul><p>So that we now have:</p><div class="highlight idris"><pre tabindex=0 class=chroma><code class=language-gdscript3 data-lang=gdscript3><span class=line><span class=cl><span class=n>data</span> <span class=n>Razor</span> <span class=p>:</span> <span class=n>List</span> <span class=n>Ty</span> <span class=o>-&gt;</span> <span class=n>Ty</span> <span class=o>-&gt;</span> <span class=n>Type</span> <span class=n>where</span>
+</span></span><span class=line><span class=cl>  <span class=n>Var</span> <span class=p>:</span> <span class=n>Elem</span> <span class=n>ty</span> <span class=n>g</span> <span class=o>-&gt;</span> <span class=n>Razor</span> <span class=n>g</span> <span class=n>ty</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>  <span class=n>Let</span> <span class=p>:</span> <span class=p>(</span><span class=n>this</span>     <span class=p>:</span> <span class=n>Razor</span>        <span class=n>g</span>  <span class=n>expr</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>     <span class=o>-&gt;</span> <span class=p>(</span><span class=n>beInThis</span> <span class=p>:</span> <span class=n>Razor</span> <span class=p>(</span><span class=n>expr</span><span class=p>::</span><span class=n>g</span><span class=p>)</span> <span class=n>body</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>                 <span class=o>-&gt;</span> <span class=n>Razor</span>        <span class=n>g</span>  <span class=n>body</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>  <span class=n>I</span> <span class=p>:</span> <span class=n>Int</span>  <span class=o>-&gt;</span> <span class=n>Razor</span> <span class=n>g</span> <span class=n>TyInt</span>
+</span></span><span class=line><span class=cl>  <span class=n>C</span> <span class=p>:</span> <span class=n>Char</span> <span class=o>-&gt;</span> <span class=n>Razor</span> <span class=n>g</span> <span class=n>TyChar</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>  <span class=n>MkPair</span> <span class=p>:</span> <span class=p>(</span><span class=n>left</span>  <span class=p>:</span> <span class=n>Razor</span> <span class=n>g</span> <span class=n>l</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>        <span class=o>-&gt;</span> <span class=p>(</span><span class=n>right</span> <span class=p>:</span> <span class=n>Razor</span> <span class=n>g</span> <span class=n>r</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>                 <span class=o>-&gt;</span> <span class=n>Razor</span> <span class=n>g</span> <span class=p>(</span><span class=n>TyProd</span> <span class=n>l</span> <span class=n>r</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>  <span class=n>First</span>  <span class=p>:</span> <span class=p>(</span><span class=n>pair</span> <span class=p>:</span> <span class=n>Razor</span> <span class=n>g</span> <span class=p>(</span><span class=n>TyProd</span> <span class=n>l</span> <span class=n>r</span><span class=p>))</span>
+</span></span><span class=line><span class=cl>                <span class=o>-&gt;</span> <span class=n>Razor</span> <span class=n>g</span> <span class=n>l</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>  <span class=n>Second</span> <span class=p>:</span> <span class=p>(</span><span class=n>pair</span> <span class=p>:</span> <span class=n>Razor</span> <span class=n>g</span> <span class=p>(</span><span class=n>TyProd</span> <span class=n>l</span> <span class=n>r</span><span class=p>))</span>
+</span></span><span class=line><span class=cl>                <span class=o>-&gt;</span> <span class=n>Razor</span> <span class=n>g</span> <span class=n>r</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>  <span class=n>Split</span> <span class=p>:</span> <span class=p>(</span><span class=n>pair</span> <span class=p>:</span> <span class=n>Razor</span> <span class=n>g</span>         <span class=p>(</span><span class=n>TyProd</span> <span class=n>l</span> <span class=n>r</span><span class=p>))</span>
+</span></span><span class=line><span class=cl>       <span class=o>-&gt;</span> <span class=p>(</span><span class=n>body</span> <span class=p>:</span> <span class=n>Razor</span> <span class=p>(</span><span class=n>r</span><span class=p>::</span><span class=n>l</span><span class=p>::</span><span class=n>g</span><span class=p>)</span> <span class=n>b</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>               <span class=o>-&gt;</span> <span class=n>Razor</span> <span class=n>g</span>         <span class=n>b</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>  <span class=n>Left</span> <span class=p>:</span> <span class=p>(</span><span class=n>left</span> <span class=p>:</span> <span class=n>Razor</span> <span class=n>g</span>        <span class=n>l</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>              <span class=o>-&gt;</span> <span class=n>Razor</span> <span class=n>g</span> <span class=p>(</span><span class=n>TySum</span> <span class=n>l</span> <span class=n>r</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>  <span class=n>Right</span> <span class=p>:</span> <span class=p>(</span><span class=n>right</span> <span class=p>:</span> <span class=n>Razor</span> <span class=n>g</span>          <span class=n>r</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>                <span class=o>-&gt;</span> <span class=n>Razor</span> <span class=n>g</span> <span class=p>(</span><span class=n>TySum</span> <span class=n>l</span> <span class=n>r</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>  <span class=n>Match</span> <span class=p>:</span> <span class=p>(</span><span class=n>variant</span>   <span class=p>:</span> <span class=n>Razor</span> <span class=n>g</span>      <span class=p>(</span><span class=n>TySum</span> <span class=n>l</span> <span class=n>r</span><span class=p>))</span>
+</span></span><span class=line><span class=cl>       <span class=o>-&gt;</span> <span class=p>(</span><span class=n>whenLeft</span>  <span class=p>:</span> <span class=n>Razor</span> <span class=p>(</span><span class=n>l</span><span class=p>::</span><span class=n>g</span><span class=p>)</span> <span class=n>b</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>       <span class=o>-&gt;</span> <span class=p>(</span><span class=n>whenRight</span> <span class=p>:</span> <span class=n>Razor</span> <span class=p>(</span><span class=n>r</span><span class=p>::</span><span class=n>g</span><span class=p>)</span> <span class=n>b</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>                    <span class=o>-&gt;</span> <span class=n>Razor</span> <span class=n>g</span>      <span class=n>b</span>
+</span></span></code></pre></div><h3 id=examples>Examples</h3><p>These definitions follow standard descriptions from PLFA and the like, and we give example instances demonstrating the Razor in action:</p><h4 id=pairs>Pairs</h4><div class="highlight idris"><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>ab : Razor Nil (TyProd TyInt TyChar)
+</span></span><span class=line><span class=cl>ab = MkPair (I 1) (C &#39;c&#39;)
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>a : Razor Nil TyInt
+</span></span><span class=line><span class=cl>a = First ab
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>b : Razor Nil TyChar
+</span></span><span class=line><span class=cl>b = Second ab
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>ba : Razor Nil (TyProd TyChar TyInt)
+</span></span><span class=line><span class=cl>ba = Split ab (MkPair (Var Here) (Var $ There Here))
+</span></span></code></pre></div><h4 id=sums>Sums</h4><div class="highlight idris"><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>l : Razor Nil (TySum TyChar TyInt)
+</span></span><span class=line><span class=cl>l = Left (C &#39;c&#39;)
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>r : Razor Nil (TySum TyChar TyInt)
+</span></span><span class=line><span class=cl>r = Right (I 1)
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>lp : Razor Nil (TyProd TyInt TyChar)
+</span></span><span class=line><span class=cl>lp = Match l (MkPair (I 2) (Var Here)) (MkPair (Var Here) (C &#39;w&#39;))
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>rp : Razor Nil (TyProd TyInt TyChar)
+</span></span><span class=line><span class=cl>rp = Match r (MkPair (I 2) (Var Here)) (MkPair (Var Here) (C &#39;w&#39;))
+</span></span></code></pre></div><h3 id=we-need-type-ascriptions-for-type-unique-sums>We need Type-Ascriptions for Type Unique Sums</h3><p>Notice that all our examples are statically typed.</p><p>A question to remind ourselves about Sum types is:
+What is the type of the scrutinee in the following match expression:</p><div class="highlight idris"><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>snip : Razor Nil TyChar
+</span></span><span class=line><span class=cl>snip = Match (Right (I 1)) (Var Here) (Split (Var Here) (Var Here))
+</span></span></code></pre></div><p>Here we have to give a best guess as to what the right type for <code>(Right (I 1))</code> is.
+We do not have enough information.
+Idris2 complains with:</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>ADT.idr:84:20--84:31:While processing right hand side of rfail at ADT.idr:84:5--86:1:
+</span></span><span class=line><span class=cl>When unifying Razor ?g (TySum ?l TyInt) and Razor [] (TySum TyChar (TyProd ?l TyChar))
+</span></span><span class=line><span class=cl>Mismatch between:
+</span></span><span class=line><span class=cl>    TyInt
+</span></span><span class=line><span class=cl>and
+</span></span><span class=line><span class=cl>    TyProd ?l TyChar
+</span></span><span class=line><span class=cl>at:
+</span></span><span class=line><span class=cl>84      snip = Match (Right (I 1)) (Var Here) (Split (Var Here) (Var Here))
+</span></span></code></pre></div><p>Idris2 has worked out that the scruntinee has type <code>(TySum TyChar (TyProd ?l TyChar))</code>.
+The left case is clearly type char, but the right case is a product type and there is not enough information to work out what the first entry in the pair is.</p><p>Software Foundations, and TAPL, suggest that we can make these types unique by providing a full or partial type ascription.</p><p>Thus we can attempt to rewrite our data constructor for sum either following the TAPL style:</p><div class="highlight idris"><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>  Left : (type: Ty)
+</span></span><span class=line><span class=cl>      -&gt; (leftValue : Razor g tyL)
+</span></span><span class=line><span class=cl>      -&gt; Razor g type
+</span></span></code></pre></div><p>or the Software Foundation style:</p><div class="highlight idris"><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>  Left : (tyR : Ty)
+</span></span><span class=line><span class=cl>      -&gt; (leftValue : Razor g tyL)
+</span></span><span class=line><span class=cl>      -&gt; Razor g (TySum tyL tyR)
+</span></span></code></pre></div><p>With the TAPL style we have lost the intrinsic link between the value and its type.
+The style for Software Foundation allows us to assert what the missing piece of the sum type is, given that we can work out the type for the left value.</p><p>The Software Foundation style requires that we must provide the right type when presenting the left value.
+This is okay but doesn&rsquo;t look right and could be construed as counterintuitive: It&rsquo;s the right type but the value is left.
+It would be better to provide the full type as in the TAPL style but with the correct static guarantees.
+Further, it is interesting to see that within TAPL type-synonym are an aspect of the presented language.</p><p>Having type-synonyms directly within the Razor itself would be beneficial.
+As we will see later on we can remedy this problem by introducing data declarations.</p><p>But first we will detail how to provide tuples and records first, as this gives us the intuition when introducing data declarations.</p><h2 id=a-razor-with-tuples>A Razor with Tuples</h2><p>Tuples improve on pairs by generalising the concept of pairing structures and supports pairing one or more entries together.</p><h3 id=types-1>Types</h3><p>It is important to remember that a tuple has one ore more entries.
+We can enforce this by using sized lists (vectors).</p><div class="highlight idris"><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>data Ty = TyInt | TyChar
+</span></span><span class=line><span class=cl>        | TyTuple (Vect (S n) Ty)
+</span></span></code></pre></div><h3 id=syntax--static-semantics>Syntax & Static Semantics</h3><p>With syntax and static semantics we need to be a bit clever.
+The data constructor for tuple requires a vector.
+We need a data structure (<code>RazorT</code>) to collect one or more razor values at the value level, but also types at the type level.
+Naturally, I would use the <code>All</code> quantifier (or really my own <code>DList</code> variant), however, here we will use a custom data structure.</p><div class="highlight idris"><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>data RazorT : List Ty -&gt; Vect (S n) Ty -&gt; Type where
+</span></span><span class=line><span class=cl>  Singleton : (first : Razor  g ty)
+</span></span><span class=line><span class=cl>                    -&gt; RazorT g [ty]
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>  Extend : (third : Razor  g  ty)
+</span></span><span class=line><span class=cl>        -&gt; (rest  : RazorT g       tys)
+</span></span><span class=line><span class=cl>                 -&gt; RazorT g (ty:: tys)
+</span></span></code></pre></div><p>The type of <code>RaqzorT</code> ensures that there are one or more entries that <em>might</em> also already exist in a given context.
+The constructor <code>Singleton</code> represent the <strong>right most</strong> entry in the list i.e. the one with the highest index, and <code>Extend</code> appends an entry to the left of an existing tuple.</p><p>With <code>RazorT</code> we can now extend our Razor with syntax for projection (<code>Proj</code>) and deconstruction&mdash;<code>Split</code>.</p><div class="highlight idris"><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>data Razor : List Ty -&gt; Ty -&gt; Type where
+</span></span><span class=line><span class=cl>  Var : Elem ty g -&gt; Razor g ty
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>  Let : (this     : Razor        g  expr)
+</span></span><span class=line><span class=cl>     -&gt; (beInThis : Razor (expr::g) body)
+</span></span><span class=line><span class=cl>                 -&gt; Razor        g  body
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>  I : Int  -&gt; Razor g TyInt
+</span></span><span class=line><span class=cl>  C : Char -&gt; Razor g TyChar
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>  MkTuple : (values : RazorT g          types)
+</span></span><span class=line><span class=cl>                   -&gt; Razor  g (TyTuple types)
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>  Proj : {0 types : Vect (S n) Ty}
+</span></span><span class=line><span class=cl>      -&gt; (  tuple : Razor g (TyTuple types))
+</span></span><span class=line><span class=cl>      -&gt; (  idx   : Fin (S n))
+</span></span><span class=line><span class=cl>                 -&gt; Razor g (index idx types)
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>  Split : (tuple : Razor               g  (TyTuple types))
+</span></span><span class=line><span class=cl>       -&gt; (body  : Razor (revAdd types g) b)
+</span></span><span class=line><span class=cl>                -&gt; Razor               g  b
+</span></span></code></pre></div><p>By taking advantage of vectors we can define a safe projection constructor (<code>Proj</code>) that takes as an index a number known to be within the range represented by <code>[0,S n]</code>.
+The type of <code>Proj</code> can then reconstruct the type of the entry using a type-level application of vector&rsquo;s <code>index</code> function.</p><p>The destructor <code>Split</code> decomposes a tuple into its constituent elements i.e. pattern matching.
+When augmenting the type of the body of the split we need to add the types of the tupled to the body&rsquo;s context.
+Here we use <code>revAdd : Vect n a -> List a -> List a</code> to ensure that the elements are added right to left to the existing context.
+Thus ensuring that the right most pattern is the last one added to the context.</p><h3 id=examples-1>Examples</h3><p>We can see tuples in action here:</p><h4 id=definition>Definition</h4><div class="highlight idris"><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>abc : Razor Nil (TyTuple [TyInt, TyChar, TyChar])
+</span></span><span class=line><span class=cl>abc = MkTuple (Extend (I 1) (Extend (C &#39;c&#39;) (Singleton (C &#39;2&#39;))))
+</span></span></code></pre></div><h4 id=projection>Projection</h4><div class="highlight idris"><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>a : Razor Nil (TyInt)
+</span></span><span class=line><span class=cl>a = Proj abc FZ
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>b : Razor Nil (TyChar)
+</span></span><span class=line><span class=cl>b = Proj abc (FS FZ)
+</span></span></code></pre></div><h4 id=splitting>Splitting</h4><div class="highlight idris"><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>cba : Razor Nil (TyTuple [TyChar, TyChar, TyInt])
+</span></span><span class=line><span class=cl>cba = Split abc (MkTuple (Extend (Var Here) (Extend (Var (There Here)) (Singleton (Var (There (There Here)))))))
+</span></span></code></pre></div><p>Notice that the effect of the <code>revAdd</code> as the third entry in the tupled is accessed using <code>Var Here</code> (the most recent entry into the context) and the first entry as <code>Var (There (There Here))</code>&mdash;the third most recent entry.</p><h2 id=the-recorded-razor>The Recorded Razor</h2><p>We now turn our attention towards Records, also known as named Tuples.
+Unsurprisingly, how we represent records does not differ much from tuples.
+We need to provide accounting for names to support disambiguation between otherwise isomorphic structures.
+For example:</p><div class="highlight idris"><pre tabindex=0 class=chroma><code class=language-gdscript3 data-lang=gdscript3><span class=line><span class=cl><span class=n>record</span> <span class=n>PairIC</span> <span class=n>where</span>
+</span></span><span class=line><span class=cl>  <span class=n>constructor</span> <span class=n>MkPair</span>
+</span></span><span class=line><span class=cl>  <span class=n>first</span> <span class=p>:</span> <span class=n>Int</span>
+</span></span><span class=line><span class=cl>  <span class=n>second</span> <span class=p>:</span> <span class=n>Char</span>
+</span></span></code></pre></div><p>should be seen as different from:</p><div class="highlight idris"><pre tabindex=0 class=chroma><code class=language-gdscript3 data-lang=gdscript3><span class=line><span class=cl><span class=n>record</span> <span class=n>ICPair</span> <span class=n>where</span>
+</span></span><span class=line><span class=cl>  <span class=n>constructor</span> <span class=n>MkPair</span>
+</span></span><span class=line><span class=cl>  <span class=n>getInt</span> <span class=p>:</span> <span class=n>Int</span>
+</span></span><span class=line><span class=cl>  <span class=n>getChar</span> <span class=p>:</span> <span class=n>Char</span>
+</span></span></code></pre></div><h3 id=types-2>Types</h3><p>Records are named tuples.
+When extending our set of types we need to record both the name and the type of at least one entry.
+Again vectors help.</p><div class="highlight idris"><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>data Ty = TyInt | TyChar
+</span></span><span class=line><span class=cl>        | TyRecord (Vect (S n) (Pair String Ty))
+</span></span></code></pre></div><p>Note that by using a vector we provide no guarantees that the set of labels is actually a set.
+Use of a set-like structure would improve the robustness of record definition.</p><h3 id=syntax-and-static-semantics-1>Syntax and Static Semantics.</h3><p>Similar to our definition of tuples, we provide a helper data structure to collect the structure&rsquo;s entries.
+This time we ensure that both a label and a type are collected.
+This is <code>RazorR</code>.</p><div class="highlight idris"><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>data RazorR : List Ty -&gt; Vect (S n) (Pair String Ty) -&gt; Type where
+</span></span><span class=line><span class=cl>  Singleton : (label : String)
+</span></span><span class=line><span class=cl>           -&gt; (value : Razor  g ty)
+</span></span><span class=line><span class=cl>                   -&gt;  RazorR g [(label, ty)]
+</span></span><span class=line><span class=cl>  Extend : (label : String)
+</span></span><span class=line><span class=cl>        -&gt; (value : Razor  g          ty)
+</span></span><span class=line><span class=cl>        -&gt; (rest  : RazorR g                 kvs)
+</span></span><span class=line><span class=cl>                 -&gt; RazorR g ((label, ty) :: kvs)
+</span></span></code></pre></div><p>Much with the definition of <code>Tuple</code> we can replace <code>RazorR</code> with a better data structure.</p><p>Unsurprisingly, describing record, construction (<code>MkRecord</code>), destruction (<code>Split</code>), and projection (<code>Proj</code>) follows that for tuples.
+The data constructor <code>MkRecord</code> creates records using <code>RazorR</code>, and <code>Split</code> deconstructs records ensuring that the constituent components are available for a given body.
+The type-level function, <code>revAdd</code> is replaced with <code>revAdd' : Vect n (String, a) -> List a -> List a</code>.
+Projection of records using <code>Proj</code> differs slightly (is simpler) by using existential quantification of the label and type directly to find the corresponding type.</p><div class="highlight idris"><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>data Razor : List Ty -&gt; Ty -&gt; Type where
+</span></span><span class=line><span class=cl>  Var : Elem ty g -&gt; Razor g ty
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>  Let : (this     : Razor        g  expr)
+</span></span><span class=line><span class=cl>     -&gt; (beInThis : Razor (expr::g) body)
+</span></span><span class=line><span class=cl>                 -&gt; Razor        g  body
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>  I : Int  -&gt; Razor g TyInt
+</span></span><span class=line><span class=cl>  C : Char -&gt; Razor g TyChar
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>  MkRecord : (values : RazorR g           types)
+</span></span><span class=line><span class=cl>                    -&gt; Razor  g (TyRecord types)
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>  Proj : {0 types : Vect (S n) (Pair String Ty)}
+</span></span><span class=line><span class=cl>      -&gt; (  rec   : Razor g (TyRecord types))
+</span></span><span class=line><span class=cl>      -&gt; (  label : String)
+</span></span><span class=line><span class=cl>      -&gt; (  idx   : Elem (label, type) types)
+</span></span><span class=line><span class=cl>                 -&gt; Razor g type
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>  Split : (rec  : Razor                g  (TyRecord types))
+</span></span><span class=line><span class=cl>       -&gt; (body : Razor (revAdd&#39; types g) b)
+</span></span><span class=line><span class=cl>               -&gt; Razor                g  b
+</span></span></code></pre></div><p>Note that we assume in our record specification that each label is unique.
+The existential quantification for <code>Proj</code> will select the left-most label and type it finds.
+We could improve the definition of Record&rsquo;s type with a <strong>set</strong> to provide guarantees over label uniqueness and leave that as an exercise.</p><h4 id=examples-2>Examples</h4><p>We can show records in action by recreating a simple pair data type as a record.</p><h5 id=definition-1>Definition</h5><p>First we define a record instance:</p><div class="highlight idris"><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>pairIC : Razor Nil (TyRecord [(&#34;first&#34;, TyInt), (&#34;second&#34;, TyChar)])
+</span></span><span class=line><span class=cl>pairIC = MkRecord (Extend &#34;first&#34; (I 1) (Singleton &#34;second&#34; (C &#39;c&#39;)))
+</span></span></code></pre></div><h5 id=projection-1>Projection</h5><p>Then we can project the individual elements within <code>pairIC</code>:</p><div class="highlight idris"><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>i : Razor Nil TyInt
+</span></span><span class=line><span class=cl>i = Proj pairIC &#34;first&#34; Here
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>c : Razor Nil TyChar
+</span></span><span class=line><span class=cl>c = Proj pairIC &#34;second&#34; (There Here)
+</span></span></code></pre></div><h5 id=deconstruction>Deconstruction</h5><p>Finally, we demonstrate deconstruction.</p><div class="highlight idris"><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>i&#39; : Razor Nil TyInt
+</span></span><span class=line><span class=cl>i&#39; = Split pairIC (Var (There Here))
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>c&#39; : Razor Nil TyChar
+</span></span><span class=line><span class=cl>c&#39; = Split pairIC (Var (Here))
+</span></span></code></pre></div><h2 id=unique--non-unique-razor-variants>Unique + Non-Unique Razor Variants</h2><p>We end this post by looking at two ways to encode variant structures.
+The first will be a normal encoding supporting undecided types, and the second will allow for unique types to be given.
+Remember that variants are generalised sums that allow for at least one value to be contained.</p><h3 id=non-unique-variants>Non-Unique Variants,</h3><p>We begin by looking at non-unique variants.</p><h4 id=types-3>Types</h4><p>Similar to records, variant types must account for at least one set of labelled values.
+What differs is how we treat the values.
+Thus the type for variants is the same (aside from different data constructor) as for records:</p><div class="highlight idris"><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>data Ty = TyInt | TyChar
+</span></span><span class=line><span class=cl>        | TyVariant (Vect (S n) (Pair String Ty))
+</span></span></code></pre></div><p>Like records our formulation of variants doesn&rsquo;t assume label uniqueness.</p><h4 id=syntax--static-semantics-1>Syntax & Static Semantics</h4><p>With records, construction was about pairing a set of values together.
+With variants construction is about selecting a value to include.
+We represent variants as follows:</p><div class="highlight idris"><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>data Razor : List Ty -&gt; Ty -&gt; Type where
+</span></span><span class=line><span class=cl>  Var : Elem ty g -&gt; Razor g ty
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>  Let : (this     : Razor        g  expr)
+</span></span><span class=line><span class=cl>     -&gt; (beInThis : Razor (expr::g) body)
+</span></span><span class=line><span class=cl>                 -&gt; Razor        g  body
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>  I : Int -&gt; Razor g TyInt
+</span></span><span class=line><span class=cl>  C : Char -&gt; Razor g TyChar
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>  Tag : (label : String)
+</span></span><span class=line><span class=cl>     -&gt; (value : Razor g      ty)
+</span></span><span class=line><span class=cl>     -&gt; (prf   : Elem (label, ty)   kvs)
+</span></span><span class=line><span class=cl>              -&gt; Razor g (TyVariant kvs)
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>  Match : (value : Razor  g (TyVariant kvs))
+</span></span><span class=line><span class=cl>       -&gt; (cases : RazorC g            kvs b)
+</span></span><span class=line><span class=cl>                -&gt; Razor  g                b
+</span></span></code></pre></div><p>Variants are constructed using <code>Tag</code> which when given a valid label will associate the value with said label.
+Of interest here is <code>Match</code>.
+Analogous to records and tuples in which we had to collect all fields/entries as these structures pair data together, we must provide a way to examine (discriminate) each valid case in the variant.
+We do so using <code>RazorC</code>, which we define as:</p><div class="highlight idris"><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>data RazorC : List Ty -&gt; Vect (S n) (Pair String Ty) -&gt; Ty -&gt; Type where
+</span></span><span class=line><span class=cl>  Singleton : (branch : Razor  (ty::g)              b)
+</span></span><span class=line><span class=cl>                     -&gt; RazorC      g [(label, ty)] b
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>  Extend : (branch : Razor  (ty::g)                     b)
+</span></span><span class=line><span class=cl>        -&gt; (rest   : RazorC      g                 kvs  b)
+</span></span><span class=line><span class=cl>                  -&gt; RazorC      g ((label, ty) :: kvs) b
+</span></span></code></pre></div><p>The type of <code>RazorC</code> is parameterised by:</p><ol><li>the current typing context;</li><li>the list of possible cases; and</li><li>the type of body associated with each possible case.</li></ol><p>Note that each body must have the same type.
+As with our definitions for <code>RazorR</code> and <code>RazorT</code> the right-most case is the last case in the variant and we build up the &lsquo;patterns&rsquo; by extending to the left.
+For each body associated with a case we ensure that the environment is extended by the appropriate value.</p><h4 id=examples-3>Examples</h4><p>With this definition we can now provide some examples demonstrating use of variants.</p><h5 id=construction>Construction</h5><p>Here we construct a variant containing an int or a char.</p><div class="highlight idris"><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>ici : Razor Nil (TyVariant [(&#34;int&#34;, TyInt), (&#34;char&#34;, TyChar)])
+</span></span><span class=line><span class=cl>ici = Tag &#34;int&#34; (I 1) Here
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>icc : Razor Nil (TyVariant [(&#34;int&#34;, TyInt), (&#34;char&#34;, TyChar)])
+</span></span><span class=line><span class=cl>icc = Tag &#34;char&#34; (C &#39;c&#39;) (There Here)
+</span></span></code></pre></div><p>Notice that much like the original non-unique sum type definition each variant is statically typed.</p><p>We can see the error more clearly when destructing variants.</p><h5 id=destruction>Destruction</h5><p>First we provide some working destructors:</p><div class="highlight idris"><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>iciM : Razor Nil TyInt
+</span></span><span class=line><span class=cl>iciM = Match ici (Extend (Var Here) (Singleton (I 2)))
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>iccM : Razor Nil TyInt
+</span></span><span class=line><span class=cl>iccM = Match icc (Extend (Var Here) (Singleton (I 2)))
+</span></span></code></pre></div><p>Here is a non-working example:</p><div class="highlight idris"><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>fail : Razor Nil TyChar
+</span></span><span class=line><span class=cl>fail = Let (Tag &#34;int&#34; (I 1) Here) (Match (Var Here) (Extend (C &#39;c&#39;) (Singleton (C &#39;c&#39;))))
+</span></span></code></pre></div><p>that causes Idris2 to complain with:</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>ADT.idr:238:74--238:91:Unsolved holes:
+</span></span><span class=line><span class=cl>ADT.Variants.Example.{label:5351} introduced at ADT.idr:238:74--238:91
+</span></span><span class=line><span class=cl>ADT.Variants.Example.{ty:5353} introduced at ADT.idr:238:74--238:91
+</span></span></code></pre></div><p>So we need to make these variants unique!</p><h3 id=unique-variants>Unique Variants</h3><p>For unique variants we need to remind ourselves about how records and variants differ.
+Records/tuples have a structure that can be computed from <em>just</em> it&rsquo;s values, with unqiue variants we need to know the whole structure prior to constructor.
+Thus, as in Software Foundations, we need to be able to <strong>declare</strong> our variants prior to use.
+That is we need to introduce data type declarations.</p><p>Using our chosen Razor, adding such declarations is straightforward.
+We extend the set of types with a new type, the type for variants:</p><div class="highlight idris"><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>data Ty = TyInt | TyChar
+</span></span><span class=line><span class=cl>        | TyVariant (Vect (S n) (Pair String Ty))
+</span></span><span class=line><span class=cl>        | TyVariantDecl
+</span></span></code></pre></div><p>and extend the syntax to include:</p><ol><li>the variant type construction <code>Variant</code> in which we list or fields and types; and</li><li>an extended <code>Tag</code> constructor to incorporate the required ascription.</li></ol><p>Matching remains unchanged.</p><div class="highlight idris"><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>  Variant : (kvs : Vect (S n) (Pair String Ty))
+</span></span><span class=line><span class=cl>                -&gt; Razor g (TyVariantDecl kvs)
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>  Tag : (label : String)
+</span></span><span class=line><span class=cl>     -&gt; (value : Razor g ty)
+</span></span><span class=line><span class=cl>     -&gt; (type  : Razor g (TyVariantDecl))
+</span></span><span class=line><span class=cl>     -&gt; (prf   : Elem (label, ty) kvs)
+</span></span><span class=line><span class=cl>              -&gt; Razor g (TyVariant kvs)
+</span></span></code></pre></div><h2 id=done-jobs-a-goodn-or-is-itdate-2020-08-04-well-typed-datamd>Done! Job&rsquo;s a good&rsquo;n or is itdate: 2020-08-04-Well-Typed-Data.md</h2><p>There are two problems with this approach:</p><ol><li>Variant declarations cannot included other variant declarations or other declarations we chose to include in the Razor; and</li><li>The ascription does not intrinsically link the data declaration and data instantiation.</li></ol><p>To do so we need to be able to differentiate between different levels of types.
+That is the types we use to describe values are different to types that describe the types that describe values.</p><h4 id=types-4>Types</h4><p>We begin by describing the two levels which we call <code>Zero</code> the highest level we use to describing data types, and <code>One</code> the next level down which we use to describe values.</p><div class="highlight idris"><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>data Level = Zero | One
+</span></span></code></pre></div><p>Using these levels, we can now begin to describe our types more accurately:</p><div class="highlight idris"><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>data Ty : Level -&gt; Type where
+</span></span><span class=line><span class=cl>  TyInt  : Ty One
+</span></span><span class=line><span class=cl>  TyChar : Ty One
+</span></span><span class=line><span class=cl>  TyVariant : (fields : Vect (S n) (Pair String (Ty One))) -&gt; Ty One
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>  TyVariantDecl : (fields : Vect (S n) (Pair String (Ty One))) -&gt; Ty Zero
+</span></span></code></pre></div><p>The type constructor <code>TyVariant</code> describes variant values and is such at level <code>One</code> and contains the list of fields and their level one types.
+This is expected.
+The type constructor <code>TyVariantDecl</code> is for describing variant types, this it is at level <code>Zero</code>.
+However, we need to ensure that we can structurally type-check variant values against variant types.
+Thus we also require a list of fields and their corresponding types.</p><p>If we were constructring a regular compiler this correspondence wouldn&rsquo;t necessarily be required as we can manually inspect the corresponding syntax for <code>TyVariantDecl</code>.</p><h4 id=syntax--static-semantics-2>Syntax & Static Semantics</h4><p>Before we can introduce syntax and semantics, we need to rethink our Razor.
+The type for types is now dependent on a value.
+As with <code>RazorT</code> and <code>RazorR</code> we need a way to collect dependently typed values.
+Naturally, I would use the <code>All</code> quantifier (or really my own <code>DList</code> variant), however, here we will use a custom data structure to rethink our context and provide existential quantification.</p><h5 id=contexts>Contexts</h5><p>Contexts require us to collect the levels and the types.</p><div class="highlight idris"><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>data Context : List Level -&gt; Type where
+</span></span><span class=line><span class=cl>  Nil  : Context Nil
+</span></span><span class=line><span class=cl>  (::) : (type : Ty lvl) -&gt; (rest : Context lvls) -&gt; Context (lvl::lvls)
+</span></span></code></pre></div><p>Existential quantification requires us to find the first instance of a value:</p><div class="highlight idris"><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>data Elem : (type : Ty lvl) -&gt; (ctxt : Context lvls) -&gt; Type where
+</span></span><span class=line><span class=cl>  Here : Elem type (type::rest)
+</span></span><span class=line><span class=cl>  There : (later : Elem type         rest)
+</span></span><span class=line><span class=cl>                -&gt; Elem type&#39; (type::rest)
+</span></span></code></pre></div><h5 id=helper-structures>Helper structures</h5><p>Before we present the syntax we need some helper structures.
+To describe variants we need to collect label type pairings, however, we cannot just bundle this as a pair.
+We need to ensure that our label type pairing is either a pairing to an irreducible data type, or one that could be previously declared and bound to a name.</p><div class="highlight idris"><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>data RazorField : Context lvls -&gt; String -&gt; Ty One -&gt; Type where
+</span></span><span class=line><span class=cl>   PrimField : (label : String)
+</span></span><span class=line><span class=cl>            -&gt; (type  : Ty One)
+</span></span><span class=line><span class=cl>                    -&gt; RazorField g label type
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>   ComplexField : (label : String)
+</span></span><span class=line><span class=cl>               -&gt; (type  : Razor      g       ty)
+</span></span><span class=line><span class=cl>                        -&gt; RazorField g label ty
+</span></span></code></pre></div><p>An alternative formulation would be to encode this using a data type with a singular constructor and an <code>Either</code> type but I chose this construction for a bit more clarity and reduction of type-level computation.</p><p>The data type <code>RazorField</code> describes a single field.
+We still need to collect the separate cases.
+Borrowing from how record values are constructed, we can collect fields using as collection.
+Here we have constructed a custom data type <code>RazorD</code> but <code>All</code> (or <code>DList</code>) are just as suitable.</p><div class="highlight idris"><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>data RazorD : Context lvls -&gt; Vect (S n) (Pair String (Ty One)) -&gt; Type where
+</span></span><span class=line><span class=cl>  SingletonD : (field : RazorField g   label  type)
+</span></span><span class=line><span class=cl>                     -&gt; RazorD     g [(label, type)]
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>  ExtendD : (field : RazorField g   label  type)
+</span></span><span class=line><span class=cl>         -&gt; (rest  : RazorD     g                 fields)
+</span></span><span class=line><span class=cl>                  -&gt; RazorD     g ((label, type)::fields)
+</span></span></code></pre></div><p>Notice that for both <code>RazorField</code> and <code>RazorD</code> we index both types with the current typing context.</p><h5 id=syntax--static-semantics-3>Syntax & Static Semantics.</h5><p>We can now use these helper data types to declare and construct intrinsically typed variant types</p><div class="highlight idris"><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>data Razor : Context lvls -&gt; Ty lvl -&gt; Type where
+</span></span><span class=line><span class=cl>  Var : Elem ty g -&gt; Razor g ty
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>  Let : (this     : Razor        g  expr)
+</span></span><span class=line><span class=cl>     -&gt; (beInThis : Razor (expr::g) body)
+</span></span><span class=line><span class=cl>                 -&gt; Razor        g  body
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>  I : Int -&gt; Razor g TyInt
+</span></span><span class=line><span class=cl>  C : Char -&gt; Razor g TyChar
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>  Variant : (fields : RazorD g                kvs)
+</span></span><span class=line><span class=cl>                   -&gt; Razor  g (TyVariantDecl kvs)
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>  Tag : (label : String)
+</span></span><span class=line><span class=cl>     -&gt; (value : Razor g      ty)
+</span></span><span class=line><span class=cl>     -&gt; (type  : Razor g          (TyVariantDecl kvs))
+</span></span><span class=line><span class=cl>     -&gt; (prf   : Elem (label, ty)                kvs)
+</span></span><span class=line><span class=cl>              -&gt; Razor g          (TyVariant     kvs)
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>  Match : (value : Razor  g (TyVariant kvs))
+</span></span><span class=line><span class=cl>       -&gt; (cases : RazorC g            kvs b)
+</span></span><span class=line><span class=cl>                -&gt; Razor  g                b
+</span></span></code></pre></div><p>Much of our Razor stays as before, aside from changes to how contexts are defined.
+Here <code>RazorC</code> is the same definition as before.</p><p>The data constructor <code>Variant</code> introduces variant type declarations and uses <code>RazorD</code> to ensure that its type has the correct structural description.</p><p>The data constructor <code>Tag</code> introduces variant values with type-ascriptions.
+Notice that with how the types for declarations and values are presented we can intrinsically typecheck these variant values!</p><p>Now the job is a good&rsquo;n!</p><h4 id=examples-4>Examples</h4><p>We finish this tutorial with examples:</p><h5 id=variant-declaration-and-instantiation>Variant Declaration and Instantiation</h5><p>We begin with describing a variant type that contains either an int or char value, and use that type to construct a value containing an int using both a let bound definition and directly using Idris.</p><div class="highlight idris"><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>iciTy : Razor Nil (TyVariantDecl [(&#34;int&#34;, TyInt), (&#34;char&#34;, TyChar)])
+</span></span><span class=line><span class=cl>iciTy = Variant (ExtendD (PrimField &#34;int&#34; TyInt) (SingletonD (PrimField &#34;char&#34; TyChar)))
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>icc : Razor Nil (TyVariant [(&#34;int&#34;, TyInt), (&#34;char&#34;, TyChar)])
+</span></span><span class=line><span class=cl>icc = Let iciTy $ Tag &#34;char&#34; (C &#39;c&#39;) (Var Here) (There Here)
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>ici : Razor Nil (TyVariant [(&#34;int&#34;, TyInt), (&#34;char&#34;, TyChar)])
+</span></span><span class=line><span class=cl>ici = Tag &#34;int&#34; (I 1) iciTy Here
+</span></span></code></pre></div><h5 id=matching>Matching</h5><p>Matching follows as before.</p><div class="highlight idris"><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>iciM : Razor Nil TyInt
+</span></span><span class=line><span class=cl>iciM = Match ici (Extend (Var Here) (Singleton (I 2)))
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>iccM : Razor Nil TyInt
+</span></span><span class=line><span class=cl>iccM = Match icc (Extend (Var Here) (Singleton (I 2)))
+</span></span></code></pre></div><h2 id=coda>Coda</h2><p>In this post we:</p><ol><li>have looked at how we can construct intrinsically typed data structures for an EDSL in the Idris(2) programming language; and</li><li>detailed an approach to preserve the uniques of variant types.</li></ol><p>I do not believe that these techniques are new nor novel.
+We borrow existing ideas such as type-levels and use them to our advantage.
+Hopefully, someone will see this post and get something from it.</p><h2 id=where-nextdate-2020-08-04-well-typed-datamd>Where nextdate: 2020-08-04-Well-Typed-Data.md</h2><hr><p>We have describe rather straightforward data types.
+Future exploration would be to investigate:</p><ol><li><a href=https://en.wikipedia.org/wiki/Algebraic_data_type>algebraic data types</a> using a singular representation and a singular pattern matching term.
+Algebraic data types are <em>disjunctions of conjunctions</em> combining how I&rsquo;ve represented variants and adding tuples to the field declaration for each case.
+Note that we cannot expect to use tuples separately <em>and</em> as fields as this is not true to how such data type declarations work.
+Each individual field is not projectionable;</li><li>kinding because why not;</li><li>polymorphic type because why not; and</li><li>recursive data types because of the trees and lists.</li></ol><p>These provide interesting enough structures to investigate how to reason about them in as part of an EDSL formulation, and get me to reading <a href=https://doi.org/10.1007/978-3-030-33636-3_10>some interesting work in formulising System F in Agda</a>.</p><h2 id=however-i-have-yet-to-find-time-to-grok-the-canonical-references-or-beginners-tutorials-as-to-how-this-works-in-the-first-place-before-i-attempt-itdate-2020-08-04-well-typed-datamd>Another direction would be to look at a more generic simpler powerful representation of data types as found in Idris&rsquo; core language TT.
+This representation is <a href=https://ncatlab.org/nlab/show/inductive+family>inductive families</a>, and will require <a href=https://doi.org/10.1017/S0956796803004829>dependent pattern matching</a>.
+However, I have yet to find time to grok the canonical references (or beginners tutorials) as to how this works in the first place before I attempt itdate: 2020-08-04-Well-Typed-Data.md</h2><p>I have a back log of references from Idris&rsquo; journal paper to read about thisdate: 2020-08-04-Well-Typed-Data.md
+&mdash;and shows gaps in my understanding of dependent type theory and practice&mldr;</p><div class=blog-tags><a href=https://tyde.systems//tags/idris/>idris</a>&nbsp;
+<a href=https://tyde.systems//tags/dependent-types/>dependent-types</a>&nbsp;
+<a href=https://tyde.systems//tags/tdd/>tdd</a>&nbsp;
+<a href=https://tyde.systems//tags/musing/>musing</a>&nbsp;</div></article><ul class="pager blog-pager"><li class=previous><a href=https://tyde.systems/post/2020-07-09-programming-with-holes/ data-toggle=tooltip data-placement=top title="Programming with Holes">&larr; Previous Post</a></li><li class=next><a href=https://tyde.systems/post/2020-11-16-ecoop/ data-toggle=tooltip data-placement=top title="A Framework for Resource Dependent EDSLs in a Dependently Typed Language">Next Post &rarr;</a></li></ul></div></div></div><footer><div class=container><div class=row><div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1"><ul class="list-inline text-center footer-links"><li><a href=https://github.com/jfdm title=GitHub><span class="fa-stack fa-lg"><i class="fas fa-circle fa-stack-2x"></i>
+<i class="fab fa-github fa-stack-1x fa-inverse"></i></span></a></li><li><a href=https://gitlab.com/jfdm title=GitLab><span class="fa-stack fa-lg"><i class="fas fa-circle fa-stack-2x"></i>
+<i class="fab fa-gitlab fa-stack-1x fa-inverse"></i></span></a></li><li><a href=https://bitbucket.org/jfdm title=Bitbucket><span class="fa-stack fa-lg"><i class="fas fa-circle fa-stack-2x"></i>
+<i class="fab fa-bitbucket fa-stack-1x fa-inverse"></i></span></a></li><li><a href=https://twitter.com/jfdm title=Twitter><span class="fa-stack fa-lg"><i class="fas fa-circle fa-stack-2x"></i>
+<i class="fab fa-twitter fa-stack-1x fa-inverse"></i></span></a></li><li><a rel=me href=https://discuss.systems/@jfdm title=Mastodon><span class="fa-stack fa-lg"><i class="fas fa-circle fa-stack-2x"></i>
+<i class="fab fa-mastodon fa-stack-1x fa-inverse"></i></span></a></li><li><a href title=RSS><span class="fa-stack fa-lg"><i class="fas fa-circle fa-stack-2x"></i>
+<i class="fas fa-rss fa-stack-1x fa-inverse"></i></span></a></li></ul><p class="credits copyright text-muted"><a href=tyde.systems>Jan de Muijnck-Hughes</a>
+&nbsp;&bull;&nbsp;&copy;
+2024
+&nbsp;&bull;&nbsp;
+<a href=https://tyde.systems/>Jan de Muijnck-Hughes</a></p><p class="credits theme-by text-muted"><a href=https://gohugo.io>Hugo v0.123.8</a> powered &nbsp;&bull;&nbsp; Theme <a href=https://github.com/halogenica/beautifulhugo>Beautiful Hugo</a> adapted from <a href=https://deanattali.com/beautiful-jekyll/>Beautiful Jekyll</a></p></div></div></div></footer><script src=https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.js integrity=sha384-g7c+Jr9ZivxKLnZTDUhnkOnsh30B4H0rpLUpJ4jAIKs4fnJI+sEnkvrMWph2EDg4 crossorigin=anonymous></script><script src=https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/contrib/auto-render.min.js integrity=sha384-mll67QQFJfxn0IYznZYonOWZ644AWYC+Pt2cHqMaRhXVrursRwvLnLaebdGIlYNa crossorigin=anonymous></script><script src=https://code.jquery.com/jquery-3.5.1.slim.min.js integrity=sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj crossorigin=anonymous></script><script src=https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js integrity=sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa crossorigin=anonymous></script><script src=https://tyde.systems/js/main.js></script><script>renderMathInElement(document.body)</script><script src=https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.js integrity=sha384-QELNnmcmU8IR9ZAykt67vGr9/rZJdHbiWi64V88fCPaOohUlHCqUD/unNN0BXSqy crossorigin=anonymous></script><script src=https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe-ui-default.min.js integrity=sha384-m67o7SkQ1ALzKZIFh4CiTA8tmadaujiTa9Vu+nqPSwDOqHrDmxLezTdFln8077+q crossorigin=anonymous></script><script src=https://tyde.systems/js/load-photoswipe.js></script></body></html>
