@@ -2,7 +2,8 @@ baseURL = "https://tyde.systems"
 publishDir = "public_html"
 DefaultContentLanguage = "en"
 title = "Jan de Muijnck-Hughes"
-theme = ["beautifulhugo", "hugo-cite"]
+theme = ["beautifulhugo"#, "hugo-cite"
+       ]
 pygmentsStyle = "trac"
 pygmentsUseClasses = true
 pygmentsCodeFences = true

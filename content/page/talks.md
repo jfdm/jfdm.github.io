@@ -2,4 +2,6 @@
 title: Talks
 ---
 
-{{< references "bib/talks.json" >}}
+Removed because hugo-cite is not more...
+
+<!-- {{< references "bib/talks.json" >}}-->
