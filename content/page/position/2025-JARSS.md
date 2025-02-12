@@ -12,6 +12,10 @@ title: "Towards Type-Driven Assurance of Communicating Systems"
 
 This [JARSS PhD studentship](https://www.strath.ac.uk/studywithus/scholarships/johnandersonresearchstudentshipschemejarss/) will develop new methods for asserting the resilience of existing communicating systems by developing new static analysis methods derived from advanced programming language research as pioneered by the supervising team, and the wider MSP and StrathCyber research groups.
 
+Please go here to apply:
+
+https://www.strath.ac.uk/studywithus/postgraduateresearchphdopportunities/science/computerinformationsciences/towardstype-drivenassuranceofcommunicatingsystems/
+
 ## Contact
 
 Informal enquiries about the studentship are to be directed to Jan de Muijnck-Hughes (Jan.de-Muijnck-Hughes@strath.ac.uk)
