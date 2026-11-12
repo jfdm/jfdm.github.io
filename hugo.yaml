@@ -1,0 +1,48 @@
+baseURL: "https://tyde.systems"
+publishDir: "public_html"
+local: "en-gb"
+title: "Jan de Muijnck-Hughes"
+theme: "hugo-classless"
+
+params:
+  author: "Jan de Muijnck-Hughes"
+  description: "aa"
+  themeBase: "css/simple.css"
+  themeLight: "css/light.css"
+  themeDark: "css/dark.css"
+
+#
+menu:
+  main:
+    - name: "Home"
+      pageRef: "/"
+      weight: 10
+    - name: "Posts"
+      pageRef: "/post"
+      weight: 20
+#    - name: "Tags"
+#      pageRef: "/tags"
+#      weight: 20
+    - name: "Research"
+      pageRef: "page/research"
+      weight: 30
+    - name: "Teaching"
+      pageRef: "page/teaching"
+      weight: 30
+    - name: "Publications"
+      pageRef: "page/paper"
+      weight: 40
+
+markup:
+  goldmark:
+    renderer:
+      unsafe: true
+  katex:
+    # Set to true to enable KaTeX processing on pages that have `math: true` in their front matter.
+    enabled: true
+  highlight:
+    noClasses: false
+    codeFences: true
+    guessSyntax: true
+    lineNos: true
+    style: nord

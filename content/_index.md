@@ -15,6 +15,12 @@ I am also part of the wider
 that offers a framework to better the interaction of programming language researchers across Scotland,
 and [SICSA](https://www.sicsa.ac.uk/), The Scottish Informatics & Computer Science Alliance.
 
+| What      | Where                                                                           |
+|-----------|---------------------------------------------------------------------------------|
+| Email     | [jan.de-muijnck-hughes@strath.ac.uk](mailto:jan.de-Muijnck-hughes@strath.ac.uk) |
+| Fediverse | <a rel="me" href="discuss.systems/@jfdm">@jfdm@discuss.systems</a>              |
+| WWW       | [Strathclyde](https://www.strath.ac.uk/staff/de_muijnck-hughesjandr/)           |
+
 
 [My research](page/research) investigates how we can take programming language theory and technologies, namely type-systems, dependent types, & functional programming, and use them to fundamentally change systems to make them more trustworthy:
 Secure and Safe.

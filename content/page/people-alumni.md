@@ -1,5 +1,6 @@
 ---
 title: "Alumni"
+draft: true
 ---
 
 Please find here the people I have had the pleasure of working with.
