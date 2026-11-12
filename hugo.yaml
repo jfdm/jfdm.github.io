@@ -3,6 +3,8 @@ publishDir: "public_html"
 local: "en-gb"
 title: "Jan de Muijnck-Hughes"
 theme: "hugo-classless"
+disableKinds:
+  - "rss"
 
 params:
   author: "Jan de Muijnck-Hughes"
