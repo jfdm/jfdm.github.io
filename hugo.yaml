@@ -10,8 +10,12 @@ params:
   themeBase: "css/simple.css"
   themeLight: "css/light.css"
   themeDark: "css/dark.css"
+  mainSections:
+    - research
+    - posts
+    - teaching
 
-#
+#AG
 menu:
   main:
     - name: "Home"
