@@ -1,8 +1,10 @@
 ---
-title: "TyDe Systems are Trusthworthy Systems!"
+title: "Research"
 draft: false
 date: 2026-01-01
 ---
+
+> **TyDe Systems are Trusthworthy Systems!**
 
 ## Interests
 

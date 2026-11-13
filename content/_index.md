@@ -25,8 +25,8 @@ and [SICSA](https://www.sicsa.ac.uk/), The Scottish Informatics & Computer Scien
 [My research](page/research) investigates how we can take programming language theory and technologies, namely type-systems, dependent types, & functional programming, and use them to fundamentally change systems to make them more trustworthy:
 Secure and Safe.
 
-If you are interested in student projects or research studies with me then [please read this](page/studying).
-If you are interested in working with me as a research associate then [please read this](page/working)
+If you are interested in student projects or research studies with me then [please read this](research/studying).
+If you are interested in working with me as a research associate then [please read this](research/working)
 
 Prior to my time at Strathclyde I was a Research Associate at the
 [School of Computing](http://www.gla.ac.uk/schools/computing/),

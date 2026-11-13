@@ -1,8 +1,11 @@
 ---
 title: "Towards Type-Driven Assurance of Communicating Systems"
-draft: true
+draft: false
+date: 2025-01-02
+tags: ["phd", "closed"]
 ---
 
+> This opportunity is no longer available.
 
 + **Deadline** Thursday 20 March 2025
 + **Duration** 36 Months

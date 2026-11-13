@@ -1,6 +1,5 @@
 ---
 title: "Working with me"
-draft: true
 ---
 
 Currently, I have no funded positions available for research associates and assistants.

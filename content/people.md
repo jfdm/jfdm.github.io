@@ -1,9 +1,9 @@
 ---
-title: "Alumni"
+title: "People"
 draft: true
 ---
 
-Please find here the people I have had the pleasure of working with.
+People I have had the pleasure of, or am currently, working with.
 
 <!--
 ## Research Associates
@@ -18,6 +18,8 @@ Please find here the people I have had the pleasure of working with.
 I have been fortunate to supervise the following student projects over the years.
 
 -->
+
+## Past
 
 ## University of Glasgow (2018 -- 2023)
 

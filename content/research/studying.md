@@ -1,6 +1,5 @@
 ---
 title: "Studying with me"
-draft: true
 ---
 
 I am always happy to consider motivated students who are interested in working with me in concert with my research interests: Application of programming language theory and technology to address issues affecting Cybersecurity.
