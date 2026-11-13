@@ -1,5 +1,7 @@
 ---
 title: "TyDe Systems are Trusthworthy Systems!"
+draft: false
+date: 2026-01-01
 ---
 
 ## Interests
